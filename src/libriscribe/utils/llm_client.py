@@ -8,6 +8,7 @@ from libriscribe.settings import Settings
 import anthropic  # For Claude
 import google.generativeai as genai  # For Google AI Studio
 import requests  # For DeepSeek and Mistral
+import re # For regex operations
 
 # ADDED THIS: Import the function
 from libriscribe.utils.file_utils import extract_json_from_markdown

@@ -214,7 +214,7 @@ def get_category_and_genre(project_knowledge_base: ProjectKnowledgeBase):
     elif category == "Business":
         genre_options = ["Marketing", "Management", "Finance", "Entrepreneurship", "Leadership", "Sales", "Productivity"]
     elif category == "Research Paper":
-        genre = typer.prompt("🔍 Enter the field of study for your research paper")
+        genre = typer.prompt("🔬 Enter the field of study for your research paper")
         project_knowledge_base.set("genre", genre)
         return
     else:
@@ -247,7 +247,7 @@ def get_fiction_details(project_knowledge_base: ProjectKnowledgeBase):
 
 def get_review_preference(project_knowledge_base: ProjectKnowledgeBase): 
     console.print("")
-    review_preference = select_from_list("🔍 How would you like your chapters to be reviewed?", ["Human (you'll review it)", "AI (automatic review)"])
+    review_preference = select_from_list("📝 How would you like your chapters to be reviewed?", ["Human (you'll review it)", "AI (automatic review)"])
     project_knowledge_base.set("review_preference", review_preference)
 
 def get_description(project_knowledge_base: ProjectKnowledgeBase): 
@@ -269,7 +269,7 @@ def generate_and_edit_outline(project_knowledge_base: ProjectKnowledgeBase):
     project_manager.generate_outline()
     project_manager.checkpoint()  # Checkpoint after outline
     console.print("")
-    console.print(f"\n[green]📝 Outline generated![/green]")
+    console.print(f"\n[green]📋 Outline generated![/green]")
 
     if typer.confirm("Do you want to review and edit the outline now?"):
         typer.edit(filename=str(project_manager.project_dir / "outline.md"))
@@ -290,7 +290,7 @@ def generate_worldbuilding_if_needed(project_knowledge_base: ProjectKnowledgeBas
     if project_knowledge_base.get("worldbuilding_needed", False):  # Use get with default
         console.print("")
         if typer.confirm("Do you want to generate worldbuilding details?"):
-            console.print("\n[cyan]🏔️ Creating worldbuilding details...[/cyan]")
+            console.print("\n[cyan]🗺️ Creating worldbuilding details...[/cyan]")
             project_manager.generate_worldbuilding()
             project_manager.checkpoint() # Checkpoint
             console.print("")
@@ -480,7 +480,7 @@ def get_advanced_fiction_details(project_knowledge_base: ProjectKnowledgeBase):
 
     console.print("")
     num_chapters_str = typer.prompt(
-        "📑 Approximately how many chapters do you want? (e.g., 10, 8-12, 20+)",
+        "🔢 Approximately how many chapters do you want? (e.g., 10, 8-12, 20+)",
         default="8-12"
     )
     project_knowledge_base.set("num_chapters_str", num_chapters_str)
@@ -640,7 +640,7 @@ def get_advanced_research_details(project_knowledge_base: ProjectKnowledgeBase):
 
     console.print("")
     methodology = select_from_list(
-        "🔍  Select your research methodology:",
+        "📊 Select your research methodology:",
         ["Quantitative", "Qualitative", "Mixed Methods"],
         allow_custom=True,
     )
@@ -655,18 +655,37 @@ def get_dynamic_questions(project_knowledge_base: ProjectKnowledgeBase):
         project_knowledge_base.dynamic_questions[q_id] = answer
         save_project_data()
 
-# --- Advanced Mode (Refactored) ---
+# --- Advanced Mode (Refactored with Submenu) ---
 
 def advanced_mode():
+    """Advanced mode with submenu for create/manage/exit."""
     console.print("\n[cyan]✨ Starting Advanced Mode...[/cyan]\n")
+    
+    while True:
+        # Show the submenu
+        console.print("[bold]What would you like to do?[/bold]")
+        console.print("[cyan]1.[/cyan] Create new project")
+        console.print("[cyan]2.[/cyan] Manage existing project")
+        console.print("[cyan]3.[/cyan] Exit")
 
+        choice = typer.prompt("Enter your choice", show_choices=False)
+
+        if choice == "1":
+            create_new_advanced_project()
+        elif choice == "2":
+            manage_existing_project()
+        elif choice == "3":
+            break
+        else:
+            console.print("[red]Invalid choice.[/red]")
+
+
+def create_new_advanced_project():
+    """Creates a new project in advanced mode."""
     project_name, title = get_project_name_and_title()
     project_knowledge_base = ProjectKnowledgeBase(project_name=project_name, title=title) 
 
-    # Add language selection right after project name and title
     select_language(project_knowledge_base)
-    
-    #LLM selection
     llm_choice = select_llm(project_knowledge_base) 
     project_manager.initialize_llm_client(llm_choice)
 
@@ -684,8 +703,7 @@ def advanced_mode():
     get_review_preference(project_knowledge_base) 
     get_description(project_knowledge_base) 
 
-    project_manager.initialize_project_with_data(project_knowledge_base)  # Initialize 
-
+    project_manager.initialize_project_with_data(project_knowledge_base)
     get_dynamic_questions(project_knowledge_base) 
 
     if generate_and_review_concept(project_knowledge_base): 
@@ -695,10 +713,119 @@ def advanced_mode():
         write_and_review_chapters(project_knowledge_base)
         format_book(project_knowledge_base)
     else:
-        print("Exiting.")
+        console.print("[yellow]Exiting.[/yellow]")
         return
 
-    print("\nBook creation process complete (Advanced Mode).")
+    console.print("\n[green]🎉 Book creation process complete (Advanced Mode)![/green]")
+
+
+def manage_existing_project():
+    """Manages an existing project - lists available projects and loads one."""
+    import os
+    
+    # List available projects
+    projects_dir = "projects"  # Adjust this to your actual projects directory
+    if not os.path.exists(projects_dir):
+        console.print("[red]❌ No projects directory found.[/red]")
+        return
+    
+    projects = [d for d in os.listdir(projects_dir) 
+                if os.path.isdir(os.path.join(projects_dir, d))]
+    
+    if not projects:
+        console.print("[yellow]No existing projects found.[/yellow]")
+        return
+    
+    console.print("\n[bold]Available Projects:[/bold]")
+    for i, proj in enumerate(projects, 1):
+        console.print(f"[cyan]{i}.[/cyan] {proj}")
+    
+    console.print("")
+    project_choice = typer.prompt("Enter project number to manage", show_choices=False).strip()
+    
+    try:
+        project_idx = int(project_choice) - 1
+        if 0 <= project_idx < len(projects):
+            project_name = projects[project_idx]
+            console.print(f"\n[green]Loading project: {project_name}[/green]")
+            
+            try:
+                # Load project data
+                project_manager.load_project_data(project_name)
+                
+                # CRITICAL: Initialize LLM client with the saved provider
+                if project_manager.project_knowledge_base:
+                    llm_provider = project_manager.project_knowledge_base.get("llm_provider", "openai")
+                    console.print(f"[cyan]Initializing AI model ({llm_provider})...[/cyan]")
+                    project_manager.initialize_llm_client(llm_provider)
+                
+                console.print(f"[green]✅ Project '{project_name}' loaded successfully![/green]")
+                
+                # Show management options
+                show_project_management_menu(project_name)
+            except FileNotFoundError:
+                console.print(f"[red]❌ Project '{project_name}' not found.[/red]")
+            except ValueError as e:
+                console.print(f"[red]❌ Error loading project: {e}[/red]")
+        else:
+            console.print("[red]❌ Invalid project number.[/red]")
+    except ValueError:
+        console.print("[red]❌ Please enter a valid number.[/red]")
+
+
+def show_project_management_menu(project_name: str):
+    """Shows options for managing an existing project."""
+    while True:
+        console.print(f"\n[bold]Managing Project: {project_name}[/bold]")
+        console.print("[cyan]1.[/cyan] Resume writing")
+        console.print("[cyan]2.[/cyan] Edit outline")
+        console.print("[cyan]3.[/cyan] Regenerate characters")
+        console.print("[cyan]4.[/cyan] Format book")
+        console.print("[cyan]5.[/cyan] Back to main menu")
+        console.print("")
+        
+        choice = typer.prompt("Enter your choice", show_choices=False).strip()
+        
+        if choice == "1":
+            # Resume writing logic
+            if not project_manager.project_knowledge_base:
+                console.print("[red]❌ Project data not loaded.[/red]")
+                continue
+                
+            num_chapters = project_manager.project_knowledge_base.get("num_chapters", 1)
+            if isinstance(num_chapters, tuple):
+                num_chapters = num_chapters[1]
+            
+            # Find last written chapter
+            last_chapter = 0
+            for i in range(1, num_chapters + 1):
+                if project_manager.project_dir and (project_manager.project_dir / f"chapter_{i}.md").exists():
+                    last_chapter = i
+                else:
+                    break
+            
+            console.print(f"[cyan]Last written chapter: {last_chapter}[/cyan]")
+            for i in range(last_chapter + 1, num_chapters + 1):
+                project_manager.write_and_review_chapter(i)
+            
+        elif choice == "2":
+            if project_manager.project_dir:
+                typer.edit(filename=str(project_manager.project_dir / "outline.md"))
+                console.print("[green]✅ Outline edited.[/green]")
+            
+        elif choice == "3":
+            project_manager.generate_characters()
+            console.print("[green]✅ Characters regenerated.[/green]")
+            
+        elif choice == "4":
+            if project_manager.project_knowledge_base:
+                format_book(project_manager.project_knowledge_base)
+            
+        elif choice == "5":
+            break
+        else:
+            console.print("[red]❌ Invalid choice.[/red]")
+
 
 def select_language(project_knowledge_base: ProjectKnowledgeBase):
     """Lets the user select a language for their book."""
@@ -715,7 +842,7 @@ def select_language(project_knowledge_base: ProjectKnowledgeBase):
         "Arabic",
         "Hindi"
     ]
-    language = select_from_list("🌐 Select the language for your book:", language_options, allow_custom=True)
+    language = select_from_list("🌍 Select the language for your book:", language_options, allow_custom=True)
     project_knowledge_base.set("language", language)
     return language
 
@@ -840,6 +967,7 @@ if __name__ == "__main__":
         console.print("[yellow]Debug Info:[/yellow]")
         console.print(f"Python: {sys.version}")
         console.print(f"Terminal: {os.environ.get('TERM', 'Unknown')}")
+        import rich
         console.print(f"Rich version: {rich.__version__}")
         # Then continue with normal app execution
     app()

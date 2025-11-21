@@ -102,7 +102,7 @@ class ProjectKnowledgeBase(BaseModel):
     dynamic_questions: Dict[str, str] = {} #Keep for advanced
 
     characters: Dict[str, Character] = {}  # Character name -> Character object
-    worldbuilding: Worldbuilding = Field(default_factory=Worldbuilding)
+    worldbuilding: Optional[Worldbuilding] = None
     chapters: Dict[int, Chapter] = {}  # Chapter number -> Chapter object
     outline: str = "" # Store outline as markdown
     project_dir: Optional[Path] = None
@@ -185,16 +185,3 @@ class ProjectKnowledgeBase(BaseModel):
         except Exception as e:
             print(f"ERROR loading knowledge base from {file_path}: {e}")
             return None
-    
-    worldbuilding_needed: bool = False
-    # Make worldbuilding conditional on worldbuilding_needed
-    worldbuilding: Optional[Worldbuilding] = None
-    
-    # Add a validator to ensure worldbuilding is None when not needed
-    @validator("worldbuilding", pre=True, always=True)
-    def set_worldbuilding(cls, v, values):
-        if not values.get("worldbuilding_needed", False):
-            return None
-        if v is None and values.get("worldbuilding_needed", False):
-            return Worldbuilding()
-        return v

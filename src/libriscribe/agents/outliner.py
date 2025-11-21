@@ -29,15 +29,15 @@ class OutlinerAgent(Agent):
             max_chapters = self._get_max_chapters(project_knowledge_base.book_length)
             
             # Enhance the prompt with explicit chapter count instruction
-            if project_knowledge_base.book_length == "Short Story":
+            if "Short Story" in project_knowledge_base.book_length:
                 initial_prompt = prompts.OUTLINE_PROMPT.format(**project_knowledge_base.model_dump())
-                initial_prompt += f"\n\nIMPORTANT: This is a SHORT STORY. Generate EXACTLY {max_chapters} chapters. Do not exceed this limit."
-            elif project_knowledge_base.book_length == "Novella":
+                initial_prompt += f"\n\nIMPORTANT: This is a SHORT STORY. Generate between 1-{max_chapters} chapters based on the story's natural scope. Do not exceed {max_chapters} chapters."
+            elif "Novella" in project_knowledge_base.book_length:
                 initial_prompt = prompts.OUTLINE_PROMPT.format(**project_knowledge_base.model_dump())
-                initial_prompt += f"\n\nIMPORTANT: This is a NOVELLA. Generate EXACTLY {max_chapters} chapters. Do not exceed this limit."
+                initial_prompt += f"\n\nIMPORTANT: This is a NOVELLA. Generate between 5-{max_chapters} chapters based on the story's natural scope. Do not exceed {max_chapters} chapters."
             else:
                 initial_prompt = prompts.OUTLINE_PROMPT.format(**project_knowledge_base.model_dump())
-                initial_prompt += f"\n\nIMPORTANT: Generate at most {max_chapters} chapters."
+                initial_prompt += f"\n\nIMPORTANT: This is a NOVEL. Generate an appropriate number of chapters based on the story's natural scope, typically 15-{max_chapters} chapters. Do not exceed {max_chapters} chapters."
 
             console.print(f"📝 [cyan]Creating chapter outline...[/cyan]")
             initial_outline = self.llm_client.generate_content(initial_prompt, max_tokens=3000, temperature=0.5)
@@ -96,12 +96,12 @@ class OutlinerAgent(Agent):
             
     def _get_max_chapters(self, book_length: str) -> int:
         """Determine the maximum number of chapters based on book length."""
-        if book_length == "Short Story":
-            return 2  # Short stories should have 1-2 chapters
-        elif book_length == "Novella":
+        if "Short Story" in book_length:
+            return 3  # Short stories should have 1-3 chapters
+        elif "Novella" in book_length:
             return 8  # Novellas should have 5-8 chapters
         else:  # Novel or Full Book
-            return 20  # Novels can have more chapters
+            return 30  # Novels can have more chapters
     
     def _enforce_chapter_limit(self, project_knowledge_base: ProjectKnowledgeBase, max_chapters: int) -> None:
         """Limit the number of chapters in the knowledge base to max_chapters."""

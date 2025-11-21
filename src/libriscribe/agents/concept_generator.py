@@ -91,7 +91,7 @@ class ConceptGeneratorAgent(Agent):
             critique_prompt = f"""Critique the following book concept:
 
             ```json
-            {{{{json.dumps(initial_concept_json)}}}}
+            {json.dumps(initial_concept_json)}
             ```
             The book should be written in {project_knowledge_base.language}.
            
@@ -112,7 +112,7 @@ class ConceptGeneratorAgent(Agent):
 
             Original Concept:
             ```json
-            {{{{json.dumps(initial_concept_json)}}}}
+            {json.dumps(initial_concept_json)}
             ```
 
             Critique:

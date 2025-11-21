@@ -155,7 +155,7 @@ class ProjectManagerAgent:
         if project_data_path.exists():
             data = ProjectKnowledgeBase.load_from_file(str(project_data_path)) 
             if data:
-                self.                self.project_knowledge_base = data
+                self.project_knowledge_base = data
                 #CRITICAL: Set project_dir in project_knowledge_base
                 self.project_knowledge_base.project_dir = self.project_dir
             else:
@@ -279,21 +279,15 @@ class ProjectManagerAgent:
                 if chapter_path.exists():
                     chapter_content = read_markdown_file(str(chapter_path))
                     original_content += chapter_content + "\n\n"
-                    console.print(f"[green]✓ Added original Chapter {chapter_num}[/green]")
-                else:
-                    missing_chapters.append(chapter_num)
-                    console.print(f"[yellow]! Original Chapter {chapter_num} not found[/yellow]")
-            
             if missing_chapters:
                 console.print(f"[yellow]Warning: Missing original chapters: {missing_chapters}[/yellow]")
                 if not original_content:
                     console.print("[red]ERROR: No original chapters found to format.[/red]")
                     return
             
-            # Format with LLM to ensure proper structure and flow
-            console.print(f"{self.agents['formatting'].name} is: Formatting Original Chapters...")
-            prompt = prompts.FORMATTING_PROMPT.format(chapters=original_content)
-            formatted_original = self.llm_client.generate_content(prompt, max_tokens=4000)
+            # Format programmatically to avoid LLM token limits on full book
+            console.print(f"Formatting Original Chapters...")
+            formatted_original = original_content
             
             # Add title page
             title_page = self.create_title_page(self.project_knowledge_base)
@@ -350,10 +344,9 @@ class ProjectManagerAgent:
             if missing_revised_chapters:
                 console.print(f"[yellow]Info: {len(missing_revised_chapters)} chapters don't have revised versions[/yellow]")
             
-            # Format with LLM
-            console.print(f"{self.agents['formatting'].name} is: Formatting Revised Chapters...")
-            prompt_revised = prompts.FORMATTING_PROMPT.format(chapters=revised_content)
-            formatted_revised = self.llm_client.generate_content(prompt_revised, max_tokens=4000)
+            # Format programmatically
+            console.print(f"Formatting Revised Chapters...")
+            formatted_revised = revised_content
             formatted_revised = title_page + formatted_revised
             
             # Save as Markdown or PDF (revised)
@@ -372,7 +365,7 @@ class ProjectManagerAgent:
 
     def research(self, query: str):
         """Performs web research."""
-        self.run_agent("researcher", query, str(self.project_dir / "research_results.md"))# type: ignore
+        self.run_agent("researcher", query, str(self.project_dir / "research_results.md"))
 
     def edit_style(self, chapter_number: int):
         """Refines writing style."""
@@ -431,23 +424,43 @@ class ProjectManagerAgent:
             
         return title_page
 
-    def markdown_to_pdf(self, markdown_text:str, output_path:str):
-      """Converts the formatted markdown to PDF"""
-      pdf = FPDF()
-      pdf.add_page()
-      pdf.set_font("Arial", size=12)
+    def _sanitize_for_pdf(self, text: str) -> str:
+        """Replaces incompatible Unicode characters with Latin-1 approximations."""
+        replacements = {
+            '\u2014': '--',  # em-dash
+            '\u2013': '-',   # en-dash
+            '\u201c': '"',   # left double quote
+            '\u201d': '"',   # right double quote
+            '\u2018': "'",   # left single quote
+            '\u2019': "'",   # right single quote
+            '\u2026': '...', # ellipsis
+        }
+        for char, replacement in replacements.items():
+            text = text.replace(char, replacement)
+        
+        # Final safety net: encode to latin-1 with replacement for anything else
+        return text.encode('latin-1', 'replace').decode('latin-1')
 
-      # Basic Markdown parsing and PDF generation
-      lines = markdown_text.split("\n")
-      for line in lines:
-          if line.startswith("# "):  # Chapter heading
-              pdf.set_font("Arial", 'B', 16)  # Bold, larger font
-              pdf.cell(0, 10, line[2:], ln=True)  # Remove '#' and add to PDF
-              pdf.set_font("Arial", size=12)  # Reset font
-          elif line.startswith("## "): # Subheading
-              pdf.set_font("Arial", 'B', 14)
-              pdf.cell(0, 10, line[3:], ln=True)
-              pdf.set_font("Arial", size=12)  # Reset font
-          else: # Regular text
-            pdf.multi_cell(0, 10, line)
-      pdf.output(output_path)
+    def markdown_to_pdf(self, markdown_text:str, output_path:str):
+        """Converts the formatted markdown to PDF"""
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Arial", size=12)
+
+        # Basic Markdown parsing and PDF generation
+        lines = markdown_text.split("\n")
+        for line in lines:
+            # Sanitize line before processing
+            line = self._sanitize_for_pdf(line)
+            
+            if line.startswith("# "):  # Chapter heading
+                pdf.set_font("Arial", 'B', 16)  # Bold, larger font
+                pdf.cell(0, 10, line[2:], ln=True)  # Remove '#' and add to PDF
+                pdf.set_font("Arial", size=12)  # Reset font
+            elif line.startswith("## "): # Subheading
+                pdf.set_font("Arial", 'B', 14)
+                pdf.cell(0, 10, line[3:], ln=True)
+                pdf.set_font("Arial", size=12)  # Reset font
+            else: # Regular text
+                pdf.multi_cell(0, 10, line)
+        pdf.output(output_path)
