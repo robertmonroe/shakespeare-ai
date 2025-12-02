@@ -46,7 +46,7 @@ class WorldbuildingAgent(Agent):
                 # ... other relevant fields
             )
 
-            worldbuilding_json_str = self.llm_client.generate_content_with_json_repair(prompt, max_tokens=4000, temperature=0.7)
+            worldbuilding_json_str = self.llm_client.generate_content_with_json_repair(prompt, max_tokens=16000, temperature=0.7)
             if not worldbuilding_json_str:
                 print("ERROR: Worldbuilding generation failed.")
                 return

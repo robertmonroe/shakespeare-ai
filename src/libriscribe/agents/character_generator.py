@@ -36,15 +36,24 @@ class CharacterGeneratorAgent(Agent):
             )
 
             # Lower temperature for more structured output
-            character_json_str = self.llm_client.generate_content_with_json_repair(prompt, max_tokens=4000, temperature=0.5)
+            character_json_str = self.llm_client.generate_content_with_json_repair(prompt, max_tokens=16000, temperature=0.5)
 
             if not character_json_str:
-                print("ERROR: Character generation failed. See Log")
+                logger.error("LLM returned empty response for character generation")
+                print("ERROR: Character generation failed. LLM returned no content.")
                 return
+            
+            # Debug: Log the raw response
+            logger.info(f"Raw LLM response (first 500 chars): {character_json_str[:500]}")
             try:
                 characters = extract_json_from_markdown(character_json_str)
-                if not characters or not isinstance(characters, list):
-                    print("ERROR: Failed to parse character data")
+                if characters is None:
+                    logger.error(f"Failed to extract JSON from response. Response: {character_json_str[:1000]}")
+                    print("ERROR: Could not find valid JSON in LLM response")
+                    return
+                if not isinstance(characters, list):
+                    logger.error(f"Expected list of characters, got {type(characters)}: {characters}")
+                    print(f"ERROR: Expected character array, got {type(characters).__name__}")
                     return
 
                 # Process and store characters in knowledge base
@@ -115,7 +124,7 @@ class CharacterGeneratorAgent(Agent):
                         character = Character(
                             name=flattened_char_data.get("name", ""),
                             age=str(flattened_char_data.get("age", "")),
-                            physical_description=flattened_char_data.get("physical description", ""),
+                            physical_description=flattened_char_data.get("physical description", "") or flattened_char_data.get("physical_description", ""),
                             personality_traits=personality_traits,  # Now using string instead of list
                             background=flattened_char_data.get("background", "") or flattened_char_data.get("background/backstory", ""),
                             motivations=flattened_char_data.get("motivations", ""),

@@ -95,8 +95,8 @@ def get_chapter_files(project_dir: str) -> list[str]:
     chapter_files.sort(key=lambda x: int(x.split("_")[1].split(".")[0]))
     return chapter_files
 
-def extract_json_from_markdown(markdown_text: str) -> Optional[Dict[str, Any]]:
-    """Extracts JSON from within Markdown code blocks, handling potential errors."""
+def extract_json_from_markdown(markdown_text: str) -> Optional[Union[Dict[str, Any], List[Any]]]:
+    """Extracts JSON from within Markdown code blocks, handling both objects and arrays."""
     try:
         # Find the start and end of the JSON code block
         start = markdown_text.find("```json")
@@ -109,7 +109,7 @@ def extract_json_from_markdown(markdown_text: str) -> Optional[Dict[str, Any]]:
             return None  # No closing code block found
 
         json_str = markdown_text[start:end].strip()
-        return json.loads(json_str)
+        return json.loads(json_str)  # This can return dict or list
 
     except json.JSONDecodeError:
         return None
@@ -117,3 +117,11 @@ def extract_json_from_markdown(markdown_text: str) -> Optional[Dict[str, Any]]:
         logger.exception(f"Error extracting JSON from Markdown: {e}")
         print("Error extracting JSON.")
         return None
+
+def ensure_directory(path: str) -> None:
+    """Ensures the directory exists. If not, create it."""
+    try:
+        Path(path).mkdir(parents=True, exist_ok=True)
+    except Exception as e:
+        logger.exception(f"Failed to create directory {path}: {e}")
+        print(f"ERROR: Failed to create directory {path}")

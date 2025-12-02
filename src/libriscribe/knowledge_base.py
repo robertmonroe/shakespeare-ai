@@ -92,6 +92,8 @@ class ProjectKnowledgeBase(BaseModel):
     num_characters_str: str = "" #Keep for advanced
     worldbuilding_needed: bool = False #Keep, used by worldbuilding generator
     review_preference: str = "AI"
+    auto_review_mode: bool = False  # True = auto passes, False = manual interactive
+    auto_review_passes: int = 15  # Number of automated review/edit passes (1-25)
     book_length: str = ""
     logline: str = "No logline available"
     tone: str = "Informative"
@@ -100,6 +102,10 @@ class ProjectKnowledgeBase(BaseModel):
     num_chapters_str: str = "" #Keep for advanced
     llm_provider: str = "openai"
     dynamic_questions: Dict[str, str] = {} #Keep for advanced
+    
+    # Concept generation control flags
+    skip_concept_critique: bool = False  # Skip critique stage, use initial concept directly
+    skip_concept_refinement: bool = False  # Skip refinement stage, use critiqued (or initial) concept
 
     characters: Dict[str, Character] = {}  # Character name -> Character object
     worldbuilding: Optional[Worldbuilding] = None

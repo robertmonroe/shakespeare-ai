@@ -249,11 +249,69 @@ def get_review_preference(project_knowledge_base: ProjectKnowledgeBase):
     console.print("")
     review_preference = select_from_list("📝 How would you like your chapters to be reviewed?", ["Human (you'll review it)", "AI (automatic review)"])
     project_knowledge_base.set("review_preference", review_preference)
+    
+    # If AI review, ask for manual or auto mode
+    if "AI" in review_preference or "automatic" in review_preference.lower():
+        console.print("\n[cyan]AI Review Mode[/cyan]")
+        review_mode = select_from_list(
+            "Choose review mode",
+            ["Manual (interactive - you control each pass)", "Auto (automated - runs configured passes)"]
+        )
+        
+        # Store the mode choice
+        is_auto_mode = "Auto" in review_mode or "automated" in review_mode.lower()
+        project_knowledge_base.set("auto_review_mode", is_auto_mode)
+        
+        if is_auto_mode:
+            console.print("\n[cyan]Auto-Review Configuration[/cyan]")
+            console.print("[yellow]How many automated review/edit passes per chapter?[/yellow]")
+            console.print("  • Recommended: 12-15 passes for most chapters")
+            console.print("  • Range: 1-25 passes")
+            console.print("  • Each pass takes ~6 minutes")
+            
+            while True:
+                auto_passes = typer.prompt("\nNumber of passes (1-25)", type=int)
+                
+                if 1 <= auto_passes <= 25:
+                    project_knowledge_base.set("auto_review_passes", auto_passes)
+                    est_minutes = auto_passes * 6
+                    est_hours = est_minutes / 60
+                    if est_hours >= 1:
+                        console.print(f"[cyan]⏱️  Estimated time per chapter: ~{est_hours:.1f} hours ({est_minutes} min)[/cyan]")
+                    else:
+                        console.print(f"[cyan]⏱️  Estimated time per chapter: ~{est_minutes} minutes[/cyan]")
+                    break
+                else:
+                    console.print("[red]❌ Invalid range. Please enter 1-25.[/red]")
+        else:
+            # Manual mode - set passes to 0 (user controls)
+            project_knowledge_base.set("auto_review_passes", 0)
 
 def get_description(project_knowledge_base: ProjectKnowledgeBase): 
     console.print("")
     description = typer.prompt("📝 Provide a brief description of your book's concept or plot")
     project_knowledge_base.set("description", description)
+    
+    # Concept generation toggles
+    console.print("")
+    console.print("[yellow]⚙️  Concept Generation Options:[/yellow]")
+    console.print("The AI can critique and refine your description, or use it exactly as written.")
+    console.print("")
+    
+    skip_critique = typer.confirm("Skip concept critique? (Use your description without AI evaluation)", default=False)
+    project_knowledge_base.skip_concept_critique = skip_critique
+    
+    skip_refinement = typer.confirm("Skip concept refinement? (Use your description without AI rewriting)", default=False)
+    project_knowledge_base.skip_concept_refinement = skip_refinement
+    
+    if skip_critique and skip_refinement:
+        console.print("[green]✓ Your exact description will be used without changes[/green]")
+    elif skip_critique:
+        console.print("[yellow]⚠ Your description will be refined but not critiqued[/yellow]")
+    elif skip_refinement:
+        console.print("[yellow]⚠ Your description will be critiqued but not refined[/yellow]")
+    else:
+        console.print("[cyan]ℹ Your description will go through full critique and refinement[/cyan]")
 
 def generate_and_review_concept(project_knowledge_base: ProjectKnowledgeBase): 
     project_manager.generate_concept()

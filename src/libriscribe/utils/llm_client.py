@@ -160,8 +160,10 @@ class LLMClient:
     def generate_content_with_json_repair(self, original_prompt: str, max_tokens:int = 2000, temperature:float=0.7) -> str:
         """Generates content and attempts to repair JSON errors."""
         response_text = self.generate_content(original_prompt, max_tokens, temperature)
+        logger.info(f"[CHAR_DEBUG] LLM response length: {len(response_text) if response_text else 0}")
         if response_text:
             json_data = extract_json_from_markdown(response_text)
+            logger.info(f"[CHAR_DEBUG] JSON extraction result: {type(json_data) if json_data is not None else 'None'}")
             if json_data is not None:
                 return response_text # Return the original markdown
             else:
@@ -172,5 +174,5 @@ class LLMClient:
                     if repaired_json is not None:
                         # CRITICAL CHANGE:  Return the JSON *string*, not wrapped in Markdown.
                         return repaired_response 
-        logger.error("JSON repair failed.")
+        logger.error(f"[CHAR_DEBUG] JSON repair failed. Response was: {response_text[:200] if response_text else 'empty'}")
         return "" # Return empty
