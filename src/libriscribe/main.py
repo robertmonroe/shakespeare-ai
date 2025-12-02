@@ -265,14 +265,14 @@ def get_review_preference(project_knowledge_base: ProjectKnowledgeBase):
         if is_auto_mode:
             console.print("\n[cyan]Auto-Review Configuration[/cyan]")
             console.print("[yellow]How many automated review/edit passes per chapter?[/yellow]")
-            console.print("  • Recommended: 12-15 passes for most chapters")
-            console.print("  • Range: 1-25 passes")
+            console.print("  • Recommended: 15-20 passes for most chapters")
+            console.print("  • Range: 1-30 passes")
             console.print("  • Each pass takes ~6 minutes")
             
             while True:
-                auto_passes = typer.prompt("\nNumber of passes (1-25)", type=int)
+                auto_passes = typer.prompt("\nNumber of passes (1-30)", type=int)
                 
-                if 1 <= auto_passes <= 25:
+                if 1 <= auto_passes <= 30:
                     project_knowledge_base.set("auto_review_passes", auto_passes)
                     est_minutes = auto_passes * 6
                     est_hours = est_minutes / 60
@@ -282,7 +282,7 @@ def get_review_preference(project_knowledge_base: ProjectKnowledgeBase):
                         console.print(f"[cyan]⏱️  Estimated time per chapter: ~{est_minutes} minutes[/cyan]")
                     break
                 else:
-                    console.print("[red]❌ Invalid range. Please enter 1-25.[/red]")
+                    console.print("[red]❌ Invalid range. Please enter 1-30.[/red]")
         else:
             # Manual mode - set passes to 0 (user controls)
             project_knowledge_base.set("auto_review_passes", 0)

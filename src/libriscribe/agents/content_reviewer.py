@@ -36,7 +36,7 @@ Analyze the chapter below for issues in:
 - flow and transitions
 
 Provide your output in markdown format with individual sections.
-Then provide a final section titled **Actionable Fixes** listing ONLY the concrete changes needed.
+Then provide a final section titled **Actionable Fixes** listing ALL concrete changes needed. Do not limit the number of fixes.
 
 CHAPTER NUMBER: {chapter_number}
 CHAPTER TEXT:

@@ -93,7 +93,7 @@ class ProjectKnowledgeBase(BaseModel):
     worldbuilding_needed: bool = False #Keep, used by worldbuilding generator
     review_preference: str = "AI"
     auto_review_mode: bool = False  # True = auto passes, False = manual interactive
-    auto_review_passes: int = 15  # Number of automated review/edit passes (1-25)
+    auto_review_passes: int = 15  # Number of automated review/edit passes (1-30)
     book_length: str = ""
     logline: str = "No logline available"
     tone: str = "Informative"

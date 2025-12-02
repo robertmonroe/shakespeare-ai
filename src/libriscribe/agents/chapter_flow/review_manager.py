@@ -96,7 +96,7 @@ Provide your output in markdown format with these sections:
 3. **Plot Holes** - Logical inconsistencies or unexplained events
 4. **Redundancy** - Repetitive content or unnecessary scenes
 5. **Flow and Transitions** - Pacing issues, abrupt scene changes
-6. **Actionable Fixes** - ONLY concrete, specific changes needed (be brief)
+6. **Actionable Fixes** - List ALL concrete, specific changes needed. Do not limit the number of fixes. Include every issue that needs addressing, numbered sequentially.
 
 If no issues are found in a category, state "No issues found."
 
