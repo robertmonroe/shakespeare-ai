@@ -644,6 +644,7 @@ def get_advanced_fiction_details(project_knowledge_base: ProjectKnowledgeBase):
     style_choice = select_from_list(
         "✨ Select a style preset:",
         [
+            "Children's Adventure (Pixar/Disney heartwarming tales)",
             "Spy Maker (Fleming prose + modern thriller)",
             "Epic Romance (Titanic + Star Wars emotional velocity)",
             "Sci-Fi Horror (Alien + The Thing atmosphere)",
@@ -659,6 +660,7 @@ def get_advanced_fiction_details(project_knowledge_base: ProjectKnowledgeBase):
     
     # Map to preset name
     preset_map = {
+        "Children's Adventure": "Children's Adventure",
         "Spy Maker": "Spy Maker",
         "Epic Romance": "Epic Romance",
         "Sci-Fi Horror": "Sci-Fi Horror",

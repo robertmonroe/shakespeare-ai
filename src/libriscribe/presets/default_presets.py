@@ -583,6 +583,110 @@ Final fight is personal and brutal.""",
 
 
 # ============================================================================
+#  CHILDREN'S ADVENTURE - Pixar/Disney Heartwarming Tales
+# ============================================================================
+CHILDRENS_ADVENTURE = StylePreset(
+    name="Children's Adventure",
+    description="Heartwarming adventure: Pixar's emotional depth with classic storybook wonder. For tales of friendship, courage, and finding where you belong.",
+    
+    inspired_by="Pixar (Finding Nemo, Up, Toy Story), Disney, Charlotte's Web, The Jungle Book, Watership Down, Studio Ghibli",
+    
+    pacing_preference="balanced",
+    pacing_instruction="""**CHILDREN'S ADVENTURE PACING - THE PIXAR FORMULA:**
+
+OPENING (The World Before):
+- Establish the protagonist's safe, known world
+- Show what they love and what they lack
+- Hint at the adventure to come
+
+THE DISRUPTION:
+- Something happens that changes everything
+- The protagonist is thrust into the unknown
+- Fear and wonder in equal measure
+
+THE JOURNEY:
+- Meet friends and foes along the way
+- Each challenge teaches a lesson
+- Moments of joy punctuate the struggle
+- Low point: all seems lost, the protagonist doubts themselves
+
+THE RESOLUTION:
+- The protagonist uses what they learned
+- External victory AND internal growth
+- Return home, changed forever
+- Bittersweet or triumphant ending that satisfies""",
+    
+    tone="Heartwarming, adventurous, gently humorous, emotionally authentic",
+    
+    prose_style="""WONDER AND HEART:
+
+THE WORLD:
+- Nature is alive with possibility and danger
+- Describe settings with wonder and sensory delight
+- Safe spaces feel cozy; dangerous places feel thrilling
+- Weather and seasons reflect emotional beats
+
+CHARACTERS:
+- Protagonists are curious, kind, but imperfect
+- Animal characters have distinct personalities
+- Mentors are wise but not perfect
+- Even antagonists have understandable motivations
+- Friendship is the greatest magic
+
+EMOTIONAL HONESTY:
+- Fear is real but can be overcome
+- Sadness is allowed - don't shy from loss
+- Joy is earned through struggle
+- Love (family, friends) is the ultimate strength
+
+PROSE STYLE:
+- Clear, vivid descriptions children can picture
+- Sensory details: sounds of the forest, warmth of fur, taste of berries
+- Dialogue reveals character simply
+- Internal feelings shown through action and reaction
+- Occasional gentle humor lightens heavy moments""",
+    
+    dialogue_style="""Dialogue is clear, character-revealing, and age-appropriate.
+Each character has a distinct voice.
+Wisdom is shared simply, not lectured.
+Humor comes from character, not sarcasm.
+Emotional moments are direct and honest.
+The mentor speaks in metaphors and stories.
+Antagonists justify their actions.""",
+    
+    internal_monologue="moderate",
+    sensory_detail="high",
+    
+    action_style="""Adventure is exciting but not gratuitously violent.
+Danger is real - stakes matter - but described appropriately.
+Chase scenes are thrilling, not terrifying.
+Fights end with cleverness, not brutality.
+Near-misses create tension without trauma.
+The protagonist shows courage despite fear.""",
+    
+    genre_hints=["children's literature", "adventure", "animal fiction", "fantasy", "coming of age"],
+    
+    prose_rules=[
+        "Protagonists are curious and kind, but make mistakes they learn from",
+        "The world is full of wonder - describe nature with delight",
+        "Friendship and family are the greatest strengths",
+        "Mentors guide but don't solve problems for the hero",
+        "Challenges teach specific lessons the protagonist needs",
+        "Emotional honesty: fear, sadness, and joy are all real and valid",
+        "Humor is gentle and character-based, never mean-spirited",
+        "Danger is real but described age-appropriately",
+        "The protagonist grows and changes through the adventure",
+        "Endings are satisfying - the hero finds where they belong",
+        "Show don't tell: emotions through action and sensory detail",
+        "Each chapter ends with reader wanting more (gentle cliffhangers)"
+    ],
+    
+    scene_length="800-1200 words",
+    chapter_length="2500-4000 words"
+)
+
+
+# ============================================================================
 #  PRESET COLLECTION
 # ============================================================================
 PRESETS = [
@@ -593,5 +697,7 @@ PRESETS = [
     COZY_MYSTERY,
     DARK_FANTASY,
     SCI_FI_HORROR,
-    CREATURE_FEATURE
+    CREATURE_FEATURE,
+    CHILDRENS_ADVENTURE
 ]
+
