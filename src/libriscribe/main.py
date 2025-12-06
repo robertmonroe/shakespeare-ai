@@ -596,8 +596,88 @@ def get_advanced_fiction_details(project_knowledge_base: ProjectKnowledgeBase):
             # Fallback if conversion fails
             project_knowledge_base.set("num_chapters", 10)
             
-    inspired_by = typer.prompt("✨ Are there any authors, books, or series that inspire you? (Optional)")
+    inspired_by = typer.prompt("✨ Are there any authors, books, or series that inspire you? (Optional)", default="")
     project_knowledge_base.set("inspired_by", inspired_by)
+    
+    # Story Structure selection
+    console.print("")
+    console.print("[bold cyan]📖 Story Structure[/bold cyan]")
+    console.print("[dim]Choose a plot framework to guide your outline[/dim]")
+    structure_choice = select_from_list(
+        "🎬 Select a story structure:",
+        [
+            "Hero's Journey (Star Wars, Harry Potter)",
+            "Save the Cat (15-beat commercial structure)",
+            "Three-Act Structure (classic dramatic framework)",
+            "Seven-Point Structure (Dan Wells' tight plotting)",
+            "Fichtean Curve (crisis-to-crisis thriller pacing)",
+            "Kishotenketsu (Japanese twist-based structure)",
+            "None (I'll structure it myself)"
+        ],
+        allow_custom=False
+    )
+    
+    # Map to structure name
+    structure_map = {
+        "Hero's Journey": "Hero's Journey",
+        "Save the Cat": "Save the Cat",
+        "Three-Act": "Three-Act Structure",
+        "Seven-Point": "Seven-Point Structure",
+        "Fichtean": "Fichtean Curve",
+        "Kishotenketsu": "Kishotenketsu",
+    }
+    
+    selected_structure = None
+    for key, value in structure_map.items():
+        if key in structure_choice:
+            selected_structure = value
+            break
+    
+    if selected_structure:
+        project_knowledge_base.set("story_structure", selected_structure)
+        console.print(f"[green]✓ Using {selected_structure} for outline generation[/green]")
+    
+    # Style Preset selection
+    console.print("")
+    console.print("[bold cyan]🎨 Writing Style Preset[/bold cyan]")
+    console.print("[dim]Choose a preset to define prose style and pacing[/dim]")
+    style_choice = select_from_list(
+        "✨ Select a style preset:",
+        [
+            "Spy Maker (Fleming prose + modern thriller)",
+            "Epic Romance (Titanic + Star Wars emotional velocity)",
+            "Sci-Fi Horror (Alien + The Thing atmosphere)",
+            "Creature Feature (Jaws/cryptid monster horror)",
+            "Literary Epic (Dune + McCarthy atmospheric prose)",
+            "Thriller Pace (Lee Child short-sentence velocity)",
+            "Cozy Mystery (Agatha Christie warmth)",
+            "Dark Fantasy (Abercrombie grimdark)",
+            "None (use default style)"
+        ],
+        allow_custom=False
+    )
+    
+    # Map to preset name
+    preset_map = {
+        "Spy Maker": "Spy Maker",
+        "Epic Romance": "Epic Romance",
+        "Sci-Fi Horror": "Sci-Fi Horror",
+        "Creature Feature": "Creature Feature",
+        "Literary Epic": "Literary Epic",
+        "Thriller Pace": "Thriller Pace",
+        "Cozy Mystery": "Cozy Mystery",
+        "Dark Fantasy": "Dark Fantasy",
+    }
+    
+    selected_preset = None
+    for key, value in preset_map.items():
+        if key in style_choice:
+            selected_preset = value
+            break
+    
+    if selected_preset:
+        project_knowledge_base.set("style_preset", selected_preset)
+        console.print(f"[green]✓ Using {selected_preset} style preset[/green]")
 
 def get_advanced_nonfiction_details(project_knowledge_base: ProjectKnowledgeBase): 
     project_knowledge_base.set("num_characters", 0)
