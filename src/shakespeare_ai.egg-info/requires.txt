@@ -1,0 +1,13 @@
+typer
+openai
+python-dotenv
+pydantic
+pydantic-settings
+beautifulsoup4
+requests
+markdown
+fpdf
+tenacity
+anthropic
+google-generativeai
+rich

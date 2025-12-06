@@ -550,7 +550,8 @@ def get_advanced_fiction_details(project_knowledge_base: ProjectKnowledgeBase):
 
     console.print("")
     tone = select_from_list("🎭 What overall tone would you like for your book?", 
-                     ["Serious", "Funny", "Romantic", "Informative", "Persuasive"])
+                     ["Serious", "Funny", "Romantic", "Informative", "Persuasive", "Dark/Gritty", "Suspenseful", "Whimsical"],
+                     allow_custom=True)
     
     project_knowledge_base.set("tone", tone)
 
@@ -605,7 +606,8 @@ def get_advanced_nonfiction_details(project_knowledge_base: ProjectKnowledgeBase
 
     console.print("")
     tone = select_from_list("🎭 What tone would you like for your non-fiction book?", 
-                    ["Serious", "Funny", "Romantic", "Informative", "Persuasive"])
+                    ["Serious", "Funny", "Informative", "Persuasive", "Conversational", "Academic"],
+                    allow_custom=True)
     project_knowledge_base.set("tone", tone)
 
     console.print("")
@@ -633,7 +635,9 @@ def get_advanced_business_details(project_knowledge_base: ProjectKnowledgeBase):
     project_knowledge_base.set("worldbuilding_needed",False)
 
     console.print("")
-    tone = select_from_list("Select Tone", ["Informative", "Motivational", "Instructive"])
+    tone = select_from_list("🎭 Select Tone", 
+                    ["Informative", "Motivational", "Instructive", "Persuasive", "Conversational"],
+                    allow_custom=True)
     project_knowledge_base.set("tone", tone)
 
     console.print("")

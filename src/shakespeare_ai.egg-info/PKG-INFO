@@ -1,0 +1,31 @@
+Metadata-Version: 2.4
+Name: shakespeare-ai
+Version: 2.3.0
+Summary: AI-Powered Book Creation & Automated Developmental Editing
+Home-page: https://github.com/robertmonroe/shakespeare-ai
+Author: Robert Monroe
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: typer
+Requires-Dist: openai
+Requires-Dist: python-dotenv
+Requires-Dist: pydantic
+Requires-Dist: pydantic-settings
+Requires-Dist: beautifulsoup4
+Requires-Dist: requests
+Requires-Dist: markdown
+Requires-Dist: fpdf
+Requires-Dist: tenacity
+Requires-Dist: anthropic
+Requires-Dist: google-generativeai
+Requires-Dist: rich
+Dynamic: author
+Dynamic: classifier
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
