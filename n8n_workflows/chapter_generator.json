@@ -1,0 +1,222 @@
+{
+    "name": "Novel Chapter Generator",
+    "nodes": [
+        {
+            "parameters": {},
+            "id": "start-node",
+            "name": "Manual Trigger",
+            "type": "n8n-nodes-base.manualTrigger",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "values": {
+                    "string": [
+                        {
+                            "name": "book_title",
+                            "value": "The Moscow Protocol"
+                        },
+                        {
+                            "name": "genre",
+                            "value": "Spy Thriller"
+                        },
+                        {
+                            "name": "chapter_number",
+                            "value": "1"
+                        },
+                        {
+                            "name": "chapter_title",
+                            "value": "The Dead Drop"
+                        },
+                        {
+                            "name": "chapter_summary",
+                            "value": "MI6 agent discovers a compromised asset in Moscow. Must retrieve critical intelligence before the FSB closes in."
+                        },
+                        {
+                            "name": "language",
+                            "value": "English"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "input-node",
+            "name": "Chapter Input",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 3,
+            "position": [
+                450,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://openrouter.ai/api/v1/chat/completions",
+                "authentication": "genericCredentialType",
+                "genericAuthType": "httpHeaderAuth",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "HTTP-Referer",
+                            "value": "http://localhost:5678"
+                        },
+                        {
+                            "name": "X-Title",
+                            "value": "Shakespeare AI Novel Generator"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "model",
+                            "value": "anthropic/claude-3.5-sonnet"
+                        },
+                        {
+                            "name": "messages",
+                            "value": "={{ [{\"role\": \"user\", \"content\": \"Write Chapter \" + $json.chapter_number + \": \" + $json.chapter_title + \" for the \" + $json.genre + \" novel '\" + $json.book_title + \"'.\\n\\nChapter Summary: \" + $json.chapter_summary + \"\\n\\nInstructions:\\n- Write in \" + $json.language + \"\\n- Aim for 3000-4000 words\\n- Use vivid, cinematic descriptions\\n- Show don't tell\\n- Include dialogue and action\\n- End with a hook for the next chapter\\n- Match the tone and pacing of a professional \" + $json.genre + \" novel\\n\\nWrite the complete chapter now:\"}] }}"
+                        },
+                        {
+                            "name": "max_tokens",
+                            "value": "8000"
+                        },
+                        {
+                            "name": "temperature",
+                            "value": "0.7"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "openrouter-node",
+            "name": "Call OpenRouter (Claude)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                650,
+                300
+            ],
+            "credentials": {
+                "httpHeaderAuth": {
+                    "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+                    "name": "OpenRouter API"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "assignments": {
+                    "assignments": [
+                        {
+                            "id": "extract-chapter",
+                            "name": "chapter_content",
+                            "value": "={{ $json.choices[0].message.content }}",
+                            "type": "string"
+                        },
+                        {
+                            "id": "extract-title",
+                            "name": "chapter_title",
+                            "value": "={{ $('Chapter Input').item.json.chapter_title }}",
+                            "type": "string"
+                        },
+                        {
+                            "id": "extract-number",
+                            "name": "chapter_number",
+                            "value": "={{ $('Chapter Input').item.json.chapter_number }}",
+                            "type": "string"
+                        },
+                        {
+                            "id": "extract-book",
+                            "name": "book_title",
+                            "value": "={{ $('Chapter Input').item.json.book_title }}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "extract-node",
+            "name": "Extract Chapter Text",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 3,
+            "position": [
+                850,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "write",
+                "fileName": "={{ $json.book_title.replace(/[^a-z0-9]/gi, '_') }}/chapter_{{ $json.chapter_number }}.md",
+                "fileContent": "={{ \"# Chapter \" + $json.chapter_number + \": \" + $json.chapter_title + \"\\n\\n\" + $json.chapter_content }}",
+                "options": {
+                    "encoding": "utf8"
+                }
+            },
+            "id": "save-node",
+            "name": "Save Chapter to File",
+            "type": "n8n-nodes-base.writeFile",
+            "typeVersion": 1,
+            "position": [
+                1050,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Manual Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "Chapter Input",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Chapter Input": {
+            "main": [
+                [
+                    {
+                        "node": "Call OpenRouter (Claude)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Call OpenRouter (Claude)": {
+            "main": [
+                [
+                    {
+                        "node": "Extract Chapter Text",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Extract Chapter Text": {
+            "main": [
+                [
+                    {
+                        "node": "Save Chapter to File",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

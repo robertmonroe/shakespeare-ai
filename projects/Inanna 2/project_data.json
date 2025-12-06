@@ -1,0 +1,33 @@
+{
+    "project_name": "Inanna 2",
+    "title": "Before the Flood",
+    "genre": "Science Fiction",
+    "description": "Two hundred thousand years before recorded history, the Anunnaki—an advanced alien civilization—engineer humanity as disposable laborers to mine Earth's gold. Princess Inanna has observed the 'experiment' since childhood, secretly growing to love the creatures her people consider expendable. When King Anu decrees humanity's extermination, Inanna's desperate escape attempt ends in flames over an unmapped jungle.\n\nStranded and stripped of her technology, she encounters Adamu—a young man raised by great apes after being abandoned as a defective specimen. He possesses no language, yet demonstrates an intelligence her people never designed: empathy, intuition, and a spiritual connection to the living world that challenges everything Inanna believed about superiority and sentience. As she teaches him words, he teaches her to see her own people's cruelty clearly. Their bond transforms them both—she becomes a traitor to her kind; he becomes something his creators never intended: fully human.\n\nWhen Anu discovers his daughter carries a hybrid child, he unleashes extinction protocols upon Earth. As sky-ships darken the heavens and floods reshape continents, Inanna and Adamu must unite scattered human survivors and mount an impossible resistance. But Adamu's journey from silence to leadership reveals the truth the Anunnaki feared most: their 'primitive' creations have evolved beyond their control. The war for Earth becomes a battle over what humanity will become—and whether the child Inanna carries will be its salvation or its end.",
+    "category": "Fiction",
+    "language": "English",
+    "num_characters": 5,
+    "num_characters_str": "5+",
+    "worldbuilding_needed": true,
+    "review_preference": "AI (automatic review)",
+    "book_length": "Novel",
+    "logline": "When an alien princess betrays her civilization to save humanity from extermination, her only ally is a wild man who has never spoken a word—and together they must defy gods to protect an unborn child who will change everything.",
+    "tone": "Romantic",
+    "target_audience": "Adults",
+    "num_chapters": 20,
+    "num_chapters_str": "20+",
+    "llm_provider": "openrouter",
+    "dynamic_questions": {
+        "q1": "Ancient past Earth (approximately 200,000 years ago), set in the Anunnaki mining colony called Eden and the surrounding primordial jungle. with scenes in the Anunnaki orbital stations and the space between Earth and the fleet.",
+        "q2": "Genetic engineering and terraforming: The Anunnaki created humanity as bio-engineered laborers to mine gold, and maintained Eden as a controlled biosphere, with the jungle representing Earth's untamed, original ecosystem that resists their technology.",
+        "q3": "Princess Inanna, daughter of King Anu, who possesses both the advanced knowledge and technology of the Anunnaki gods and a deep, secretly cultivated understanding of human emotion and culture from watching their creation in Eden as a child—making her the only bridge between the cold logic of her immortal race and the passionate, mortal humanity she chooses to protect.",
+        "q4": "King Anu's decree to exterminate all of humanity through global catastrophe (floods and orbital strikes) after deciding the genetically engineered humans have become too troublesome and the gold mining is complete, threatening the extinction of the entire human race and forcing Inanna to wage war against her own father and the Anunnaki fleet.",
+        "q5": "The ethics of creating sentient life solely for exploitation, the right of creators to destroy their creations, the moral cost of choosing love and family over loyalty to one's own species, and whether advanced technology justifies treating \"primitive\" beings as disposable—ultimately asking if gods have the right to play with life and death simply because they can.",
+        "q6": "Anunnaki technology and immortality treatments fail or glitch in Earth's chaotic, untamed jungle environment, forcing the \"gods\" to fight on primitive terms; Inanna's immortality fades the longer she stays on Earth without life-extension treatments, making her increasingly mortal and vulnerable; and the Anunnaki's cold reliance on technology has cost them their capacity for genuine emotion, creativity, and connection—the very things that make humanity worth saving.",
+        "q7": "What defines true humanity—is it advanced intelligence and technology, or the capacity for love, sacrifice, creativity, and connection to the natural world; and whether beings who create life have the moral authority to destroy it, or if the created have inherent worth that transcends their original purpose."
+    },
+    "characters": {},
+    "worldbuilding": null,
+    "chapters": {},
+    "outline": "",
+    "project_dir": "C:\\Users\\3dmax\\Libriscribe\\projects\\Inanna 2"
+}

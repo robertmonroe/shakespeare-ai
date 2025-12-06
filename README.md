@@ -1,12 +1,18 @@
-# Libriscribe 2.0 - AI-Powered Book Creation & Automated Developmental Editing
+# 🎭 Shakespeare AI - AI-Powered Book Creation & Automated Developmental Editing
+
+<p align="center">
+  <img src="src/libriscribe/logos/shakespere-ai-logo-01.png" alt="Shakespeare AI Logo" width="200"/>
+</p>
 
 **Transform your ideas into polished manuscripts with AI-powered writing and professional-grade automated editing.**
 
+*A fork of [Libriscribe](https://github.com/guerra2fernando/libriscribe) with enhanced presets and style systems.*
+
 ---
 
-## 🎯 What is Libriscribe?
+## 🎯 What is Shakespeare AI?
 
-Libriscribe is an intelligent book creation system that doesn't just generate text—it **thinks like a professional editor**. From initial concept to publication-ready manuscript, Libriscribe handles the entire creative and editorial workflow.
+Shakespeare AI is an intelligent book creation system that doesn't just generate text—it **thinks like a professional editor**. From initial concept to publication-ready manuscript, Shakespeare AI handles the entire creative and editorial workflow.
 
 ### Key Features
 
@@ -16,6 +22,8 @@ Libriscribe is an intelligent book creation system that doesn't just generate te
 🔄 **Complete Consistency** - All files (characters, outline, scenes, chapters) stay synchronized  
 👁️ **Vision Analysis** - Analyzes charts and graphs from editorial reports  
 📝 **Developmental Editing** - Automated high-level structural improvements  
+🎨 **Style Presets** - 8 built-in writing styles (Spy Maker, Epic Romance, Sci-Fi Horror, etc.)
+📖 **Story Structures** - 6 frameworks (Hero's Journey, Save the Cat, etc.)
 
 ---
 
@@ -23,8 +31,8 @@ Libriscribe is an intelligent book creation system that doesn't just generate te
 
 ```powershell
 # Install
-git clone https://github.com/yourusername/libriscribe.git
-cd libriscribe
+git clone https://github.com/robertmonroe/shakespeare-ai.git
+cd shakespeare-ai
 pip install -r requirements.txt
 
 # Configure
@@ -32,7 +40,7 @@ cp .env.example .env
 # Add your GOOGLE_AI_STUDIO_API_KEY
 
 # Run
-libriscribe start
+python -m libriscribe start
 ```
 
 ---
@@ -259,6 +267,7 @@ MIT License - see [LICENSE](LICENSE) for details
 
 ## 🙏 Acknowledgments
 
+- [Libriscribe](https://github.com/guerra2fernando/libriscribe) - Original project by Fernando Guerra
 - Google AI Studio for Gemini API
 - OpenAI for GPT models
 - Anthropic for Claude
@@ -268,18 +277,18 @@ MIT License - see [LICENSE](LICENSE) for details
 
 ## 📞 Support
 
-- **Issues:** [GitHub Issues](https://github.com/yourusername/libriscribe/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/yourusername/libriscribe/discussions)
-- **Email:** support@libriscribe.com
+- **Issues:** [GitHub Issues](https://github.com/robertmonroe/shakespeare-ai/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/robertmonroe/shakespeare-ai/discussions)
 
 ---
 
 ## ⭐ Star History
 
-If you find Libriscribe useful, please star the repository!
+If you find Shakespeare AI useful, please star the repository!
 
 ---
 
-**Built with ❤️ by Fernando Guerra**
+**Built with ❤️ by Robert Monroe**
 
-*Libriscribe - Where AI meets professional editing*
+*Shakespeare AI - Where AI meets the art of storytelling*
+

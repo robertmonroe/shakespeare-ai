@@ -1,0 +1,121 @@
+{
+  "name": "Book Creation - Scene Generator",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "scene-generator-webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [0, 0],
+      "id": "scene-gen-webhook",
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Scene Number: {{ $json.body.scene_number }}\nChapter Number: {{ $json.body.chapter_number }}\nBook Title: {{ $json.body.book_title }}\nScene Outline: {{ $json.body.scene_outline }}\nScene Purpose: {{ $json.body.scene_purpose }}\nCharacters: {{ $json.body.scene_characters }}\nSetting: {{ $json.body.scene_setting }}\nLanguage: {{ $json.body.language }}",
+        "options": {
+          "systemMessage": "Write Scene {scene_number} for Chapter {chapter_number} of \"{book_title}\".\n\nScene outline: {scene_outline}\nScene purpose: {scene_purpose}\nCharacters involved: {scene_characters}\nSetting: {scene_setting}\n\nWrite engaging scene content that:\n- Advances the plot meaningfully\n- Develops characters through action/dialogue\n- Maintains consistent tone and pacing\n- Connects smoothly with adjacent scenes\n\nFocus on showing rather than telling.\nLanguage: {language}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [208, 0],
+      "id": "scene-gen-agent",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-4.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [80, 208],
+      "id": "scene-gen-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Process and format the scene generation response\nconst inputData = $('Webhook').all()[0].json.body;\nconst aiResponse = $input.all()[0].json.response;\n\n// Clean up the response\nlet sceneContent = aiResponse || '';\n\n// Count words in generated scene\nconst wordCount = sceneContent.split(/\\s+/).filter(word => word.length > 0).length;\n\nconst finalResult = {\n  scene_number: inputData.scene_number,\n  chapter_number: inputData.chapter_number,\n  book_title: inputData.book_title,\n  scene_outline: inputData.scene_outline,\n  scene_purpose: inputData.scene_purpose,\n  scene_characters: inputData.scene_characters,\n  scene_setting: inputData.scene_setting,\n  language: inputData.language || 'English',\n  scene_content: sceneContent,\n  word_count: wordCount,\n  generated_at: new Date().toISOString()\n};\n\nreturn [{ json: finalResult }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [416, 0],
+      "id": "process-scene-response",
+      "name": "Process Scene Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [624, 0],
+      "id": "respond-scene",
+      "name": "Respond with Scene"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Process Scene Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Scene Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Scene",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

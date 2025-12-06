@@ -1,6 +1,6 @@
 # src/libriscribe/presets/default_presets.py
 """
-Default Style Presets for Libriscribe
+Default Style Presets for Shakespeare AI
 
 Built-in presets for various genres and styles.
 """

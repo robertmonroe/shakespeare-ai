@@ -1,0 +1,215 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "Johnny sits in his small apartment, staring out the window and wishing he lived on a farm, leafing through a well-worn book about farm animals. He feels trapped and alone in the city.",
+            "characters": [
+                "Johnny"
+            ],
+            "setting": "Johnny's apartment, specifically by the window overlooking a busy city street.",
+            "goal": "To establish Johnny's longing for nature and his feelings of isolation.",
+            "emotional_beat": "Melancholy, longing."
+        },
+        {
+            "scene_number": 2,
+            "summary": "Johnny walks home from school, dodging traffic and crowds, further emphasizing his discomfort with city life. He notices a poster advertising a local circus.",
+            "characters": [
+                "Johnny"
+            ],
+            "setting": "A busy city street near Johnny's school.",
+            "goal": "To reinforce Johnny's alienation and foreshadow the arrival of something unexpected.",
+            "emotional_beat": "Discomfort, mild annoyance."
+        },
+        {
+            "scene_number": 3,
+            "summary": "Johnny bumps into something large and pink behind the bakery, initially thinking it's a strange, discarded sofa. He then realizes it's a pig.",
+            "characters": [
+                "Johnny",
+                "Arnie (briefly",
+                "unseen at first)"
+            ],
+            "setting": "An alleyway behind a bakery on Johnny's route home.",
+            "goal": "To introduce Arnie in a surprising and slightly humorous way.",
+            "emotional_beat": "Surprise, confusion."
+        },
+        {
+            "scene_number": 4,
+            "summary": "Arnie, a pig with a penchant for dancing, begins to groove to the radio playing in the bakery. Johnny is initially shocked, then amused and captivated by Arnie's clumsy, joyful movements.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "The alleyway behind the bakery.",
+            "goal": "To establish Arnie's quirky personality and create an immediate connection with Johnny.",
+            "emotional_beat": "Amusement, wonder, connection."
+        },
+        {
+            "scene_number": 5,
+            "summary": "Johnny decides to lead Arnie back to his apartment, hoping to keep him a secret from his parents. He struggles to navigate the city streets with a pig, trying to keep him out of sight.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "City streets, including sidewalks, crosswalks, and building entrances.",
+            "goal": "To begin the central conflict of hiding Arnie and to show the beginnings of their friendship.",
+            "emotional_beat": "Nervousness, excitement, determination."
+        },
+        {
+            "scene_number": 6,
+            "summary": "Johnny manages to sneak Arnie into his apartment building and up to his apartment while his parents are at work. He settles Arnie into his room, secretly feeding him snacks.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "Johnny's apartment (living room, Johnny's bedroom)",
+            "goal": "To establish Arnie's presence in Johnny's home and set the stage for the inevitable discovery by Johnny's parents.",
+            "emotional_beat": "Triumph, relief, anticipation."
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Johnny introduces Arnie to his \"secret\" backyard, a small, overgrown patch of land behind his apartment building. He begins teaching Arnie basic dance steps, like the \"piggy pirouette.\"",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "Johnny's backyard, a small overgrown area behind the apartment building.",
+            "goal": "To establish Johnny and Arnie's friendship and showcase their early dance lessons.",
+            "emotional_beat": "Joy, excitement"
+        },
+        {
+            "scene_number": 2,
+            "summary": "The pair sneak out of the apartment building and explore a nearby city park, carefully avoiding other people. Arnie accidentally digs up a flower bed, forcing Johnny to quickly cover it up and move on.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "(briefly) unseen park visitors"
+            ],
+            "setting": "A busy city park",
+            "goal": "To illustrate their daring adventures and the challenges of keeping Arnie hidden.",
+            "emotional_beat": "Nervousness, anticipation, lighthearted panic"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Back in Johnny's room, Johnny tries to disguise Arnie with an old hat and sunglasses, claiming he's \"disguised as a human.\" He attempts to teach Arnie how to sit at a table and \"eat\" using a toy tea set, but Arnie just makes a mess.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "Johnny's bedroom",
+            "goal": "To add a humorous element and show Johnny's dedication to keeping Arnie a secret.",
+            "emotional_beat": "Playfulness, amusement, frustration"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Johnny's mom, Sarah, notices Johnny's unusually cheerful and energetic behavior. She asks him what he's been up to, but Johnny nervously deflects, saying he's just \"been playing a new game.\" Sarah is suspicious but decides not to push it.",
+            "characters": [
+                "Johnny",
+                "Sarah (Johnny's Mom)"
+            ],
+            "setting": "The apartment kitchen",
+            "goal": "To hint at the growing suspicion of Johnny's parents and increase the tension surrounding the secret.",
+            "emotional_beat": "Suspicion, nervousness, curiosity"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Johnny takes Arnie to a back alley behind a restaurant, hoping to find scraps of food for him. They encounter a stray cat who is initially hostile, but Arnie, surprisingly, manages to charm it.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Stray Cat"
+            ],
+            "setting": "A dirty back alley behind a restaurant.",
+            "goal": "To show Arnie's growing personality and his ability to connect with other animals, further solidifying his bond with Johnny. Also shows the risks Johnny is taking.",
+            "emotional_beat": "Anxiety, relief, heartwarming"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Johnny measures Arnie with a makeshift measuring tape. He realizes Arnie is growing fast and panics about how much harder it will be to hide him. The scene ends with Johnny hugging Arnie, overwhelmed by a mixture of love and worry.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "Johnny's bedroom",
+            "goal": "To foreshadow the unraveling of the secret and heighten the stakes for Johnny.",
+            "emotional_beat": "Worry, affection, fear"
+        }
+    ],
+    "3": [
+        {
+            "scene_number": 1,
+            "summary": "Johnny's parents walk in on Johnny and Arnie playing in the living room, Arnie wearing Johnny's clothes and dancing. They are shocked and speechless at the sight of a pig in their apartment.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Mom",
+                "Dad"
+            ],
+            "setting": "Johnny's apartment living room",
+            "goal": "To reveal Arnie's existence to Johnny's parents and create initial conflict.",
+            "emotional_beat": "Shock, Disbelief"
+        },
+        {
+            "scene_number": 2,
+            "summary": "A tense discussion ensues, with Johnny's parents explaining why Arnie can't stay, focusing on practical reasons like apartment rules and animal care. Johnny is increasingly upset and argues that Arnie is his best friend.",
+            "characters": [
+                "Johnny",
+                "Mom",
+                "Dad",
+                "(Arnie is present but mostly silent)"
+            ],
+            "setting": "Johnny's apartment kitchen",
+            "goal": "To establish the conflict surrounding Arnie's presence and highlight Johnny's emotional attachment.",
+            "emotional_beat": "Anxiety, Fear, Disappointment"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Late that night, Johnny, unable to bear the thought of losing Arnie, packs a small backpack with snacks and Arnie's favorite toy. He quietly leads Arnie out of the apartment, leaving a note for his parents explaining he is leaving with Arnie to find a place where they can be together.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "Johnny's bedroom, hallway, and apartment building exterior",
+            "goal": "To set up the runaway plot line and emphasize Johnny's desperation.",
+            "emotional_beat": "Determination, Sadness, Fear"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Johnny and Arnie wander through the city at night, relying on Arnie\u2019s instincts to guide them. They hide in an empty park, sharing the snacks from Johnny\u2019s backpack. Johnny, though scared, tries to stay positive for Arnie.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "City streets and a deserted park at night",
+            "goal": "To depict the initial struggles of their runaway attempt and their reliance on each other.",
+            "emotional_beat": "Loneliness, Hopefulness, Fatigue"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Johnny's parents discover the note and realize Johnny and Arnie are gone. Panic sets in, and they immediately call the police to report them missing. The scene shows their growing worry and regret.",
+            "characters": [
+                "Mom",
+                "Dad",
+                "(Mention of police officer)"
+            ],
+            "setting": "Johnny's apartment",
+            "goal": "To highlight the parents' perspective and raise the stakes of the runaway plot.",
+            "emotional_beat": "Panic, Regret, Desperation"
+        },
+        {
+            "scene_number": 6,
+            "summary": "The police find Johnny and Arnie sleeping near a dumpster at the edge of town. Exhausted and remorseful, Johnny is relieved to see his parents. His parents, relieved that Johnny is safe, reveal their plan to move to a farm, explaining that they had been keeping it a secret to surprise him on his upcoming birthday. Now, however, they tell him the big surprise.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Mom",
+                "Dad",
+                "Police Officer"
+            ],
+            "setting": "An alleyway near the city limits",
+            "goal": "To resolve the conflict and introduce the new setting.",
+            "emotional_beat": "Relief, Joy, Surprise"
+        }
+    ]
+}

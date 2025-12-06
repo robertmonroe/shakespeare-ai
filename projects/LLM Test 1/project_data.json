@@ -1,0 +1,33 @@
+{
+    "project_name": "LLM Test 1",
+    "title": "LLM Test 2",
+    "genre": "Unknown Genre",
+    "description": "A dancing pig escapes a farm and becomes a young boy's best friend. He tries to hid the pig from his parents. They discover the pig. The parents tell the young boy the pig cannot live at the house in the city. The little boy is very sad. He runs away with his pig, his best friend. The parents search for him every where, They are very worried and sad. They fing their son, the young boy and the pig. They tell him that when they told him the pig could not live in the city. They were going to tell him they were going to buy a house in the country so the young boy and his pig can live together. The boy was very happy. The family moves to the country.",
+    "category": "Science Fiction, Fantasy, Romance",
+    "language": "English",
+    "num_characters": 0,
+    "num_characters_str": "",
+    "worldbuilding_needed": false,
+    "review_preference": "AI (automatic review)",
+    "auto_review_mode": true,
+    "auto_review_passes": 1,
+    "book_length": "",
+    "logline": "No logline available",
+    "tone": "Informative",
+    "target_audience": "General",
+    "num_chapters": 1,
+    "num_chapters_str": "",
+    "llm_provider": "google_ai_studio",
+    "dynamic_questions": {
+        "q1": "hope",
+        "q2": "Arnie",
+        "q3": "I like it"
+    },
+    "skip_concept_critique": false,
+    "skip_concept_refinement": false,
+    "characters": {},
+    "worldbuilding": null,
+    "chapters": {},
+    "outline": "",
+    "project_dir": "C:\\Users\\3dmax\\Libriscribe\\projects\\LLM Test 1"
+}

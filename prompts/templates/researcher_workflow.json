@@ -1,0 +1,121 @@
+{
+  "name": "Book Creation - Researcher",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "researcher-webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [0, 0],
+      "id": "researcher-webhook",
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Genre: {{ $json.body.genre }}\nQuery: {{ $json.body.query }}\nProject Context: {{ $json.body.project_context }}\nLanguage: {{ $json.body.language }}",
+        "options": {
+          "systemMessage": "Research the following topic for a {genre} writing project.\n\nResearch query: {query}\nProject context: {project_context}\n\nProvide:\n- Key facts and information\n- Relevant details for storytelling\n- Historical or technical accuracy notes\n- Interesting angles or perspectives\n- Sources for further research\n\nFocus on information that enhances authenticity and depth.\nLanguage: {language}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [208, 0],
+      "id": "researcher-agent",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-4.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [80, 208],
+      "id": "researcher-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Process and format the research response\nconst inputData = $('Webhook').all()[0].json.body;\nconst aiResponse = $input.all()[0].json.response;\n\n// Clean up the response\nlet researchResult = aiResponse || '';\n\nconst finalResult = {\n  genre: inputData.genre,\n  query: inputData.query,\n  project_context: inputData.project_context,\n  language: inputData.language || 'English',\n  research_findings: researchResult,\n  researched_at: new Date().toISOString()\n};\n\nreturn [{ json: finalResult }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [416, 0],
+      "id": "process-research-response",
+      "name": "Process Research Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [624, 0],
+      "id": "respond-research",
+      "name": "Respond with Research"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Process Research Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Research Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Research",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

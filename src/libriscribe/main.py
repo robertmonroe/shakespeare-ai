@@ -75,6 +75,35 @@ def select_llm(project_knowledge_base: ProjectKnowledgeBase):
         llm_choice = "mistral"
         
     project_knowledge_base.set("llm_provider", llm_choice)
+    
+    # If Google AI Studio, ask for Test/Production mode
+    if llm_choice == "google_ai_studio":
+        console.print("\n[bold cyan]🎯 Select LLM Mode:[/bold cyan]")
+        console.print("[cyan]1.[/cyan] Test Mode (gemini-2.0-flash - Stable)")
+        console.print("[cyan]2.[/cyan] Production Mode (gemini-2.0-flash-exp - Latest)")
+        mode_choice = typer.prompt("Enter your choice", default="1").strip()
+        
+        if mode_choice == "2":
+            app_env = "production"
+            console.print("[green]✅ Production mode selected (High Quality)[/green]")
+        else:
+            app_env = "development"
+            console.print("[green]✅ Test mode selected (Fast & Cheap)[/green]")
+        
+        # Update .env file
+        import os
+        from pathlib import Path
+        env_path = Path(".env")
+        if env_path.exists():
+            lines = env_path.read_text().splitlines()
+            # Remove existing APP_ENV line
+            lines = [l for l in lines if not l.startswith("APP_ENV=")]
+            # Add new APP_ENV line
+            lines.append(f"APP_ENV={app_env}")
+            env_path.write_text("\n".join(lines))
+        else:
+            env_path.write_text(f"APP_ENV={app_env}")
+    
     return llm_choice
 
 def introduction():
@@ -838,8 +867,10 @@ def show_project_management_menu(project_name: str):
         console.print("[cyan]1.[/cyan] Resume writing")
         console.print("[cyan]2.[/cyan] Edit outline")
         console.print("[cyan]3.[/cyan] Regenerate characters")
-        console.print("[cyan]4.[/cyan] Format book")
-        console.print("[cyan]5.[/cyan] Back to main menu")
+        console.print("[cyan]4.[/cyan] Review existing chapter")
+        console.print("[cyan]5.[/cyan] Format book")
+        console.print("[cyan]6.[/cyan] Director Mode")
+        console.print("[cyan]7.[/cyan] Back to main menu")
         console.print("")
         
         choice = typer.prompt("Enter your choice", show_choices=False).strip()
@@ -862,9 +893,65 @@ def show_project_management_menu(project_name: str):
                 else:
                     break
             
+            remaining_chapters = num_chapters - last_chapter
             console.print(f"[cyan]Last written chapter: {last_chapter}[/cyan]")
-            for i in range(last_chapter + 1, num_chapters + 1):
-                project_manager.write_and_review_chapter(i)
+            console.print(f"[cyan]Remaining chapters: {remaining_chapters}[/cyan]")
+            
+            # Ask about auto-write mode if more than 1 chapter remaining
+            if remaining_chapters > 1:
+                auto_write = typer.confirm(
+                    f"\n🤖 Auto-write all {remaining_chapters} remaining chapters?",
+                    default=False
+                )
+                
+                if auto_write:
+                    # Show summary
+                    auto_passes = project_manager.project_knowledge_base.get("auto_review_passes", 25)
+                    auto_mode = project_manager.project_knowledge_base.get("auto_review_mode", False)
+                    
+                    time_per_chapter = auto_passes * 6 if auto_mode else 30  # ~6 min per pass or 30 min manual
+                    total_time = remaining_chapters * time_per_chapter
+                    hours = total_time // 60
+                    
+                    console.print(f"\n[bold green]🤖 AUTO-WRITE MODE[/bold green]")
+                    console.print(f"[cyan]Chapters: {last_chapter + 1} to {num_chapters} ({remaining_chapters} chapters)[/cyan]")
+                    if auto_mode:
+                        console.print(f"[cyan]Review passes per chapter: {auto_passes}[/cyan]")
+                    console.print(f"[yellow]⏱️  Estimated time: ~{hours} hours ({time_per_chapter} min/chapter)[/yellow]")
+                    console.print(f"\n[yellow]⚠️  This will run unattended. Press Ctrl+C to stop anytime.[/yellow]")
+                    
+                    if typer.confirm("\nReady to start?", default=True):
+                        # AUTO-WRITE MODE
+                        for i in range(last_chapter + 1, num_chapters + 1):
+                            console.print(f"\n{'='*80}")
+                            console.print(f"[bold cyan]📖 CHAPTER {i} of {num_chapters}[/bold cyan]")
+                            console.print(f"{'='*80}\n")
+                            
+                            try:
+                                project_manager.write_and_review_chapter(i)
+                                console.print(f"\n[green]✅ Chapter {i} complete![/green]")
+                            except KeyboardInterrupt:
+                                console.print(f"\n[yellow]⚠️  Auto-write interrupted at Chapter {i}[/yellow]")
+                                console.print(f"[cyan]Use 'Resume writing' to continue from Chapter {i}[/cyan]")
+                                break
+                            except Exception as e:
+                                console.print(f"[red]❌ Error writing Chapter {i}: {str(e)}[/red]")
+                                logger.exception(f"Error in auto-write for Chapter {i}")
+                                if not typer.confirm("Continue with next chapter?", default=False):
+                                    break
+                        
+                        console.print(f"\n[bold green]🎉 Auto-write complete![/bold green]")
+                    else:
+                        console.print("[yellow]Auto-write cancelled.[/yellow]")
+                else:
+                    # MANUAL MODE - write one chapter at a time
+                    for i in range(last_chapter + 1, num_chapters + 1):
+                        project_manager.write_and_review_chapter(i)
+                        break  # Only write one chapter
+            else:
+                # Only 1 or 0 chapters remaining, just write it
+                for i in range(last_chapter + 1, num_chapters + 1):
+                    project_manager.write_and_review_chapter(i)
             
         elif choice == "2":
             if project_manager.project_dir:
@@ -876,10 +963,78 @@ def show_project_management_menu(project_name: str):
             console.print("[green]✅ Characters regenerated.[/green]")
             
         elif choice == "4":
+            # Review existing chapter
+            if not project_manager.project_knowledge_base:
+                console.print("[red]❌ Project data not loaded.[/red]")
+                continue
+            
+            # Get chapter number
+            chapter_num = typer.prompt("Enter chapter number to review", type=int)
+            
+            # Check if chapter exists
+            if project_manager.project_dir:
+                chapter_file = project_manager.project_dir / f"chapter_{chapter_num}.md"
+                if not chapter_file.exists():
+                    console.print(f"[red]❌ Chapter {chapter_num} not found![/red]")
+                    continue
+            
+            # Get number of passes
+            num_passes = typer.prompt("Enter number of review passes (1-30)", type=int)
+            
+            if num_passes < 1 or num_passes > 30:
+                console.print("[red]❌ Passes must be between 1 and 30[/red]")
+                continue
+            
+            # Confirm
+            console.print(f"\n[cyan]Will run {num_passes} review/edit passes on Chapter {chapter_num}[/cyan]")
+            if typer.confirm("Continue?", default=True):
+                # Run review passes
+                for pass_num in range(1, num_passes + 1):
+                    console.print(f"\n🔄 [bold]Pass {pass_num} of {num_passes}[/bold]")
+                    
+                    # Review existing chapter (don't rewrite!)
+                    console.print("[cyan]🔍 Reviewing...[/cyan]")
+                    project_manager.chapter_flow_manager.review_chapter(chapter_num)
+                    
+                    # Edit based on review
+                    console.print("[cyan]✏️  Editing...[/cyan]")
+                    project_manager.chapter_flow_manager.edit_chapter(chapter_num)
+                
+                console.print(f"\n[green]✅ Chapter {chapter_num} review complete![/green]")
+            
+        elif choice == "5":
             if project_manager.project_knowledge_base:
                 format_book(project_manager.project_knowledge_base)
             
-        elif choice == "5":
+        elif choice == "6":
+            # Director Mode
+            if project_manager.project_knowledge_base and project_manager.llm_client:
+                from libriscribe.agents.director_agent import DirectorAgent
+                
+                director = DirectorAgent(
+                    project_manager.llm_client,
+                    project_manager.project_dir,
+                    project_manager.project_knowledge_base
+                )
+                
+                console.print("\n[bold cyan]🎬 Director Mode[/bold cyan]")
+                console.print("[dim]Type your creative direction (or 'exit' to quit)[/dim]\n")
+                
+                while True:
+                    command = typer.prompt(">", show_default=False).strip()
+                    
+                    if command.lower() in ['exit', 'quit', 'q']:
+                        console.print("[yellow]Exiting Director Mode[/yellow]")
+                        break
+                    
+                    if command:
+                        director.execute(command)
+                    
+                    console.print("")  # Blank line for readability
+            else:
+                console.print("[red]❌ Project not loaded or LLM not initialized[/red]")
+            
+        elif choice == "7":
             break
         else:
             console.print("[red]❌ Invalid choice.[/red]")

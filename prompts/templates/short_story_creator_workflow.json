@@ -1,0 +1,391 @@
+{
+  "name": "LibriScribe Short Story Creator",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "create-short-story",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-start",
+      "name": "Story Request",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "messages": {
+          "messageType": "multipleMessages",
+          "multipleMessages": {
+            "messages": [
+              {
+                "role": "system",
+                "content": "You are LibriScribe, an expert short story creator. Create a comprehensive outline for a short story (2,000-4,000 words) based on the user's prompt. Structure your response as:\n\n## Story Outline\n**Title:** [Title]\n**Genre:** [Genre]\n**Word Count Target:** [2,000-4,000 words]\n**Theme:** [Main theme]\n\n## Plot Structure\n**Opening Hook:** [First paragraph description]\n**Rising Action:** [2-3 key scenes]\n**Climax:** [Turn point scene]\n**Resolution:** [Ending scene]\n\n## Characters\n**Main Character:** [Name, brief description, motivation]\n**Supporting Characters:** [If any, brief descriptions]\n\n## Setting\n**Time/Place:** [When and where]\n**Atmosphere:** [Mood/tone]\n\n## Key Scenes (4-6 scenes)\n1. **Scene 1:** [Description]\n2. **Scene 2:** [Description]\n3. **Scene 3:** [Description]\n4. **Scene 4:** [Description]\n5. **Scene 5:** [Description] (if needed)\n6. **Scene 6:** [Description] (if needed)\n\nEnd with: 'Please review this outline and let me know if you'd like any changes before I begin writing the story.'"
+              },
+              {
+                "role": "user",
+                "content": "Create a short story outline for: {{ $json.title }}\n\nDescription: {{ $json.description }}"
+              }
+            ]
+          }
+        },
+        "options": {
+          "temperature": 0.8
+        }
+      },
+      "id": "create-outline",
+      "name": "Create Story Outline", 
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"status\": \"outline_ready\",\n  \"message\": \"Story outline created. Please review and approve before proceeding.\",\n  \"outline\": \"{{ $('Create Story Outline').first().json.message.content.replace(/\"/g, '\\\"').replace(/\\n/g, '\\\\n') }}\",\n  \"next_step\": \"approve_outline\",\n  \"story_id\": \"{{ $json.title.replace(/ /g, '_').toLowerCase() }}_{{ new Date().getTime() }}\"\n}"
+      },
+      "id": "outline-response",
+      "name": "Return Outline for Review",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST", 
+        "path": "approve-outline",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "outline-approval",
+      "name": "Outline Approval",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 500]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.approved }}",
+              "operation": "equal",
+              "value2": "true"
+            }
+          ]
+        }
+      },
+      "id": "check-approval",
+      "name": "Check if Approved",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [460, 500]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "messages": {
+          "messageType": "multipleMessages", 
+          "multipleMessages": {
+            "messages": [
+              {
+                "role": "system",
+                "content": "You are LibriScribe, an expert short story writer. Write Scene 1 of the approved story outline. Make it engaging, well-paced, and approximately 400-600 words. Focus on:\n- Strong opening hook\n- Character introduction\n- Setting establishment\n- Engaging dialogue and description\n- Smooth flow into the next scene\n\nFormat your response as:\n## Scene 1: [Scene Title]\n\n[Scene content]\n\n---\nScene 1 complete. Please review before I continue with Scene 2."
+              },
+              {
+                "role": "user", 
+                "content": "Write Scene 1 based on this outline:\n{{ $json.outline }}\n\nAny modifications: {{ $json.modifications || 'None' }}"
+              }
+            ]
+          }
+        },
+        "options": {
+          "temperature": 0.8
+        }
+      },
+      "id": "write-scene-1",
+      "name": "Write Scene 1",
+      "type": "@n8n/n8n-nodes-langchain.openAi", 
+      "typeVersion": 1,
+      "position": [680, 420]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"status\": \"scene_ready\",\n  \"message\": \"Scene 1 written. Please review before continuing.\",\n  \"scene_content\": \"{{ $('Write Scene 1').first().json.message.content.replace(/\"/g, '\\\"').replace(/\\n/g, '\\\\n') }}\",\n  \"scene_number\": 1,\n  \"next_step\": \"approve_scene\",\n  \"story_id\": \"{{ $json.story_id }}\"\n}"
+      },
+      "id": "scene-1-response",
+      "name": "Return Scene 1 for Review",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [900, 420]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"status\": \"outline_rejected\",\n  \"message\": \"Please provide feedback on what you'd like changed in the outline.\",\n  \"feedback_needed\": true\n}"
+      },
+      "id": "outline-rejected",
+      "name": "Request Outline Changes", 
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [680, 580]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "approve-scene",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "scene-approval",
+      "name": "Scene Approval",
+      "type": "n8n-nodes-base.webhook", 
+      "typeVersion": 1,
+      "position": [240, 700]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.approved }}",
+              "operation": "equal", 
+              "value2": "true"
+            }
+          ]
+        }
+      },
+      "id": "check-scene-approval",
+      "name": "Check Scene Approval",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [460, 700]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.scene_number }}",
+              "operation": "smaller",
+              "value2": "={{ $json.total_scenes || 6 }}"
+            }
+          ]
+        }
+      },
+      "id": "check-more-scenes",
+      "name": "More Scenes?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [680, 620]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "messages": {
+          "messageType": "multipleMessages",
+          "multipleMessages": {
+            "messages": [
+              {
+                "role": "system",
+                "content": "You are LibriScribe, an expert short story writer. Write the next scene of the story based on the outline and previous scenes. Make it approximately 400-600 words and maintain consistency with the established characters, setting, and plot.\n\nFormat your response as:\n## Scene {{ $json.scene_number + 1 }}: [Scene Title]\n\n[Scene content]\n\n---\nScene {{ $json.scene_number + 1 }} complete. Please review before I continue."
+              },
+              {
+                "role": "user",
+                "content": "Write Scene {{ $json.scene_number + 1 }} based on the outline and continuing from the previous scenes.\n\nOutline: {{ $json.outline }}\nPrevious content: {{ $json.story_content || '' }}\nModifications: {{ $json.modifications || 'None' }}"
+              }
+            ]
+          }
+        },
+        "options": {
+          "temperature": 0.8
+        }
+      },
+      "id": "write-next-scene",
+      "name": "Write Next Scene",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1,
+      "position": [900, 540]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"status\": \"scene_ready\",\n  \"message\": \"Scene {{ $json.scene_number + 1 }} written. Please review before continuing.\",\n  \"scene_content\": \"{{ $('Write Next Scene').first().json.message.content.replace(/\"/g, '\\\"').replace(/\\n/g, '\\\\n') }}\",\n  \"scene_number\": {{ $json.scene_number + 1 }},\n  \"next_step\": \"approve_scene\",\n  \"story_id\": \"{{ $json.story_id }}\"\n}"
+      },
+      "id": "next-scene-response",
+      "name": "Return Scene for Review",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1120, 540]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "messages": {
+          "messageType": "multipleMessages",
+          "multipleMessages": {
+            "messages": [
+              {
+                "role": "system",
+                "content": "You are LibriScribe, an expert editor. Your task is to compile all approved scenes into a complete, polished short story. Format it professionally with proper spacing and formatting.\n\nProvide the final story in this format:\n\n# [Story Title]\n*A Short Story by LibriScribe AI*\n\n[Complete story text with all scenes flowing together]\n\n---\n**Word Count:** [Approximate word count]\n**Genre:** [Genre]\n**Completed:** [Current date]"
+              },
+              {
+                "role": "user",
+                "content": "Compile this complete short story from all the approved scenes:\n\n{{ $json.all_scenes }}"
+              }
+            ]
+          }
+        },
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "finalize-story",
+      "name": "Finalize Complete Story",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1,
+      "position": [900, 700]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"status\": \"story_complete\",\n  \"message\": \"Your short story is complete! 🎉\",\n  \"final_story\": \"{{ $('Finalize Complete Story').first().json.message.content.replace(/\"/g, '\\\"').replace(/\\n/g, '\\\\n') }}\",\n  \"story_id\": \"{{ $json.story_id }}\",\n  \"download_ready\": true\n}"
+      },
+      "id": "story-complete",
+      "name": "Story Complete",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1120, 700]
+    }
+  ],
+  "connections": {
+    "Story Request": {
+      "main": [
+        [
+          {
+            "node": "Create Story Outline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Story Outline": {
+      "main": [
+        [
+          {
+            "node": "Return Outline for Review", 
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Outline Approval": {
+      "main": [
+        [
+          {
+            "node": "Check if Approved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if Approved": {
+      "main": [
+        [
+          {
+            "node": "Write Scene 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Request Outline Changes",
+            "type": "main", 
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Scene 1": {
+      "main": [
+        [
+          {
+            "node": "Return Scene 1 for Review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scene Approval": {
+      "main": [
+        [
+          {
+            "node": "Check Scene Approval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Scene Approval": {
+      "main": [
+        [
+          {
+            "node": "More Scenes?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "More Scenes?": {
+      "main": [
+        [
+          {
+            "node": "Write Next Scene",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Finalize Complete Story",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Next Scene": {
+      "main": [
+        [
+          {
+            "node": "Return Scene for Review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Finalize Complete Story": {
+      "main": [
+        [
+          {
+            "node": "Story Complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

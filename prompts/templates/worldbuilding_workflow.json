@@ -1,0 +1,121 @@
+{
+  "name": "Book Creation - Worldbuilding",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "worldbuilding-webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [0, 0],
+      "id": "worldbuilding-webhook",
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Category: {{ $json.body.category }}\nGenre: {{ $json.body.genre }}\nProject Context: {{ $json.body.project_context }}\nWorldbuilding Aspects: {{ $json.body.worldbuilding_aspects }}\nLanguage: {{ $json.body.language }}",
+        "options": {
+          "systemMessage": "Create detailed worldbuilding for this {category} {genre} project.\n\nProject context: {project_context}\nRequired elements: {worldbuilding_aspects}\n\nGenerate comprehensive details for:\n- Geography and locations\n- Culture and society\n- History and timeline\n- Rules and laws\n- Technology level\n- Key organizations\n\nOutput in JSON format with structured worldbuilding data.\nLanguage: {language}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [208, 0],
+      "id": "worldbuilding-agent",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-4.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [80, 208],
+      "id": "worldbuilding-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Process and format the worldbuilding response\nconst inputData = $('Webhook').all()[0].json.body;\nconst aiResponse = $input.all()[0].json.response;\n\n// Try to parse JSON from the AI response\nlet worldbuildingData = aiResponse || '';\nlet parsedWorldbuilding = null;\n\ntry {\n  // Look for JSON in the response\n  const jsonMatch = worldbuildingData.match(/\\{[\\s\\S]*\\}/);\n  if (jsonMatch) {\n    parsedWorldbuilding = JSON.parse(jsonMatch[0]);\n  }\n} catch (error) {\n  console.log('Could not parse JSON, keeping raw response');\n}\n\nconst finalResult = {\n  category: inputData.category,\n  genre: inputData.genre,\n  project_context: inputData.project_context,\n  worldbuilding_aspects: inputData.worldbuilding_aspects,\n  language: inputData.language || 'English',\n  worldbuilding_data: parsedWorldbuilding || worldbuildingData,\n  created_at: new Date().toISOString()\n};\n\nreturn [{ json: finalResult }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [416, 0],
+      "id": "process-worldbuilding-response",
+      "name": "Process Worldbuilding Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [624, 0],
+      "id": "respond-worldbuilding",
+      "name": "Respond with Worldbuilding"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Process Worldbuilding Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Worldbuilding Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Worldbuilding",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

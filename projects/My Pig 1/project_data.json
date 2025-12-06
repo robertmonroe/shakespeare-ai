@@ -1,0 +1,60 @@
+{
+    "project_name": "My Pig 1",
+    "title": "My Pig 2",
+    "genre": "Young Adult",
+    "description": "A dancing pig, Arnie, escapes from a farm, escapes to the city and becomes a young boy's best friend. The young boy, Johnny, tries to hideArnie from his parents. They discover the pig. The parents tell Johnny that the pig cannot live at the house in the city. Johnny is very sad. He runs away with his best friend, Arnie. The parents searched for Johnny everywhere. They are very worried and sad. They find Johnny and the pig. They tell Johnny that when they told him Arnie could not live in the city. They were going to tell him they were going to buy a house in the country so the young boy and Arnie can live together. The boy was very happy. The family moves to the country. ",
+    "category": "Fiction",
+    "language": "English",
+    "num_characters": 2,
+    "num_characters_str": "",
+    "worldbuilding_needed": false,
+    "review_preference": "AI (automatic review)",
+    "auto_review_mode": false,
+    "auto_review_passes": 0,
+    "book_length": "Short Story (1-3 chapters)",
+    "logline": "No logline available",
+    "tone": "Informative",
+    "target_audience": "General",
+    "num_chapters": 1,
+    "num_chapters_str": "",
+    "llm_provider": "openrouter",
+    "dynamic_questions": {},
+    "skip_concept_critique": false,
+    "skip_concept_refinement": false,
+    "characters": {
+        "Johnny Miller": {
+            "name": "Johnny Miller",
+            "age": "11",
+            "physical_description": "Johnny is a slender boy with a mop of unruly brown hair that constantly falls into his bright blue eyes. He has a scattering of freckles across his nose and cheeks, a testament to his love of playing outdoors. He usually wears comfortable, slightly worn clothes – jeans, t-shirts featuring his favorite superheroes, and sneakers that are always a little scuffed from his adventures. He often has dirt under his fingernails.",
+            "personality_traits": "Resourceful, Cautious, Determined",
+            "background": "Johnny has always been a bit of an outsider in his city neighborhood. He's a dreamer with a vivid imagination, often feeling stifled by the concrete jungle surrounding him. He longs for open spaces and a connection with nature. His parents, while loving, are busy with their demanding jobs and sometimes struggle to understand his imaginative world.",
+            "motivations": "To find a true friend, to experience adventure, to protect Arnie, to find a place where he and Arnie can belong.",
+            "relationships": {
+                "general": "Arnie (best friend, confidant), Mr. and Mrs. Miller (parents, loving but sometimes misunderstanding), Sarah (a classmate who teases him, initially skeptical of Arnie but eventually becomes supportive)."
+            },
+            "role": "Protagonist",
+            "internal_conflicts": "Johnny struggles with feelings of loneliness and being misunderstood. He feels guilty for disobeying his parents but believes he's doing what's right for Arnie. He questions whether he's being selfish by running away.",
+            "external_conflicts": "Hiding Arnie from his parents, the threat of Arnie being taken away, the challenge of surviving on their own while running away, his parents' search for him.",
+            "character_arc": "Johnny begins as a somewhat lonely and insecure boy. Through his friendship with Arnie and the challenges they face, he learns to stand up for what he believes in, develops greater confidence, and strengthens his bond with his parents, ultimately understanding their love and concern for him."
+        },
+        "Arnie": {
+            "name": "Arnie",
+            "age": "Equivalent to a young child (approx. 3 years old)",
+            "physical_description": "Arnie is a pot-bellied pig with soft, pink skin and a curly tail that wags enthusiastically. He has large, expressive brown eyes that seem to understand everything. He's surprisingly agile and graceful, especially when he's dancing. He wears a small, custom-made blue collar with a tiny bell that jingles when he moves.",
+            "personality_traits": "Resourceful, Cautious, Determined",
+            "background": "Arnie escaped from a crowded and impersonal farm where he was just another number. He always felt different from the other pigs, drawn to music and movement. He instinctively knew there was more to life than being confined to a pen.",
+            "motivations": "To find a safe and loving home, to express his joy through dance, to be a good friend to Johnny.",
+            "relationships": {
+                "general": "Johnny (best friend, protector), Mr. and Mrs. Miller (initially wary but eventually accepting), Farmer McGregor (previous owner, unaware of Arnie's escape)."
+            },
+            "role": "Supporting character, catalyst for Johnny's growth",
+            "internal_conflicts": "Arnie doesn't experience complex internal conflicts, but he sometimes struggles to understand human emotions and rules. He relies on Johnny to interpret the world around him.",
+            "external_conflicts": "Avoiding capture, adapting to city life, facing prejudice and fear from people who don't understand him, the threat of being returned to the farm.",
+            "character_arc": "Arnie begins as a runaway pig seeking freedom. He finds a true home and purpose through his friendship with Johnny, becoming a symbol of acceptance and the power of unconventional bonds. He learns to trust humans and finds a place where he can freely express himself."
+        }
+    },
+    "worldbuilding": null,
+    "chapters": {},
+    "outline": "",
+    "project_dir": "C:\\Users\\3dmax\\Libriscribe\\projects\\My Pig 1"
+}

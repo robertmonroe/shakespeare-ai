@@ -1,0 +1,143 @@
+{
+  "name": "Book Creation - Chapter Editor",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "editor",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "editor-webhook",
+      "name": "Webhook - Edit Chapter"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Extract and validate editor parameters\nconst inputData = $input.all()[0].json.body;\n\n// Required fields from YAML template\nconst genre = inputData.genre;\nconst bookTitle = inputData.book_title;\nconst language = inputData.language;\nconst chapterNumber = inputData.chapter_number;\nconst chapterTitle = inputData.chapter_title || `Chapter ${chapterNumber}`;\nconst chapterContent = inputData.chapter_content;\nconst reviewFeedback = inputData.review_feedback;\n\nif (!genre || !bookTitle || !language || !chapterNumber || !chapterContent || !reviewFeedback) {\n  throw new Error('Genre, book_title, language, chapter_number, chapter_content, and review_feedback are required');\n}\n\n// Build editor prompt based on YAML template\nlet prompt = `Expert editor: refine this ${genre} chapter from \"${bookTitle}\" (written in ${language}).\\n\\n`;\nprompt += `Chapter ${chapterNumber}: ${chapterTitle}\\n`;\nprompt += `${chapterContent}\\n\\n`;\n\nprompt += `Reviewer feedback to address:\\n${reviewFeedback}\\n\\n`;\n\nprompt += `Fix all reviewer issues plus:\\n`;\nprompt += `- Structure, pacing, clarity, plot advancement\\n`;\nprompt += `- Plot holes, inconsistencies, transitions, dialogue\\n`;\nprompt += `- Style consistency, passive voice, weak verbs, imagery\\n`;\nprompt += `- Character consistency with established personalities\\n`;\nprompt += `- Grammar, spelling, punctuation, typos\\n\\n`;\n\nprompt += `Output: Complete revised chapter in ${language} using Markdown formatting.`;\n\nconst promptData = {\n  genre: genre,\n  book_title: bookTitle,\n  language: language,\n  chapter_number: chapterNumber,\n  chapter_title: chapterTitle,\n  chapter_content: chapterContent,\n  review_feedback: reviewFeedback,\n  prompt: prompt\n};\n\nreturn [{ json: promptData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "prepare-editor-prompt",
+      "name": "Prepare Editor Prompt"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "options": {
+          "systemMessage": "You are an expert professional editor with extensive experience in refining manuscripts. Focus on improving structure, pacing, clarity, and style while maintaining the author's voice. Address all reviewer feedback systematically and ensure the chapter flows naturally. Output the complete revised chapter in proper Markdown format."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [480, 300],
+      "id": "edit-chapter",
+      "name": "Edit Chapter Content"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-3.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [480, 450],
+      "id": "editor-openrouter-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Process and format the edited chapter response\nconst promptData = $('Prepare Editor Prompt').all()[0].json;\nconst aiResponse = $input.all()[0].json.response;\n\n// Clean up the response and format it properly\nlet editedContent = aiResponse || '';\n\n// Ensure proper chapter heading if missing\nif (!editedContent.includes(`# Chapter ${promptData.chapter_number}`) && !editedContent.includes(`Chapter ${promptData.chapter_number}`)) {\n  editedContent = `# ${promptData.chapter_title}\\n\\n` + editedContent;\n}\n\n// Count words in edited chapter for tracking\nconst wordCount = editedContent.split(/\\s+/).filter(word => word.length > 0).length;\n\nconst finalEdit = {\n  genre: promptData.genre,\n  book_title: promptData.book_title,\n  language: promptData.language,\n  chapter_number: promptData.chapter_number,\n  chapter_title: promptData.chapter_title,\n  original_content: promptData.chapter_content,\n  review_feedback: promptData.review_feedback,\n  edited_content: editedContent,\n  word_count: wordCount,\n  edited_at: new Date().toISOString()\n};\n\nreturn [{ json: finalEdit }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 300],
+      "id": "process-editor-response",
+      "name": "Process Edited Content"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [920, 300],
+      "id": "respond-edited",
+      "name": "Respond with Edited Chapter"
+    }
+  ],
+  "connections": {
+    "Webhook - Edit Chapter": {
+      "main": [
+        [
+          {
+            "node": "Prepare Editor Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Editor Prompt": {
+      "main": [
+        [
+          {
+            "node": "Edit Chapter Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Chapter Content": {
+      "main": [
+        [
+          {
+            "node": "Process Edited Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Edited Content": {
+      "main": [
+        [
+          {
+            "node": "Respond with Edited Chapter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Edit Chapter Content",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

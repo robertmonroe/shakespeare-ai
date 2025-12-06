@@ -1,0 +1,220 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "On a warm Texas evening in June 1981, eighteen-year-old Robert spots sixteen-year-old Silvia at the Starlite Drive-In Theater, and they share their first conversation during intermission, feeling an instant, electric connection that neither can explain.",
+            "characters": [
+                "Robert (18)",
+                "Silvia (16)",
+                "background extras at the drive-in"
+            ],
+            "setting": "Starlite Drive-In Theater, Texas, June 1981",
+            "goal": "Establish the magical beginning of Robert and Silvia's romance and show the intensity of their initial attraction",
+            "emotional_beat": "Enchantment and possibility"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Over the following weeks of summer 1981, Robert and Silvia fall deeply in love through stolen moments\u2014dancing to music from his truck radio under the stars, sharing dreams about their future, and promising each other forever despite their young ages.",
+            "characters": [
+                "Robert",
+                "Silvia"
+            ],
+            "setting": "Various locations in their Texas town (parking lots, parks, quiet streets), summer 1981",
+            "goal": "Show the depth and authenticity of their young love, making it clear this was more than a teenage fling",
+            "emotional_beat": "Joy and passionate devotion"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Silvia's traditional parents discover the relationship and forbid her from seeing Robert, considering her too young and him an unsuitable match; despite tearful protests, Silvia is forced to say goodbye to Robert, and within weeks, her family moves her across the state.",
+            "characters": [
+                "Silvia",
+                "Robert (briefly)",
+                "Silvia's parents (mentioned/present)",
+                "Silvia's younger siblings (background)"
+            ],
+            "setting": "Silvia's family home and a final meeting spot, late summer 1981",
+            "goal": "Establish the heartbreaking separation that will define both characters' lives for the next forty-two years",
+            "emotional_beat": "Heartbreak and helplessness"
+        },
+        {
+            "scene_number": 4,
+            "summary": "On D\u00eda de los Muertos 2022, sixty-year-old widowed Silvia visits the cemetery to honor her late husband's grave with traditional ofrendas\u2014marigolds, candles, his favorite foods\u2014reflecting on her life of love, loss, and the ghost of a first love she never quite forgot.",
+            "characters": [
+                "Silvia (now 60)"
+            ],
+            "setting": "Texas cemetery, November 2, 2022 (D\u00eda de los Muertos)",
+            "goal": "Transition to present day, establish Silvia's current life circumstances, and show her emotional state as a widow still carrying memories of Robert",
+            "emotional_beat": "Melancholic remembrance and quiet longing"
+        },
+        {
+            "scene_number": 5,
+            "summary": "While tending to her husband's grave, Silvia encounters Frank, Robert's brother, who is visiting his own family's graves; after initial awkward recognition, Silvia impulsively confesses that she never stopped wondering about Robert, and Frank, touched by her vulnerability, promises to tell his brother.",
+            "characters": [
+                "Silvia",
+                "Frank (Robert's brother)"
+            ],
+            "setting": "",
+            "goal": "",
+            "emotional_beat": ""
+        },
+        {
+            "scene_number": 6,
+            "summary": "Frank visits his recently widowed brother Robert at his home, initially making small talk before revealing his cemetery encounter with Silvia; as Frank shares Silvia's confession, Robert's carefully maintained composure cracks, and decades of buried emotions surface on his face, revealing he never forgot her either.",
+            "characters": [
+                "Frank",
+                "Robert (now 62",
+                "recently widowed)"
+            ],
+            "setting": "Robert's home, later that same day or the next day",
+            "goal": "Show that Robert has also carried the torch for Silvia all these years and set up the emotional stakes for their potential reconnection",
+            "emotional_beat": "Shock, suppressed longing, and cautious awakening"
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "After days of staring at Silvia's Facebook profile, Robert finally sends a carefully worded message expressing how meaningful their cemetery encounter was. Silvia responds within hours, and their tentative exchanges quickly become longer and more personal, revealing that the connection between them has never truly faded.",
+            "characters": [
+                "Robert",
+                "Silvia"
+            ],
+            "setting": "Robert's home office and Silvia's kitchen, communicating via Facebook Messenger over several days",
+            "goal": "To establish the rekindling of their connection through digital communication and show their mutual hesitation mixed with eagerness",
+            "emotional_beat": "Nervous anticipation mixed with cautious hope"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Robert and Silvia meet for dinner at Casa Guadalupe, a small family-owned Mexican restaurant, where their conversation flows effortlessly as they share stories about their lives, marriages, and children. Despite the undeniable chemistry between them, both struggle with visible guilt when they catch themselves laughing or feeling genuinely happy.",
+            "characters": [
+                "Robert",
+                "Silvia"
+            ],
+            "setting": "Casa Guadalupe, a cozy Mexican restaurant in San Antonio",
+            "goal": "To show the natural compatibility between Robert and Silvia while introducing the internal conflict of guilt over moving forward after loss",
+            "emotional_beat": "Bittersweet joy\u2014the warmth of connection shadowed by grief and guilt"
+        },
+        {
+            "scene_number": 3,
+            "summary": "During a walk along the River Walk after dinner, Robert and Silvia open up about the \"what ifs\" that have haunted them for decades, admitting they each thought of the other throughout their marriages during significant moments. They agree to see each other again, acknowledging this feels both right and terrifying.",
+            "characters": [
+                "Robert",
+                "Silvia"
+            ],
+            "setting": "San Antonio River Walk at twilight",
+            "goal": "To deepen their emotional vulnerability and establish that their teenage romance has lingered in both their hearts for forty-two years",
+            "emotional_beat": "Tender vulnerability and recognition of a profound, enduring connection"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Robert mentions to his daughter Sarah over coffee that he's been seeing someone, and her reaction is immediate and harsh\u2014she accuses him of trying to replace her mother and dishonoring her memory by moving on only months after her death. The conversation ends with Sarah leaving in tears and Robert questioning whether he's being selfish.",
+            "characters": [
+                "Robert",
+                "Sarah (Robert's daughter)"
+            ],
+            "setting": "Sarah's home in the suburbs of San Antonio",
+            "goal": "To introduce the family resistance subplot and show Robert's internal conflict between his own happiness and his children's feelings",
+            "emotional_beat": "Defensive hurt and guilt"
+        },
+        {
+            "scene_number": 5,
+            "summary": "At a family dinner at Silvia's home, her son Miguel confronts her about Robert, questioning whether this is real love or just two lonely people romanticizing a teenage fling from four decades ago. Silvia's other children watch uncomfortably as she tries to defend her feelings while simultaneously doubting herself.",
+            "characters": [
+                "Silvia",
+                "Miguel (Silvia's son)",
+                "Rosa (Silvia's daughter)",
+                "Carlos (Silvia's younger son)"
+            ],
+            "setting": "Silvia's dining room during Sunday family dinner",
+            "goal": "To show the family pressure from Silvia's side and plant seeds of doubt about whether their connection is genuine or nostalgia-driven",
+            "emotional_beat": "Frustration and self-doubt"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Late that night, Robert calls Silvia, and they both confess the difficult conversations with their children. They question whether they're being foolish, whether they've idealized a summer romance, but ultimately decide they owe it to themselves to explore what this could be, even if it means facing their families' disapproval.",
+            "characters": [
+                "Robert",
+                "Silvia"
+            ],
+            "setting": "Robert in his bedroom, Silvia on her back porch, talking on the phone",
+            "goal": "To show their united front despite external pressure and end the chapter with their commitment to continue despite obstacles",
+            "emotional_beat": "Determined resolve mixed with lingering uncertainty"
+        }
+    ],
+    "3": [
+        {
+            "scene_number": 1,
+            "summary": "Nearly a year after their reconnection, Robert and Silvia meet at a caf\u00e9 where Silvia nervously extends an invitation for Robert to attend her family's D\u00eda de los Muertos celebration, explaining that this represents a significant step in making their relationship public and permanent. Robert accepts, understanding the cultural and personal weight of this gesture.",
+            "characters": [
+                "Robert",
+                "Silvia"
+            ],
+            "setting": "A quiet caf\u00e9 in their Texas town, late October 2023",
+            "goal": "To establish the stakes and significance of the upcoming celebration while showing how their relationship has deepened over the past year",
+            "emotional_beat": "Hopeful anticipation mixed with nervous vulnerability"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Robert meets with his adult children to tell them about Silvia's invitation and his intention to fully commit to this relationship. His children express their concerns about him moving on from their mother, leading to an honest conversation about grief, love, and the capacity of the heart to honor the past while embracing the future.",
+            "characters": [
+                "Robert",
+                "his adult children (son and daughter)",
+                "brief mention of Robert's late wife through photographs"
+            ],
+            "setting": "Robert's home, his living room where family photos still prominently display his late wife",
+            "goal": "To address the children's concerns and demonstrate Robert's growth in balancing his past love with his present feelings",
+            "emotional_beat": "Tender conflict resolving into understanding and acceptance"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Silvia prepares for D\u00eda de los Muertos with her daughters, creating ofrendas for her late husband and other deceased family members. As they work together, Silvia shares memories of her late husband while also speaking honestly about her feelings for Robert, helping her daughters see that loving Robert doesn't diminish what she had before.",
+            "characters": [
+                "Silvia",
+                "her daughters",
+                "Silvia's sister (possibly)",
+                "memories of Silvia's late husband"
+            ],
+            "setting": "Silvia's home, where they're setting up the ofrenda with marigolds, photographs, candles, and favorite foods of the deceased",
+            "goal": "To show Silvia's process of honoring her late husband while making space for Robert in her life and her family",
+            "emotional_beat": "Bittersweet nostalgia transforming into peaceful acceptance"
+        },
+        {
+            "scene_number": 4,
+            "summary": "The D\u00eda de los Muertos celebration begins at Silvia's home with extended family gathering. Robert arrives and is welcomed into the celebration, initially feeling like an outsider but gradually being drawn into the warmth of the traditions and the family's cautious acceptance.",
+            "characters": [
+                "Robert",
+                "Silvia",
+                "Silvia's daughters",
+                "Silvia's extended family members",
+                "Robert's children (arriving later)"
+            ],
+            "setting": "Silvia's home and backyard, decorated with papel picado, marigolds, candles, and elaborate ofrendas",
+            "goal": "To immerse Robert in Silvia's cultural traditions and show the blending of their two worlds",
+            "emotional_beat": "Nervous anticipation giving way to belonging"
+        },
+        {
+            "scene_number": 5,
+            "summary": "In the pivotal moment of the evening, Robert and Silvia each address their gathered families, standing before the ofrendas. They speak with gratitude about their late spouses, share what those marriages taught them about love, and explain that their reconnection doesn't erase the past but honors it by choosing to live fully again. They reveal that both their late spouses had expressed wishes for them to find happiness if left alone.",
+            "characters": [
+                "Robert",
+                "Silvia",
+                "both sets of adult children",
+                "extended family members",
+                "spiritual presence of their late spouses through the ofrenda"
+            ],
+            "setting": "In front of the main ofrenda in Silvia's home, surrounded by flickering candles and marigold petals",
+            "goal": "To provide the emotional climax where both protagonists claim their right to this second chance while honoring their past loves",
+            "emotional_beat": "Cathartic release, profound gratitude, and courageous vulnerability"
+        },
+        {
+            "scene_number": 6,
+            "summary": "As the celebration continues into the evening with the families mingling more comfortably, Robert and Silvia step outside into the garden where marigold petals scatter in the breeze and candles flicker. They reflect on their forty-two-year journey and make a quiet commitment to move forward together, understanding that their love story was never truly interrupted\u2014just delayed until they could appreciate it fully as the people they've become.",
+            "characters": [
+                "Robert",
+                "Silvia"
+            ],
+            "setting": "Silvia's garden at night, illuminated by candles and decorated for D\u00eda de los Muertos, with the sounds of family celebration in the background",
+            "goal": "To provide resolution and closure to their journey while opening the door to their future together",
+            "emotional_beat": "Peaceful joy, profound connection, and hopeful certainty"
+        }
+    ]
+}

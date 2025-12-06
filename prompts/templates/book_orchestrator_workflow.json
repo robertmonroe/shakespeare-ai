@@ -1,0 +1,490 @@
+{
+  "name": "Book Creation - Orchestrator",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "libriscribe-orchestrator",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "orchestrator-webhook",
+      "name": "Webhook - Start Book Creation"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Initialize project data from webhook input\nconst inputData = $input.all()[0].json.body;\n\n// Set default values and validate input\nconst projectData = {\n  project_name: inputData.project_name || 'Untitled Book',\n  title: inputData.title || 'Untitled',\n  genre: inputData.genre || 'Fiction',\n  language: inputData.language || 'English',\n  num_chapters: inputData.num_chapters || 15,\n  user_input: inputData.user_input || '',\n  category: inputData.category || 'fiction',\n  worldbuilding_needed: inputData.worldbuilding_needed || false,\n  review_preference: inputData.review_preference || 'AI',\n  project_dir: `C:/Users/3dmax/n8n-books/${inputData.project_name || 'untitled-book'}`,\n  timestamp: new Date().toISOString(),\n  status: 'initializing'\n};\n\n// Validate required fields\nif (!projectData.project_name || !projectData.title) {\n  throw new Error('Project name and title are required');\n}\n\nreturn [{ json: projectData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "init-project",
+      "name": "Initialize Project Data"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Skip directory creation - N8N handles automatically\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 300],
+      "id": "create-project-dir",
+      "name": "Prepare Project Setup"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Log project data instead of saving to file\nconst projectData = $input.all()[0].json;\nconsole.log('Orchestrator Project Data:', JSON.stringify(projectData, null, 2));\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 300],
+      "id": "save-project-data",
+      "name": "Log Project Data"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/concept-generator",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"genre\": \"{{ $json.genre }}\",\n  \"user_input\": \"{{ $json.user_input }}\",\n  \"language\": \"{{ $json.language }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [920, 300],
+      "id": "call-concept-generator",
+      "name": "Generate Book Concept"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Merge concept data with project data\nconst projectData = $input.all()[0].json;\nconst conceptData = $input.all()[1].json;\n\n// Update project with concept\nprojectData.concept = conceptData;\nprojectData.status = 'concept_generated';\n\nreturn [{ json: projectData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1140, 300],
+      "id": "merge-concept",
+      "name": "Merge Concept Data"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/outliner",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"genre\": \"{{ $json.genre }}\",\n  \"title\": \"{{ $json.title }}\",\n  \"concept\": \"{{ JSON.stringify($json.concept) }}\",\n  \"num_chapters\": {{ $json.num_chapters }},\n  \"language\": \"{{ $json.language }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1360, 300],
+      "id": "call-outliner",
+      "name": "Generate Book Outline"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Merge outline data with project data\nconst projectData = $input.all()[0].json;\nconst outlineData = $input.all()[1].json;\n\n// Update project with outline\nprojectData.outline = outlineData;\nprojectData.status = 'outline_generated';\n\n// Create chapter list for processing\nconst chapters = [];\nfor (let i = 1; i <= projectData.num_chapters; i++) {\n  chapters.push({\n    chapter_number: i,\n    project_data: projectData,\n    chapter_summary: outlineData.chapters ? outlineData.chapters[`chapter_${i}`] : `Chapter ${i}`,\n    status: 'pending'\n  });\n}\n\nreturn chapters.map(chapter => ({ json: chapter }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1580, 300],
+      "id": "prepare-chapters",
+      "name": "Prepare Chapter List"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/chapter-writer",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"chapter_number\": {{ $json.chapter_number }},\n  \"book_title\": \"{{ $json.project_data.title }}\",\n  \"chapter_summary\": \"{{ $json.chapter_summary }}\",\n  \"genre\": \"{{ $json.project_data.genre }}\",\n  \"outline\": \"{{ JSON.stringify($json.project_data.outline) }}\",\n  \"language\": \"{{ $json.project_data.language }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1800, 300],
+      "id": "write-chapter",
+      "name": "Write Chapter"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Log chapter content instead of saving to file\nconst chapterData = $input.all()[0].json;\nconst chapterContent = $('Write Chapter').all()[0].json.content || 'Chapter content not available';\nconst fileName = `chapter_${chapterData.chapter_number}.md`;\n\nconsole.log(`Orchestrator Chapter ${chapterData.chapter_number} completed:`);\nconsole.log(`File would be: ${fileName}`);\nconsole.log(`Content length: ${chapterContent.length} characters`);\n\n// Pass through the chapter data with content\nreturn [{ json: { ...chapterData, chapter_content: chapterContent, file_name: fileName } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2020, 300],
+      "id": "save-chapter",
+      "name": "Log Chapter Content"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/content-reviewer",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"chapter_content\": \"{{ $('Write Chapter').all()[0].json.content }}\",\n  \"chapter_number\": {{ $json.chapter_number }},\n  \"genre\": \"{{ $json.project_data.genre }}\",\n  \"language\": \"{{ $json.project_data.language }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2240, 300],
+      "id": "review-chapter",
+      "name": "Review Chapter Content"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.project_data.review_preference }}",
+              "rightValue": "AI",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2460, 300],
+      "id": "check-auto-edit",
+      "name": "Auto-Edit?"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/editor",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"chapter_content\": \"{{ $('Write Chapter').all()[0].json.content }}\",\n  \"chapter_number\": {{ $json.chapter_number }},\n  \"review_feedback\": \"{{ $('Review Chapter Content').all()[0].json.feedback }}\",\n  \"language\": \"{{ $json.project_data.language }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2680, 200],
+      "id": "edit-chapter",
+      "name": "AI Edit Chapter"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Log edited chapter instead of saving to file\nconst chapterData = $input.all()[0].json;\nconst editedContent = $('AI Edit Chapter').all()[0].json.content || $('Write Chapter').all()[0].json.content;\nconst fileName = `chapter_${chapterData.chapter_number}_edited.md`;\n\nconsole.log(`Orchestrator Chapter ${chapterData.chapter_number} edited:`);\nconsole.log(`Edited file would be: ${fileName}`);\nconsole.log(`Edited content length: ${editedContent.length} characters`);\n\n// Pass through the chapter data with edited content\nreturn [{ json: { ...chapterData, edited_content: editedContent, edited_file_name: fileName } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2900, 200],
+      "id": "save-edited-chapter",
+      "name": "Log Edited Chapter"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Update chapter status to completed\nconst chapterData = $input.all()[0].json;\nchapterData.status = 'completed';\nchapterData.completed_at = new Date().toISOString();\n\nreturn [{ json: chapterData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2680, 400],
+      "id": "mark-complete-manual",
+      "name": "Mark Chapter Complete"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Collect all completed chapters and format book\nconst allChapters = $input.all();\nconst projectData = allChapters[0].json.project_data;\n\n// Update project status\nprojectData.status = 'chapters_completed';\nprojectData.chapters_completed = allChapters.length;\nprojectData.completed_at = new Date().toISOString();\n\n// Prepare for book formatting\nconst bookData = {\n  project_data: projectData,\n  total_chapters: projectData.num_chapters,\n  chapters_dir: projectData.project_dir,\n  output_file: `${projectData.project_dir}/${projectData.title.replace(/[^a-zA-Z0-9]/g, '_')}_complete.md`\n};\n\nreturn [{ json: bookData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3120, 300],
+      "id": "prepare-book-formatting",
+      "name": "Prepare Book Formatting"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/book-formatter",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"project_title\": \"{{ $json.project_data.title }}\",\n  \"author\": \"{{ $json.project_data.author || 'AI Generated' }}\",\n  \"genre\": \"{{ $json.project_data.genre }}\",\n  \"chapters_dir\": \"{{ $json.chapters_dir }}\",\n  \"total_chapters\": {{ $json.total_chapters }},\n  \"output_file\": \"{{ $json.output_file }}\",\n  \"language\": \"{{ $json.project_data.language }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3340, 300],
+      "id": "format-book",
+      "name": "Format Complete Book"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Log final project data instead of saving to file\nconst bookFormatData = $input.all()[0].json;\nconst finalProjectData = {\n  project_data: $('Prepare Book Formatting').all()[0].json.project_data,\n  book_file: bookFormatData.book_file,\n  completion_status: 'success',\n  final_word_count: bookFormatData.word_count,\n  completed_at: new Date().toISOString()\n};\n\nconsole.log('Final Orchestrator Project Data:', JSON.stringify(finalProjectData, null, 2));\nconsole.log('Book creation completed successfully!');\n\nreturn [{ json: finalProjectData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3560, 300],
+      "id": "save-final-project",
+      "name": "Log Final Project Data"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"success\",\n  \"message\": \"Book creation completed successfully!\",\n  \"project_name\": \"{{ $('Prepare Book Formatting').all()[0].json.project_data.project_name }}\",\n  \"title\": \"{{ $('Prepare Book Formatting').all()[0].json.project_data.title }}\",\n  \"chapters_completed\": {{ $('Prepare Book Formatting').all()[0].json.project_data.chapters_completed }},\n  \"book_file\": \"{{ $json.book_file }}\",\n  \"word_count\": {{ $json.word_count || 0 }},\n  \"project_dir\": \"{{ $('Prepare Book Formatting').all()[0].json.project_data.project_dir }}\",\n  \"completed_at\": \"{{ new Date().toISOString() }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [3780, 300],
+      "id": "respond-success",
+      "name": "Respond with Success"
+    }
+  ],
+  "connections": {
+    "Webhook - Start Book Creation": {
+      "main": [
+        [
+          {
+            "node": "Initialize Project Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Initialize Project Data": {
+      "main": [
+        [
+          {
+            "node": "Create Project Directory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Project Directory": {
+      "main": [
+        [
+          {
+            "node": "Save Project Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Project Data": {
+      "main": [
+        [
+          {
+            "node": "Generate Book Concept",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Book Concept": {
+      "main": [
+        [
+          {
+            "node": "Merge Concept Data",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Save Project Data": {
+      "main": [
+        [
+          {
+            "node": "Merge Concept Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Concept Data": {
+      "main": [
+        [
+          {
+            "node": "Generate Book Outline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Book Outline": {
+      "main": [
+        [
+          {
+            "node": "Prepare Chapter List",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Concept Data": {
+      "main": [
+        [
+          {
+            "node": "Prepare Chapter List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Chapter List": {
+      "main": [
+        [
+          {
+            "node": "Write Chapter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Chapter": {
+      "main": [
+        [
+          {
+            "node": "Save Chapter to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Chapter to File": {
+      "main": [
+        [
+          {
+            "node": "Review Chapter Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Review Chapter Content": {
+      "main": [
+        [
+          {
+            "node": "Auto-Edit?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-Edit?": {
+      "main": [
+        [
+          {
+            "node": "AI Edit Chapter",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark Chapter Complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Edit Chapter": {
+      "main": [
+        [
+          {
+            "node": "Save Edited Chapter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Edited Chapter": {
+      "main": [
+        [
+          {
+            "node": "Prepare Book Formatting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Chapter Complete": {
+      "main": [
+        [
+          {
+            "node": "Prepare Book Formatting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Book Formatting": {
+      "main": [
+        [
+          {
+            "node": "Format Complete Book",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Complete Book": {
+      "main": [
+        [
+          {
+            "node": "Save Final Project Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Final Project Data": {
+      "main": [
+        [
+          {
+            "node": "Respond with Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

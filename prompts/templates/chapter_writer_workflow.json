@@ -1,0 +1,143 @@
+{
+  "name": "Book Creation - Chapter Writer",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chapter-writer",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "chapter-webhook",
+      "name": "Webhook - Write Chapter"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Extract and validate chapter writing parameters\nconst inputData = $input.all()[0].json.body;\n\n// Required fields\nconst chapterNumber = inputData.chapter_number;\nconst bookTitle = inputData.book_title || inputData.title;\nconst genre = inputData.genre;\n\nif (!chapterNumber || !bookTitle || !genre) {\n  throw new Error('Chapter number, book title, and genre are required');\n}\n\n// Extract outline and context data\nconst outline = inputData.outline || inputData.chapter_summary || '';\nconst sceneDetails = inputData.scene_details || '';\nconst characterContext = inputData.character_context || inputData.characters || '';\nconst language = inputData.language || 'English';\nconst category = inputData.category || 'Fiction';\nconst tone = inputData.tone || '';\nconst targetAudience = inputData.target_audience || '';\n\n// Build comprehensive chapter writing prompt\nlet prompt = `Write Chapter ${chapterNumber} for \"${bookTitle}\" (${genre}).\\n\\n`;\n\nif (outline) {\n  if (typeof outline === 'object') {\n    prompt += `Chapter outline:\\n${JSON.stringify(outline, null, 2)}\\n\\n`;\n  } else {\n    prompt += `Chapter outline:\\n${outline}\\n\\n`;\n  }\n}\n\nif (sceneDetails) {\n  prompt += `Scene details:\\n${sceneDetails}\\n\\n`;\n}\n\nif (characterContext) {\n  if (typeof characterContext === 'object') {\n    prompt += `Character context:\\n${JSON.stringify(characterContext, null, 2)}\\n\\n`;\n  } else {\n    prompt += `Character context:\\n${characterContext}\\n\\n`;\n  }\n}\n\nif (category) {\n  prompt += `Category: ${category}\\n`;\n}\n\nif (tone) {\n  prompt += `Tone: ${tone}\\n`;\n}\n\nif (targetAudience) {\n  prompt += `Target Audience: ${targetAudience}\\n`;\n}\n\nprompt += `\\nWrite engaging, well-paced content that advances the plot and develops characters.\\n`;\nprompt += `Use ${language} language throughout.\\n`;\nprompt += `Make this chapter approximately 2000-4000 words.\\n`;\nprompt += `Use proper chapter formatting with clear section breaks.\\n\\n`;\nprompt += `Write the complete Chapter ${chapterNumber} now:`;\n\nconst promptData = {\n  chapter_number: chapterNumber,\n  book_title: bookTitle,\n  genre: genre,\n  language: language,\n  prompt: prompt\n};\n\nreturn [{ json: promptData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "prepare-chapter-prompt",
+      "name": "Prepare Chapter Prompt"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "options": {
+          "systemMessage": "You are an expert fiction and non-fiction writer. Write engaging, well-structured chapters that advance the story and develop characters naturally. Use vivid descriptions, compelling dialogue, and maintain consistent pacing. Format your output with proper chapter headings and clear paragraph breaks."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [480, 300],
+      "id": "write-chapter",
+      "name": "Write Chapter Content"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-3.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [480, 450],
+      "id": "chapter-writer-openrouter-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Process and format the chapter response\nconst promptData = $('Prepare Chapter Prompt').all()[0].json;\nconst aiResponse = $input.all()[0].json.response;\n\n// Clean up the response and ensure proper formatting\nlet chapterContent = aiResponse || '';\n\n// Ensure chapter has proper heading if missing\nif (!chapterContent.includes(`# Chapter ${promptData.chapter_number}`) && !chapterContent.includes(`Chapter ${promptData.chapter_number}`)) {\n  chapterContent = `# Chapter ${promptData.chapter_number}\\n\\n` + chapterContent;\n}\n\n// Word count estimation\nconst wordCount = chapterContent.split(/\\s+/).filter(word => word.length > 0).length;\n\nconst finalChapter = {\n  chapter_number: promptData.chapter_number,\n  book_title: promptData.book_title,\n  genre: promptData.genre,\n  language: promptData.language,\n  content: chapterContent,\n  word_count: wordCount,\n  generated_at: new Date().toISOString()\n};\n\nreturn [{ json: finalChapter }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 300],
+      "id": "process-chapter-response",
+      "name": "Process Chapter Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [920, 300],
+      "id": "respond-chapter",
+      "name": "Respond with Chapter"
+    }
+  ],
+  "connections": {
+    "Webhook - Write Chapter": {
+      "main": [
+        [
+          {
+            "node": "Prepare Chapter Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Chapter Prompt": {
+      "main": [
+        [
+          {
+            "node": "Write Chapter Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Chapter Content": {
+      "main": [
+        [
+          {
+            "node": "Process Chapter Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Chapter Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Chapter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Write Chapter Content",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

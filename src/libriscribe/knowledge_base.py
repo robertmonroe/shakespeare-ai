@@ -9,6 +9,7 @@ class Character(BaseModel):
     name: str
     age: str = ""
     physical_description: str = ""
+    appearance: str = ""  # Explicit visual appearance (hair, skin, eyes, etc.)
     personality_traits: str = ""
     background: str = ""
     motivations: str = ""
@@ -102,6 +103,10 @@ class ProjectKnowledgeBase(BaseModel):
     num_chapters_str: str = "" #Keep for advanced
     llm_provider: str = "openai"
     dynamic_questions: Dict[str, str] = {} #Keep for advanced
+    
+    # Style and pacing preferences
+    inspired_by: str = ""  # Authors, books, or works that inspire the style
+    pacing_preference: str = ""  # fast, slow, balanced, or custom description
     
     # Concept generation control flags
     skip_concept_critique: bool = False  # Skip critique stage, use initial concept directly

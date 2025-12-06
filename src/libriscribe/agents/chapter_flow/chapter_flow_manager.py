@@ -9,6 +9,8 @@ from rich.console import Console
 
 from libriscribe.agents.chapter_flow.backup_manager import BackupManager
 from libriscribe.agents.chapter_flow.review_manager import ReviewManager
+from libriscribe.agents.decision_agent import DecisionAgent
+from libriscribe.agents.task_based_editor import TaskBasedEditor
 from libriscribe.knowledge_base import ProjectKnowledgeBase
 from libriscribe.utils.llm_client import LLMClient
 
@@ -105,23 +107,114 @@ class ChapterFlowManager:
             return {}
 
     def edit_chapter(self, chapter_number: int) -> None:
-        """Edit a chapter using the editor agent.
+        """Edit a chapter using task-based system.
         
         Args:
             chapter_number: The chapter number to edit
         """
         try:
-            # EditorAgent will print its own status message
-            self.agents["editor"].execute(
-                project_knowledge_base=self.project_knowledge_base,
-                chapter_number=chapter_number
-            )
+            # Load review
+            review_path = self.project_dir / "reviews" / f"chapter_{chapter_number}_review.md"
+            if not review_path.exists():
+                console.print(f"[red]❌ No review found for Chapter {chapter_number}[/red]")
+                console.print(f"[yellow]Run review first before editing[/yellow]")
+                return
             
-            logger.info(f"Chapter {chapter_number} edited successfully")
+            review_text = review_path.read_text(encoding="utf-8")
+            
+            # DEBUG: Show what we're loading
+            console.print(f"[dim]Loading review from: {review_path}[/dim]")
+            console.print(f"[dim]Review length: {len(review_text)} chars[/dim]")
+            console.print(f"[dim]First 200 chars: {review_text[:200]}...[/dim]")
+            
+            # 1. Decision Agent creates task list
+            decision_agent = DecisionAgent(self.llm_client)
+            task_list = decision_agent.create_task_list(review_text)
+            
+            if not task_list:
+                console.print(f"[yellow]⚠️  No tasks created for Chapter {chapter_number}[/yellow]")
+                return
+            
+            # 2. Task-Based Editor applies tasks
+            editor = TaskBasedEditor(self.llm_client)
+            
+            chapter_path = self.get_chapter_path(chapter_number)
+            chapter_text = chapter_path.read_text(encoding="utf-8")
+            
+            # Build context
+            context = {
+                'characters': self._build_character_context(),
+                'worldbuilding': self._build_worldbuilding_context()
+            }
+            
+            result = editor.execute(chapter_text, task_list, context)
+            
+            # 3. Create backup before saving edited chapter
+            backup_path = self.backup_manager.create_backup(chapter_path)
+            if backup_path:
+                console.print(f"[blue]💾 Backup created: {Path(backup_path).name}[/blue]")
+            
+            # 4. Save edited chapter
+            chapter_path.write_text(result['edited_chapter'], encoding="utf-8")
+            
+            summary = result['completion_summary']
+            console.print(f"[green]✅ Chapter {chapter_number} edited[/green]")
+            console.print(f"   {summary['completed']}/{summary['total_tasks']} tasks completed")
+            console.print(f"   Success rate: {summary['success_rate']*100:.0f}%")
+            
+            logger.info(f"Chapter {chapter_number} edited: {summary['completed']}/{summary['total_tasks']} tasks")
             
         except Exception as e:
             logger.exception(f"Error editing chapter {chapter_number}: {e}")
             console.print(f"[red]ERROR: Failed to edit chapter {chapter_number}[/red]")
+    
+    def _build_character_context(self) -> str:
+        """Build character context string for editor."""
+        try:
+            characters = self.project_knowledge_base.characters
+            if not characters:
+                return "No characters defined"
+            
+            context_parts = []
+            for name, char in characters.items():
+                role = getattr(char, 'role', '')
+                traits = getattr(char, 'personality_traits', [])
+                if isinstance(traits, list):
+                    traits_str = ', '.join(traits) if traits else 'No traits'
+                else:
+                    traits_str = str(traits)
+                context_parts.append(f"- {name} ({role}): {traits_str}")
+            
+            return "\n".join(context_parts)
+        except Exception as e:
+            logger.error(f"Error building character context: {e}")
+            return "Error loading characters"
+    
+    def _build_worldbuilding_context(self) -> str:
+        """Build worldbuilding context string for editor."""
+        try:
+            worldbuilding = self.project_knowledge_base.worldbuilding
+            if not worldbuilding:
+                return "No worldbuilding defined"
+            
+            # Worldbuilding is an object, convert to string representation
+            context_parts = []
+            
+            # Get all attributes from the worldbuilding object
+            if hasattr(worldbuilding, '__dict__'):
+                for key, value in worldbuilding.__dict__.items():
+                    if not key.startswith('_') and value:
+                        if isinstance(value, str):
+                            context_parts.append(f"- {key}: {value}")
+                        elif isinstance(value, list):
+                            context_parts.append(f"- {key}: {', '.join(str(v) for v in value)}")
+                        else:
+                            context_parts.append(f"- {key}: {str(value)}")
+            
+            return "\n".join(context_parts) if context_parts else "No worldbuilding defined"
+        except Exception as e:
+            logger.error(f"Error building worldbuilding context: {e}")
+            return "Error loading worldbuilding"
 
     def write_and_review_chapter_ai_mode(self, chapter_number: int) -> str:
         """AI-mode enhanced write-review-edit workflow with backups.

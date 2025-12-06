@@ -1,0 +1,208 @@
+{
+    "name": "04 - Content Reviewer",
+    "nodes": [
+        {
+            "parameters": {},
+            "id": "manual-trigger",
+            "name": "When clicking 'Test workflow'",
+            "type": "n8n-nodes-base.manualTrigger",
+            "typeVersion": 1,
+            "position": [
+                240,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "assignments": {
+                    "assignments": [
+                        {
+                            "id": "book-title",
+                            "name": "book_title",
+                            "value": "The_Moscow_Protocol",
+                            "type": "string"
+                        },
+                        {
+                            "id": "chapter-num",
+                            "name": "chapter_number",
+                            "value": "1",
+                            "type": "number"
+                        },
+                        {
+                            "id": "genre",
+                            "name": "genre",
+                            "value": "Spy Thriller",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "id": "review-input",
+            "name": "Review Input Parameters",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 3,
+            "position": [
+                460,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "read",
+                "fileName": "={{ $json.book_title }}/chapter_{{ $json.chapter_number }}.md"
+            },
+            "id": "read-chapter",
+            "name": "Read Chapter File",
+            "type": "n8n-nodes-base.readFile",
+            "typeVersion": 1,
+            "position": [
+                680,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://openrouter.ai/api/v1/chat/completions",
+                "authentication": "predefinedCredentialType",
+                "nodeCredentialType": "httpHeaderAuth",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "HTTP-Referer",
+                            "value": "http://localhost:5678"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={{ {\n  \"model\": \"anthropic/claude-3.5-sonnet\",\n  \"messages\": [{\n    \"role\": \"user\",\n    \"content\": \"You are an expert \" + $('Review Input Parameters').item.json.genre + \" editor. Review this chapter and identify ALL issues.\\n\\nCHAPTER TO REVIEW:\\n\" + $json.data.toString() + \"\\n\\nREVIEW CHECKLIST:\\n\\n1. PLOT ISSUES:\\n   - Plot holes or inconsistencies\\n   - Unclear motivations\\n   - Unresolved questions\\n   - Pacing problems\\n\\n2. CHARACTER ISSUES:\\n   - Out-of-character behavior\\n   - Weak character development\\n   - Inconsistent dialogue\\n   - Missing emotional depth\\n\\n3. WRITING QUALITY:\\n   - Telling instead of showing\\n   - Weak descriptions\\n   - Repetitive language\\n   - Awkward phrasing\\n   - Grammar/spelling errors\\n\\n4. GENRE-SPECIFIC (\" + $('Review Input Parameters').item.json.genre + \"):\\n   - Insufficient tension\\n   - Weak action sequences\\n   - Unrealistic spy craft\\n   - Missing atmosphere\\n\\n5. TECHNICAL:\\n   - Scene transitions\\n   - Timeline issues\\n   - Setting details\\n\\nFORMAT YOUR REVIEW AS:\\n\\n## CRITICAL ISSUES (Must Fix)\\n- [Specific issue with line/paragraph reference]\\n\\n## MODERATE ISSUES (Should Fix)\\n- [Specific issue]\\n\\n## MINOR SUGGESTIONS (Optional)\\n- [Suggestion]\\n\\n## STRENGTHS\\n- [What works well]\\n\\nBe specific and actionable. Reference exact passages when possible.\"\n  }],\n  \"max_tokens\": 4000,\n  \"temperature\": 0.3\n} }}"
+            },
+            "id": "review-chapter",
+            "name": "Review Chapter (Claude)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                900,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "assignments": {
+                    "assignments": [
+                        {
+                            "id": "extract-review",
+                            "name": "review",
+                            "value": "={{ $json.choices[0].message.content }}",
+                            "type": "string"
+                        },
+                        {
+                            "id": "chapter-num",
+                            "name": "chapter_number",
+                            "value": "={{ $('Review Input Parameters').item.json.chapter_number }}",
+                            "type": "number"
+                        },
+                        {
+                            "id": "book-title",
+                            "name": "book_title",
+                            "value": "={{ $('Review Input Parameters').item.json.book_title }}",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "id": "extract-review",
+            "name": "Extract Review",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 3,
+            "position": [
+                1120,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "write",
+                "fileName": "={{ $json.book_title }}/reviews/chapter_{{ $json.chapter_number }}_review.md",
+                "fileContent": "={{ \"# Review: Chapter \" + $json.chapter_number + \"\\n\\n\" + $json.review }}",
+                "options": {
+                    "encoding": "utf8"
+                }
+            },
+            "id": "save-review",
+            "name": "Save Review to File",
+            "type": "n8n-nodes-base.writeFile",
+            "typeVersion": 1,
+            "position": [
+                1340,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "When clicking 'Test workflow'": {
+            "main": [
+                [
+                    {
+                        "node": "Review Input Parameters",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Review Input Parameters": {
+            "main": [
+                [
+                    {
+                        "node": "Read Chapter File",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Read Chapter File": {
+            "main": [
+                [
+                    {
+                        "node": "Review Chapter (Claude)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Review Chapter (Claude)": {
+            "main": [
+                [
+                    {
+                        "node": "Extract Review",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Extract Review": {
+            "main": [
+                [
+                    {
+                        "node": "Save Review to File",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

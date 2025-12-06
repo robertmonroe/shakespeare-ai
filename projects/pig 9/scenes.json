@@ -1,0 +1,200 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "Introduces Wilbur and the other pigs in the pigpen, highlighting Wilbur's atypical behavior and intellectual curiosity. He observes the other pigs with detached bemusement, noticing their chaotic movements.",
+            "characters": [
+                "Wilbur",
+                "Other Pigs"
+            ],
+            "setting": "Farmer McGregor's Pigpen",
+            "goal": "Establish Wilbur's character and his difference from the other pigs.",
+            "emotional_beat": "Discontent, Mild Amusement"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Wilbur watches Farmer McGregor tending to the farm, specifically noticing the repetitive patterns in the rows of crops. He tries to mimic these patterns with mud, much to the confusion of the other pigs.",
+            "characters": [
+                "Wilbur",
+                "Other Pigs",
+                "Farmer McGregor (briefly)"
+            ],
+            "setting": "Edge of the Pigpen, overlooking the farm fields",
+            "goal": "Show Wilbur's fascination with patterns extending beyond the immediate environment.",
+            "emotional_beat": "Curiosity, Frustration"
+        },
+        {
+            "scene_number": 3,
+            "summary": "A rainy day forces the pigs inside the barn. Wilbur observes the shadows cast by hay bales, and they create a grid-like pattern on the floor. He has an epiphany, recognizing it as a chessboard.",
+            "characters": [
+                "Wilbur",
+                "Other Pigs"
+            ],
+            "setting": "Farmer McGregor's Barn",
+            "goal": "Introduce the chessboard motif and spark Wilbur's desire for something more.",
+            "emotional_beat": "Revelation, Excitement"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Wilbur attempts to explain the chessboard pattern to the other pigs, who are utterly uninterested and continue to wallow in the mud. He realizes the vast difference between him and them.",
+            "characters": [
+                "Wilbur",
+                "Other Pigs"
+            ],
+            "setting": "Farmer McGregor's Barn, specifically a muddy corner",
+            "goal": "Emphasize Wilbur's isolation and strengthen his motivation to leave the farm.",
+            "emotional_beat": "Isolation, Despair"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Wilbur, alone in the barn later that night, begins planning his escape. He observes the loose boards in the barn wall and formulates a rudimentary plan to slip away unnoticed under the cover of darkness.",
+            "characters": [
+                "Wilbur"
+            ],
+            "setting": "Farmer McGregor's Barn, at night",
+            "goal": "Solidify Wilbur's decision to escape and begin the preparation.",
+            "emotional_beat": "Determination, Hope"
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Wilbur puts his escape plan into action, slipping out of the pigpen and navigating the farmyard under the cover of darkness, his heart pounding with excitement and fear. He spots a delivery truck loaded with vegetables about to depart.",
+            "characters": [
+                "Wilbur"
+            ],
+            "setting": "Farmer McGregor's Farm, pigpen and farmyard.",
+            "goal": "To successfully escape the farm and board the delivery truck.",
+            "emotional_beat": "Tense anticipation mixed with exhilarating hope."
+        },
+        {
+            "scene_number": 2,
+            "summary": "Wilbur nervously hides amongst the crates of vegetables in the back of the moving delivery truck. He endures a bumpy, noisy ride, holding his breath whenever he hears voices, feeling increasingly uncomfortable and nauseous but determined to reach his destination.",
+            "characters": [
+                "Wilbur"
+            ],
+            "setting": "Inside the back of a delivery truck, traveling towards Brightville.",
+            "goal": "To remain undetected on the truck and reach Brightville.",
+            "emotional_beat": "Anxiety and discomfort, but also unwavering resolve."
+        },
+        {
+            "scene_number": 3,
+            "summary": "The delivery truck arrives in Brightville, and Wilbur, stiff and disoriented, manages to sneak out unnoticed as the driver unloads the cargo at a bustling market. He finds himself overwhelmed by the sheer scale and chaos of the city.",
+            "characters": [
+                "Wilbur"
+            ],
+            "setting": "A bustling market in Brightville, filled with vendors and shoppers.",
+            "goal": "To safely disembark from the truck and begin exploring Brightville.",
+            "emotional_beat": "Overwhelmed, disoriented, and slightly afraid."
+        },
+        {
+            "scene_number": 4,
+            "summary": "Lost and wandering through the unfamiliar streets, Wilbur feels increasingly alone and unsure of himself. He's startled by loud noises and strange sights, wishing he had someone to guide him.",
+            "characters": [
+                "Wilbur"
+            ],
+            "setting": "Various streets of Brightville.",
+            "goal": "To find a safe place and get his bearings.",
+            "emotional_beat": "Loneliness and vulnerability."
+        },
+        {
+            "scene_number": 5,
+            "summary": "Wilbur stumbles upon Brightville's public chess park, drawn by the intricate boards and the focused concentration of the players. He watches, mesmerized, as they move the pieces, recognizing a complex pattern.",
+            "characters": [
+                "Wilbur",
+                "chess players (background)"
+            ],
+            "setting": "Brightville's public chess park.",
+            "goal": "To observe the chess players and understand the game.",
+            "emotional_beat": "Fascination and intrigue."
+        },
+        {
+            "scene_number": 6,
+            "summary": "While intently observing a chess game, Wilbur is approached by Pixel, a streetwise stray cat, who seems amused by Wilbur's intense interest. Pixel offers to help Wilbur understand the game, sensing Wilbur's unusual intelligence.",
+            "characters": [
+                "Wilbur",
+                "Pixel"
+            ],
+            "setting": "Brightville's public chess park, near a chess table.",
+            "goal": "To introduce Pixel as Wilbur's ally and begin Wilbur's chess education.",
+            "emotional_beat": "Hope and cautious optimism."
+        }
+    ],
+    "3": [
+        {
+            "scene_number": 1,
+            "summary": "Wilbur, with Pixel's encouragement, nervously approaches the chess park. He watches a game in progress, analyzing the moves with surprising accuracy, and then cautiously approaches a lone player sitting at a table.",
+            "characters": [
+                "Wilbur",
+                "Pixel",
+                "Random Chess Player 1"
+            ],
+            "setting": "Brightville Public Chess Park, edge of the park, near the chess tables.",
+            "goal": "To introduce Wilbur to the chess park and set up his first challenge.",
+            "emotional_beat": "Nervous anticipation, curiosity."
+        },
+        {
+            "scene_number": 2,
+            "summary": "Wilbur, with Pixel subtly guiding his snout, plays his first chess game against a skeptical (but ultimately intrigued) player. Wilbur demonstrates an unusual but effective playing style, quickly gaining the upper hand.",
+            "characters": [
+                "Wilbur",
+                "Pixel",
+                "Random Chess Player 1",
+                "Onlookers (mentioned briefly)"
+            ],
+            "setting": "Brightville Public Chess Park, at a chess table.",
+            "goal": "To demonstrate Wilbur's chess skills and establish his unique playing method.",
+            "emotional_beat": "Surprise, amusement, rising tension."
+        },
+        {
+            "scene_number": 3,
+            "summary": "Wilbur wins several games in a row, attracting a small crowd. Word spreads quickly about \"The Pig Prodigy,\" and a local reporter begins filming. Wilbur enjoys the attention, feeling a sense of accomplishment and belonging.",
+            "characters": [
+                "Wilbur",
+                "Pixel",
+                "Random Chess Players 2 & 3",
+                "Reporter",
+                "Onlookers."
+            ],
+            "setting": "Brightville Public Chess Park, focused around a specific chess table and spreading to nearby areas.",
+            "goal": "To showcase Wilbur's rapid rise to fame and introduce the conflict of media attention.",
+            "emotional_beat": "Excitement, pride, wonder."
+        },
+        {
+            "scene_number": 4,
+            "summary": "Farmer McGregor is watching television at home when he sees the news report about Wilbur. He recognizes his pig and, fueled by anger and a desire to reclaim his property, decides to travel to Brightville.",
+            "characters": [
+                "Farmer McGregor",
+                "Mention of Mrs. McGregor in passing (watching TV together)."
+            ],
+            "setting": "Farmer McGregor's farmhouse living room.",
+            "goal": "To introduce Farmer McGregor as the antagonist and set up his pursuit of Wilbur.",
+            "emotional_beat": "Anger, greed, determination."
+        },
+        {
+            "scene_number": 5,
+            "summary": "A renowned grandmaster, Victor Sterling, watches a recording of Wilbur playing chess. He dismisses Wilbur initially, but then becomes concerned by his unconventional yet effective strategies. He vows to expose Wilbur as a fraud, believing it tarnishes the integrity of the game.",
+            "characters": [
+                "Victor Sterling"
+            ],
+            "setting": "Victor Sterling's apartment/office, filled with chess trophies and books.",
+            "goal": "To introduce the grandmaster as another antagonist and establish his motivation.",
+            "emotional_beat": "Arrogance, insecurity, determination to disprove Wilbur."
+        },
+        {
+            "scene_number": 6,
+            "summary": "Wilbur is playing a high-stakes match (possibly against a stronger player than before) when Farmer McGregor arrives at the park. The game becomes chaotic as Wilbur tries to focus on the board while dodging Farmer McGregor's attempts to grab him. Pixel uses distractions to aid Wilbur.",
+            "characters": [
+                "Wilbur",
+                "Pixel",
+                "Farmer McGregor",
+                "Strong Chess Player",
+                "Onlookers",
+                "Reporter"
+            ],
+            "setting": "Brightville Public Chess Park, specifically around the chess table where Wilbur is playing.",
+            "goal": "To create a climactic scene where Wilbur must use his chess skills while simultaneously evading Farmer McGregor, highlighting his intelligence and resourcefulness.",
+            "emotional_beat": "Suspense, panic, determination, excitement as Wilbur pulls off a complex move while dodging Farmer McGregor."
+        }
+    ]
+}

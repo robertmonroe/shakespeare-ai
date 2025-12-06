@@ -1,0 +1,196 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "We are introduced to Percy, a genetically modified pig, living a monotonous life on Farmer McGregor's Iowa farm. He feels different from the other pigs, longing for something more than mud and slop.",
+            "characters": [
+                "Percy",
+                "Other Pigs (background)"
+            ],
+            "setting": "Pigpen on Farmer McGregor's Iowa farm",
+            "goal": "Establish Percy's mundane existence and his feeling of being an outsider.",
+            "emotional_beat": "Boredom, slight melancholy"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Percy discovers an old, dusty radio in a corner of the barn. He's inexplicably drawn to it, even though it's mostly static.",
+            "characters": [
+                "Percy"
+            ],
+            "setting": "Dusty corner of the barn on Farmer McGregor's farm",
+            "goal": "Introduce the radio as a symbol of Percy's connection to the outside world.",
+            "emotional_beat": "Curiosity, a flicker of hope"
+        },
+        {
+            "scene_number": 3,
+            "summary": "While Percy is rooting around the radio, it suddenly crackles to life and starts playing \"Hound Dog\" by Elvis Presley. The other pigs ignore it, but Percy is mesmerized.",
+            "characters": [
+                "Percy",
+                "Other Pigs (background)",
+                "Voice of Elvis Presley (on the radio)"
+            ],
+            "setting": "Barn on Farmer McGregor's farm",
+            "goal": "Introduce Elvis' music as the catalyst for Percy's discovery.",
+            "emotional_beat": "Fascination, intrigue"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Overcome by the music, Percy tries to mimic Elvis' voice. To his shock (and the momentary amusement of the chickens), he discovers he can sing with a surprisingly accurate Elvis-esque tone.",
+            "characters": [
+                "Percy",
+                "Chickens (background)"
+            ],
+            "setting": "Barn on Farmer McGregor's farm",
+            "goal": "Reveal Percy's unique talent and the realization of his potential.",
+            "emotional_beat": "Surprise, excitement, a hint of disbelief"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Percy practices his Elvis impersonation in secret, becoming more and more confident. He begins to dream of escaping the farm and using his talent to find fame and fortune, far away from his bacon-destined future. He has vivid dreams about Graceland and adoring fans.",
+            "characters": [
+                "Percy"
+            ],
+            "setting": "Various locations on Farmer McGregor's farm (pigpen, barn, field), then transitions into Percy's dream sequence.",
+            "goal": "Solidify Percy's desire to escape and pursue his dream, foreshadowing his journey.",
+            "emotional_beat": "Hope, ambition, determination"
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Percy escapes the confines of the truck transporting livestock, ending up disoriented in the unfamiliar landscape outside Memphis. He's alone and unsure of where to go.",
+            "characters": [
+                "Percy"
+            ],
+            "setting": "A highway off-ramp just outside Memphis, Tennessee; overgrown weeds and a chain-link fence are nearby.",
+            "goal": "To establish Percy's arrival in Memphis and his initial feelings of being lost and alone.",
+            "emotional_beat": "Anxiety, confusion, vulnerability."
+        },
+        {
+            "scene_number": 2,
+            "summary": "Wandering aimlessly, Percy tries to follow the sounds of music, hoping it will lead him somewhere familiar or helpful. He ends up in a run-down area near the Mississippi River.",
+            "characters": [
+                "Percy"
+            ],
+            "setting": "Dilapidated area near the Mississippi River; old warehouses and abandoned buildings.",
+            "goal": "To show Percy's determination and draw him towards a more populated area, creating the opportunity for him to meet Daisy.",
+            "emotional_beat": "Hopeful, slightly more confident, but still wary."
+        },
+        {
+            "scene_number": 3,
+            "summary": "While trying to sneak a discarded apple from a vendor's cart, Percy bumps into Daisy, a street-smart runaway teenager with a knack for sewing. She's drawn to his appearance and unique vocal talents.",
+            "characters": [
+                "Percy",
+                "Daisy",
+                "Unseen fruit vendor"
+            ],
+            "setting": "A busy street corner near the riverfront, close to tourist shops selling Elvis memorabilia.",
+            "goal": "To introduce Daisy and establish her initial impression of Percy as something special, a diamond in the rough.",
+            "emotional_beat": "Curiosity (Daisy), apprehension (Percy)."
+        },
+        {
+            "scene_number": 4,
+            "summary": "Daisy, intrigued by Percy's singing, offers him a place to stay in her makeshift camp behind a boarded-up diner. She shares her meager food and learns about his dream of performing like Elvis.",
+            "characters": [
+                "Percy",
+                "Daisy"
+            ],
+            "setting": "Makeshift camp behind a boarded-up diner; old cardboard boxes and blankets serve as shelter.",
+            "goal": "To build trust between Percy and Daisy and establish Daisy as Percy's protector and friend.",
+            "emotional_beat": "Kindness, empathy (Daisy), relief, burgeoning hope (Percy)."
+        },
+        {
+            "scene_number": 5,
+            "summary": "Daisy, excited about Percy's potential, envisions turning him into an Elvis impersonator. She begins sketching designs for a custom-made, rhinestone-studded jumpsuit for him, brainstorming possible stage names. She settles on \"The Swine-King.\"",
+            "characters": [
+                "Daisy",
+                "Percy"
+            ],
+            "setting": "Makeshift camp behind a boarded-up diner.",
+            "goal": "To introduce the idea of Percy becoming an Elvis impersonator and to solidify Daisy's role as his manager and stylist, setting the stage for his transformation.",
+            "emotional_beat": "Excitement, inspiration (Daisy), anticipation, and a touch of disbelief (Percy)."
+        }
+    ],
+    "3": [
+        {
+            "scene_number": 1,
+            "summary": "Daisy and Percy rehearse Percy's Elvis act in Daisy's cramped apartment, tweaking his delivery and costume; Daisy is creating a cape. They're nervous but also excited about the upcoming performance.",
+            "characters": [
+                "Percy",
+                "Daisy"
+            ],
+            "setting": "Daisy's small, cluttered apartment in Memphis",
+            "goal": "To prepare Percy for his debut and solidify his stage presence.",
+            "emotional_beat": "Nervous anticipation mixed with excitement."
+        },
+        {
+            "scene_number": 2,
+            "summary": "The scene opens at the \"Blue Suede Blues\" bar - It's Percy's debut night. The bar is nearly empty, but Daisy is doing her best to promote the show. They are met with skepticism and mild amusement from the bartender and the few patrons.",
+            "characters": [
+                "Percy",
+                "Daisy",
+                "Bartender",
+                "a few bar patrons"
+            ],
+            "setting": "The dimly lit \"Blue Suede Blues\" bar, a small, local venue in Memphis",
+            "goal": "Establish the setting and the initial low expectations for Percy's performance.",
+            "emotional_beat": "Apprehension and a sense of being an underdog."
+        },
+        {
+            "scene_number": 3,
+            "summary": "Percy takes the stage, looking awkward in his makeshift Elvis costume. He starts singing hesitantly, but as he gets into it, his voice transforms, and the crowd responds with growing enthusiasm.",
+            "characters": [
+                "Percy",
+                "Daisy",
+                "Bartender",
+                "bar patrons",
+                "(potential walk-in crowd members)"
+            ],
+            "setting": "The stage at the \"Blue Suede Blues\" bar",
+            "goal": "Showcase Percy's talent and the positive reaction he receives.",
+            "emotional_beat": "Initial awkwardness transitioning to rising excitement and validation."
+        },
+        {
+            "scene_number": 4,
+            "summary": "Back in Iowa, Farmer John discovers Percy is missing. He finds a crudely drawn map and hears whispers of an \"Elvis pig\" in Memphis, leading him to the conclusion that Percy has run away to become a star. He's furious and vows to bring Percy back.",
+            "characters": [
+                "Farmer John",
+                "(mention of other farmhands \u2013 implied but not seen)"
+            ],
+            "setting": "Farmer John's messy farmhouse kitchen in Iowa",
+            "goal": "Introduce the antagonist's reaction to Percy's escape and his motivation to retrieve him.",
+            "emotional_beat": "Anger and determination."
+        },
+        {
+            "scene_number": 5,
+            "summary": "Percy's act at the Blue Suede Blues is a massive hit. The bar is packed, and the crowd is cheering for \"The Swine-King\". Local news reporters are present, drawn by the buzz.",
+            "characters": [
+                "Percy",
+                "Daisy",
+                "Bartender",
+                "growing crowd of fans",
+                "local news reporter",
+                "cameraman"
+            ],
+            "setting": "The crowded \"Blue Suede Blues\" bar, now buzzing with excitement",
+            "goal": "Show the rapid success and growing fame of Percy's act.",
+            "emotional_beat": "Jubilation and triumph."
+        },
+        {
+            "scene_number": 6,
+            "summary": "As Percy basks in the afterglow of his performance, Farmer John storms into the bar, creating a chaotic scene. He confronts Percy, declaring his intention to take him back to the farm. Daisy and Percy's newfound fans rally around him, creating a barrier between him and the farmer.",
+            "characters": [
+                "Percy",
+                "Daisy",
+                "Farmer John",
+                "fans",
+                "Bartender",
+                "news reporter",
+                "cameraman"
+            ],
+            "setting": "The \"Blue Suede Blues\" bar, now filled with tension",
+            "goal": "Introduce the conflict between Percy's freedom and the farmer's claim on him, leaving the chapter on a cliffhanger.",
+            "emotional_beat": "Fear and uncertainty mixed with defiance and hope."
+        }
+    ]
+}

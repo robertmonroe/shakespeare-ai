@@ -1,0 +1,142 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "Introduces the pigpen and the daily life of the pigs, focusing on the muddy, monotonous routine. Introduces Henry and his restlessness.",
+            "characters": [
+                "Henry",
+                "Several other pigs (background)"
+            ],
+            "setting": "The muddy pigpen, early morning",
+            "goal": "Establish the ordinary, dreary world the pigs inhabit, and highlight Henry's dissatisfaction with it.",
+            "emotional_beat": "Discontent"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Henry encounters the barn owl perched on the barn roof. The owl tells him stories of the world beyond the farm, igniting Henry's adventurous spirit.",
+            "characters": [
+                "Henry",
+                "Barn Owl"
+            ],
+            "setting": "Edge of the pigpen, near the barn, during the day",
+            "goal": "Introduce the source of Henry's dreams and provide a glimpse of the world outside the farm.",
+            "emotional_beat": "Awe/Wonder"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Henrieta observes Farmer Giles from a distance, trying to understand his actions. She's shooed away by Old Man Grumple, who scolds her for \"un-piglike\" behavior.",
+            "characters": [
+                "Henrieta",
+                "Old Man Grumple",
+                "Farmer Giles (distant figure)"
+            ],
+            "setting": "Near the fence of the pigpen, overlooking the farmyard.",
+            "goal": "Introduce Henrieta's intelligence and curiosity, and establish Old Man Grumple as an antagonist and a representative of traditional pig beliefs.",
+            "emotional_beat": "Curiosity and Frustration"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Henry finds Henrieta, distressed by Old Man Grumple's words. He comforts her by sharing his dreams of escaping the farm and seeing the world.",
+            "characters": [
+                "Henry",
+                "Henrieta"
+            ],
+            "setting": "Slightly away from the main pigpen, near the feeding trough.",
+            "goal": "To solidify the bond between Henry and Henrieta, establishing their shared desire for something more.",
+            "emotional_beat": "Comfort and Hope"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Henrieta reveals her own dreams of understanding humans and their world. They discuss the risks and practicalities of escaping, acknowledging the slaughterhouse as a looming threat.",
+            "characters": [
+                "Henry",
+                "Henrieta"
+            ],
+            "setting": "Hidden corner of the pigpen, near the fence, in the evening.",
+            "goal": "To reveal Henrieta's inner thoughts and lay the groundwork for a potential escape plan. Introduce the dark reality of their existence.",
+            "emotional_beat": "Fear mixed with Determination"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Henry and Henrieta solidify their commitment to each other and their shared dream of freedom. They cautiously whisper about the possibility of escaping that very night, deciding to look for weak spots in the fence.",
+            "characters": [
+                "Henry",
+                "Henrieta"
+            ],
+            "setting": "Pigpen, under the cover of darkness.",
+            "goal": "To end the chapter on a note of suspense and anticipation, setting the stage for the next chapter's action.",
+            "emotional_beat": "Excitement and Anxiety"
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Under the cloak of a moonless night, Henry and Henrieta finalize their escape plan, going over every detail one last time in hushed whispers. Henrieta, drawing on her observations of Farmer Giles, predicts the guard dog's patrol route.",
+            "characters": [
+                "Henry",
+                "Henrieta"
+            ],
+            "setting": "The corner of the pigpen, near the fence, under a dark sky.",
+            "goal": "To reaffirm the plan and build mutual confidence before the dangerous escape.",
+            "emotional_beat": "Nervous anticipation mingled with resolute determination."
+        },
+        {
+            "scene_number": 2,
+            "summary": "As planned, Henry and Henrieta navigate the crowded pigpen toward the weakest point in the fence. Grumple, awakened by their movements, confronts them, attempting to dissuade them with dire warnings of the outside world.",
+            "characters": [
+                "Henry",
+                "Henrieta",
+                "Old Man Grumple",
+                "other pigs (background)"
+            ],
+            "setting": "Inside the pigpen, near the fence, in the dark.",
+            "goal": "To overcome the first obstacle \u2013 Grumple's opposition \u2013 and reach the fence.",
+            "emotional_beat": "Tension, conflict, growing defiance."
+        },
+        {
+            "scene_number": 3,
+            "summary": "Henry uses his surprisingly effective (and rather embarrassing) high-pitched squeal to distract Grumple while Henrieta cleverly manipulates a loose board in the fence. They squeeze through, leaving Grumple sputtering behind.",
+            "characters": [
+                "Henry",
+                "Henrieta",
+                "Old Man Grumple"
+            ],
+            "setting": "Pigpen fence, where the boards meet the ground.",
+            "goal": "To breach the pigpen fence and escape into the farmyard.",
+            "emotional_beat": "Relief mixed with adrenaline and a touch of guilt."
+        },
+        {
+            "scene_number": 4,
+            "summary": "They successfully avoid the patrolling guard dogs by following Henrieta's calculations of the dog's route. They pause, trembling, as they hear the distant sound of Farmer Giles\u2019 coughing in the farmhouse, confirming he's still inside.",
+            "characters": [
+                "Henry",
+                "Henrieta"
+            ],
+            "setting": "The farmyard, near the barn, shrouded in darkness.",
+            "goal": "To avoid detection by the guard dogs and Farmer Giles.",
+            "emotional_beat": "Fear, heightened senses, quick thinking."
+        },
+        {
+            "scene_number": 5,
+            "summary": "Henry and Henrieta scramble under the outer fence surrounding the farm. Henry almost gets snagged on barbed wire, but Henrieta, recalling a technique she\u2019d observed Farmer Giles using, gently frees him with her snout.",
+            "characters": [
+                "Henry",
+                "Henrieta"
+            ],
+            "setting": "The perimeter fence of the farm.",
+            "goal": "To cross the final barrier and escape the farm property.",
+            "emotional_beat": "Intense struggle, vulnerability, and unwavering mutual support."
+        },
+        {
+            "scene_number": 6,
+            "summary": "Free from the farm, Henry and Henrieta find themselves on a grassy hill overlooking the distant horizon. They look back at the farm, a cluster of dim lights in the distance, unsure of what the future holds, but united and excited for the possibilities.",
+            "characters": [
+                "Henry",
+                "Henrieta"
+            ],
+            "setting": "A grassy hilltop outside the farm, under the starry sky.",
+            "goal": "To reflect on their escape and embrace the unknown future.",
+            "emotional_beat": "Freedom, trepidation, hope."
+        }
+    ]
+}

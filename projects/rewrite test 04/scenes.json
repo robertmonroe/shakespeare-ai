@@ -1,0 +1,203 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "Marcus sits on his bedroom floor surrounded by unopened college acceptance letters, staring out the window as he watches Copper struggle three times to climb the porch steps. The veterinarian's business card falls from his pocket, and he quickly shoves it back in, refusing to acknowledge what it means.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "Marcus's bedroom in his family's home in coastal Maine, late afternoon in early spring",
+            "goal": "Establish the central conflict\u2014Copper's declining health and Marcus's inability to face the inevitable\u2014while introducing the unopened college letters that represent Marcus's stalled future.",
+            "emotional_beat": "Denial mixed with creeping dread"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Marcus's mother knocks on his door and enters with folded laundry, her eyes landing on the pile of unopened letters before meeting Marcus's gaze. They have a careful, tender conversation where she gently suggests it might be time to call the vet, but Marcus deflects by saying he's planning one last hike to Serpent's Cove with Copper.",
+            "characters": [
+                "Marcus",
+                "Marcus's mother",
+                "Copper (present but resting)"
+            ],
+            "setting": "Marcus's bedroom, continuing into early evening",
+            "goal": "Reveal the family dynamic and show how Marcus's mother understands his pain while trying to help him face reality; introduce Serpent's Cove as a significant location.",
+            "emotional_beat": "Tender concern and unspoken understanding"
+        },
+        {
+            "scene_number": 3,
+            "summary": "After his mother leaves, Marcus kneels beside Copper on the floor and runs his hands through the dog's graying fur, remembering the day ten years ago when seven-year-old Marcus brought home a wiggling golden retriever puppy\u2014just three months before his father's fatal heart attack. He recalls his father's laugh and how his dad had tied a blue bandana around Copper's neck, saying \"Every adventure needs a good companion.\"",
+            "characters": [
+                "Marcus",
+                "Copper",
+                "Marcus's father (in memory)"
+            ],
+            "setting": "Marcus's bedroom floor, transitioning into memory",
+            "goal": "Provide crucial backstory about Marcus's father's death and Copper's arrival, establishing their deep bond and the significance of the bandana.",
+            "emotional_beat": "Bittersweet nostalgia"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Marcus begins packing his backpack for the journey to Serpent's Cove, carefully selecting items: Copper's favorite treats, the old tennis ball from their first game of fetch (now cracked and faded), and the blue bandana his father gave Copper. Each item triggers a specific memory\u2014Copper comforting him during nightmares, protecting him from bullies in middle school, sitting beside him during his first date with Sarah Chen.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "Marcus's bedroom, moving between present action and brief memory flashes",
+            "goal": "Show the depth of Marcus and Copper's shared history through meaningful objects; reveal Marcus's growth from grieving child to young man ready for love and connection.",
+            "emotional_beat": "Reflective gratitude mixed with anticipatory grief"
+        },
+        {
+            "scene_number": 5,
+            "summary": "As darkness falls, Marcus sits on the edge of his bed and finally opens one college acceptance letter\u2014the one from his father's alma mater. He reads the words of congratulations, then looks at Copper sleeping on the floor, his breathing labored and uneven, and makes his decision: tomorrow, they'll make the three-hour hike to Serpent's Cove, no matter how long it takes.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "Marcus's bedroom, night",
+            "goal": "Show Marcus taking his first step toward facing the future while honoring the past; create momentum toward the journey that will form the heart of the novella.",
+            "emotional_beat": "Quiet determination tinged with sorrow"
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Marcus and Copper begin their journey on the coastal trail, but within the first quarter-mile, Copper needs to stop and rest, his breathing labored. Marcus kneels beside him, pretending to adjust his backpack while giving Copper time to recover, both of them knowing this hike is different from all the others.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "The trailhead and first stretch of the coastal trail leading to Serpent's Cove",
+            "goal": "Establish the physical reality of Copper's declining health and set the slower, more reflective pace of the journey",
+            "emotional_beat": "Tender concern mixed with denial"
+        },
+        {
+            "scene_number": 2,
+            "summary": "During their second rest stop near a familiar pine grove, Marcus's mind drifts back to the day after his father's funeral when six-year-old Marcus hid in the garage, sobbing, and puppy Copper found him and curled up in his lap, refusing to leave even when called. This memory triggers Marcus to realize that Copper chose him that day, just as much as his mother had brought the puppy home to comfort him.",
+            "characters": [
+                "Marcus",
+                "Copper (present day); Marcus (age 6)",
+                "Copper (puppy)",
+                "Marcus's mother (in memory)"
+            ],
+            "setting": "Pine grove along the coastal trail (present); family garage (flashback)",
+            "goal": "Reveal the origin of Marcus and Copper's bond and show how the dog became his anchor through grief",
+            "emotional_beat": "Bittersweet nostalgia and gratitude"
+        },
+        {
+            "scene_number": 3,
+            "summary": "As they navigate a rocky section of trail, Marcus remembers the afternoon in eighth grade when three older boys cornered him behind the school gym, taunting him about his dead father, and Copper\u2014who had somehow escaped the yard\u2014appeared and drove them away with protective fury. Marcus realizes this was the moment he stopped feeling like a victim and started feeling capable of facing the world.",
+            "characters": [
+                "Marcus",
+                "Copper (present day); Marcus (age 13)",
+                "Copper (age 6)",
+                "three bullies (in memory)"
+            ],
+            "setting": "Rocky outcropping on the coastal trail (present); behind the school gym (flashback)",
+            "goal": "Demonstrate how Copper protected Marcus not just physically but emotionally, helping him develop resilience and confidence",
+            "emotional_beat": "Pride and fierce love"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Halfway to the cove, they reach the sun-warmed rock where Marcus and Sarah sat last summer, and Marcus rests here with Copper, remembering that perfect afternoon when Sarah's hand found his, Copper's head rested in his lap, and he first allowed himself to imagine a future beyond his grief. He pulls out his phone and sees a text from Sarah asking how he's doing, but he doesn't reply yet.",
+            "characters": [
+                "Marcus",
+                "Copper",
+                "Sarah Chen (via text and memory)"
+            ],
+            "setting": "Large sun-warmed rock overlooking the ocean, halfway along the trail",
+            "goal": "Show Marcus's emotional growth and his emerging ability to connect with others, illustrating what Copper's steady presence has made possible",
+            "emotional_beat": "Hope tinged with melancholy"
+        },
+        {
+            "scene_number": 5,
+            "summary": "As the trail descends toward Serpent's Cove, Copper stumbles on the steep section, and Marcus has to support most of his weight, practically carrying him down the final slope. The physical struggle forces Marcus to confront what he's been avoiding: this is likely Copper's last journey to this sacred place, and the dog is making it only for Marcus's sake.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "The steep descent leading down to Serpent's Cove",
+            "goal": "Create a moment of physical and emotional crisis that breaks through Marcus's denial",
+            "emotional_beat": "Painful recognition and dawning acceptance"
+        },
+        {
+            "scene_number": 6,
+            "summary": "They finally reach Serpent's Cove, and Marcus helps Copper across the sand to the water's edge where they scattered his father's ashes a decade ago. As Copper wades into the gentle surf one last time, Marcus sits on the sand and allows himself to truly see what he's been refusing to acknowledge\u2014that Copper has given him everything, including the strength to eventually say goodbye, and that holding on now would be selfish rather than loving.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "Serpent's Cove beach, at the water's edge",
+            "goal": "Bring Marcus to the emotional turning point where he understands that love sometimes means letting go",
+            "emotional_beat": "Heartbreaking clarity and quiet courage"
+        }
+    ],
+    "3": [
+        {
+            "scene_number": 1,
+            "summary": "Marcus and Copper arrive at Serpent's Cove after their grueling three-hour hike, and Marcus is overwhelmed by how unchanged the hidden beach appears\u2014the same gray rocks, crashing waves, and salt air from ten years ago when they scattered his father's ashes here. Copper collapses on the sand, panting heavily, and Marcus kneels beside him, stroking his graying muzzle while memories of that day with Dad flood back.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "The entrance to Serpent's Cove, overlooking the beach",
+            "goal": "To establish the emotional significance of this location and show the physical toll the journey has taken on Copper",
+            "emotional_beat": "Bittersweet nostalgia mixed with growing dread"
+        },
+        {
+            "scene_number": 2,
+            "summary": "After resting, Copper struggles to his feet and limps toward the water with determination, and Marcus follows him into the surf, the cold Atlantic shocking his legs as he wades in beside his aging dog. Copper paddles weakly for a few strokes before simply standing in the shallows, letting the waves wash over him, his golden fur darkening with seawater as Marcus watches with a breaking heart.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "The surf and shallows of Serpent's Cove",
+            "goal": "To show Copper's final attempt to do what he loves and Marcus witnessing his beloved companion's decline",
+            "emotional_beat": "Heartbreak and dawning acceptance"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Marcus guides Copper back to the beach and they sit together on the sand as the sun begins its descent, and Marcus finally allows himself to acknowledge the truth he's been avoiding for weeks\u2014Copper is ready to rest, even if Marcus isn't ready to say goodbye. He unties the faded bandana from around Copper's neck, the same one his father had given the puppy years ago, and holds it in trembling hands.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "The beach at Serpent's Cove, sunset beginning",
+            "goal": "To show Marcus's moment of acceptance and connection to both his father and Copper through the symbolic bandana",
+            "emotional_beat": "Grief-stricken acceptance"
+        },
+        {
+            "scene_number": 4,
+            "summary": "As the sunset paints the sky in oranges and purples, Marcus pulls out his phone with shaking hands and calls his mother, his voice breaking as he tells her \"it's time\" and that he'll bring Copper home tonight. His mother's quiet understanding and love come through the phone, and Marcus realizes he doesn't have to face this alone.",
+            "characters": [
+                "Marcus",
+                "Copper",
+                "Marcus's mother (voice only)"
+            ],
+            "setting": "The beach at Serpent's Cove, during sunset",
+            "goal": "To show Marcus making the difficult but loving decision and reaching out for support",
+            "emotional_beat": "Painful resolution mixed with relief"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Sitting with Copper as darkness begins to fall over the cove and the waves continue their eternal rhythm where his father's ashes once drifted away, Marcus has an epiphany about the lesson both his father and Copper have taught him\u2014that love isn't about holding on forever, but about cherishing what you have and finding courage to let go when the time comes. He makes promises to Copper and to himself: he'll open those college letters, he'll move forward, and he'll carry their love with him wherever he goes.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "The beach at Serpent's Cove, twilight falling into darkness",
+            "goal": "To show Marcus's emotional growth and his decision to honor both losses by embracing life and the future",
+            "emotional_beat": "Profound sadness transformed into quiet courage and hope"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Marcus helps Copper to his feet for the long walk home, moving slowly and carefully in the gathering darkness, but this time Marcus is no longer afraid of what comes next\u2014the veterinarian's office, saying goodbye, or the future beyond. He looks back once at the cove, then forward toward the trail home, Copper leaning against his leg with each step.",
+            "characters": [
+                "Marcus",
+                "Copper"
+            ],
+            "setting": "The trail leading away from Serpent's Cove, early evening darkness",
+            "goal": "To close the chapter with Marcus beginning the journey forward, both literally and metaphorically, with newfound strength",
+            "emotional_beat": "Melancholic determination and peaceful readiness"
+        }
+    ]
+}

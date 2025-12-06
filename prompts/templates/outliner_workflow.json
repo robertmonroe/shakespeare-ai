@@ -1,0 +1,143 @@
+{
+  "name": "Book Creation - Outliner",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "outliner",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "outliner-webhook",
+      "name": "Webhook - Generate Outline"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Extract and validate outliner parameters\nconst inputData = $input.all()[0].json.body;\n\n// Required fields\nconst genre = inputData.genre;\nconst title = inputData.title;\nconst concept = inputData.concept;\nconst numChapters = inputData.num_chapters;\n\nif (!genre || !title || !concept || !numChapters) {\n  throw new Error('Genre, title, concept, and num_chapters are required');\n}\n\n// Optional fields with defaults\nconst category = inputData.category || 'Fiction';\nconst language = inputData.language || 'English';\nconst bookLength = inputData.book_length || '';\nconst targetAudience = inputData.target_audience || '';\nconst tone = inputData.tone || '';\n\n// Build the outline generation prompt\nlet prompt = `Create a detailed outline for \"${title}\" (${genre}).\\n\\n`;\n\nif (typeof concept === 'object') {\n  prompt += `Book concept:\\n${JSON.stringify(concept, null, 2)}\\n\\n`;\n} else {\n  prompt += `Book concept:\\n${concept}\\n\\n`;\n}\n\nprompt += `Number of chapters: ${numChapters}\\n`;\n\nif (category) {\n  prompt += `Category: ${category}\\n`;\n}\n\nif (bookLength) {\n  prompt += `Book Length: ${bookLength}\\n`;\n}\n\nif (targetAudience) {\n  prompt += `Target Audience: ${targetAudience}\\n`;\n}\n\nif (tone) {\n  prompt += `Tone: ${tone}\\n`;\n}\n\nprompt += `\\nCreate a detailed chapter-by-chapter outline including:\\n`;\nprompt += `- Chapter titles\\n`;\nprompt += `- Key plot points for each chapter\\n`;\nprompt += `- Character development arcs\\n`;\nprompt += `- Scene descriptions\\n`;\nprompt += `- Conflict progression\\n\\n`;\nprompt += `Output in JSON format with chapters object where keys are chapter_1, chapter_2, etc.`;\n\nconst promptData = {\n  genre: genre,\n  title: title,\n  concept: concept,\n  num_chapters: numChapters,\n  category: category,\n  language: language,\n  prompt: prompt\n};\n\nreturn [{ json: promptData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "prepare-outline-prompt",
+      "name": "Prepare Outline Prompt"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "options": {
+          "systemMessage": "You are an expert story outliner. Create detailed, well-structured chapter outlines that ensure strong narrative flow, character development, and plot progression. Always respond with valid JSON using the requested chapter format."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [480, 300],
+      "id": "generate-outline",
+      "name": "Generate Book Outline"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-3.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [480, 450],
+      "id": "outliner-openrouter-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Parse and validate the AI response\nconst promptData = $('Prepare Outline Prompt').all()[0].json;\nconst aiResponse = $input.all()[0].json.response;\n\ntry {\n  // Try to extract JSON from the response\n  let outlineData;\n  \n  if (aiResponse.includes('{') && aiResponse.includes('}')) {\n    const startIndex = aiResponse.indexOf('{');\n    const endIndex = aiResponse.lastIndexOf('}') + 1;\n    const jsonStr = aiResponse.substring(startIndex, endIndex);\n    outlineData = JSON.parse(jsonStr);\n  } else {\n    // Fallback if no JSON found\n    throw new Error('No JSON found in response');\n  }\n  \n  // Ensure we have chapters object\n  if (!outlineData.chapters && !outlineData.chapter_1) {\n    throw new Error('No chapters found in outline');\n  }\n  \n  const finalOutline = {\n    title: promptData.title,\n    genre: promptData.genre,\n    category: promptData.category,\n    language: promptData.language,\n    num_chapters: promptData.num_chapters,\n    concept: promptData.concept,\n    chapters: outlineData.chapters || outlineData,\n    generated_at: new Date().toISOString()\n  };\n  \n  return [{ json: finalOutline }];\n  \n} catch (error) {\n  // Create a fallback outline if parsing fails\n  const fallbackChapters = {};\n  for (let i = 1; i <= promptData.num_chapters; i++) {\n    fallbackChapters[`chapter_${i}`] = {\n      title: `Chapter ${i}`,\n      summary: `Key events and developments for chapter ${i}.`,\n      plot_points: [`Plot point 1 for chapter ${i}`, `Plot point 2 for chapter ${i}`],\n      character_development: `Character growth in chapter ${i}.`\n    };\n  }\n  \n  const fallbackOutline = {\n    title: promptData.title,\n    genre: promptData.genre,\n    category: promptData.category,\n    language: promptData.language,\n    num_chapters: promptData.num_chapters,\n    concept: promptData.concept,\n    chapters: fallbackChapters,\n    generated_at: new Date().toISOString(),\n    fallback: true,\n    error: error.message\n  };\n  \n  return [{ json: fallbackOutline }];\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 300],
+      "id": "process-outline-response",
+      "name": "Process Outline Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [920, 300],
+      "id": "respond-outline",
+      "name": "Respond with Outline"
+    }
+  ],
+  "connections": {
+    "Webhook - Generate Outline": {
+      "main": [
+        [
+          {
+            "node": "Prepare Outline Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Outline Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate Book Outline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Book Outline": {
+      "main": [
+        [
+          {
+            "node": "Process Outline Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Outline Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Outline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Book Outline",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

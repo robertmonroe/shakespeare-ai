@@ -13,5 +13,9 @@ class Settings(BaseSettings):
     openrouter_model: str = "anthropic/claude-3-haiku"
     projects_dir: str = str(Path(__file__).parent.parent.parent / "projects")
     default_llm: str = "openai" # Set a default
+    
+    # Environment and Google AI model selection
+    app_env: str = "development"  # "development" or "production"
+    google_ai_model: str = ""  # Will be set based on app_env if empty
 
     model_config = SettingsConfigDict(env_file=".env", extra='ignore') # type: ignore

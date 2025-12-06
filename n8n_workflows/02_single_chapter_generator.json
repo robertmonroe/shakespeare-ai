@@ -1,0 +1,219 @@
+{
+    "name": "02 - Single Chapter Generator",
+    "nodes": [
+        {
+            "parameters": {},
+            "id": "manual-trigger",
+            "name": "When clicking 'Test workflow'",
+            "type": "n8n-nodes-base.manualTrigger",
+            "typeVersion": 1,
+            "position": [
+                240,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "assignments": {
+                    "assignments": [
+                        {
+                            "id": "book-title",
+                            "name": "book_title",
+                            "value": "The Moscow Protocol",
+                            "type": "string"
+                        },
+                        {
+                            "id": "genre",
+                            "name": "genre",
+                            "value": "Spy Thriller",
+                            "type": "string"
+                        },
+                        {
+                            "id": "chapter-num",
+                            "name": "chapter_number",
+                            "value": "1",
+                            "type": "number"
+                        },
+                        {
+                            "id": "chapter-title",
+                            "name": "chapter_title",
+                            "value": "The Dead Drop",
+                            "type": "string"
+                        },
+                        {
+                            "id": "chapter-summary",
+                            "name": "chapter_summary",
+                            "value": "MI6 agent Max Monroe discovers a compromised asset in Moscow. He must retrieve critical intelligence from a dead drop before the FSB closes in. The chapter ends with Monroe realizing he's being followed.",
+                            "type": "string"
+                        },
+                        {
+                            "id": "language",
+                            "name": "language",
+                            "value": "English",
+                            "type": "string"
+                        },
+                        {
+                            "id": "target-words",
+                            "name": "target_words",
+                            "value": "3500",
+                            "type": "number"
+                        }
+                    ]
+                }
+            },
+            "id": "chapter-input",
+            "name": "Chapter Input Parameters",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 3,
+            "position": [
+                460,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://openrouter.ai/api/v1/chat/completions",
+                "authentication": "predefinedCredentialType",
+                "nodeCredentialType": "httpHeaderAuth",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "HTTP-Referer",
+                            "value": "http://localhost:5678"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={{ {\n  \"model\": \"anthropic/claude-3.5-sonnet\",\n  \"messages\": [{\n    \"role\": \"user\",\n    \"content\": \"You are a professional \" + $json.genre + \" novelist. Write Chapter \" + $json.chapter_number + \": \" + $json.chapter_title + \" for the novel '\" + $json.book_title + \"'.\\n\\nChapter Summary:\\n\" + $json.chapter_summary + \"\\n\\nWRITING REQUIREMENTS:\\n- Write in \" + $json.language + \"\\n- Target word count: \" + $json.target_words + \" words (aim for 3000-4000 words)\\n- Use vivid, cinematic descriptions\\n- Show don't tell - use action and dialogue\\n- Create tension and pacing appropriate for \" + $json.genre + \"\\n- Include sensory details (sights, sounds, smells)\\n- End with a hook or cliffhanger for the next chapter\\n- Match the tone and style of professional \" + $json.genre + \" novels\\n- Use proper scene breaks (*** or similar)\\n\\nWrite the complete chapter now. Do not include any meta-commentary, just the chapter content.\"\n  }],\n  \"max_tokens\": 12000,\n  \"temperature\": 0.7\n} }}"
+            },
+            "id": "generate-chapter",
+            "name": "Generate Chapter (Claude)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                680,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "assignments": {
+                    "assignments": [
+                        {
+                            "id": "extract-content",
+                            "name": "chapter_content",
+                            "value": "={{ $json.choices[0].message.content }}",
+                            "type": "string"
+                        },
+                        {
+                            "id": "chapter-num-pass",
+                            "name": "chapter_number",
+                            "value": "={{ $('Chapter Input Parameters').item.json.chapter_number }}",
+                            "type": "number"
+                        },
+                        {
+                            "id": "chapter-title-pass",
+                            "name": "chapter_title",
+                            "value": "={{ $('Chapter Input Parameters').item.json.chapter_title }}",
+                            "type": "string"
+                        },
+                        {
+                            "id": "book-title-pass",
+                            "name": "book_title",
+                            "value": "={{ $('Chapter Input Parameters').item.json.book_title }}",
+                            "type": "string"
+                        },
+                        {
+                            "id": "word-count",
+                            "name": "word_count",
+                            "value": "={{ $json.choices[0].message.content.split(/\\s+/).length }}",
+                            "type": "number"
+                        }
+                    ]
+                }
+            },
+            "id": "extract-chapter",
+            "name": "Extract Chapter & Stats",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 3,
+            "position": [
+                900,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "write",
+                "fileName": "={{ $json.book_title.replace(/[^a-z0-9]/gi, '_') }}/chapter_{{ $json.chapter_number }}.md",
+                "fileContent": "={{ \"# Chapter \" + $json.chapter_number + \": \" + $json.chapter_title + \"\\n\\n\" + $json.chapter_content + \"\\n\\n---\\n*Word count: \" + $json.word_count + \" words*\" }}",
+                "options": {
+                    "encoding": "utf8"
+                }
+            },
+            "id": "save-chapter",
+            "name": "Save Chapter to File",
+            "type": "n8n-nodes-base.writeFile",
+            "typeVersion": 1,
+            "position": [
+                1120,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "When clicking 'Test workflow'": {
+            "main": [
+                [
+                    {
+                        "node": "Chapter Input Parameters",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Chapter Input Parameters": {
+            "main": [
+                [
+                    {
+                        "node": "Generate Chapter (Claude)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Generate Chapter (Claude)": {
+            "main": [
+                [
+                    {
+                        "node": "Extract Chapter & Stats",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Extract Chapter & Stats": {
+            "main": [
+                [
+                    {
+                        "node": "Save Chapter to File",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

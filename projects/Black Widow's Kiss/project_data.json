@@ -1,0 +1,33 @@
+{
+  "project_name": "Black Widow's Kiss",
+  "title": "Black Widow's Kiss",
+  "genre": "Thriller",
+  "description": "29 year old SGIA top agent Max Monroe is assigned a high-stakes covert mission: track and apprehend the mysterious Black Widow, Mariana Alvidrez, the stunning assassin seducing and murdering global high-tech moguls by suffocating them with her deadly kiss. Mariana works for the ruthless tech kingpin Mikhail Vershinsky, but her true agenda is vengeance. Thrown into a whirlwind of sex, seduction, betrayal, intrigue and espionage, Max finds himself drawn to Mariana. As they become lovers in a battle of wits and bodies, Max is torn between his sworn duty and forbidden passion. With every shocking betrayal, explosive action sequence, and edge-of-your-seat cliffhanger, the line between hunter and hunted blurs. In the end, loyalty, love, and survival collide in a final showdown as Mariana kills Mikhail Vershinsky and escapes. Max recovers to find a red rose—her calling card—knowing their dangerous game is far from over.",
+  "category": "Fiction",
+  "language": "English",
+  "num_characters": 5,
+  "num_characters_str": "5+",
+  "worldbuilding_needed": true,
+  "review_preference": "AI (automatic review)",
+  "book_length": "Novel",
+  "logline": "Elite SGIA agent Max Monroe is assigned to stop the seductive assassin known as the Black Widow. As spy and assassin become lovers, passion and deception push them to the brink—with the fate of the world in the balance.",
+  "tone": "Action-packed, sexy, high-stakes, adult",
+  "target_audience": "Adults",
+  "num_chapters": 20,
+  "num_chapters_str":"20+",
+  "llm_provider": "openrouter",
+  "dynamic_questions": {
+    "q1": "What makes Max Monroe so effective as an SGIA field agent and what is his greatest emotional weakness?",
+    "q2": "What motivates Mariana Alvidrez to become an assassin and how does her relationship with Max change her?",
+    "q3": "Why does Mikhail Vershinsky fear Mariana—and what are the stakes if his AI dynasty falls?",
+    "q4": "Describe an action setpiece involving Max trying to save a target as Mariana closes in.",
+    "q5": "What is the most dangerous secret either Max or Mariana discover about SGIA or Mikhail Vershinsky?",
+    "q6": "Describe the 'Black Widow's Kiss' technique in a suspenseful scene.",
+    "q7": "How does the final showdown play out, and what is the emotional cost for both Max and Mariana?"
+  },
+  "characters": {},
+  "worldbuilding": null,
+  "chapters": {},
+  "outline": "",
+  "project_dir": "C:\\Users\\3dmax\\Libriscribe\\projects\\Black Widow's Kiss"
+}

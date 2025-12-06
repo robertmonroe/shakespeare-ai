@@ -1,0 +1,136 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "Johnny nervously works his shift at \"Tony's Deli,\" making sandwiches and struggling to find the funny side of it all. He daydreams about being on stage and telling jokes but is quickly brought back to reality by demanding customers.",
+            "characters": [
+                "Johnny",
+                "Tony (the Deli Owner)",
+                "Mrs. Henderson (a customer)"
+            ],
+            "setting": "Tony's Deli - a small, bustling sandwich shop in the city",
+            "goal": "To establish Johnny's everyday life, his job, his desire to be a comedian, and his underlying shyness.",
+            "emotional_beat": "Frustration and quiet longing."
+        },
+        {
+            "scene_number": 2,
+            "summary": "On his walk home from the deli, Johnny rehearses a joke in his head, stumbling over the punchline and feeling self-conscious even though no one is around. He kicks a loose can down the sidewalk, muttering to himself about his lack of confidence.",
+            "characters": [
+                "Johnny"
+            ],
+            "setting": "A busy city sidewalk, lined with shops and apartments.",
+            "goal": "To highlight Johnny's lack of confidence and his internal struggle with his comedic aspirations.",
+            "emotional_beat": "Anxiety and self-doubt."
+        },
+        {
+            "scene_number": 3,
+            "summary": "Johnny sees a crowd gathered around an unusual sight. He pushes through the onlookers and discovers Arnie, a pig, dancing to music blasting from a nearby street performer's speaker.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Street Performer (briefly)",
+                "Bystanders"
+            ],
+            "setting": "A small city square/plaza.",
+            "goal": "Introduce Arnie to the story and emphasize his unique dancing ability.",
+            "emotional_beat": "Curiosity and amusement."
+        },
+        {
+            "scene_number": 4,
+            "summary": "Arnie stops dancing and collapses dramatically, appearing exhausted. A farmer, frantically searching, calls out \"Arnold!\" Arnie panics and grabs Johnny's leg, hiding behind him. Johnny, surprised, finds himself instinctively protecting the pig.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Farmer (briefly)"
+            ],
+            "setting": "",
+            "goal": "",
+            "emotional_beat": ""
+        },
+        {
+            "scene_number": 5,
+            "summary": "The farmer gives up the search, and Johnny, cautiously, leads Arnie away from the square. Arnie explains (through a series of grunts, snorts, and gestures) that he ran away because he dreams of being on \"City's Got Talent,\" which Johnny realizes his parents have been obsessed with. Johnny contemplates the absurdity of the situation and the sudden opportunity that\u2019s presented itself.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "A quieter side street, a few blocks away from the plaza.",
+            "goal": "To solidify Johnny and Arnie's partnership and introduce the connection to \"City's Got Talent.\" Hint that Johnny might step out of his comfort zone.",
+            "emotional_beat": "Hesitant hope and a touch of disbelief."
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Johnny hesitantly agrees to help Arnie train for \"City's Got Talent,\" still reeling from the sheer absurdity of the situation, and they brainstorm rehearsal locations that won\u2019t attract too much attention. They decide to start with abandoned alleyways.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "Johnny's cramped apartment, specifically the living room.",
+            "goal": "Establish Johnny's commitment (albeit reluctant) to helping Arnie and begin planning their training.",
+            "emotional_beat": "Nervous anticipation mixed with bewildered amusement."
+        },
+        {
+            "scene_number": 2,
+            "summary": "Their first training session in an alleyway results in comedic chaos as Arnie's barnyard dance moves clash hilariously with the urban setting. Johnny struggles to provide constructive criticism, mostly just laughing.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "A grimy, deserted alleyway in the city.",
+            "goal": "Showcase the initial absurdity and difficulty of training Arnie, highlighting his raw but untamed talent.",
+            "emotional_beat": "Humorous frustration, escalating to genuine amusement and bonding between the two."
+        },
+        {
+            "scene_number": 3,
+            "summary": "Johnny and Arnie move their training to Central Park, using the open space and unsuspecting tourists as their audience. Arnie's dancing draws a small, bewildered crowd, and Johnny tries to manage the situation while keeping Arnie hidden from animal control.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Park goers (background)"
+            ],
+            "setting": "Central Park, near the Bethesda Fountain.",
+            "goal": "Elevate the stakes by introducing the risk of discovery and showcase Arnie's growing popularity, while also subtly hinting at the potential for viral fame.",
+            "emotional_beat": "Playful anxiety, a blend of excitement and fear of getting caught."
+        },
+        {
+            "scene_number": 4,
+            "summary": "A rival dance group, \"The City Steppers,\" stumbles upon Arnie's Central Park performance. Initially dismissive, they become concerned when they witness Arnie's unique talent and begin plotting to sabotage his audition.",
+            "characters": [
+                "The City Steppers (3-4 members)",
+                "Arnie",
+                "Johnny (observing from a distance)"
+            ],
+            "setting": "Central Park, a hidden area slightly away from the main pathways.",
+            "goal": "Introduce the antagonist and establish the conflict that will escalate in later scenes.",
+            "emotional_beat": "Envy, suspicion, and burgeoning malice."
+        },
+        {
+            "scene_number": 5,
+            "summary": "Back at Johnny's apartment, rumors about Arnie's performance and the \"Piggy Performer\" start circulating on social media. Johnny brushes it off, unaware of the City Steppers' machinations. His parents come over, excited for the talent show, but completely oblivious to Arnie hiding in the closet.",
+            "characters": [
+                "Johnny",
+                "Arnie (hidden)",
+                "Johnny's Parents"
+            ],
+            "setting": "Johnny's apartment.",
+            "goal": "Build suspense by showing the growing buzz around Arnie while highlighting the oblivious nature of Johnny's parents, and setting the stage for the climax.",
+            "emotional_beat": "Tense comedic irony, with a sense of impending disaster."
+        },
+        {
+            "scene_number": 6,
+            "summary": "During Arnie's audition, the City Steppers publicly accuse him of being a safety hazard and an unfair advantage, spreading rumors they've cultivated online. Johnny, frustrated and emboldened, steps forward to defend Arnie, launching into an impromptu stand-up routine that wins over the crowd.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "The City Steppers",
+                "Talent Show Audience",
+                "Talent Show Judges"
+            ],
+            "setting": "The stage of \"City's Got Talent\" auditions.",
+            "goal": "Provide a climactic confrontation and showcase Johnny's growth in standing up for Arnie, and set the stage for the viral fame.",
+            "emotional_beat": "Angry determination, quickly transforming into nervous exhilaration and, finally, triumph (small scale, personal victory)."
+        }
+    ]
+}

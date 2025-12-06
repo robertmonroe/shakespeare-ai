@@ -1,6 +1,6 @@
 # src/libriscribe/presets/__init__.py
 """
-Libriscribe Style Presets and Story Structures
+Shakespeare AI Style Presets and Story Structures
 
 Load and apply:
 - Writing style presets (pacing, tone, prose style)

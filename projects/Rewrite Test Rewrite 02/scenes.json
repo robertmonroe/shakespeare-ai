@@ -1,0 +1,226 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "Marcus sits alone in the cafeteria, methodically eating his lunch while students flow around him as if he doesn't exist. When Tyler Brennan's backpack \"accidentally\" knocks Marcus's water bottle across the table, no one acknowledges it happened\u2014not even Marcus.",
+            "characters": [
+                "Marcus Chen",
+                "Tyler Brennan",
+                "background students"
+            ],
+            "setting": "Lincoln High School cafeteria, lunch period",
+            "goal": "Establish Marcus's invisible status at school and his emotional isolation six months after his father's departure",
+            "emotional_beat": "Resignation and numbness"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Marcus arrives home to their empty house, finding a note from his mother saying she's picked up another double shift at the hospital. He microwaves leftover chicken and eats dinner alone, scrolling through his father's increasingly brief messages from Dubai.",
+            "characters": [
+                "Marcus Chen",
+                "Mrs. Chen (mentioned/via note)",
+                "Mr. Chen (via text messages)"
+            ],
+            "setting": "The Chen family home, kitchen and living room, early evening",
+            "goal": "Show Marcus's home life and the absence of both parents, establishing his profound loneliness",
+            "emotional_beat": "Loneliness and abandonment"
+        },
+        {
+            "scene_number": 3,
+            "summary": "A violent summer storm strikes in the night with thunder, lightning, and torrential rain. Marcus lies awake listening to branches breaking and debris hitting the house, while somewhere across town, the storm damages the zoo's perimeter fencing.",
+            "characters": [
+                "Marcus Chen"
+            ],
+            "setting": "Marcus's bedroom, late night during the storm",
+            "goal": "Create the inciting incident that allows Bruno to escape; build atmospheric tension",
+            "emotional_beat": "Unease and restlessness"
+        },
+        {
+            "scene_number": 4,
+            "summary": "The next morning, Marcus explores the storm damage in their overgrown backyard while his mother sleeps after her shift. He hears a whimpering sound and discovers Bruno\u2014a small, terrified, mud-covered black bear cub\u2014hiding beneath the rhododendrons.",
+            "characters": [
+                "Marcus Chen",
+                "Bruno (the bear cub)"
+            ],
+            "setting": "The Chen family backyard, early morning",
+            "goal": "Introduce Bruno and create the pivotal moment of discovery",
+            "emotional_beat": "Shock transforming into wonder"
+        },
+        {
+            "scene_number": 5,
+            "summary": "After a tense standoff where Marcus and Bruno study each other, Marcus slowly coaxes the shaking, exhausted cub out with pieces of leftover chicken. He manages to lead Bruno across the yard and into the cluttered garage, his heart pounding with a mixture of fear and exhilaration.",
+            "characters": [
+                "Marcus Chen",
+                "Bruno"
+            ],
+            "setting": "Backyard to garage",
+            "goal": "Show Marcus making the impulsive decision to hide Bruno; demonstrate their first connection",
+            "emotional_beat": "Nervous excitement and tentative hope"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Marcus watches Bruno curl into a corner of the garage among old boxes and his father's abandoned tools, the cub finally falling into an exhausted sleep. For the first time in six months, Marcus feels genuinely needed and alive, even as he realizes the magnitude of what he's just done.",
+            "characters": [
+                "Marcus Chen",
+                "Bruno"
+            ],
+            "setting": "The garage",
+            "goal": "End the chapter with Marcus's emotional transformation and hint at the complications to come",
+            "emotional_beat": "Purpose and belonging mixed with dawning awareness of consequences"
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Three weeks into hiding Bruno, Marcus hustles through the neighborhood mowing lawns and walking dogs to earn money for bear food. He stops at the pet store to buy dog food in bulk, lying to the clerk about having multiple large dogs, while mentally calculating how long his cash will last as Bruno's appetite increases.",
+            "characters": [
+                "Marcus Chen",
+                "Pet store clerk",
+                "Bruno (mentioned)"
+            ],
+            "setting": "Various neighborhood houses, local pet supply store",
+            "goal": "Establish Marcus's new routine and the growing challenge of feeding a rapidly growing bear cub",
+            "emotional_beat": "Determined anxiety"
+        },
+        {
+            "scene_number": 2,
+            "summary": "In the garage, Marcus feeds Bruno and notices he's gained significant weight, his playful wrestling now strong enough to knock Marcus down. Marcus sprays air freshener to mask the animal smell and talks to Bruno about his day, feeling more connected to the cub than anyone else in his life.",
+            "characters": [
+                "Marcus Chen",
+                "Bruno"
+            ],
+            "setting": "Chen family garage",
+            "goal": "Show the deepening bond between Marcus and Bruno, and the physical reality of hiding a growing bear",
+            "emotional_beat": "Tender joy mixed with underlying worry"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Jamie follows Marcus home from school, suspicious of his secretive behavior and sudden unavailability. When Jamie confronts Marcus at the garage door, Marcus tries to deflect, but Jamie pushes past him and discovers Bruno, freezing in shock at the sight of the bear cub.",
+            "characters": [
+                "Marcus Chen",
+                "Jamie",
+                "Bruno"
+            ],
+            "setting": "Chen family driveway and garage",
+            "goal": "Create the pivotal moment when Marcus's secret is discovered by someone from his old life",
+            "emotional_beat": "Panic and fear of betrayal"
+        },
+        {
+            "scene_number": 4,
+            "summary": "After the initial shock, Jamie unexpectedly offers to help rather than expose Marcus's secret. Together, they brainstorm improvements to Bruno's living conditions, and Jamie suggests \"borrowing\" hay bales from his uncle's farm and getting a kiddie pool, rekindling their old collaborative friendship dynamic.",
+            "characters": [
+                "Marcus Chen",
+                "Jamie",
+                "Bruno"
+            ],
+            "setting": "Chen family garage",
+            "goal": "Transform Jamie from potential threat to ally, and reestablish their friendship through shared purpose",
+            "emotional_beat": "Relief transforming into cautious hope"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Marcus and Jamie watch the evening news with Marcus's mother, where Dr. Sarah Okoye makes an emotional plea for information about the missing cub, explaining that without proper care and eventual rehabilitation, Bruno will never be able to return to the wild. Marcus sees reward flyers on telephone poles and feels the weight of what he's done, while his mother comments on how much happier Marcus seems lately.",
+            "characters": [
+                "Marcus Chen",
+                "Jamie",
+                "Marcus's mother",
+                "Dr. Sarah Okoye (on TV)"
+            ],
+            "setting": "Chen family living room, neighborhood streets",
+            "goal": "Introduce the external pressure of the zoo's search and raise the moral stakes of Marcus's decision",
+            "emotional_beat": "Guilt and internal conflict"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Late at night, Marcus's mother knocks on the garage door, asking pointed questions about his constant visits, the strange smells, and his new friendship with Jamie. Marcus improvises increasingly desperate lies about a \"project\" while Bruno shuffles in the shadows behind stored boxes, nearly giving himself away, as his mother's suspicion clearly grows despite accepting his explanations for now.",
+            "characters": [
+                "Marcus Chen",
+                "Marcus's mother",
+                "Bruno (hidden)"
+            ],
+            "setting": "Chen family garage entrance, nighttime",
+            "goal": "Escalate tension by showing Marcus's lies beginning to unravel and establish his mother as an imminent threat to the secret",
+            "emotional_beat": "Desperate fear and the fragility of Marcus's constructed reality"
+        }
+    ],
+    "3": [
+        {
+            "scene_number": 1,
+            "summary": "Marcus's mother follows him to the garage during his evening feeding routine and discovers Bruno. Her initial shock turns to fear as she realizes the danger her son has been in, and she immediately pulls Marcus away from the cub while demanding an explanation.",
+            "characters": [
+                "Marcus Chen",
+                "Marcus's mother",
+                "Bruno"
+            ],
+            "setting": "The Chen family garage, evening",
+            "goal": "To create the inevitable confrontation that forces Marcus's secret into the open and sets the resolution in motion.",
+            "emotional_beat": "Shock and fear transitioning to desperate urgency"
+        },
+        {
+            "scene_number": 2,
+            "summary": "After a tense conversation in the house where Marcus tries to explain his actions, his mother calls Dr. Okoye. Marcus sits in his room, listening to his mother's voice downstairs, knowing his time with Bruno is ending while Jamie arrives to stand with him in these final hours.",
+            "characters": [
+                "Marcus Chen",
+                "Marcus's mother",
+                "Jamie (arrives later)"
+            ],
+            "setting": "The Chen house (Marcus's room and kitchen)",
+            "goal": "To show the aftermath of discovery and Marcus's acceptance that he cannot keep Bruno, while reinforcing his friendship with Jamie.",
+            "emotional_beat": "Resignation mixed with grief"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Dr. Okoye arrives with a specialized team and calmly assesses Bruno's condition in the garage. She speaks gently to Marcus, acknowledging what he's done for the cub while her team prepares the transport crate, treating both boy and bear with respect and compassion.",
+            "characters": [
+                "Marcus Chen",
+                "Dr. Okoye",
+                "Marcus's mother",
+                "Jamie",
+                "zoo team members",
+                "Bruno"
+            ],
+            "setting": "The Chen family garage and driveway",
+            "goal": "To introduce Dr. Okoye as a compassionate authority figure who helps Marcus understand the larger picture of Bruno's needs.",
+            "emotional_beat": "Bittersweet understanding"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Dr. Okoye sits with Marcus on the driveway while the team works, explaining the rehabilitation program in detail\u2014how Bruno will learn to forage, climb, and fear humans appropriately before eventual release to a sanctuary. She tells Marcus that his care saved Bruno's life, but keeping him would have condemned him to captivity.",
+            "characters": [
+                "Marcus Chen",
+                "Dr. Okoye"
+            ],
+            "setting": "The Chen family driveway, sitting on the curb",
+            "goal": "To provide Marcus (and readers) with understanding about wildlife rehabilitation and to reframe Marcus's actions as both heroic and ultimately harmful if continued.",
+            "emotional_beat": "Painful enlightenment"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Marcus is allowed final moments with Bruno before transport. He holds the cub close, whispering promises to visit and apologizing for having to let him go, while Bruno nuzzles him one last time, unaware this is goodbye.",
+            "characters": [
+                "Marcus Chen",
+                "Bruno",
+                "Dr. Okoye (observing at a distance)",
+                "Jamie",
+                "Marcus's mother"
+            ],
+            "setting": "Inside the transport crate area in the driveway",
+            "goal": "To provide an emotional farewell that demonstrates the depth of Marcus and Bruno's bond while showing Marcus's growth in choosing what's best for Bruno.",
+            "emotional_beat": "Heartbreak and love"
+        },
+        {
+            "scene_number": 6,
+            "summary": "As the transport van drives away, Marcus stands with Jamie beside him and his mother's arm around his shoulders\u2014truly being seen and supported by the people in his life. In a montage of the following weeks, Marcus volunteers at the zoo watching Bruno's progress, begins speaking up at school, has real conversations with his mother, and tells his father the whole story over video call, no longer pretending everything is fine.",
+            "characters": [
+                "Marcus Chen",
+                "Jamie",
+                "Marcus's mother",
+                "Dr. Okoye (at zoo)",
+                "Marcus's father (video call)",
+                "Bruno (observed through glass)"
+            ],
+            "setting": "Chen family driveway transitioning to multiple locations (zoo, school cafeteria, Chen house kitchen and living room) over several weeks",
+            "goal": "To show Marcus's transformation and growth, demonstrating that the connection with Bruno changed him permanently and gave him the courage to be visible in his own life.",
+            "emotional_beat": "Hopeful healing and newfound strength"
+        }
+    ]
+}

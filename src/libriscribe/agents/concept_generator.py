@@ -33,7 +33,7 @@ class ConceptGeneratorAgent(Agent):
         project_knowledge_base: ProjectKnowledgeBase,
         output_path: Optional[str] = None,
     ) -> None:
-        """Generates a book concept, with critique and refinement."""
+        """Generates a book concept, with optional critique and refinement."""
         try:
             # --- Step 1: Initial Concept Generation (Simplified) ---
             if project_knowledge_base.book_length == "Short Story":
@@ -87,8 +87,10 @@ class ConceptGeneratorAgent(Agent):
                 logger.error("Initial concept parsing failed.")
                 return None
 
-            # --- Step 2: Critique the Concept ---
-            critique_prompt = f"""Critique the following book concept:
+            # --- Step 2: Critique the Concept (Optional) ---
+            critique = None
+            if not project_knowledge_base.skip_concept_critique:
+                critique_prompt = f"""Critique the following book concept:
 
             ```json
             {json.dumps(initial_concept_json)}
@@ -100,14 +102,19 @@ class ConceptGeneratorAgent(Agent):
             - **Logline:** Is it concise and does it capture the core conflict?
             - **Description:** Is it well-written, engaging, and does it provide a clear sense of the story?  Are there any obvious weaknesses or areas for improvement? Be specific and constructive.
             """
-            console.print(f"🔍 [cyan]Evaluating concept quality...[/cyan]")
-            critique = self.llm_client.generate_content(critique_prompt)
-            if not critique:
-                logger.error("Critique generation failed.")
-                return None
+                console.print(f"🔍 [cyan]Evaluating concept quality...[/cyan]")
+                critique = self.llm_client.generate_content(critique_prompt)
+                if not critique:
+                    logger.error("Critique generation failed.")
+                    return None
+            else:
+                console.print(f"⏭️  [yellow]Skipping concept critique[/yellow]")
 
-            # --- Step 3: Refine the Concept ---
-            refine_prompt = f"""Refine the book concept based on the critique.  Address the weaknesses and improve the concept.
+            # --- Step 3: Refine the Concept (Optional) ---
+            final_concept_json = initial_concept_json
+            
+            if not project_knowledge_base.skip_concept_refinement and critique:
+                refine_prompt = f"""Refine the book concept based on the critique.  Address the weaknesses and improve the concept.
             The book should be written in {project_knowledge_base.language}.
 
             Original Concept:
@@ -127,29 +134,40 @@ class ConceptGeneratorAgent(Agent):
             }}}}}}}}
             ```
             """
-            console.print(f"✨ [cyan]Refining concept...[/cyan]")
-            refined_concept_md = self.llm_client.generate_content_with_json_repair(
-                refine_prompt
-            )
-            if not refined_concept_md:
-                logger.error("Refined concept generation failed.")
-                return None
+                console.print(f"✨ [cyan]Refining concept...[/cyan]")
+                refined_concept_md = self.llm_client.generate_content_with_json_repair(
+                    refine_prompt
+                )
+                if not refined_concept_md:
+                    logger.error("Refined concept generation failed.")
+                    return None
 
-            refined_concept_json = extract_json_from_markdown(refined_concept_md)
-            if not refined_concept_json:
-                logger.error("Refined concept parsing failed")
-                return None
+                refined_concept_json = extract_json_from_markdown(refined_concept_md)
+                if not refined_concept_json:
+                    logger.error("Refined concept parsing failed")
+                    return None
+                
+                final_concept_json = refined_concept_json
+            else:
+                if project_knowledge_base.skip_concept_refinement:
+                    console.print(f"⏭️  [yellow]Skipping concept refinement[/yellow]")
 
-            # --- Step 4: Update ProjectData (using refined concept) ---
-            if "title" in refined_concept_json:
-                project_knowledge_base.title = refined_concept_json["title"]
-            if "logline" in refined_concept_json:
-                project_knowledge_base.logline = refined_concept_json["logline"]
-            if "description" in refined_concept_json:
-                project_knowledge_base.description = refined_concept_json["description"]
+            # --- Step 4: Update ProjectData (using final concept) ---
+            if "title" in final_concept_json:
+                project_knowledge_base.title = final_concept_json["title"]
+            if "logline" in final_concept_json:
+                project_knowledge_base.logline = final_concept_json["logline"]
+            if "description" in final_concept_json:
+                project_knowledge_base.description = final_concept_json["description"]
 
+            stage = "initial"
+            if critique and not project_knowledge_base.skip_concept_refinement:
+                stage = "refined"
+            elif critique:
+                stage = "critiqued"
+                
             logger.info(
-                f"Concept generated (refined): Title: {project_knowledge_base.title}, Logline: {project_knowledge_base.logline}"
+                f"Concept generated ({stage}): Title: {project_knowledge_base.title}, Logline: {project_knowledge_base.logline}"
             )
 
         except Exception as e:

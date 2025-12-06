@@ -1,0 +1,143 @@
+{
+  "name": "Book Creation - Concept Generator",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "concept-generator",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "concept-webhook",
+      "name": "Webhook - Generate Concept"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Extract and validate concept generation parameters\nconst inputData = $input.all()[0].json.body;\n\n// Required fields\nconst genre = inputData.genre;\nconst userInput = inputData.user_input || inputData.description || '';\n\nif (!genre) {\n  throw new Error('Genre is required for concept generation');\n}\n\n// Optional fields with defaults\nconst category = inputData.category || 'Fiction';\nconst language = inputData.language || 'English';\nconst bookLength = inputData.book_length || '';\nconst targetAudience = inputData.target_audience || '';\nconst tone = inputData.tone || '';\n\n// Build the concept generation prompt\nlet prompt = `Generate a compelling ${genre} book concept.\\n\\n`;\n\nif (userInput) {\n  prompt += `User preferences:\\n${userInput}\\n\\n`;\n}\n\nif (category) {\n  prompt += `Category: ${category}\\n`;\n}\n\nif (bookLength) {\n  prompt += `Book Length: ${bookLength}\\n`;\n}\n\nif (targetAudience) {\n  prompt += `Target Audience: ${targetAudience}\\n`;\n}\n\nif (tone) {\n  prompt += `Tone: ${tone}\\n`;\n}\n\nprompt += `\\nCreate a detailed concept including:\\n`;\nprompt += `- Engaging title\\n`;\nprompt += `- Compelling logline (1-2 sentences)\\n`;\nprompt += `- Main themes\\n`;\nprompt += `- Target audience\\n`;\nprompt += `- Unique selling points\\n\\n`;\nprompt += `Output in JSON format with title, logline, themes, audience, uniqueness fields.`;\n\nconst promptData = {\n  genre: genre,\n  user_input: userInput,\n  category: category,\n  language: language,\n  prompt: prompt\n};\n\nreturn [{ json: promptData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "prepare-concept-prompt",
+      "name": "Prepare Concept Prompt"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "options": {
+          "systemMessage": "You are an expert book concept developer. Create compelling, unique book concepts that capture readers' attention. Always respond with valid JSON containing the requested fields: title, logline, themes, audience, uniqueness."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [480, 300],
+      "id": "generate-concept",
+      "name": "Generate Book Concept"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-3.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [480, 450],
+      "id": "concept-openrouter-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Parse and validate the AI response\nconst promptData = $('Prepare Concept Prompt').all()[0].json;\nconst aiResponse = $input.all()[0].json.response;\n\ntry {\n  // Try to extract JSON from the response\n  let conceptData;\n  \n  // Look for JSON in the response\n  if (aiResponse.includes('{') && aiResponse.includes('}')) {\n    const startIndex = aiResponse.indexOf('{');\n    const endIndex = aiResponse.lastIndexOf('}') + 1;\n    const jsonStr = aiResponse.substring(startIndex, endIndex);\n    conceptData = JSON.parse(jsonStr);\n  } else {\n    // Fallback if no JSON found\n    throw new Error('No JSON found in response');\n  }\n  \n  // Ensure all required fields are present\n  const finalConcept = {\n    title: conceptData.title || 'Untitled Book',\n    logline: conceptData.logline || 'A compelling story that needs to be told.',\n    themes: conceptData.themes || 'Universal themes of growth and discovery.',\n    audience: conceptData.audience || promptData.user_input || 'General readers',\n    uniqueness: conceptData.uniqueness || 'A fresh perspective on the genre.',\n    genre: promptData.genre,\n    category: promptData.category,\n    language: promptData.language,\n    generated_at: new Date().toISOString()\n  };\n  \n  return [{ json: finalConcept }];\n  \n} catch (error) {\n  // Fallback concept if AI response can't be parsed\n  const fallbackConcept = {\n    title: `A ${promptData.genre} Story`,\n    logline: `An engaging ${promptData.genre.toLowerCase()} tale that explores universal themes.`,\n    themes: `Classic ${promptData.genre.toLowerCase()} themes with modern relevance.`,\n    audience: 'General readers who enjoy thoughtful storytelling.',\n    uniqueness: `A fresh take on ${promptData.genre.toLowerCase()} that combines traditional elements with contemporary insights.`,\n    genre: promptData.genre,\n    category: promptData.category,\n    language: promptData.language,\n    generated_at: new Date().toISOString(),\n    fallback: true,\n    error: error.message\n  };\n  \n  return [{ json: fallbackConcept }];\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 300],
+      "id": "process-concept-response",
+      "name": "Process Concept Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [920, 300],
+      "id": "respond-concept",
+      "name": "Respond with Concept"
+    }
+  ],
+  "connections": {
+    "Webhook - Generate Concept": {
+      "main": [
+        [
+          {
+            "node": "Prepare Concept Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Concept Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate Book Concept",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Book Concept": {
+      "main": [
+        [
+          {
+            "node": "Process Concept Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Concept Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Concept",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Book Concept",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

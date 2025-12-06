@@ -1,0 +1,284 @@
+{
+    "project_name": "Test Rewrite 01",
+    "title": "The Bear in the Garage",
+    "genre": "Young Adult",
+    "description": "Twelve-year-old Marcus feels invisible in his own life—overlooked at school and lonely at home since his father started working away for months at a time. When he discovers Bruno, a frightened bear cub who escaped from the local zoo during a storm, Marcus makes an impulsive decision that changes everything: he hides the cub in his family's cluttered garage. For the first time in years, Marcus feels needed and important, forming a deep bond with the orphaned animal who mirrors his own feelings of abandonment.\nAs Bruno grows and Marcus's lies multiply, the reality of the situation becomes impossible to ignore. The cub needs medical care, proper food, and a safe environment that Marcus cannot provide. When Bruno accidentally injures Marcus during play, he's forced to confront a painful truth: loving someone sometimes means letting them go. With help from his best friend Jade and his father, Marcus learns that real courage isn't about holding on to what makes you feel better—it's about doing what's right, even when it breaks your heart. Through his journey with Bruno, Marcus discovers his own voice and realizes he was never truly invisible after all.",
+    "category": "Fiction",
+    "language": "English",
+    "num_characters": 2,
+    "num_characters_str": "",
+    "worldbuilding_needed": false,
+    "review_preference": "AI (automatic review)",
+    "book_length": "Short Story (1-3 chapters)",
+    "logline": "When a lonely twelve-year-old boy hides an escaped bear cub in his garage, he discovers that truly caring for someone means making the hardest choice of all—even if it breaks your heart.",
+    "tone": "Informative",
+    "target_audience": "General",
+    "num_chapters": 3,
+    "num_chapters_str": "",
+    "llm_provider": "openrouter",
+    "dynamic_questions": {},
+    "characters": {
+        "Marcus Chen": {
+            "name": "Marcus Chen",
+            "age": "12",
+            "physical_description": "",
+            "personality_traits": "Compassionate, Lonely, Impulsive, Responsible, Introspective, Resourceful, Conflict-avoidant",
+            "background": "",
+            "motivations": "Marcus desperately wants to feel important and needed by someone. He craves the connection he once had with his father and seeks to fill the emotional void left by his absence. When he finds Bruno, Marcus is driven by the desire to protect and care for something vulnerable, which gives him purpose and makes him feel valued. He wants to prove to himself that he's capable and responsible, even as he struggles with the weight of his secret. Ultimately, Marcus wants his family to be whole again and to be seen—truly seen—by the people in his life.",
+            "relationships": {},
+            "role": "",
+            "internal_conflicts": "Marcus struggles with profound loneliness and feelings of invisibility, questioning his worth and place in the world. He battles with the moral implications of keeping Bruno, knowing it's wrong but unable to let go of the one thing that makes him feel needed. He wrestles with anger toward his father for leaving and guilt for feeling that anger. Marcus also faces the internal conflict between his desire for control and the reality that some situations are beyond his ability to manage. His biggest internal struggle is learning to distinguish between love and possession, and understanding that sometimes loving someone means making painful sacrifices for their wellbeing.",
+            "external_conflicts": "Marcus faces the practical challenge of hiding and caring for a growing bear cub—finding food, keeping Bruno quiet, preventing discovery by his mother and neighbors, and managing the increasingly dangerous situation as Bruno grows stronger. He must navigate the lies he tells to cover his secret, which multiply and threaten to collapse around him. The zoo's search for the missing cub intensifies as time passes, with news reports and community awareness growing. When Bruno accidentally injures Marcus during rough play, he faces the physical reality that the cub is becoming dangerous. Marcus also deals with the external pressure of maintaining his grades and normal life while managing his secret, and eventually must confront authorities and his parents when the truth emerges.",
+            "character_arc": "Marcus begins the story as a passive, invisible boy who feels powerless in his own life, seeking validation through hiding and caring for Bruno. Through his relationship with the cub, he initially gains confidence and purpose, but this is built on a foundation of deception and denial. The turning point comes when Bruno injures him, forcing Marcus to confront the consequences of his actions. With support from Jade and eventually his father, Marcus learns that true courage means facing difficult truths and making selfless choices. By the story's end, Marcus finds his voice—he's able to express his feelings to his father, advocate for Bruno's proper care, and recognize his own worth independent of others' validation. He transforms from someone who hides to someone who speaks up, understanding that being seen comes from being authentic, not from what you can control or possess. He learns that letting go can be an act of love, and that vulnerability and honesty are forms of strength."
+        },
+        "Jade Martinez": {
+            "name": "Jade Martinez",
+            "age": "12",
+            "physical_description": "",
+            "personality_traits": "Loyal, Outspoken, Principled, Brave, Empathetic, Direct, Passionate",
+            "background": "",
+            "motivations": "Jade is driven by a strong moral compass and a desire to do what's right, even when it's difficult. She's motivated by loyalty to Marcus, whom she considers her best friend, but also by her genuine concern for Bruno's welfare and her understanding of the ethical implications of keeping a wild animal captive. Jade wants to help Marcus while also ensuring that no one—including Bruno—gets hurt. She's motivated by the belief that friends tell each other the truth, even hard truths, and that real friendship means helping someone do the right thing, not just what they want. Ultimately, Jade wants to protect both Marcus and Bruno, and to help Marcus see that he has value beyond what he can provide for others.",
+            "relationships": {},
+            "role": "",
+            "internal_conflicts": "Jade struggles with the conflict between her loyalty to Marcus and her principles about animal welfare and honesty. She wrestles with how hard to push Marcus toward doing the right thing without damaging their friendship or making him feel more alone. Jade also faces internal conflict about whether keeping Marcus's secret makes her complicit in something wrong, and she questions whether she's being a good friend by supporting him or whether a good friend should force him to face reality sooner. She battles with her own fear of losing Marcus's friendship if she's too honest, even though honesty is one of her core values.",
+            "external_conflicts": "Jade faces the external challenge of helping Marcus care for Bruno while knowing it's unsustainable and dangerous. She must navigate the practical difficulties of keeping the secret while also researching what Bruno actually needs, which reinforces how inadequate Marcus's care is. Jade deals with the tension of lying to her own family, which goes against everything they've taught her. She faces the challenge of convincing Marcus to let Bruno go without alienating him, and must find the right balance between support and tough love. When the situation reaches a crisis point after Bruno injures Marcus, Jade must take action to ensure everyone's safety, even if it means going against Marcus's wishes.",
+            "character_arc": "Jade begins the story as Marcus's loyal friend and support system, someone who has always looked out for him. When she discovers Bruno, she's initially torn between excitement and concern, but quickly recognizes the situation's seriousness. Throughout the story, Jade learns that true friendship sometimes means having difficult conversations and setting boundaries, even when it risks conflict. She grows in her understanding that loyalty doesn't mean blind support—it means caring enough to tell hard truths. Jade's arc involves learning to balance her compassion with her principles, and discovering that she can be both a supportive friend and an honest one. By the end, she emerges as someone who understands that real love—whether for a friend or an animal—means prioritizing their wellbeing over your own comfort. Her friendship with Marcus deepens not despite the conflict, but because of her willingness to be honest with him, and she learns that the strongest relationships can withstand truth-telling."
+        }
+    },
+    "worldbuilding": null,
+    "chapters": {
+        "1": {
+            "chapter_number": 1,
+            "title": "The Bear in the Garage",
+            "summary": "Marcus discovers Bruno, a terrified bear cub, hiding behind the trash cans in his backyard the morning after a severe storm. News reports reveal that a cub escaped from the local zoo during the storm, and officials are searching the neighborhood. In a split-second decision driven by loneliness and the desire to feel needed, Marcus hides Bruno in his family's cluttered garage before anyone else can find him. As Marcus tends to the frightened cub, feeding him milk and scraps from the kitchen, he feels a connection he hasn't experienced in years—Bruno is an orphan too, his mother having died at the zoo. For the first time since his father left for his long-term job assignment, Marcus feels like he matters to someone.\nMarcus quickly realizes that caring for Bruno is more complicated than he imagined. The cub cries at night, risking discovery by his distracted mother who works long hours. Marcus begins stealing food from the kitchen, researching bear care online late at night, and making excuses to spend hours in the garage. His best friend Jade notices his strange behavior, but Marcus deflects her questions with lies. As the chapter closes, Marcus watches Bruno sleep peacefully in a nest of old blankets, and despite the growing knot of anxiety in his stomach, he convinces himself that he's doing the right thing—that he and Bruno need each other.",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "summary": "Marcus wakes to the aftermath of a severe storm and discovers Bruno, a terrified bear cub, hiding behind the trash cans in his backyard while taking out the garbage. The cub is wet, shivering, and clearly frightened, and Marcus freezes in shock before slowly approaching the small animal.",
+                    "characters": [
+                        "Marcus",
+                        "Bruno"
+                    ],
+                    "setting": "Marcus's backyard, early morning after the storm",
+                    "goal": "Introduce Marcus and establish the inciting incident; create immediate connection between boy and cub",
+                    "emotional_beat": "Wonder mixed with shock"
+                },
+                {
+                    "scene_number": 2,
+                    "summary": "Marcus returns inside to find his mother rushing to get ready for work, barely noticing him as she watches news coverage of the zoo's escaped bear cub on TV. Marcus realizes the authorities are searching the neighborhood and makes a split-second decision not to tell anyone about Bruno, instead sneaking milk and food outside while his mother is distracted.",
+                    "characters": [
+                        "Marcus",
+                        "Marcus's mother (brief appearance)"
+                    ],
+                    "setting": "Marcus's kitchen and living room",
+                    "goal": "Establish Marcus's home life and his feeling of invisibility; introduce the conflict and Marcus's impulsive decision",
+                    "emotional_beat": "Loneliness and desperate determination"
+                },
+                {
+                    "scene_number": 3,
+                    "summary": "Marcus lures Bruno into the cluttered garage with food, creating a hiding spot behind old furniture and boxes. As he tends to the cub, cleaning him with old towels and offering him food, Marcus learns from his phone that Bruno's mother died at the zoo, and he feels an instant kinship with the orphaned animal.",
+                    "characters": [
+                        "Marcus",
+                        "Bruno"
+                    ],
+                    "setting": "The family garage",
+                    "goal": "Develop the bond between Marcus and Bruno; establish the garage as the primary setting",
+                    "emotional_beat": "Tenderness and connection"
+                },
+                {
+                    "scene_number": 4,
+                    "summary": "Over the next few days, Marcus falls into a routine of caring for Bruno, stealing food from the kitchen, researching bear care online late at night, and spending every possible moment in the garage. When Jade, his best friend, calls and texts asking to hang out, Marcus makes excuses and deflects her questions about his strange behavior with lies.",
+                    "characters": [
+                        "Marcus",
+                        "Bruno",
+                        "Jade (via phone/text)"
+                    ],
+                    "setting": "The garage, Marcus's bedroom, kitchen (montage-style)",
+                    "goal": "Show the escalating commitment and deception; introduce Jade as a concerned friend",
+                    "emotional_beat": "Anxious excitement mixed with guilt"
+                },
+                {
+                    "scene_number": 5,
+                    "summary": "Late one night, Bruno cries loudly, and Marcus rushes to the garage in a panic, terrified his mother will hear. He comforts the cub while hearing his mother move around upstairs, holding his breath until she settles back into silence, realizing how close he came to being discovered.",
+                    "characters": [
+                        "Marcus",
+                        "Bruno",
+                        "Marcus's mother (heard but not seen)"
+                    ],
+                    "setting": "The garage, late night",
+                    "goal": "Raise the stakes and tension; show the unsustainability of the situation",
+                    "emotional_beat": "Fear and protective desperation"
+                },
+                {
+                    "scene_number": 6,
+                    "summary": "Marcus sits in the garage watching Bruno sleep peacefully in a nest of old blankets, feeling needed and important for the first time in years. Despite the growing knot of anxiety in his stomach and the voice in his head warning him this can't last, he convinces himself that he and Bruno need each other and that he's doing the right thing.",
+                    "characters": [
+                        "Marcus",
+                        "Bruno"
+                    ],
+                    "setting": "The garage, evening",
+                    "goal": "End the chapter with Marcus's internal justification; foreshadow the challenges ahead while establishing his emotional investment",
+                    "emotional_beat": "Bittersweet determination with underlying doubt"
+                }
+            ]
+        },
+        "2": {
+            "chapter_number": 2,
+            "title": "The Weight of Secrets",
+            "summary": "As days pass, Marcus's double life spirals out of control. Bruno is growing rapidly, eating more food than Marcus can secretly provide, and becoming increasingly active and difficult to contain in the garage. Marcus skips homework to spend time with the cub, his grades begin to slip, and he completely avoids Jade, who grows more suspicious and hurt by his distance. During one play session, Bruno accidentally scratches Marcus deeply across his arm with his claws, drawing blood and leaving marks Marcus must hide under long sleeves. The injury forces Marcus to confront the dangerous reality of the situation, but he's too emotionally invested to see a way out.\nIn desperation, Marcus remembers his late grandmother's old farmhouse in the countryside—empty and surrounded by woods. He fantasizes about running away with Bruno to live there, imagining a life where they can be together without hiding. He even packs a bag and plans his escape. But before he can leave, Jade confronts him at school, having noticed the blood seeping through his sleeve. When she refuses to back down, Marcus finally breaks down and tells her everything. Jade is shocked but compassionate, and together they research what Bruno truly needs—not a scared boy's companionship, but professional care, proper nutrition, and eventually a natural habitat. Jade helps Marcus see that keeping Bruno isn't love; it's selfishness disguised as caring.",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "summary": "Marcus struggles to keep up with Bruno's growing appetite and energy, sneaking increasingly large amounts of food from the kitchen and spending hours in the garage instead of doing homework. His mother notices food disappearing but blames it on Marcus's \"growth spurt,\" while Marcus barely conceals his anxiety.",
+                    "characters": [
+                        "Marcus",
+                        "Bruno",
+                        "Marcus's mother (brief appearance)"
+                    ],
+                    "setting": "Marcus's garage and kitchen, late afternoon/evening",
+                    "goal": "Establish the escalating difficulty of Marcus's secret and show Bruno's rapid growth",
+                    "emotional_beat": "Mounting anxiety and desperation"
+                },
+                {
+                    "scene_number": 2,
+                    "summary": "At school, Marcus avoids Jade's attempts to talk to him, making excuses and literally walking away from her in the hallway. Jade's hurt expression haunts him, but he's too consumed with worry about Bruno to explain, and his teacher returns a failed math test that Marcus barely remembers taking.",
+                    "characters": [
+                        "Marcus",
+                        "Jade",
+                        "Marcus's teacher (Mr. Chen)"
+                    ],
+                    "setting": "Middle school hallway and classroom",
+                    "goal": "Show the deteriorating relationships and consequences of Marcus's obsession",
+                    "emotional_beat": "Guilt and isolation"
+                },
+                {
+                    "scene_number": 3,
+                    "summary": "During an energetic play session in the garage, Bruno accidentally scratches Marcus's arm deeply with his claws while they wrestle, causing significant bleeding and pain. Marcus realizes with horror how strong Bruno has become, but he bandages the wound himself and refuses to acknowledge the danger, instead comforting the confused cub.",
+                    "characters": [
+                        "Marcus",
+                        "Bruno"
+                    ],
+                    "setting": "Marcus's garage, after school",
+                    "goal": "Create the physical turning point that forces Marcus to confront reality",
+                    "emotional_beat": "Fear mixed with denial and protective love"
+                },
+                {
+                    "scene_number": 4,
+                    "summary": "Unable to sleep due to his throbbing arm, Marcus lies in bed remembering his grandmother's abandoned farmhouse and begins fantasizing about running away with Bruno to live there. He spends the night researching the location online and convincing himself this is the perfect solution, even beginning to pack a bag hidden under his bed.",
+                    "characters": [
+                        "Marcus"
+                    ],
+                    "setting": "Marcus's bedroom, late night",
+                    "goal": "Show Marcus's desperate attempt to find an impossible solution",
+                    "emotional_beat": "Desperate hope and delusion"
+                },
+                {
+                    "scene_number": 5,
+                    "summary": "At school, Jade notices blood seeping through Marcus's sleeve during lunch and confronts him directly, refusing to leave him alone despite his protests. When Marcus tries to walk away again, Jade blocks his path and tells him she knows something is seriously wrong and that real friends don't abandon each other—her words break through his defenses.",
+                    "characters": [
+                        "Marcus",
+                        "Jade"
+                    ],
+                    "setting": "School cafeteria and hallway",
+                    "goal": "Force Marcus to face his isolation and accept help",
+                    "emotional_beat": "Confrontation leading to emotional breakthrough"
+                },
+                {
+                    "scene_number": 6,
+                    "summary": "Marcus finally confesses everything to Jade, breaking down as he describes Bruno, the lies, his plans to run away, and his fear of losing the only thing that makes him feel important. Jade listens without judgment, then gently shows Marcus research on her phone about what bear cubs actually need—proper nutrition, veterinary care, and socialization with other bears—helping him see that keeping Bruno is hurting them both.",
+                    "characters": [
+                        "Marcus",
+                        "Jade"
+                    ],
+                    "setting": "Empty classroom after school",
+                    "goal": "Provide the moment of truth where Marcus begins to understand what real love requires",
+                    "emotional_beat": "Cathartic release and painful realization"
+                }
+            ]
+        },
+        "3": {
+            "chapter_number": 3,
+            "title": "Letting Go",
+            "summary": "Marcus's parents discover Bruno when his mother goes to the garage looking for old photo albums. The confrontation is devastating—his mother is terrified, his father rushes home from his job, and Marcus faces real consequences for his actions. He's grounded indefinitely, must apologize to the zoo officials, and prepares for the heartbreak of returning Bruno. But something unexpected happens: Marcus's father, instead of simply being angry, recognizes the genuine love and care his son showed for the cub. He sees how invisible Marcus has felt and realizes his own absence contributed to his son's desperate need for connection.\nTogether, Marcus and his father research alternatives to simply returning Bruno to the zoo. They discover a wildlife rehabilitation sanctuary that specializes in orphaned bears, where Bruno can receive proper medical care and eventually live in a natural habitat with other bears. When zoo officials agree to transfer Bruno to the sanctuary, Marcus is allowed to help with the transition. At the sanctuary, Marcus volunteers every weekend, watching Bruno grow stronger, wilder, and more bear-like as he bonds with other cubs. In their final close interaction before Bruno is moved to the outdoor habitat, Marcus whispers goodbye and tells Bruno he loves him enough to let him go. Through this painful but necessary act of love, Marcus finds his voice, reconnects with his father who commits to being more present, and discovers that he was never truly invisible—he just needed to believe he mattered. The book closes with Marcus watching Bruno play with other bears through the sanctuary fence, finally understanding that real love means wanting what's best for someone, even when it means saying goodbye.",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "summary": "Marcus's mother opens the garage door searching for old photo albums and discovers Bruno in his makeshift den, leading to her terrified screams that bring Marcus running from the house.",
+                    "characters": [
+                        "Marcus",
+                        "Marcus's mother",
+                        "Bruno"
+                    ],
+                    "setting": "The family garage, late afternoon",
+                    "goal": "To create the inciting incident that forces Marcus's secret into the open and triggers the chapter's central conflict.",
+                    "emotional_beat": "Shock and terror"
+                },
+                {
+                    "scene_number": 2,
+                    "summary": "Marcus's father arrives home early from his job site, and the family has an intense confrontation in the living room where Marcus must explain his actions while his parents express their fear, anger, and disappointment.",
+                    "characters": [
+                        "Marcus",
+                        "Marcus's mother",
+                        "Marcus's father"
+                    ],
+                    "setting": "The family living room, evening",
+                    "goal": "To establish the immediate consequences of Marcus's actions and reveal the depth of his loneliness that drove him to hide Bruno.",
+                    "emotional_beat": "Devastation and shame"
+                },
+                {
+                    "scene_number": 3,
+                    "summary": "Late that night, Marcus's father comes to his room and, instead of additional punishment, sits with Marcus and listens as his son finally opens up about feeling invisible and abandoned, leading to an emotional breakthrough between them.",
+                    "characters": [
+                        "Marcus",
+                        "Marcus's father"
+                    ],
+                    "setting": "Marcus's bedroom, late night",
+                    "goal": "To shift the emotional dynamic from anger to understanding and begin healing the relationship between Marcus and his father.",
+                    "emotional_beat": "Vulnerability and connection"
+                },
+                {
+                    "scene_number": 4,
+                    "summary": "Marcus, his father, and zoo officials meet at the house to discuss Bruno's future, where they learn about the wildlife rehabilitation sanctuary and Marcus is allowed to participate in planning Bruno's transfer and care.",
+                    "characters": [
+                        "Marcus",
+                        "Marcus's father",
+                        "Marcus's mother",
+                        "zoo officials (Dr. Chen and Mr. Rodriguez)"
+                    ],
+                    "setting": "The family dining room, next morning",
+                    "goal": "To provide a solution that honors both Bruno's needs and Marcus's love for the cub while showing Marcus that his voice and feelings matter.",
+                    "emotional_beat": "Hope amid sadness"
+                },
+                {
+                    "scene_number": 5,
+                    "summary": "Marcus helps transport Bruno to the sanctuary and spends the day learning about the facility, meeting the other orphaned cubs, and beginning to understand that this is where Bruno truly belongs.",
+                    "characters": [
+                        "Marcus",
+                        "Marcus's father",
+                        "Jade",
+                        "sanctuary director (Sarah)",
+                        "Bruno",
+                        "other bear cubs"
+                    ],
+                    "setting": "Wildwood Wildlife Rehabilitation Sanctuary, weekend afternoon",
+                    "goal": "To show Marcus that letting go can be an act of love and that Bruno will have a better life than Marcus could provide.",
+                    "emotional_beat": "Bittersweet acceptance"
+                },
+                {
+                    "scene_number": 6,
+                    "summary": "In their final close interaction before Bruno joins the other cubs in the outdoor habitat, Marcus whispers goodbye, tells Bruno he loves him, and watches as the cub eagerly runs toward his new life, finally understanding that real love means letting go.",
+                    "characters": [
+                        "Marcus",
+                        "Bruno",
+                        "Marcus's father (watching from distance)"
+                    ],
+                    "setting": "The sanctuary's transition enclosure, several weeks later",
+                    "goal": "To provide emotional closure to Marcus and Bruno's relationship while demonstrating Marcus's growth and maturity.",
+                    "emotional_beat": "Heartbreak transformed into peace and self-discovery"
+                }
+            ]
+        }
+    },
+    "outline": "# Book Summary\n\nTwelve-year-old Marcus feels invisible in his own life—overlooked at school and lonely at home since his father started working away for months at a time. When he discovers Bruno, a frightened bear cub who escaped from the local zoo during a storm, Marcus makes an impulsive decision that changes everything: he hides the cub in his family's cluttered garage. For the first time in years, Marcus feels needed and important, forming a deep bond with the orphaned animal who mirrors his own feelings of abandonment.\n\nAs Bruno grows and Marcus's lies multiply, the reality of the situation becomes impossible to ignore. The cub needs medical care, proper food, and a safe environment that Marcus cannot provide. When Bruno accidentally injures Marcus during play, he's forced to confront a painful truth: loving someone sometimes means letting them go. With help from his best friend Jade and his father, Marcus learns that real courage isn't about holding on to what makes you feel better—it's about doing what's right, even when it breaks your heart. Through his journey with Bruno, Marcus discovers his own voice and realizes he was never truly invisible after all.\n\n# Chapter List\n\n3 chapters\n\n# Chapter Details\n\n## Chapter 1: The Bear in the Garage\n### Summary\n\nMarcus discovers Bruno, a terrified bear cub, hiding behind the trash cans in his backyard the morning after a severe storm. News reports reveal that a cub escaped from the local zoo during the storm, and officials are searching the neighborhood. In a split-second decision driven by loneliness and the desire to feel needed, Marcus hides Bruno in his family's cluttered garage before anyone else can find him. As Marcus tends to the frightened cub, feeding him milk and scraps from the kitchen, he feels a connection he hasn't experienced in years—Bruno is an orphan too, his mother having died at the zoo. For the first time since his father left for his long-term job assignment, Marcus feels like he matters to someone.\n\nMarcus quickly realizes that caring for Bruno is more complicated than he imagined. The cub cries at night, risking discovery by his distracted mother who works long hours. Marcus begins stealing food from the kitchen, researching bear care online late at night, and making excuses to spend hours in the garage. His best friend Jade notices his strange behavior, but Marcus deflects her questions with lies. As the chapter closes, Marcus watches Bruno sleep peacefully in a nest of old blankets, and despite the growing knot of anxiety in his stomach, he convinces himself that he's doing the right thing—that he and Bruno need each other.\n\n### Key Events\n- Marcus discovers Bruno hiding in his backyard after the storm and learns about the zoo escape on the news\n- Marcus makes the impulsive decision to hide Bruno in the garage instead of calling authorities\n- Marcus begins stealing food and researching bear care while lying to his mother and best friend Jade\n- Marcus learns that Bruno's mother died at the zoo, deepening his emotional connection to the orphaned cub\n- Bruno cries at night and Marcus struggles to keep him quiet and hidden from his family\n\n## Chapter 2: The Weight of Secrets\n### Summary\n\nAs days pass, Marcus's double life spirals out of control. Bruno is growing rapidly, eating more food than Marcus can secretly provide, and becoming increasingly active and difficult to contain in the garage. Marcus skips homework to spend time with the cub, his grades begin to slip, and he completely avoids Jade, who grows more suspicious and hurt by his distance. During one play session, Bruno accidentally scratches Marcus deeply across his arm with his claws, drawing blood and leaving marks Marcus must hide under long sleeves. The injury forces Marcus to confront the dangerous reality of the situation, but he's too emotionally invested to see a way out.\n\nIn desperation, Marcus remembers his late grandmother's old farmhouse in the countryside—empty and surrounded by woods. He fantasizes about running away with Bruno to live there, imagining a life where they can be together without hiding. He even packs a bag and plans his escape. But before he can leave, Jade confronts him at school, having noticed the blood seeping through his sleeve. When she refuses to back down, Marcus finally breaks down and tells her everything. Jade is shocked but compassionate, and together they research what Bruno truly needs—not a scared boy's companionship, but professional care, proper nutrition, and eventually a natural habitat. Jade helps Marcus see that keeping Bruno isn't love; it's selfishness disguised as caring.\n\n### Key Events\n- Bruno grows bigger and more active, requiring more food and becoming harder to hide\n- Bruno accidentally injures Marcus during play, leaving deep scratches on his arm\n- Marcus plans to run away with Bruno to his grandmother's abandoned farmhouse\n- Jade confronts Marcus about his strange behavior and the blood on his sleeve\n- Marcus breaks down and confesses everything to Jade, who helps him see that Bruno needs professional care\n\n## Chapter 3: Letting Go\n### Summary\n\nMarcus's parents discover Bruno when his mother goes to the garage looking for old photo albums. The confrontation is devastating—his mother is terrified, his father rushes home from his job, and Marcus faces real consequences for his actions. He's grounded indefinitely, must apologize to the zoo officials, and prepares for the heartbreak of returning Bruno. But something unexpected happens: Marcus's father, instead of simply being angry, recognizes the genuine love and care his son showed for the cub. He sees how invisible Marcus has felt and realizes his own absence contributed to his son's desperate need for connection.\n\nTogether, Marcus and his father research alternatives to simply returning Bruno to the zoo. They discover a wildlife rehabilitation sanctuary that specializes in orphaned bears, where Bruno can receive proper medical care and eventually live in a natural habitat with other bears. When zoo officials agree to transfer Bruno to the sanctuary, Marcus is allowed to help with the transition. At the sanctuary, Marcus volunteers every weekend, watching Bruno grow stronger, wilder, and more bear-like as he bonds with other cubs. In their final close interaction before Bruno is moved to the outdoor habitat, Marcus whispers goodbye and tells Bruno he loves him enough to let him go. Through this painful but necessary act of love, Marcus finds his voice, reconnects with his father who commits to being more present, and discovers that he was never truly invisible—he just needed to believe he mattered. The book closes with Marcus watching Bruno play with other bears through the sanctuary fence, finally understanding that real love means wanting what's best for someone, even when it means saying goodbye.\n\n### Key Events\n- Marcus's mother discovers Bruno in the garage, leading to a family crisis\n- Marcus faces consequences: grounding, apologizing to zoo officials, and preparing to return Bruno\n- Marcus's father takes time off work and helps research wildlife rehabilitation options\n- They find a sanctuary for orphaned bears where Bruno can receive proper care and live naturally\n- Marcus volunteers at the sanctuary, says goodbye to Bruno, and watches him thrive with other bears\n- Marcus reconnects with his father and discovers his own worth and voice through the experience",
+    "project_dir": "C:\\Users\\3dmax\\Libriscribe\\projects\\Test Rewrite 01"
+}

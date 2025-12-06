@@ -1,0 +1,68 @@
+{
+  "name": "Book Creation - Book Formatter",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "book-formatter",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "book-formatter-webhook",
+      "name": "Webhook - Format Book"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Book Formatter - Simplified Version\n// Expects chapters to be passed in the request body as an array\nconst inputData = $input.all()[0].json.body;\n\n// Required fields\nconst projectTitle = inputData.project_title || inputData.title || 'Untitled Book';\nconst author = inputData.author || 'AI Generated';\nconst genre = inputData.genre || 'Fiction';\nconst language = inputData.language || 'English';\nconst chapters = inputData.chapters || [];\n\nif (!chapters || chapters.length === 0) {\n  throw new Error('Chapters array is required. Each chapter should have: { chapter_number, title, content }');\n}\n\n// Create title page\nlet titlePage = '';\nif (language === 'English') {\n  titlePage = `# ${projectTitle}\\n\\n## By ${author}\\n\\n**Genre:** ${genre}\\n\\n**Generated:** ${new Date().toLocaleDateString()}\\n\\n---\\n\\n`;\n} else if (language === 'Brazilian Portuguese') {\n  titlePage = `# ${projectTitle}\\n\\n## Por ${author}\\n\\n**Gênero:** ${genre}\\n\\n**Gerado em:** ${new Date().toLocaleDateString()}\\n\\n---\\n\\n`;\n} else {\n  titlePage = `# ${projectTitle}\\n\\n## By ${author}\\n\\n**Genre:** ${genre}\\n\\n**Generated:** ${new Date().toLocaleDateString()}\\n\\n---\\n\\n`;\n}\n\n// Sort chapters by chapter number\nchapters.sort((a, b) => (a.chapter_number || 0) - (b.chapter_number || 0));\n\n// Start building book content\nlet bookContent = titlePage;\n\n// Add table of contents\nif (language === 'English') {\n  bookContent += '## Table of Contents\\n\\n';\n} else if (language === 'Brazilian Portuguese') {\n  bookContent += '## Índice\\n\\n';\n} else {\n  bookContent += '## Table of Contents\\n\\n';\n}\n\nchapters.forEach(chapter => {\n  const chapterNumber = chapter.chapter_number || 'Unknown';\n  const chapterTitle = chapter.title || chapter.chapter_title || `Chapter ${chapterNumber}`;\n  bookContent += `${chapterNumber}. ${chapterTitle}\\n`;\n});\n\nbookContent += '\\n---\\n\\n';\n\n// Add all chapters\nchapters.forEach(chapter => {\n  const content = chapter.content || '';\n  if (content) {\n    bookContent += content + '\\n\\n';\n  } else {\n    const chapterNumber = chapter.chapter_number || 'Unknown';\n    bookContent += `# Chapter ${chapterNumber}\\n\\n*Chapter content not available*\\n\\n`;\n  }\n});\n\n// Calculate statistics\nconst wordCount = bookContent.split(/\\s+/).filter(word => word.length > 0).length;\nconst estimatedPages = Math.ceil(wordCount / 250); // ~250 words per page\n\nconst finalBook = {\n  project_title: projectTitle,\n  author: author,\n  genre: genre,\n  language: language,\n  content: bookContent,\n  word_count: wordCount,\n  chapters_processed: chapters.length,\n  completed_at: new Date().toISOString(),\n  statistics: {\n    total_chapters: chapters.length,\n    estimated_pages: estimatedPages,\n    word_count: wordCount,\n    average_words_per_chapter: Math.round(wordCount / chapters.length)\n  }\n};\n\nreturn [{ json: finalBook }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "format-book",
+      "name": "Format Book"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"success\",\n  \"message\": \"Book formatted successfully!\",\n  \"project_title\": \"{{ $json.project_title }}\",\n  \"author\": \"{{ $json.author }}\",\n  \"genre\": \"{{ $json.genre }}\",\n  \"language\": \"{{ $json.language }}\",\n  \"word_count\": {{ $json.word_count }},\n  \"chapters_processed\": {{ $json.chapters_processed }},\n  \"statistics\": {{ JSON.stringify($json.statistics) }},\n  \"book_content\": \"{{ $json.content }}\",\n  \"completed_at\": \"{{ $json.completed_at }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [480, 300],
+      "id": "respond-success",
+      "name": "Respond with Book Info"
+    }
+  ],
+  "connections": {
+    "Webhook - Format Book": {
+      "main": [
+        [
+          {
+            "node": "Format Book",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Book": {
+      "main": [
+        [
+          {
+            "node": "Respond with Book Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

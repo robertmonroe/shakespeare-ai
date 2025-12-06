@@ -1,0 +1,326 @@
+{
+    "project_name": "pig 2",
+    "title": "Arnie's City Shuffle",
+    "genre": "Young Adult",
+    "description": "\"Arnie's City Shuffle\" is a heartwarming short story about Johnny, a city boy longing for something more than his mundane life. His wish is unexpectedly granted when he encounters Arnie, a dancing pig who has escaped from a nearby farm. The two quickly become best friends, but Johnny knows his parents wouldn't approve of keeping a pig in their apartment. He hides Arnie, leading to increasingly complicated and humorous situations.\nThe story escalates when Johnny's parents discover Arnie, leading to heartbreak and a desperate runaway adventure. Johnny, determined to keep his best friend, flees the city with Arnie. A city-wide search ensues, causing panic for Johnny's parents. The story culminates with a joyful reunion and a surprising revelation: Johnny's parents planned to move to a farm so Johnny and Arnie could live together. The story celebrates the unexpected bonds of friendship and the importance of family.",
+    "category": "Fiction",
+    "language": "English",
+    "num_characters": 2,
+    "num_characters_str": "",
+    "worldbuilding_needed": true,
+    "review_preference": "AI (automatic review)",
+    "auto_review_mode": true,
+    "auto_review_passes": 2,
+    "book_length": "Short Story (1-3 chapters)",
+    "logline": "When a dancing pig named Arnie escapes his farm and befriends a lonely city boy, Johnny's desperate attempts to hide him lead to a heartwarming adventure about friendship, understanding, and unexpected country dreams.",
+    "tone": "Informative",
+    "target_audience": "General",
+    "num_chapters": 3,
+    "num_chapters_str": "",
+    "llm_provider": "google_ai_studio",
+    "dynamic_questions": {},
+    "skip_concept_critique": true,
+    "skip_concept_refinement": false,
+    "characters": {
+        "Jonathan \"Johnny\" Davies": {
+            "name": "Jonathan \"Johnny\" Davies",
+            "age": "12",
+            "physical_description": "Johnny is a skinny, almost gangly, 12-year-old with a mop of unruly brown hair that constantly falls into his eyes. He has large, expressive brown eyes that reflect his emotions easily. He's perpetually dressed in jeans, a slightly-too-big graphic tee (usually featuring a superhero or a video game character), and worn-out sneakers. He usually carries a well-loved, slightly battered backpack containing his school books and a notebook for sketching.",
+            "personality_traits": "Resourceful, Cautious, Determined",
+            "background": "Johnny has lived his entire life in a small, cramped apartment in a bustling city. He often feels confined and longs for wide-open spaces. He's a good student but struggles with social interactions, finding solace in his imagination and his passion for drawing. His parents, while loving, are caught up in their busy professional lives and sometimes struggle to truly connect with him on an emotional level. He's always dreamed of having a pet but his parents have always said their apartment is too small.",
+            "motivations": "To escape the monotony of city life, to find genuine connection and companionship, to protect Arnie at all costs.",
+            "relationships": {
+                "general": "Arnie (Best Friend): Deeply devoted and protective of Arnie. Mr. and Mrs. Davies (Parents): Loves them but feels a growing disconnect; struggles to communicate his feelings. Mrs. Rosenblum (Neighbor): A kindly, elderly neighbor who sometimes offers him cookies and a listening ear."
+            },
+            "role": "Protagonist",
+            "internal_conflicts": "His struggle to assert himself and his needs to his parents, his fear of disappointing them, his insecurity about fitting in.",
+            "external_conflicts": "Hiding Arnie from his parents and the building superintendent, the threat of Arnie being taken away, the challenges of running away from home.",
+            "character_arc": "Johnny evolves from a shy, insecure boy into a courageous and assertive young man who is willing to stand up for what he believes in and for the friends he loves. He learns to communicate his feelings more effectively and discovers his own inner strength."
+        },
+        "Arnie": {
+            "name": "Arnie",
+            "age": "Equivalent to a young piglet - roughly 6 months old in human years",
+            "physical_description": "Arnie is a pot-bellied pig with pink skin and a few scattered black spots. He's surprisingly agile and has a perpetually curious snout that he uses to investigate everything. He has large, expressive eyes that seem to understand more than they should. A curly tail is always wagging. Wears a makeshift collar Johnny makes from an old shoelace.",
+            "personality_traits": "Resourceful, Cautious, Determined",
+            "background": "Arnie escaped from a nearby farm, feeling confined and yearning for adventure beyond the pigpen. He's naturally friendly and trusting, but also a bit naive about the dangers of the city.",
+            "motivations": "To find freedom and companionship, to explore the world around him, to simply enjoy life.",
+            "relationships": {
+                "general": "Johnny (Best Friend): Completely devoted to Johnny, relies on him for everything. Mr. and Mrs. Davies (Johnny's Parents): Initially frightened and disapproving, but eventually charmed by Arnie's affectionate nature."
+            },
+            "role": "Supporting Character, catalyst for Johnny's change",
+            "internal_conflicts": "None - as a pig, his concerns are simpler and more immediate.",
+            "external_conflicts": "Being caught by authorities and returned to the farm, the dangers of navigating the city, being separated from Johnny.",
+            "character_arc": "Arnie remains largely unchanged in personality, providing a consistent source of joy and affection for Johnny. He serves as a symbol of freedom and the importance of following one's heart, even if it leads to unexpected places."
+        }
+    },
+    "worldbuilding": {
+        "geography": "The story takes place primarily in the bustling metropolis of Brickell City, a fictional city inspired by a blend of New York City and Miami. Brickell City is situated on a large peninsula, bordered by a vast, shimmering bay on one side and sprawling suburban landscapes extending inland on the other. The climate is humid subtropical, characterized by hot, humid summers and mild, pleasant winters. Rainfall is abundant, especially during the summer months when thunderstorms are frequent. The city itself is a concrete jungle, with towering skyscrapers piercing the sky and crowded streets teeming with life. Central Park-esque 'Greenhaven Park' provides a pocket of natural escape amidst the urban sprawl, while the waterfront area features picturesque marinas and boardwalks. Beyond the city limits, rolling hills give way to the fertile farmland where Arnie originates. These farms are dotted with small towns and provide a stark contrast to the high-energy, fast-paced environment of Brickell City. The landscape shifts further inland, gradually transitioning into a more rural, forested region. Johnny's parents specifically were looking at farms in 'Green Valley' a small town that boasts several family-run businesses.",
+        "culture_and_society": "Brickell City's culture is a vibrant melting pot, influenced by a diverse population of immigrants and long-time residents. The city is known for its fast-paced lifestyle, where ambition and success are highly valued. A strong emphasis is placed on career advancement and material possessions. The social structure is hierarchical, with distinct class divisions visible in the different neighborhoods and lifestyles. Family remains an important value, although the demands of city life often place a strain on family relationships. The pursuit of happiness and fulfillment is a common theme, with many residents seeking escape from the pressures of urban living. Art and entertainment play a significant role in the city's culture, with numerous theaters, museums, and music venues. While generally tolerant, there can be a sense of disconnect between city dwellers and those living in more rural areas, leading to misunderstandings and prejudices. This is partially evident when Johnny tries to explain his pet pig Arnie to his peers.",
+        "history": "Brickell City began as a small trading post in the 18th century, gradually growing into a major commercial hub due to its strategic location and natural harbor. The 19th century saw rapid industrialization and immigration, transforming the city into a manufacturing powerhouse. The early 20th century was marked by economic booms and busts, as well as significant social and political changes. During the mid-20th century, Brickell City experienced a period of urban renewal, with the construction of modern skyscrapers and infrastructure. In recent decades, the city has become a global center for finance, technology, and tourism. A significant turning point in the city's history was the Great Urban Fire of 1932, which destroyed a large portion of the downtown area and led to stricter building codes and fire safety regulations. This disaster also fostered a sense of community and resilience among the city's residents. More recently, increased awareness of environmental issues has led to efforts to promote sustainable development and reduce the city's carbon footprint. The expansion of farming and agriculture in the outer reaches of the city has also had its effect.",
+        "rules_and_laws": "Brickell City operates under a mayoral system, with an elected mayor serving as the chief executive officer. The city council is responsible for enacting laws and policies, while the court system interprets and enforces those laws. The legal system is based on a combination of common law and statutory law. Animal control ordinances are strict, prohibiting farm animals from being kept within city limits due to health and safety concerns. Public order is maintained by the Brickell City Police Department, which is responsible for law enforcement and crime prevention. The city also has a strong emphasis on property rights and contracts. Regulations regarding zoning and land use are complex and often controversial, particularly in areas undergoing rapid development. Penalties for breaking the law range from fines and community service to imprisonment, depending on the severity of the offense. The police force is known for its efficiency but can sometimes be perceived as impersonal and bureaucratic. There is also a strong sense of civic duty among many residents, who actively participate in local government and community organizations.",
+        "technology_level": "Brickell City boasts a highly advanced technological infrastructure, with widespread access to the internet, smartphones, and other digital devices. The city is a hub for technology companies and startups, driving innovation in areas such as artificial intelligence, robotics, and biotechnology. Transportation is heavily reliant on automobiles, but the city also has an extensive public transportation system, including subways, buses, and light rail lines. High-speed trains connect Brickell City to other major cities in the region. Medical technology is state-of-the-art, with advanced diagnostic equipment and treatment options available at leading hospitals and research institutions. The city's infrastructure is also equipped with smart technology, such as sensors that monitor traffic flow, air quality, and energy consumption. However, this advanced technology also comes with its own set of challenges, including cybersecurity threats, privacy concerns, and the digital divide. The use of drones for delivery and surveillance is becoming increasingly common, raising ethical questions about their impact on society.",
+        "magic_system": "N/A - This story does not contain any magical elements.",
+        "key_locations": "Brickell City is composed of many distinct districts, each with its own unique character. The Downtown district is the city's financial and commercial center, home to towering skyscrapers and bustling streets. Greenhaven Park provides a much-needed green space for city dwellers. The Historic District preserves the city's architectural heritage, with cobblestone streets and Victorian-era buildings. The Waterfront district features marinas, restaurants, and entertainment venues. The Suburban district is characterized by residential neighborhoods, parks, and schools. The Farmstead district outside the main city center is the hub of animal agriculture. Within the city, Johnny's apartment building is a high-rise complex known for its modern amenities and strict rules. Arnie's original farm is a family-owned operation called 'Green Pastures Farm,' which emphasizes sustainable farming practices and humane treatment of animals. The old abandoned train yard just outside the city becomes a safe haven for Johnny and Arnie as they temporarily hide before being discovered by authorities.",
+        "important_organizations": "",
+        "flora_and_fauna": "Brickell City's flora is largely ornamental, with trees and flowers planted in parks and along streets. Native plant species are rare, as most of the city's vegetation has been introduced from other regions. Common trees include palm trees, oaks, and maples. Birds such as pigeons, sparrows, and seagulls are abundant. The bay is home to a variety of marine life, including fish, crabs, and dolphins. Outside of the city, the surrounding farmland supports a diverse range of agricultural crops, including corn, soybeans, and vegetables. Livestock such as pigs, cows, and chickens are common on farms. The region's native wildlife includes deer, squirrels, raccoons, and various bird species. Efforts are being made to restore native habitats and protect endangered species. 'Green Pastures Farm' has a variety of pigs, ducks, chickens and other farmyard animals.",
+        "languages": "English is the primary language spoken in Brickell City, but due to the city's diverse population, many other languages are also spoken, including Spanish, Mandarin, and French. Street signs and public announcements are often bilingual, reflecting the city's multiculturalism. Various dialects and accents can be heard throughout the city, adding to its linguistic diversity. The influence of different languages can be seen in the city's cuisine, music, and art. Efforts are being made to promote language learning and cultural exchange. There is also a growing awareness of the importance of preserving indigenous languages and cultures. There is a slight cultural difference between those speaking languages other than english in the Farmstead area versus Brickell City.",
+        "religions_and_beliefs": "Brickell City is a secular society with a diverse range of religious beliefs. Christianity is the dominant religion, with numerous churches and denominations present throughout the city. Other major religions represented include Judaism, Islam, Hinduism, and Buddhism. Many residents are not affiliated with any particular religion, and there is a growing number of atheists and agnostics. Freedom of religion is protected by law, and religious tolerance is generally high. However, religious tensions can sometimes arise, particularly in relation to social and political issues. Many residents also hold spiritual beliefs that are not tied to any organized religion, such as New Age spirituality and alternative healing practices. Belief in fate and destiny is also common, particularly among those facing difficult circumstances.",
+        "economy": "Brickell City's economy is highly diversified, with major industries including finance, technology, tourism, and real estate. The city is a global financial center, home to numerous banks, investment firms, and insurance companies. The technology sector is rapidly growing, with a concentration of startups and tech companies. Tourism is a major source of revenue, attracting visitors from around the world. Real estate is a booming industry, with high demand for residential and commercial properties. The city's currency is the US dollar. Trade is essential to the city's economy, with goods and services flowing in and out of the city through its port, airport, and rail lines. The city's economic prosperity is not evenly distributed, with significant income inequality between different neighborhoods and social groups. Efforts are being made to promote economic development and create jobs in underserved communities.",
+        "conflicts": "Brickell City faces various conflicts, including political rivalries, social inequalities, and environmental challenges. Political tensions often arise between different factions within the city council and between the city government and the state government. Social inequalities are evident in the disparities in income, education, and healthcare access. Environmental challenges include air and water pollution, climate change, and the loss of biodiversity. There are also ongoing conflicts related to land use and development, with debates over the balance between economic growth and environmental protection. Past conflicts have included labor strikes, civil rights protests, and urban riots. Efforts are being made to address these conflicts through policy reforms, community organizing, and peaceful dialogue. Specifically, the city has ongoing debates about farm land on the outskirts being converted to sprawling housing developments.",
+        "setting_context": "",
+        "key_figures": "",
+        "major_events": "",
+        "underlying_causes": "",
+        "consequences": "",
+        "relevant_data": "",
+        "different_perspectives": "",
+        "key_concepts": "",
+        "industry_overview": "",
+        "target_audience": "",
+        "market_analysis": "",
+        "business_model": "",
+        "marketing_and_sales_strategy": "",
+        "operations": "",
+        "financial_projections": "",
+        "management_team": "",
+        "legal_and_regulatory_environment": "",
+        "risks_and_challenges": "",
+        "opportunities_for_growth": "",
+        "introduction": "",
+        "literature_review": "",
+        "methodology": "",
+        "results": "",
+        "discussion": "",
+        "conclusion": "",
+        "references": "",
+        "appendices": ""
+    },
+    "chapters": {
+        "1": {
+            "chapter_number": 1,
+            "title": "Oink in the City",
+            "summary": "Johnny, a teenager living in a bustling city apartment, feels restless and disconnected from his surroundings. He longs for adventure and something beyond the concrete jungle. One rainy afternoon, while walking home from school, he encounters Arnie, a surprisingly graceful pig who has escaped from a local farm. Arnie, it turns out, has a natural talent for dancing. Johnny is immediately drawn to Arnie’s playful nature and unique talent.",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "summary": "Johnny walks home from school, feeling bored and disconnected from the city. He reflects on his desire for something more exciting in his life.",
+                    "characters": [
+                        "Johnny"
+                    ],
+                    "setting": "City sidewalk on a rainy afternoon",
+                    "goal": "Establish Johnny's character and his longing for something different.",
+                    "emotional_beat": "Melancholy, Apathy"
+                },
+                {
+                    "scene_number": 2,
+                    "summary": "Johnny spots a pig, Arnie, in a small, fenced-in lot behind a butcher shop. Arnie looks distressed and out of place.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie (introduced)"
+                    ],
+                    "setting": "Alley behind a butcher shop",
+                    "goal": "Introduce Arnie and create initial intrigue and concern.",
+                    "emotional_beat": "Curiosity, Concern"
+                },
+                {
+                    "scene_number": 3,
+                    "summary": "Arnie breaks through the flimsy fence and begins awkwardly trotting down the street, almost getting hit by a taxi. Johnny feels compelled to help him.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie"
+                    ],
+                    "setting": "City street during rush hour",
+                    "goal": "Show Arnie's escape and Johnny's immediate responsibility toward him.",
+                    "emotional_beat": "Excitement, Anxiety"
+                },
+                {
+                    "scene_number": 4,
+                    "summary": "Johnny coaxes Arnie into a deserted park under the overpass. Arnie, relieved to be out of the rain, starts playfully prancing, revealing an unexpected talent for dance.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie"
+                    ],
+                    "setting": "Abandoned Park Under Overpass",
+                    "goal": "Establish Arnie's character, his dancing talent, and the initial bond between Johnny and Arnie.",
+                    "emotional_beat": "Wonder, Amusement"
+                },
+                {
+                    "scene_number": 5,
+                    "summary": "Johnny, captivated by Arnie's dance, teaches him a few basic steps. They begin to bond over their shared movement. Johnny realizes he can't just leave Arnie.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie"
+                    ],
+                    "setting": "Abandoned Park Under Overpass",
+                    "goal": "Solidify the friendship between Johnny and Arnie and show Johnny's commitment to taking care of him.",
+                    "emotional_beat": "Joy, Connection"
+                }
+            ]
+        },
+        "2": {
+            "chapter_number": 2,
+            "title": "Secrets and Squeals",
+            "summary": "Johnny hides Arnie in his bedroom, determined to keep his new friend a secret from his parents. This leads to a series of comical near-misses as he attempts to sneak food to Arnie and cover up the sounds and smells of a pig in a small apartment. Johnny creates elaborate cover stories to explain the strange noises and missing food, which raises his parents' suspicion.",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "summary": "Johnny brings Arnie into his bedroom and tries to make him comfortable, quickly realizing the challenges of hiding a pig. He promises Arnie they'll be best friends and will keep him safe.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie"
+                    ],
+                    "setting": "Johnny's bedroom in his apartment.",
+                    "goal": "Establish the setting and the immediate problem of hiding Arnie.",
+                    "emotional_beat": "Excitement mixed with worry."
+                },
+                {
+                    "scene_number": 2,
+                    "summary": "It's dinner time. Johnny nervously tries to smuggle food from the dinner table to Arnie in his room, making excuses for why he's not eating and sneaking extra portions when his parents aren't looking.",
+                    "characters": [
+                        "Johnny",
+                        "Mom",
+                        "Dad",
+                        "Arnie (implied presence)"
+                    ],
+                    "setting": "Dining room and Johnny's bedroom (connected).",
+                    "goal": "Show the first challenges of hiding Arnie and create comedic tension.",
+                    "emotional_beat": "Anxiety and humor."
+                },
+                {
+                    "scene_number": 3,
+                    "summary": "Johnny's parents begin to notice strange noises coming from Johnny's room during the night. Johnny improvises elaborate (and ridiculous) explanations, claiming he's been having wild dreams and sleepwalking.",
+                    "characters": [
+                        "Johnny",
+                        "Mom",
+                        "Dad"
+                    ],
+                    "setting": "Living room and hallway outside Johnny's bedroom (night).",
+                    "goal": "Raise suspicion and build suspense about the discovery of Arnie.",
+                    "emotional_beat": "Suspicion and mild frustration."
+                },
+                {
+                    "scene_number": 4,
+                    "summary": "Arnie starts making noticeable pig noises and leaving a distinct smell in the apartment. Johnny desperately tries to cover it up with air freshener and claims the smell is from a science experiment he's working on.",
+                    "characters": [
+                        "Johnny",
+                        "Mom",
+                        "Dad",
+                        "Arnie (implied presence)"
+                    ],
+                    "setting": "The apartment – primarily hallway and Johnny's bedroom.",
+                    "goal": "Increase the comedic stakes and parental suspicion.",
+                    "emotional_beat": "Hysterical cover-up and growing parental concern."
+                },
+                {
+                    "scene_number": 5,
+                    "summary": "Johnny tries to bathe Arnie in the small bathroom. Water splashes everywhere, causing a leak in the ceiling below, creating a huge problem for Johnny. Mom and Dad come to investigate the commotion.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie",
+                        "Mom",
+                        "Dad"
+                    ],
+                    "setting": "Bathroom and the apartment below.",
+                    "goal": "Create a significant problem that brings Johnny closer to getting caught.",
+                    "emotional_beat": "Panic and impending doom."
+                },
+                {
+                    "scene_number": 6,
+                    "summary": "Johnny deflects his parents question's about the leak by quickly distracting them with a faux 'family emergency' he made up. Johnny vows to be more careful and apologizes to Arnie.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie",
+                        "Mom",
+                        "Dad"
+                    ],
+                    "setting": "Bathroom, Johnny's bedroom",
+                    "goal": "Add a bit more tension, as it's clear Johnny can't keep Arnie hidden for very much longer.",
+                    "emotional_beat": "Relief and stress."
+                }
+            ]
+        },
+        "3": {
+            "chapter_number": 3,
+            "title": "Farm-Bound Friends",
+            "summary": "The inevitable discovery occurs when Arnie accidentally activates the fire alarm while practicing his dance moves. Johnny's parents are shocked and angry, insisting that a pig can't live in their apartment. Heartbroken and feeling misunderstood, Johnny runs away with Arnie. A city-wide search ensues, causing Johnny's parents to realize how much Johnny cares for Arnie. They find Johnny, exhausted and muddy, outside the city. They reveal they had planned to buy a small farm outside the city so Johnny and Arnie could live together. The story ends with Johnny, Arnie, and his parents embracing their new life in the countryside.",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "summary": "Arnie, excited to learn a new dance move, jumps and bumps into the kitchen stove, accidentally turning on a burner. Smoke quickly fills the apartment, triggering the fire alarm.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie"
+                    ],
+                    "setting": "Johnny's apartment kitchen",
+                    "goal": "To escalate the conflict and introduce the inevitable discovery.",
+                    "emotional_beat": "Growing panic and comedic tension."
+                },
+                {
+                    "scene_number": 2,
+                    "summary": "Johnny's parents rush into the apartment to find smoke and Arnie standing amidst the chaos. Johnny's mom is furious, his dad is bewildered, and they both demand an explanation for the pig's presence.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie",
+                        "Mom",
+                        "Dad"
+                    ],
+                    "setting": "Johnny's apartment living room and kitchen.",
+                    "goal": "To reveal Arnie to Johnny's parents and establish their disapproval.",
+                    "emotional_beat": "Shock, anger, disbelief."
+                },
+                {
+                    "scene_number": 3,
+                    "summary": "Johnny desperately tries to explain his bond with Arnie, but his parents refuse to listen. They insist that Arnie can't stay, arguing about responsibility and the impracticality of keeping a pig in the city.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie",
+                        "Mom",
+                        "Dad"
+                    ],
+                    "setting": "Johnny's apartment living room.",
+                    "goal": "To establish Johnny's emotional connection to Arnie against his parents' practical objections.",
+                    "emotional_beat": "Desperation, frustration, sadness."
+                },
+                {
+                    "scene_number": 4,
+                    "summary": "Overwhelmed by his parents' disapproval and feeling like no one understands, Johnny grabs Arnie and runs out of the apartment, ignoring his parents' shouts to come back.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie",
+                        "Mom",
+                        "Dad (briefly)"
+                    ],
+                    "setting": "Johnny's apartment hallway, city street.",
+                    "goal": "To initiate the runaway adventure and heighten the stakes.",
+                    "emotional_beat": "Defiance, heartbreak, determination."
+                },
+                {
+                    "scene_number": 5,
+                    "summary": "Johnny and Arnie walk along a muddy road outside the city limits, exhausted and hungry. Johnny reassures Arnie that everything will be alright, even though he's not entirely sure himself.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie"
+                    ],
+                    "setting": "A muddy road leading out of the city.",
+                    "goal": "To show Johnny's commitment to Arnie and establish their isolation.",
+                    "emotional_beat": "Weariness, fear, loyalty."
+                },
+                {
+                    "scene_number": 6,
+                    "summary": "Johnny's parents find Johnny and Arnie sitting by the side of the road, covered in mud. They express their relief at finding him safe and reveal that they were planning to move to a small farm so Johnny and Arnie could be together.",
+                    "characters": [
+                        "Johnny",
+                        "Arnie",
+                        "Mom",
+                        "Dad"
+                    ],
+                    "setting": "A roadside location outside the city.",
+                    "goal": "To resolve the conflict and reveal the parents' planned move.",
+                    "emotional_beat": "Relief, joy, reconciliation."
+                }
+            ]
+        }
+    },
+    "outline": "# Book Summary\n\"Arnie's City Shuffle\" is a heartwarming short story about Johnny, a city boy longing for something more than his mundane life. His wish is unexpectedly granted when he encounters Arnie, a dancing pig who has escaped from a nearby farm. The two quickly become best friends, but Johnny knows his parents wouldn't approve of keeping a pig in their apartment. He hides Arnie, leading to increasingly complicated and humorous situations.\n\nThe story escalates when Johnny's parents discover Arnie, leading to heartbreak and a desperate runaway adventure. Johnny, determined to keep his best friend, flees the city with Arnie. A city-wide search ensues, causing panic for Johnny's parents. The story culminates with a joyful reunion and a surprising revelation: Johnny's parents planned to move to a farm so Johnny and Arnie could live together. The story celebrates the unexpected bonds of friendship and the importance of family.\n\n# Chapter List\n3 Chapters\n\n# Chapter Details\n\n## Chapter 1: Oink in the City\n### Summary\nJohnny, a teenager living in a bustling city apartment, feels restless and disconnected from his surroundings. He longs for adventure and something beyond the concrete jungle. One rainy afternoon, while walking home from school, he encounters Arnie, a surprisingly graceful pig who has escaped from a local farm. Arnie, it turns out, has a natural talent for dancing. Johnny is immediately drawn to Arnie’s playful nature and unique talent.\n\n### Key Events\n- Johnny expresses his dissatisfaction with city life.\n- Arnie escapes from the nearby farm.\n- Johnny discovers Arnie dancing in the rain.\n- Johnny decides to take Arnie home, despite knowing it's wrong.\n\n## Chapter 2: Secrets and Squeals\n### Summary\nJohnny hides Arnie in his bedroom, determined to keep his new friend a secret from his parents. This leads to a series of comical near-misses as he attempts to sneak food to Arnie and cover up the sounds and smells of a pig in a small apartment. Johnny creates elaborate cover stories to explain the strange noises and missing food, which raises his parents' suspicion.\n\n### Key Events\n- Johnny sneaks food to Arnie in his bedroom.\n- Johnny invents increasingly ridiculous excuses to his parents.\n- Johnny almost gets caught when Arnie escapes from his room briefly.\n- Johnny's parents start suspecting something is going on.\n\n## Chapter 3: Farm-Bound Friends\n### Summary\nThe inevitable discovery occurs when Arnie accidentally activates the fire alarm while practicing his dance moves. Johnny's parents are shocked and angry, insisting that a pig can't live in their apartment. Heartbroken and feeling misunderstood, Johnny runs away with Arnie. A city-wide search ensues, causing Johnny's parents to realize how much Johnny cares for Arnie. They find Johnny, exhausted and muddy, outside the city. They reveal they had planned to buy a small farm outside the city so Johnny and Arnie could live together. The story ends with Johnny, Arnie, and his parents embracing their new life in the countryside.\n\n### Key Events\n- Arnie activates the fire alarm, revealing his presence.\n- Johnny runs away with Arnie.\n- Johnny's parents realize Johnny's love for Arnie.\n- Johnny's parents reveal their plan to move to a farm.\n- The family happily settles into their new life with Arnie.",
+    "project_dir": "C:\\Users\\3dmax\\Libriscribe\\projects\\pig 2"
+}

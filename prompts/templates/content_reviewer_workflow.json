@@ -1,0 +1,143 @@
+{
+  "name": "Book Creation - Content Reviewer",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "content-reviewer",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "content-webhook",
+      "name": "Webhook - Review Content"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Extract and validate content review parameters\nconst inputData = $input.all()[0].json.body;\n\n// Required fields from YAML template\nconst chapterNumber = inputData.chapter_number;\nconst genre = inputData.genre;\nconst chapterContent = inputData.chapter_content;\nconst language = inputData.language || 'English';\n\nif (!chapterNumber || !genre || !chapterContent) {\n  throw new Error('Chapter_number, genre, and chapter_content are required');\n}\n\n// Build content review prompt based on YAML template\nlet prompt = `Review Chapter ${chapterNumber} of this ${genre} book for content quality.\\n\\n`;\nprompt += `Chapter content:\\n${chapterContent}\\n\\n`;\n\nprompt += `Evaluate and provide feedback on:\\n`;\nprompt += `- Plot consistency and logic\\n`;\nprompt += `- Character development and authenticity\\n`;\nprompt += `- Pacing and narrative flow\\n`;\nprompt += `- Dialogue quality and believability\\n`;\nprompt += `- Scene transitions and structure\\n`;\nprompt += `- Genre conventions and reader expectations\\n\\n`;\n\nprompt += `Provide specific, actionable feedback for improvement.\\n`;\nprompt += `Highlight both strengths and areas needing work.\\n`;\nprompt += `Language: ${language}`;\n\nconst promptData = {\n  chapter_number: chapterNumber,\n  genre: genre,\n  chapter_content: chapterContent,\n  language: language,\n  prompt: prompt\n};\n\nreturn [{ json: promptData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "prepare-review-prompt",
+      "name": "Prepare Review Prompt"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "options": {
+          "systemMessage": "You are an expert content reviewer and literary critic. Provide balanced, constructive feedback that helps authors improve their work. Focus on specific, actionable suggestions while also acknowledging strengths. Be thorough but concise in your analysis."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [480, 300],
+      "id": "review-content",
+      "name": "Review Content Quality"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-3.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [480, 450],
+      "id": "reviewer-openrouter-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Process and format the content review response\nconst promptData = $('Prepare Review Prompt').all()[0].json;\nconst aiResponse = $input.all()[0].json.response;\n\n// Clean up the response and format it properly\nlet reviewContent = aiResponse || '';\n\n// Count words in review for tracking\nconst wordCount = reviewContent.split(/\\s+/).filter(word => word.length > 0).length;\n\nconst finalReview = {\n  chapter_number: promptData.chapter_number,\n  genre: promptData.genre,\n  language: promptData.language,\n  review: reviewContent,\n  review_word_count: wordCount,\n  reviewed_at: new Date().toISOString()\n};\n\nreturn [{ json: finalReview }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 300],
+      "id": "process-review-response",
+      "name": "Process Review Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [920, 300],
+      "id": "respond-review",
+      "name": "Respond with Review"
+    }
+  ],
+  "connections": {
+    "Webhook - Review Content": {
+      "main": [
+        [
+          {
+            "node": "Prepare Review Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Review Prompt": {
+      "main": [
+        [
+          {
+            "node": "Review Content Quality",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Review Content Quality": {
+      "main": [
+        [
+          {
+            "node": "Process Review Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Review Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Review Content Quality",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

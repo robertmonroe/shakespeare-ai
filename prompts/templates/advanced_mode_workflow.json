@@ -1,0 +1,546 @@
+{
+  "name": "Book Creation - Advanced Mode",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "advanced",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "advanced-webhook",
+      "name": "Webhook - Advanced Mode"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Advanced Mode - Book Creation Project Setup\nconst inputData = $input.all()[0].json.body;\n\n// Required fields\nconst projectName = inputData.project_name;\nconst title = inputData.title;\nconst category = inputData.category; // Fiction, Non-Fiction, Business, Research Paper\n\nif (!projectName || !title || !category) {\n  throw new Error('Required fields: project_name, title, category');\n}\n\n// Advanced Mode allows flexible chapter specification\nlet numChapters;\nlet numChaptersStr = inputData.num_chapters_str || inputData.num_chapters || '8-12';\n\n// Parse range or plus notation\nif (typeof numChaptersStr === 'string') {\n  if (numChaptersStr.includes('-')) {\n    try {\n      const [minVal, maxVal] = numChaptersStr.split('-').map(n => parseInt(n));\n      numChapters = Math.floor(Math.random() * (maxVal - minVal + 1)) + minVal;\n    } catch (error) {\n      numChapters = 10; // Default fallback\n    }\n  } else if (numChaptersStr.includes('+')) {\n    try {\n      const baseVal = parseInt(numChaptersStr.replace('+', ''));\n      numChapters = baseVal + Math.floor(Math.random() * 10); // +0 to +9\n    } catch (error) {\n      numChapters = 12; // Default fallback\n    }\n  } else {\n    try {\n      numChapters = parseInt(numChaptersStr);\n    } catch (error) {\n      numChapters = 10; // Default fallback\n    }\n  }\n} else if (typeof numChaptersStr === 'number') {\n  numChapters = numChaptersStr;\n} else {\n  numChapters = 10; // Default\n}\n\n// Advanced mode specific fields based on category\nlet advancedFields = {};\n\nif (category === 'Fiction') {\n  // Parse num_characters similar to num_chapters\n  let numCharacters;\n  const numCharactersStr = inputData.num_characters_str || inputData.num_characters || '2-3';\n  \n  if (typeof numCharactersStr === 'string') {\n    if (numCharactersStr.includes('-')) {\n      try {\n        const [minVal, maxVal] = numCharactersStr.split('-').map(n => parseInt(n));\n        numCharacters = Math.floor(Math.random() * (maxVal - minVal + 1)) + minVal;\n      } catch (error) {\n        numCharacters = 2;\n      }\n    } else if (numCharactersStr.includes('+')) {\n      try {\n        const baseVal = parseInt(numCharactersStr.replace('+', ''));\n        numCharacters = baseVal;\n      } catch (error) {\n        numCharacters = 3;\n      }\n    } else {\n      try {\n        numCharacters = parseInt(numCharactersStr);\n      } catch (error) {\n        numCharacters = 3;\n      }\n    }\n  } else {\n    numCharacters = numCharactersStr || 2;\n  }\n\n  advancedFields = {\n    num_characters: numCharacters,\n    num_characters_str: inputData.num_characters_str || numCharactersStr,\n    worldbuilding_needed: inputData.worldbuilding_needed || false,\n    tone: inputData.tone || 'Serious',\n    target_audience: inputData.target_audience || 'Adults',\n    book_length: inputData.book_length || 'Novel',\n    inspired_by: inputData.inspired_by || ''\n  };\n} else if (category === 'Non-Fiction') {\n  advancedFields = {\n    num_characters: 0,\n    worldbuilding_needed: false,\n    tone: inputData.tone || 'Informative',\n    target_audience: inputData.target_audience || 'Adults',\n    book_length: inputData.book_length || 'Full Book',\n    author_experience: inputData.author_experience || ''\n  };\n} else if (category === 'Business') {\n  advancedFields = {\n    num_characters: 0,\n    worldbuilding_needed: false,\n    tone: inputData.tone || 'Informative',\n    target_audience: inputData.target_audience || 'General Business Readers',\n    book_length: inputData.book_length || 'Full Book',\n    key_takeaways: inputData.key_takeaways || '',\n    case_studies: inputData.case_studies || false,\n    actionable_advice: inputData.actionable_advice || false,\n    marketing_focus: inputData.marketing_focus || '',\n    sales_focus: inputData.sales_focus || ''\n  };\n} else if (category === 'Research Paper') {\n  advancedFields = {\n    num_characters: 0,\n    worldbuilding_needed: false,\n    tone: 'Formal and Objective',\n    target_audience: inputData.target_audience || 'Academic Community',\n    book_length: 'Academic Article',\n    research_question: inputData.research_question || '',\n    hypothesis: inputData.hypothesis || '',\n    methodology: inputData.methodology || 'Quantitative'\n  };\n}\n\n// Create advanced project data\nconst projectData = {\n  // Core fields\n  project_name: projectName,\n  title: title,\n  category: category,\n  genre: inputData.genre || 'Unknown Genre',\n  language: inputData.language || 'English',\n  \n  // Chapter data (advanced allows flexible ranges)\n  num_chapters: numChapters,\n  num_chapters_str: numChaptersStr.toString(),\n  \n  // Advanced-specific fields\n  ...advancedFields,\n  \n  // Optional fields with defaults\n  description: inputData.description || inputData.user_input || '',\n  review_preference: inputData.review_preference || 'AI',\n  llm_provider: 'openrouter',\n  \n  // Dynamic questions support\n  dynamic_questions: inputData.dynamic_questions || {},\n  \n  // System fields\n  project_dir: `C:/Users/3dmax/n8n-books/${projectName}`,\n  timestamp: new Date().toISOString(),\n  mode: 'advanced'\n};\n\nreturn [{ json: projectData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "setup-advanced-project",
+      "name": "Setup Advanced Mode Project"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Skip directory creation - N8N will handle automatically\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 300],
+      "id": "create-project-dir",
+      "name": "Prepare Project Setup"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Log project data instead of saving to file\nconst projectData = $input.all()[0].json;\nconsole.log('Advanced Mode Project Data:', JSON.stringify(projectData, null, 2));\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 300],
+      "id": "save-project-data",
+      "name": "Log Project Data"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/concept-generator",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"genre\": \"{{ $json.genre }}\",\n  \"category\": \"{{ $json.category }}\",\n  \"book_length\": \"{{ $json.book_length }}\",\n  \"user_input\": \"{{ $json.description }}\",\n  \"language\": \"{{ $json.language }}\",\n  \"tone\": \"{{ $json.tone }}\",\n  \"target_audience\": \"{{ $json.target_audience }}\",\n  \"dynamic_questions\": \"{{ JSON.stringify($json.dynamic_questions) }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [920, 300],
+      "id": "generate-advanced-concept",
+      "name": "Generate Advanced Concept"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/outliner",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"genre\": \"{{ $('Setup Advanced Mode Project').all()[0].json.genre }}\",\n  \"title\": \"{{ $('Setup Advanced Mode Project').all()[0].json.title }}\",\n  \"category\": \"{{ $('Setup Advanced Mode Project').all()[0].json.category }}\",\n  \"book_length\": \"{{ $('Setup Advanced Mode Project').all()[0].json.book_length }}\",\n  \"concept\": \"{{ JSON.stringify($json) }}\",\n  \"num_chapters\": {{ $('Setup Advanced Mode Project').all()[0].json.num_chapters }},\n  \"language\": \"{{ $('Setup Advanced Mode Project').all()[0].json.language }}\",\n  \"tone\": \"{{ $('Setup Advanced Mode Project').all()[0].json.tone }}\",\n  \"target_audience\": \"{{ $('Setup Advanced Mode Project').all()[0].json.target_audience }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1140, 300],
+      "id": "generate-advanced-outline",
+      "name": "Generate Advanced Outline"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $('Setup Advanced Mode Project').all()[0].json.num_characters > 0 }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1360, 300],
+      "id": "check-characters-needed",
+      "name": "Characters Needed?"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/character-generator",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"genre\": \"{{ $('Setup Advanced Mode Project').all()[0].json.genre }}\",\n  \"category\": \"{{ $('Setup Advanced Mode Project').all()[0].json.category }}\",\n  \"title\": \"{{ $('Setup Advanced Mode Project').all()[0].json.title }}\",\n  \"num_characters\": {{ $('Setup Advanced Mode Project').all()[0].json.num_characters }},\n  \"concept\": \"{{ JSON.stringify($('Generate Advanced Concept').all()[0].json) }}\",\n  \"language\": \"{{ $('Setup Advanced Mode Project').all()[0].json.language }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1580, 200],
+      "id": "generate-characters",
+      "name": "Generate Characters"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $('Setup Advanced Mode Project').all()[0].json.worldbuilding_needed }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1580, 400],
+      "id": "check-worldbuilding-needed",
+      "name": "Worldbuilding Needed?"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/worldbuilding",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"genre\": \"{{ $('Setup Advanced Mode Project').all()[0].json.genre }}\",\n  \"category\": \"{{ $('Setup Advanced Mode Project').all()[0].json.category }}\",\n  \"title\": \"{{ $('Setup Advanced Mode Project').all()[0].json.title }}\",\n  \"concept\": \"{{ JSON.stringify($('Generate Advanced Concept').all()[0].json) }}\",\n  \"language\": \"{{ $('Setup Advanced Mode Project').all()[0].json.language }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1800, 400],
+      "id": "generate-worldbuilding",
+      "name": "Generate Worldbuilding"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Prepare for individual chapter writing (Advanced Mode approach)\nconst projectData = $('Setup Advanced Mode Project').all()[0].json;\nconst conceptData = $('Generate Advanced Concept').all()[0].json;\nconst outlineData = $('Generate Advanced Outline').all()[0].json;\n\n// Update project with all generated data\nprojectData.concept = conceptData;\nprojectData.outline = outlineData;\nprojectData.status = 'ready_for_advanced_chapters';\n\n// Advanced mode writes chapters individually for better quality control\n// Generate array of chapters to process\nconst chapters = [];\nfor (let i = 1; i <= projectData.num_chapters; i++) {\n  chapters.push({\n    chapter_number: i,\n    project_data: projectData,\n    outline_data: outlineData,\n    status: 'pending'\n  });\n}\n\nreturn chapters.map(chapter => ({ json: chapter }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2020, 300],
+      "id": "prepare-advanced-chapters",
+      "name": "Prepare Advanced Chapters"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/chapter-writer",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"chapter_number\": {{ $json.chapter_number }},\n  \"book_title\": \"{{ $json.project_data.title }}\",\n  \"genre\": \"{{ $json.project_data.genre }}\",\n  \"category\": \"{{ $json.project_data.category }}\",\n  \"language\": \"{{ $json.project_data.language }}\",\n  \"tone\": \"{{ $json.project_data.tone }}\",\n  \"target_audience\": \"{{ $json.project_data.target_audience }}\",\n  \"outline\": \"{{ JSON.stringify($json.outline_data) }}\",\n  \"concept\": \"{{ JSON.stringify($json.project_data.concept) }}\",\n  \"worldbuilding_needed\": {{ $json.project_data.worldbuilding_needed }}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2240, 300],
+      "id": "write-advanced-chapter",
+      "name": "Write Advanced Chapter"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Log chapter content instead of saving to file\nconst chapterData = $input.all()[0].json;\nconst chapterContent = $('Write Advanced Chapter').all()[0].json.content || 'Chapter content not available';\nconst fileName = `chapter_${chapterData.chapter_number}.md`;\n\nconsole.log(`Advanced Chapter ${chapterData.chapter_number} completed:`);\nconsole.log(`File would be: ${fileName}`);\nconsole.log(`Content length: ${chapterContent.length} characters`);\n\n// Pass through the chapter data with content\nreturn [{ json: { ...chapterData, chapter_content: chapterContent, file_name: fileName } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2460, 300],
+      "id": "save-advanced-chapter",
+      "name": "Log Advanced Chapter"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/content-reviewer",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"chapter_content\": \"{{ $('Write Advanced Chapter').all()[0].json.content }}\",\n  \"chapter_number\": {{ $json.chapter_number }},\n  \"genre\": \"{{ $json.project_data.genre }}\",\n  \"language\": \"{{ $json.project_data.language }}\",\n  \"target_audience\": \"{{ $json.project_data.target_audience }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2680, 300],
+      "id": "review-advanced-chapter",
+      "name": "Review Advanced Chapter"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.project_data.review_preference }}",
+              "rightValue": "AI",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2900, 300],
+      "id": "check-auto-edit-advanced",
+      "name": "Auto-Edit Advanced?"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/editor",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"chapter_content\": \"{{ $('Write Advanced Chapter').all()[0].json.content }}\",\n  \"chapter_number\": {{ $json.chapter_number }},\n  \"review_feedback\": \"{{ $('Review Advanced Chapter').all()[0].json.feedback }}\",\n  \"language\": \"{{ $json.project_data.language }}\",\n  \"tone\": \"{{ $json.project_data.tone }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3120, 200],
+      "id": "edit-advanced-chapter",
+      "name": "Edit Advanced Chapter"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Log edited chapter instead of saving to file\nconst chapterData = $input.all()[0].json;\nconst editedContent = $('Edit Advanced Chapter').all()[0].json.content || $('Write Advanced Chapter').all()[0].json.content;\nconst fileName = `chapter_${chapterData.chapter_number}_revised.md`;\n\nconsole.log(`Advanced Chapter ${chapterData.chapter_number} edited:`);\nconsole.log(`Revised file would be: ${fileName}`);\nconsole.log(`Edited content length: ${editedContent.length} characters`);\n\n// Pass through the chapter data with edited content\nreturn [{ json: { ...chapterData, edited_content: editedContent, revised_file_name: fileName } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3340, 200],
+      "id": "save-edited-advanced-chapter",
+      "name": "Log Edited Advanced Chapter"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Mark chapter as completed\nconst chapterData = $input.all()[0].json;\nchapterData.status = 'completed';\nchapterData.completed_at = new Date().toISOString();\n\nreturn [{ json: chapterData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3120, 400],
+      "id": "mark-advanced-complete",
+      "name": "Mark Advanced Chapter Complete"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/book-formatter",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"project_title\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.title }}\",\n  \"author\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.author || 'AI Generated' }}\",\n  \"genre\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.genre }}\",\n  \"chapters_dir\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.project_dir }}\",\n  \"total_chapters\": {{ $('Prepare Advanced Chapters').all()[0].json.project_data.num_chapters }},\n  \"output_file\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.project_dir }}/{{ $('Prepare Advanced Chapters').all()[0].json.project_data.title.replace(/[^a-zA-Z0-9]/g, '_') }}_advanced_complete.md\",\n  \"language\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.language }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3560, 300],
+      "id": "format-advanced-book",
+      "name": "Format Advanced Book"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"success\",\n  \"message\": \"Book Creation Advanced Mode completed successfully!\",\n  \"mode\": \"advanced\",\n  \"project_name\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.project_name }}\",\n  \"title\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.title }}\",\n  \"book_type\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.book_length }}\",\n  \"chapters_generated\": {{ $('Prepare Advanced Chapters').all()[0].json.project_data.num_chapters }},\n  \"chapter_range_requested\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.num_chapters_str }}\",\n  \"book_file\": \"{{ $json.book_file }}\",\n  \"word_count\": {{ $json.word_count || 0 }},\n  \"project_dir\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.project_dir }}\",\n  \"features_used\": {\n    \"characters_generated\": {{ $('Prepare Advanced Chapters').all()[0].json.project_data.num_characters > 0 }},\n    \"worldbuilding_generated\": {{ $('Prepare Advanced Chapters').all()[0].json.project_data.worldbuilding_needed }},\n    \"ai_review_used\": \"{{ $('Prepare Advanced Chapters').all()[0].json.project_data.review_preference === 'AI' }}\"\n  },\n  \"completed_at\": \"{{ new Date().toISOString() }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [3780, 300],
+      "id": "respond-advanced-success",
+      "name": "Respond Advanced Success"
+    }
+  ],
+  "connections": {
+    "Webhook - Advanced Mode": {
+      "main": [
+        [
+          {
+            "node": "Setup Advanced Mode Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Setup Advanced Mode Project": {
+      "main": [
+        [
+          {
+            "node": "Create Project Directory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Project Directory": {
+      "main": [
+        [
+          {
+            "node": "Save Project Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Project Data": {
+      "main": [
+        [
+          {
+            "node": "Generate Advanced Concept",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Advanced Concept": {
+      "main": [
+        [
+          {
+            "node": "Generate Advanced Outline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Advanced Outline": {
+      "main": [
+        [
+          {
+            "node": "Characters Needed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Characters Needed?": {
+      "main": [
+        [
+          {
+            "node": "Generate Characters",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Worldbuilding Needed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Characters": {
+      "main": [
+        [
+          {
+            "node": "Worldbuilding Needed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Worldbuilding Needed?": {
+      "main": [
+        [
+          {
+            "node": "Generate Worldbuilding",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Advanced Chapters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Worldbuilding": {
+      "main": [
+        [
+          {
+            "node": "Prepare Advanced Chapters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Advanced Chapters": {
+      "main": [
+        [
+          {
+            "node": "Write Advanced Chapter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Advanced Chapter": {
+      "main": [
+        [
+          {
+            "node": "Save Advanced Chapter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Advanced Chapter": {
+      "main": [
+        [
+          {
+            "node": "Review Advanced Chapter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Review Advanced Chapter": {
+      "main": [
+        [
+          {
+            "node": "Auto-Edit Advanced?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-Edit Advanced?": {
+      "main": [
+        [
+          {
+            "node": "Edit Advanced Chapter",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark Advanced Chapter Complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Advanced Chapter": {
+      "main": [
+        [
+          {
+            "node": "Save Edited Advanced Chapter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Edited Advanced Chapter": {
+      "main": [
+        [
+          {
+            "node": "Format Advanced Book",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Advanced Chapter Complete": {
+      "main": [
+        [
+          {
+            "node": "Format Advanced Book",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Advanced Book": {
+      "main": [
+        [
+          {
+            "node": "Respond Advanced Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

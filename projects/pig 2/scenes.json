@@ -1,0 +1,211 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "Johnny walks home from school, feeling bored and disconnected from the city. He reflects on his desire for something more exciting in his life.",
+            "characters": [
+                "Johnny"
+            ],
+            "setting": "City sidewalk on a rainy afternoon",
+            "goal": "Establish Johnny's character and his longing for something different.",
+            "emotional_beat": "Melancholy, Apathy"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Johnny spots a pig, Arnie, in a small, fenced-in lot behind a butcher shop. Arnie looks distressed and out of place.",
+            "characters": [
+                "Johnny",
+                "Arnie (introduced)"
+            ],
+            "setting": "Alley behind a butcher shop",
+            "goal": "Introduce Arnie and create initial intrigue and concern.",
+            "emotional_beat": "Curiosity, Concern"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Arnie breaks through the flimsy fence and begins awkwardly trotting down the street, almost getting hit by a taxi. Johnny feels compelled to help him.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "City street during rush hour",
+            "goal": "Show Arnie's escape and Johnny's immediate responsibility toward him.",
+            "emotional_beat": "Excitement, Anxiety"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Johnny coaxes Arnie into a deserted park under the overpass. Arnie, relieved to be out of the rain, starts playfully prancing, revealing an unexpected talent for dance.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "Abandoned Park Under Overpass",
+            "goal": "Establish Arnie's character, his dancing talent, and the initial bond between Johnny and Arnie.",
+            "emotional_beat": "Wonder, Amusement"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Johnny, captivated by Arnie's dance, teaches him a few basic steps. They begin to bond over their shared movement. Johnny realizes he can't just leave Arnie.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "Abandoned Park Under Overpass",
+            "goal": "Solidify the friendship between Johnny and Arnie and show Johnny's commitment to taking care of him.",
+            "emotional_beat": "Joy, Connection"
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Johnny brings Arnie into his bedroom and tries to make him comfortable, quickly realizing the challenges of hiding a pig. He promises Arnie they'll be best friends and will keep him safe.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "Johnny's bedroom in his apartment.",
+            "goal": "Establish the setting and the immediate problem of hiding Arnie.",
+            "emotional_beat": "Excitement mixed with worry."
+        },
+        {
+            "scene_number": 2,
+            "summary": "It's dinner time. Johnny nervously tries to smuggle food from the dinner table to Arnie in his room, making excuses for why he's not eating and sneaking extra portions when his parents aren't looking.",
+            "characters": [
+                "Johnny",
+                "Mom",
+                "Dad",
+                "Arnie (implied presence)"
+            ],
+            "setting": "Dining room and Johnny's bedroom (connected).",
+            "goal": "Show the first challenges of hiding Arnie and create comedic tension.",
+            "emotional_beat": "Anxiety and humor."
+        },
+        {
+            "scene_number": 3,
+            "summary": "Johnny's parents begin to notice strange noises coming from Johnny's room during the night. Johnny improvises elaborate (and ridiculous) explanations, claiming he's been having wild dreams and sleepwalking.",
+            "characters": [
+                "Johnny",
+                "Mom",
+                "Dad"
+            ],
+            "setting": "Living room and hallway outside Johnny's bedroom (night).",
+            "goal": "Raise suspicion and build suspense about the discovery of Arnie.",
+            "emotional_beat": "Suspicion and mild frustration."
+        },
+        {
+            "scene_number": 4,
+            "summary": "Arnie starts making noticeable pig noises and leaving a distinct smell in the apartment. Johnny desperately tries to cover it up with air freshener and claims the smell is from a science experiment he's working on.",
+            "characters": [
+                "Johnny",
+                "Mom",
+                "Dad",
+                "Arnie (implied presence)"
+            ],
+            "setting": "The apartment \u2013 primarily hallway and Johnny's bedroom.",
+            "goal": "Increase the comedic stakes and parental suspicion.",
+            "emotional_beat": "Hysterical cover-up and growing parental concern."
+        },
+        {
+            "scene_number": 5,
+            "summary": "Johnny tries to bathe Arnie in the small bathroom. Water splashes everywhere, causing a leak in the ceiling below, creating a huge problem for Johnny. Mom and Dad come to investigate the commotion.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Mom",
+                "Dad"
+            ],
+            "setting": "Bathroom and the apartment below.",
+            "goal": "Create a significant problem that brings Johnny closer to getting caught.",
+            "emotional_beat": "Panic and impending doom."
+        },
+        {
+            "scene_number": 6,
+            "summary": "Johnny deflects his parents question's about the leak by quickly distracting them with a faux 'family emergency' he made up. Johnny vows to be more careful and apologizes to Arnie.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Mom",
+                "Dad"
+            ],
+            "setting": "Bathroom, Johnny's bedroom",
+            "goal": "Add a bit more tension, as it's clear Johnny can't keep Arnie hidden for very much longer.",
+            "emotional_beat": "Relief and stress."
+        }
+    ],
+    "3": [
+        {
+            "scene_number": 1,
+            "summary": "Arnie, excited to learn a new dance move, jumps and bumps into the kitchen stove, accidentally turning on a burner. Smoke quickly fills the apartment, triggering the fire alarm.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "Johnny's apartment kitchen",
+            "goal": "To escalate the conflict and introduce the inevitable discovery.",
+            "emotional_beat": "Growing panic and comedic tension."
+        },
+        {
+            "scene_number": 2,
+            "summary": "Johnny's parents rush into the apartment to find smoke and Arnie standing amidst the chaos. Johnny's mom is furious, his dad is bewildered, and they both demand an explanation for the pig's presence.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Mom",
+                "Dad"
+            ],
+            "setting": "Johnny's apartment living room and kitchen.",
+            "goal": "To reveal Arnie to Johnny's parents and establish their disapproval.",
+            "emotional_beat": "Shock, anger, disbelief."
+        },
+        {
+            "scene_number": 3,
+            "summary": "Johnny desperately tries to explain his bond with Arnie, but his parents refuse to listen. They insist that Arnie can't stay, arguing about responsibility and the impracticality of keeping a pig in the city.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Mom",
+                "Dad"
+            ],
+            "setting": "Johnny's apartment living room.",
+            "goal": "To establish Johnny's emotional connection to Arnie against his parents' practical objections.",
+            "emotional_beat": "Desperation, frustration, sadness."
+        },
+        {
+            "scene_number": 4,
+            "summary": "Overwhelmed by his parents' disapproval and feeling like no one understands, Johnny grabs Arnie and runs out of the apartment, ignoring his parents' shouts to come back.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Mom",
+                "Dad (briefly)"
+            ],
+            "setting": "Johnny's apartment hallway, city street.",
+            "goal": "To initiate the runaway adventure and heighten the stakes.",
+            "emotional_beat": "Defiance, heartbreak, determination."
+        },
+        {
+            "scene_number": 5,
+            "summary": "Johnny and Arnie walk along a muddy road outside the city limits, exhausted and hungry. Johnny reassures Arnie that everything will be alright, even though he's not entirely sure himself.",
+            "characters": [
+                "Johnny",
+                "Arnie"
+            ],
+            "setting": "A muddy road leading out of the city.",
+            "goal": "To show Johnny's commitment to Arnie and establish their isolation.",
+            "emotional_beat": "Weariness, fear, loyalty."
+        },
+        {
+            "scene_number": 6,
+            "summary": "Johnny's parents find Johnny and Arnie sitting by the side of the road, covered in mud. They express their relief at finding him safe and reveal that they were planning to move to a small farm so Johnny and Arnie could be together.",
+            "characters": [
+                "Johnny",
+                "Arnie",
+                "Mom",
+                "Dad"
+            ],
+            "setting": "A roadside location outside the city.",
+            "goal": "To resolve the conflict and reveal the parents' planned move.",
+            "emotional_beat": "Relief, joy, reconciliation."
+        }
+    ]
+}

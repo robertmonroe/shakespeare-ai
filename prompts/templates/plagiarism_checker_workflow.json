@@ -1,0 +1,121 @@
+{
+  "name": "Book Creation - Plagiarism Checker",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "plagiarism-checker-webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [0, 0],
+      "id": "plagiarism-checker-webhook",
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Genre: {{ $json.body.genre }}\nContent to Analyze: {{ $json.body.content_to_analyze }}\nLanguage: {{ $json.body.language }}",
+        "options": {
+          "systemMessage": "Check this {genre} content for potential originality concerns and similarity to well-known works.\n\nContent to analyze:\n{content_to_analyze}\n\nEvaluate for:\n- Similarity to famous {genre} works or popular stories\n- Overused tropes or clichéd elements\n- Distinctive phrases that might echo other works\n- Plot elements that closely mirror existing stories\n- Character archetypes that are too derivative\n- Unique elements that enhance originality\n\nProvide a summary of originality assessment and suggestions for enhancing uniqueness.\nFlag any specific concerns that require attention.\nLanguage: {language}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [208, 0],
+      "id": "plagiarism-checker-agent",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-4.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [80, 208],
+      "id": "plagiarism-checker-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Process and format the plagiarism check response\nconst inputData = $('Webhook').all()[0].json.body;\nconst aiResponse = $input.all()[0].json.response;\n\n// Clean up the response\nlet plagiarismReport = aiResponse || '';\n\nconst finalResult = {\n  genre: inputData.genre,\n  content_analyzed: inputData.content_to_analyze,\n  language: inputData.language || 'English',\n  originality_assessment: plagiarismReport,\n  checked_at: new Date().toISOString()\n};\n\nreturn [{ json: finalResult }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [416, 0],
+      "id": "process-plagiarism-response",
+      "name": "Process Plagiarism Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [624, 0],
+      "id": "respond-plagiarism",
+      "name": "Respond with Assessment"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Process Plagiarism Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Plagiarism Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Assessment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -1,0 +1,219 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "Marcus walks home from school alone, deliberately taking the long route to delay returning to his silent, grief-stricken house. A scruffy orange tabby begins following him, and despite Marcus's attempts to shoo it away, the cat persists with determination.",
+            "characters": [
+                "Marcus",
+                "Whiskers (the cat)"
+            ],
+            "setting": "Suburban streets between Marcus's high school and his neighborhood",
+            "goal": "Introduce Marcus's character and his avoidance of home while establishing the cat's unusual persistence",
+            "emotional_beat": "Weariness and reluctant curiosity"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Marcus arrives home with the cat still trailing behind him, where he finds his mother in the kitchen mechanically preparing dinner and Jamie sitting silently at the table with his coloring books. When his mother notices the cat on the porch, something flickers in her eyes for the first time in months, and she insists they keep it despite Marcus's protests.",
+            "characters": [
+                "Marcus",
+                "Mom",
+                "Jamie",
+                "Whiskers"
+            ],
+            "setting": "The family's front porch and kitchen",
+            "goal": "Establish the family's grief-stricken dynamic and show Mom's unexpected response to the cat",
+            "emotional_beat": "Fragile hope mixed with frustration"
+        },
+        {
+            "scene_number": 3,
+            "summary": "During an awkward dinner where Jamie remains silent and Mom barely eats, Whiskers begins his bizarre dog-like behavior\u2014barking at the mailman through the window and then fetching a wadded napkin Marcus tosses aside in frustration. The family watches in stunned silence as the cat wags his tail enthusiastically.",
+            "characters": [
+                "Marcus",
+                "Mom",
+                "Jamie",
+                "Whiskers"
+            ],
+            "setting": "The family's dining room and kitchen",
+            "goal": "Reveal Whiskers's unusual dog-like behavior and create a moment of shared surprise that briefly unites the family",
+            "emotional_beat": "Bewilderment and unexpected amusement"
+        },
+        {
+            "scene_number": 4,
+            "summary": "After dinner, Marcus retreats to his room to tackle homework, trying to maintain his perfect grades while the weight of holding everything together crushes him. He overhears his mother on the phone with Jamie's therapist, learning that without progress soon, residential treatment will be recommended\u2014a possibility that fills Marcus with dread about losing his brother too.",
+            "characters": [
+                "Marcus",
+                "Mom (voice only)"
+            ],
+            "setting": "Marcus's bedroom",
+            "goal": "Reveal the stakes regarding Jamie's condition and Marcus's burden of responsibility",
+            "emotional_beat": "Anxiety and buried grief"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Marcus goes to check on Jamie before bed and finds him sitting on his bedroom floor with Whiskers, who is performing tricks like a dog. For the first time since their father's funeral, Jamie laughs\u2014a small, quiet sound\u2014and Marcus freezes in the doorway, afraid to break the spell.",
+            "characters": [
+                "Marcus",
+                "Jamie",
+                "Whiskers"
+            ],
+            "setting": "Jamie's bedroom",
+            "goal": "Show the first breakthrough with Jamie and establish Whiskers's potential importance to the family's healing",
+            "emotional_beat": "Fragile hope and wonder"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Late that night, Marcus lies awake listening to Whiskers bark softly in the hallway, thinking about his father and wondering if this defective cat might actually be what his broken family needs. He makes a tentative decision to give the strange animal a chance, even though everything about it defies logic.",
+            "characters": [
+                "Marcus",
+                "Whiskers"
+            ],
+            "setting": "Marcus's bedroom at night",
+            "goal": "Show Marcus's internal shift and end the chapter with cautious acceptance",
+            "emotional_beat": "Quiet determination and tentative acceptance"
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Marcus observes from the doorway as Jamie sits on the living room floor, rolling a ball to Whiskers who enthusiastically retrieves it like a dog. For the first time in months, Marcus sees Jamie's shoulders shake with silent laughter as the cat bounds back with the ball in his mouth.",
+            "characters": [
+                "Marcus",
+                "Jamie",
+                "Whiskers"
+            ],
+            "setting": "Living room of the family home, late afternoon",
+            "goal": "Establish the developing bond between Jamie and Whiskers, showing the first signs of Jamie's emotional awakening",
+            "emotional_beat": "Cautious hope"
+        },
+        {
+            "scene_number": 2,
+            "summary": "During dinner, Marcus's mother comments on how much time Jamie spends with Whiskers, expressing both relief and concern about Jamie becoming too attached to the cat. Marcus defends the relationship but notices his mother's worry lines deepening when she mentions Jamie's upcoming evaluation for the residential program.",
+            "characters": [
+                "Marcus",
+                "Mom",
+                "Jamie (present but not speaking)"
+            ],
+            "setting": "Kitchen/dining room during dinner",
+            "goal": "Introduce the stakes and timeline pressure regarding Jamie's treatment, while showing family dynamics",
+            "emotional_beat": "Tension and underlying anxiety"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Marcus is doing homework in his room when he hears a faint sound from Jamie's bedroom\u2014his brother's voice, barely a whisper, saying \"sit\" and \"stay\" to Whiskers. Marcus freezes, heart pounding, as he listens to Jamie repeat the commands, his voice growing slightly stronger with each attempt.",
+            "characters": [
+                "Marcus",
+                "Jamie (heard but not seen initially)",
+                "Whiskers"
+            ],
+            "setting": "Upstairs hallway between Marcus's and Jamie's bedrooms, evening",
+            "goal": "Deliver the pivotal moment of Jamie speaking for the first time in six months",
+            "emotional_beat": "Shock and overwhelming relief"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Marcus quietly enters Jamie's room and watches his brother training Whiskers, who is completely ignoring the commands and chasing his own tail instead. When Jamie notices Marcus, he immediately goes silent, fear flashing across his face, but Marcus carefully sits down without saying anything, just watching, and after a long moment, Jamie whispers another command to the cat.",
+            "characters": [
+                "Marcus",
+                "Jamie",
+                "Whiskers"
+            ],
+            "setting": "Jamie's bedroom",
+            "goal": "Show Marcus's instinctive understanding that he must not pressure Jamie or make a big deal of the speaking",
+            "emotional_beat": "Fragile trust and tenderness"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Late that night, Marcus lies awake wrestling with whether to tell their mother about Jamie's whispered words. He picks up his phone to text her several times but stops, remembering how every therapist, every intervention, every well-meaning attempt to \"fix\" Jamie has only made him retreat further into silence.",
+            "characters": [
+                "Marcus (alone with his thoughts)"
+            ],
+            "setting": "Marcus's bedroom, late night",
+            "goal": "Reveal Marcus's internal conflict and his growing understanding that conventional approaches haven't worked",
+            "emotional_beat": "Uncertainty and protective determination"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Marcus sits on the back porch steps watching Whiskers chase moths in the yard, and has an epiphany: the cat doesn't follow any rules about what he should be, and that's exactly why Jamie trusts him. Marcus realizes he's been doing the opposite\u2014forcing himself to be strong, responsible, and in control\u2014and wonders what would happen if he allowed himself to be as authentically broken as he feels.",
+            "characters": [
+                "Marcus",
+                "Whiskers"
+            ],
+            "setting": "Back porch and yard, twilight",
+            "goal": "Deliver the thematic revelation about healing, authenticity, and the pressure to grieve \"correctly\"",
+            "emotional_beat": "Bittersweet recognition and the beginning of self-awareness"
+        }
+    ],
+    "3": [
+        {
+            "scene_number": 1,
+            "summary": "Marcus and Jamie are home alone as dark clouds gather outside and their mother calls to say she has to work late at the hospital. Whiskers becomes increasingly agitated as thunder rumbles in the distance, pacing and letting out anxious barks while Marcus tries to reassure both the cat and his brother.",
+            "characters": [
+                "Marcus",
+                "Jamie",
+                "Whiskers",
+                "Mom (phone call only)"
+            ],
+            "setting": "The family's living room and kitchen, early evening",
+            "goal": "Establish the storm's approach and the vulnerability of the boys being alone; show Whiskers's fear and foreshadow the coming crisis",
+            "emotional_beat": "Growing tension and unease"
+        },
+        {
+            "scene_number": 2,
+            "summary": "When lightning strikes close to the house with a deafening crack, Whiskers panics and bolts toward the back door that Jamie had left slightly ajar after taking out the trash. Marcus lunges to catch the cat but misses, watching helplessly as Whiskers disappears into the storm-darkened backyard.",
+            "characters": [
+                "Marcus",
+                "Jamie",
+                "Whiskers"
+            ],
+            "setting": "Kitchen and back door area of the house",
+            "goal": "Create the central crisis of the chapter; show how quickly things can spiral out of control",
+            "emotional_beat": "Panic and fear"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Marcus discovers Whiskers is gone and turns to find Jamie standing frozen, his face crumbling as tears\u2014the first since their father's death\u2014stream down his cheeks. Marcus makes a promise to find Whiskers, and Jamie whispers the single word \"Please,\" breaking six months of silence with a plea that Marcus cannot refuse.",
+            "characters": [
+                "Marcus",
+                "Jamie"
+            ],
+            "setting": "Inside the house, near the back door",
+            "goal": "Show Jamie's breakthrough moment and raise the emotional stakes; demonstrate Marcus's protective instinct and sense of responsibility",
+            "emotional_beat": "Heartbreak and desperate hope"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Marcus ventures into the violent storm alone, searching the neighborhood while rain soaks him and lightning illuminates his path. As he calls for Whiskers with no response, his carefully controlled emotions finally shatter, and he screams into the wind about his father's death, the unfairness of life, and his exhaustion from trying to hold everything together.",
+            "characters": [
+                "Marcus",
+                "(Whiskers - heard but not seen)"
+            ],
+            "setting": "Neighborhood streets, backyards, and alleys during the storm",
+            "goal": "Allow Marcus his own emotional breakthrough; show his vulnerability and the grief he's been suppressing",
+            "emotional_beat": "Raw grief and cathartic release"
+        },
+        {
+            "scene_number": 5,
+            "summary": "After his breakdown, Marcus hears a familiar bark and discovers Whiskers huddled under a neighbor's porch, shivering and terrified. As Marcus cradles the wet, frightened cat against his chest, he has an epiphany that Whiskers is just as scared and imperfect as the rest of them\u2014and that being broken doesn't mean being beyond love or help.",
+            "characters": [
+                "Marcus",
+                "Whiskers"
+            ],
+            "setting": "Under Mrs. Henderson's front porch, several houses down",
+            "goal": "Resolve the immediate crisis; provide Marcus with a moment of clarity about acceptance and imperfection",
+            "emotional_beat": "Relief and tender understanding"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Marcus returns home to find Jamie waiting at the door, and when his brother sees Whiskers safe, he speaks in full sentences: \"You found him. I knew you would.\" Their mother arrives to find both boys wrapped in blankets with Whiskers between them, and together they finally talk about their father\u2014really talk, with tears, laughter, and shared memories, while Whiskers purrs and occasionally barks, perfectly imperfect.",
+            "characters": [
+                "Marcus",
+                "Jamie",
+                "Whiskers",
+                "Mom"
+            ],
+            "setting": "The family's living room",
+            "goal": "Bring the family together in healing; show that grief can be shared and that recovery is possible even when imperfect; provide resolution and hope",
+            "emotional_beat": "Bittersweet healing and cautious joy"
+        }
+    ]
+}

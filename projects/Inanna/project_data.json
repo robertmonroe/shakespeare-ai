@@ -1,0 +1,33 @@
+{
+    "project_name": "Inanna",
+    "title": "When Gods Fall",
+    "genre": "Young Adult",
+    "description": "For millennia, the Anunnaki have ruled Earth from orbital citadels, engineering humanity to mine the gold their dying homeworld craves. Princess Inanna has always been their greatest xenoarchaeologist, studying human art and rebellion with clinical fascination—until she uncovers her father's true plan: not just enslavement, but total extinction once the mines run dry. She does the unthinkable. She steals the neural keys to the Anunnaki's weapon grid and runs.\n\nHer damaged ship crashes into territory no Anunnaki has mapped—a jungle ruled by great apes and one impossible anomaly: Kidu, a human male who survived a crashed slave transport as an infant and grew up without language, without civilization, without fear of gods. Where Inanna sees the world through data and strategy, Kidu reads it through scent, sound, and instinct. She needs his knowledge of Earth's hidden places; he needs her technology to protect his ape family from the hunters closing in. Neither expects their partnership to become something more.\n\nBut Inanna isn't just a refugee—she's a weapon. The neural keys are encoded to her DNA, making her the only one who can disable the orbital defense grid. When her father broadcasts her execution order to every screen on Earth, humanity's scattered resistance cells see their chance. Now Inanna must choose: use the keys to buy her own survival, or teach Kidu's growing army of apes and humans how to fight a war in three dimensions—jungle floor to stratosphere—against the only family she's ever known.\n\nThe gods are falling. The only question is who they'll crush on the way down.",
+    "category": "Fiction",
+    "language": "English",
+    "num_characters": 5,
+    "num_characters_str": "5+",
+    "worldbuilding_needed": true,
+    "review_preference": "AI (automatic review)",
+    "book_length": "Novel",
+    "logline": "An alien princess carrying stolen weapon codes crashes into the jungle territory of a mute warrior raised by apes—and their desperate alliance ignites humanity's first rebellion against the gods who created them.",
+    "tone": "Romantic",
+    "target_audience": "Young Adult",
+    "num_chapters": 20,
+    "num_chapters_str": "20+",
+    "llm_provider": "openrouter",
+    "dynamic_questions": {
+        "q1": "The agony of divided loyalty: Inanna is torn between her deep love for her father, King Anu, and her fierce, newfound love for Tarzan and their unborn child. The story explores the heartbreaking choice she must make to betray the father she adores in order to save her husband and the human race from his judgment.",
+        "q2": "The inciting incident is King Anu’s decree to wipe out humanity and abandon Eden after deciding the humans he created as gold‑mining slaves have become a dangerous failure, shattering Princess Inanna’s ordered life as an obedient royal observer of the “experiment.” Forced to choose between loyalty to the father she loves and the species she’s secretly grown to cherish, she commits treason—sabotaging his plans and fleeing to Eden in a stolen space pod—setting the entire story in motion.",
+        "q3": "Ancient‑past Earth, divided between a rigid high‑tech Anunnaki mining paradise called Eden and the perilous, teeming jungle beyond its control, forces Inanna to choose between her conditioned identity as an immortal “goddess” of empire and a vulnerable, earthbound life beside Enkidu.",
+        "q4": "rebellion, dicovery, first love, struggle, sacrifice, triumph, new beginnings",
+        "q5": "Enkidu (“Tarzan”) teaches Inanna how to survive, love, and respect the jungle and its animals as equals; Queen Antu (her mother) shields her from Anu’s worst punishments helps Inanna and Enkidu escape in a space pod; the great apes that raised Enkidu shelter her and fight beside her in the final battle; and rebels inside the king’s empire give her information, resources, and cover so she can stand against Anu.",
+        "q6": "At stake is everything: Inanna could lose her father’s love, her place among the Anunnaki, her own life, Enkidu (“Tarzan”), their unborn child, and the entire human race—or she can save humanity from extinction and win a new beginning on Earth with her love, Enkidu (“Tarzan”), and child.",
+        "q7": "Epic, serious, high‑stakes and emotional—dark in the danger and struggle but ultimately hopeful and romantic, with intense, cinematic action."
+    },
+    "characters": {},
+    "worldbuilding": null,
+    "chapters": {},
+    "outline": "",
+    "project_dir": "C:\\Users\\3dmax\\Libriscribe\\projects\\Inanna"
+}

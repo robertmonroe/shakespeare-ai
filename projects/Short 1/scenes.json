@@ -1,0 +1,227 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "The launch sequence begins at Cape Kennedy as Bobby, strapped into his custom capsule, performs pre-flight checks while Dr. Sarah Chen watches from mission control, her hand pressed against the observation glass. The countdown proceeds with military precision as Sarah remembers the first day she met Bobby as an infant chimpanzee five years ago.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby",
+                "Mission Director James Kellerman",
+                "Launch Control Personnel"
+            ],
+            "setting": "Cape Kennedy Launch Complex and Mission Control, Florida - Launch Day, 1969",
+            "goal": "Establish the immediate tension of the launch while introducing the deep bond between Sarah and Bobby through her perspective.",
+            "emotional_beat": "Anxious dread masked by professional composure"
+        },
+        {
+            "scene_number": 2,
+            "summary": "A flashback to three years earlier shows Sarah teaching Bobby his first signs in a sterile NASA training facility, their sessions filled with joy and breakthrough moments. The scene reveals Sarah's realization that Bobby isn't just learning commands\u2014he's developing genuine language comprehension and even asking his own questions.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby",
+                "Dr. Marcus Webb (behavioral psychologist)"
+            ],
+            "setting": "Classified NASA Primate Research Facility, Houston - 1966",
+            "goal": "Establish the depth of Bobby's intelligence and the genuine relationship between him and Sarah, making the mission's stakes personal and morally complex.",
+            "emotional_beat": "Wonder and maternal affection"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Back in present-day mission control, Sarah notices the shifting rescue mission timelines in classified documents and confronts Director Kellerman, who deflects her concerns with Cold War rhetoric about Soviet threats. She's warned to stay focused on her role as communications liaison and reminded that Bobby's vocabulary has been carefully curated\u2014certain concepts deliberately omitted from his training.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Mission Director James Kellerman",
+                "General Theodore Pritchard"
+            ],
+            "setting": "Mission Control, Houston - Hours before launch",
+            "goal": "Reveal the mission's true one-way nature and Sarah's growing awareness of her complicity, establishing the moral conflict at the story's heart.",
+            "emotional_beat": "Dawning horror and guilt"
+        },
+        {
+            "scene_number": 4,
+            "summary": "A montage of flashbacks shows Bobby's training intensifying\u2014learning to operate spacecraft controls, enduring centrifuge tests, practicing in the lunar landing simulator\u2014while Sarah watches him transform from playful student to serious astronaut. In quiet moments between sessions, Bobby signs questions Sarah struggles to answer: \"Why Bobby go alone?\" and \"When Sarah come?\"",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby",
+                "Various NASA Trainers and Technicians"
+            ],
+            "setting": "NASA Training Facilities, Houston - 1967-1969",
+            "goal": "Show the physical and psychological preparation that makes Bobby capable of the mission while highlighting the questions Sarah has learned to evade.",
+            "emotional_beat": "Bittersweet pride mixed with growing unease"
+        },
+        {
+            "scene_number": 5,
+            "summary": "The lunar module successfully touches down in the Sea of Tranquility as mission control erupts in celebration and champagne flows. Through the helmet camera feed, Bobby methodically performs his post-landing checks, signing each confirmation with the precision Sarah taught him, while she watches in silence, unable to join the celebration.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby",
+                "Mission Director James Kellerman",
+                "Mission Control Personnel",
+                "General Theodore Pritchard",
+                "Press Representatives"
+            ],
+            "setting": "Mission Control, Houston and Lunar Surface, Sea of Tranquility - Landing Day",
+            "goal": "Create the contrast between the public triumph and private tragedy, showing the mission's success as simultaneously a scientific achievement and moral failure.",
+            "emotional_beat": "Hollow victory and isolation"
+        },
+        {
+            "scene_number": 6,
+            "summary": "As the celebration continues around her, Sarah watches Bobby complete his final status report through the grainy video feed. His signs are clear and expected\u2014until the last one, when he looks directly into the camera and signs \"Where Sarah?\" The question hangs in the air as the control room gradually falls silent, everyone turning to look at Sarah, who cannot answer.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby",
+                "Mission Director James Kellerman",
+                "Mission Control Personnel"
+            ],
+            "setting": "Mission Control, Houston and Lunar Surface, Sea of Tranquility",
+            "goal": "End the chapter with the emotional gut-punch that transforms the mission from political victory to personal tragedy, setting up the existential questions that will drive the narrative.",
+            "emotional_beat": "Devastating recognition and helpless grief"
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Sarah sits in the darkened translation room at Mission Control, watching Bobby's first routine transmission where he signs about habitat temperature and food supplies, but ends with an unexpected sign: \"Window wrong. Sky broken.\" The technicians dismiss it as confusion, but Sarah recognizes Bobby's attempt to describe something he has no vocabulary for.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby (via video transmission)",
+                "Tom Garrett (Mission Director)",
+                "Jerry Kowalski (Communications Officer)"
+            ],
+            "setting": "Translation Room, NASA Mission Control, Houston",
+            "goal": "Establish the routine of transmissions while introducing the first hints that Bobby's consciousness is grappling with his alien environment in unexpected ways.",
+            "emotional_beat": "Unease and dawning concern"
+        },
+        {
+            "scene_number": 2,
+            "summary": "A week into the mission, Sarah is summoned to a press conference where NASA officials present Bobby as a heroic symbol of American ingenuity while reporters eat up the propaganda. Sarah must smile and translate Bobby's \"cheerful\" messages while concealing the signs she saw that morning: \"Troop gone. Bobby call. Nobody answer.\"",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Tom Garrett",
+                "General Marcus Whitfield",
+                "various reporters and NASA PR officials"
+            ],
+            "setting": "NASA Press Conference Room, Houston",
+            "goal": "Contrast the public narrative of Bobby's mission with the private reality Sarah witnesses, highlighting her complicity and isolation within the system.",
+            "emotional_beat": "Bitter irony and suppressed guilt"
+        },
+        {
+            "scene_number": 3,
+            "summary": "During a late-night transmission review, Sarah discovers Bobby has begun combining signs in novel ways she never taught him, creating compound concepts to express his experience. He signs \"Earth-home-gone-place\" and \"Bobby-cage-no-walls,\" demonstrating linguistic creativity born from desperate need to communicate unprecedented isolation.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby (via recorded transmission)"
+            ],
+            "setting": "Sarah's private office at Mission Control, late at night",
+            "goal": "Reveal Bobby's evolving consciousness and linguistic sophistication while deepening Sarah's recognition of what she's done to him.",
+            "emotional_beat": "Awe mixed with devastating guilt"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Mission Control convenes a meeting where officials demand Sarah send \"comforting\" pre-scripted messages to Bobby, treating the transmissions as a PR problem rather than a dialogue with a suffering consciousness. Sarah argues that Bobby will recognize dishonesty, leading to a tense confrontation about whether Bobby's psychological state matters compared to the mission's propaganda value.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Tom Garrett",
+                "General Whitfield",
+                "Dr. Raymond Pierce (NASA psychologist)",
+                "Helen Voss (NASA PR Director)"
+            ],
+            "setting": "Mission Control Conference Room",
+            "goal": "Externalize the ethical conflict at the heart of the mission and force Sarah to choose between compliance and honesty.",
+            "emotional_beat": "Anger and moral indignation"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Three weeks into the mission, Sarah watches Bobby's most haunting transmission yet, where he sits motionless before the camera for long minutes before signing: \"Sky always dark. Bobby always alone. Same thing?\" She realizes Bobby has made a philosophical connection between his environment and his existential state\u2014he's not just lonely, he's understanding loneliness as a condition of being.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby (via video transmission)",
+                "Tom Garrett (briefly)"
+            ],
+            "setting": "Translation Room, NASA Mission Control",
+            "goal": "Mark the turning point where Bobby's consciousness has clearly transcended simple emotional response to achieve philosophical reflection on his predicament.",
+            "emotional_beat": "Heartbreak and profound recognition"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Unable to sleep, Sarah returns to her apartment and pulls out old training videos of young Bobby learning signs, playing with other chimps, reaching for her hand. She records an unauthorized personal message to Bobby\u2014not the scripted comfort Mission Control wants, but an honest acknowledgment: \"Sarah sees Bobby. Sarah knows Bobby alone. Sarah sorry.\" She encrypts it into the next data transmission, knowing it might cost her everything.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby (in old videos and as intended recipient)"
+            ],
+            "setting": "Sarah's apartment, Houston",
+            "goal": "Show Sarah's choice to prioritize authentic connection over institutional loyalty, setting up future consequences while providing Bobby with the only honest communication he'll receive.",
+            "emotional_beat": "Tender sorrow and quiet defiance"
+        }
+    ],
+    "3": [
+        {
+            "scene_number": 1,
+            "summary": "Three months into the mission, Sarah reviews increasingly sparse video logs showing Bobby sitting motionless at the habitat window for hours, staring at Earth. His few signs are heartbreakingly simple: \"Home far,\" \"Bobby small,\" \"Remember trees.\"",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby (via transmission)",
+                "Mission Control technicians"
+            ],
+            "setting": "Mission Control observation room, Houston; Bobby's lunar habitat (via video feed)",
+            "goal": "Establish the passage of time and Bobby's deteriorating mental state; show Sarah's growing obsession with monitoring him",
+            "emotional_beat": "Melancholic dread"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Sarah confronts NASA administrators and military officials in a heated meeting, demanding they authorize a rescue mission. They dismiss her concerns, citing astronomical costs and reminding her that Bobby has already fulfilled his propaganda purpose as public interest has moved on.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Director Harrison",
+                "General Mackenzie",
+                "Dr. James Reeves (mission director)",
+                "other NASA officials"
+            ],
+            "setting": "NASA conference room, Houston",
+            "goal": "Externalize the institutional callousness and Sarah's powerlessness; heighten the moral conflict",
+            "emotional_beat": "Desperate anger and frustration"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Alone in her apartment, Sarah spirals into guilt-fueled insomnia, surrounded by photographs of Bobby as an infant chimp and videos of their early sign language sessions. She realizes she gave him the cognitive tools to understand his own abandonment.",
+            "characters": [
+                "Dr. Sarah Chen"
+            ],
+            "setting": "Sarah's apartment, Houston (late night)",
+            "goal": "Deepen Sarah's psychological deterioration and illuminate her complicity; create intimate character moment",
+            "emotional_beat": "Crushing guilt and self-recrimination"
+        },
+        {
+            "scene_number": 4,
+            "summary": "Bobby's final extended transmission arrives: \"Home not home anymore. Bobby not Bobby anymore. Sarah taught Bobby words. Words made Bobby see. See made Bobby alone. Bobby love Sarah. Bobby forgive Sarah.\" Sarah watches, tears streaming, as Bobby methodically removes his helmet camera, positions it facing Earth, and walks out of frame.",
+            "characters": [
+                "Dr. Sarah Chen",
+                "Bobby (via transmission)",
+                "Mission Control staff"
+            ],
+            "setting": "Mission Control observation room, Houston; Bobby's lunar habitat (via video feed)",
+            "goal": "Deliver the emotional climax; complete Bobby's character arc; crystallize the story's central tragedy",
+            "emotional_beat": "Devastating heartbreak and profound loss"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Days pass with no communication from Bobby. Sarah sits alone in the now-quiet observation room, staring at the static image of Earth from the lunar surface that Bobby's camera still transmits, understanding that she gave him consciousness and thereby made him capable of comprehending his own isolation.",
+            "characters": [
+                "Dr. Sarah Chen"
+            ],
+            "setting": "Mission Control observation room, Houston (mostly empty)",
+            "goal": "Show the aftermath and Sarah's transformation; allow space for reflection on the story's philosophical questions",
+            "emotional_beat": "Numb grief transforming into existential understanding"
+        },
+        {
+            "scene_number": 6,
+            "summary": "In the final moments, Sarah signs to the camera feed\u2014knowing Bobby likely can't see it\u2014then places her hand against the monitor showing Earth from the moon. She realizes Bobby's loneliness has become her own, and that perhaps understanding our isolation is what truly defines consciousness.",
+            "characters": [
+                "Dr. Sarah Chen"
+            ],
+            "setting": "Mission Control observation room, Houston (late night, alone)",
+            "goal": "Provide thematic resolution; mirror Bobby's isolation with Sarah's; close the emotional arc",
+            "emotional_beat": "Bittersweet acceptance and shared solitude"
+        }
+    ]
+}

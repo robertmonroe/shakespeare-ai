@@ -1,0 +1,143 @@
+{
+  "name": "Book Creation - Character Generator",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "character-generator",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "character-webhook",
+      "name": "Webhook - Generate Characters"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Extract and validate character generation parameters\nconst inputData = $input.all()[0].json.body;\n\n// Required fields from YAML template\nconst genre = inputData.genre;\nconst storyContext = inputData.story_context;\nconst numCharacters = inputData.num_characters;\nconst characterRequirements = inputData.character_requirements;\nconst language = inputData.language || 'English';\n\nif (!genre || !storyContext || !numCharacters || !characterRequirements) {\n  throw new Error('Genre, story_context, num_characters, and character_requirements are required');\n}\n\n// Build character generation prompt based on YAML template\nlet prompt = `Generate detailed character profiles for this ${genre} story.\\n\\n`;\nprompt += `Story context: ${storyContext}\\n`;\nprompt += `Number of characters: ${numCharacters}\\n`;\nprompt += `Character requirements: ${characterRequirements}\\n\\n`;\n\nprompt += `For each character, provide:\\n`;\nprompt += `- Name and basic demographics\\n`;\nprompt += `- Personality traits and quirks\\n`;\nprompt += `- Background and motivation\\n`;\nprompt += `- Character arc and development\\n`;\nprompt += `- Relationships with other characters\\n`;\nprompt += `- Dialogue style and voice\\n\\n`;\n\nprompt += `Output in JSON format with character array.\\n`;\nprompt += `Language: ${language}`;\n\nconst promptData = {\n  genre: genre,\n  story_context: storyContext,\n  num_characters: numCharacters,\n  character_requirements: characterRequirements,\n  language: language,\n  prompt: prompt\n};\n\nreturn [{ json: promptData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "prepare-character-prompt",
+      "name": "Prepare Character Prompt"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "options": {
+          "systemMessage": "You are an expert character development specialist. Create detailed, compelling character profiles that feel authentic and three-dimensional. Ensure each character has clear motivations, distinct personalities, and realistic backgrounds. Output must be in valid JSON format with a characters array."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [480, 300],
+      "id": "generate-characters",
+      "name": "Generate Character Profiles"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-3.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [480, 450],
+      "id": "character-openrouter-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Process and format the character generation response\nconst promptData = $('Prepare Character Prompt').all()[0].json;\nconst aiResponse = $input.all()[0].json.response;\n\n// Clean up the response and parse JSON if possible\nlet charactersData = aiResponse || '';\nlet parsedCharacters = null;\n\ntry {\n  // Try to extract JSON from the response\n  const jsonMatch = charactersData.match(/\\{[\\s\\S]*\\}/);\n  if (jsonMatch) {\n    parsedCharacters = JSON.parse(jsonMatch[0]);\n  }\n} catch (error) {\n  // If JSON parsing fails, keep raw response\n  console.log('Could not parse JSON, keeping raw response');\n}\n\nconst finalResult = {\n  genre: promptData.genre,\n  story_context: promptData.story_context,\n  num_characters: promptData.num_characters,\n  character_requirements: promptData.character_requirements,\n  language: promptData.language,\n  characters: parsedCharacters || charactersData,\n  generated_at: new Date().toISOString()\n};\n\nreturn [{ json: finalResult }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 300],
+      "id": "process-character-response",
+      "name": "Process Character Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [920, 300],
+      "id": "respond-characters",
+      "name": "Respond with Characters"
+    }
+  ],
+  "connections": {
+    "Webhook - Generate Characters": {
+      "main": [
+        [
+          {
+            "node": "Prepare Character Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Character Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate Character Profiles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Character Profiles": {
+      "main": [
+        [
+          {
+            "node": "Process Character Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Character Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Characters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Character Profiles",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

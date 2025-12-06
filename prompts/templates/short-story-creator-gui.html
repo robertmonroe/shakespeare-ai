@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibriScribe - Short Story Creator (Interactive Demo)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .status-bar {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-bottom: 1px solid #dee2e6;
+            display: none;
+        }
+
+        .status-bar.active {
+            display: block;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .step {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        .step.active {
+            background: #007bff;
+            color: white;
+        }
+
+        .step.complete {
+            background: #28a745;
+            color: white;
+        }
+
+        .workflow-section {
+            padding: 30px;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        .input-section label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .input-section input, .input-section textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-section input:focus, .input-section textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .input-section textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #0056b3, #004085);
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #28a745, #1e7e34);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+        }
+
+        .review-section {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .review-section.active {
+            display: block;
+        }
+
+        .review-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            white-space: pre-line;
+            line-height: 1.6;
+        }
+
+        .approval-buttons {
+            text-align: center;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .complete-story {
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .complete-story.active {
+            display: block;
+        }
+
+        .value-proposition {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .cost-savings {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .demo-note {
+            background: #cce5ff;
+            border: 2px solid #99d6ff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>LibriScribe Short Story Creator</h1>
+            <p>Interactive Demo - Your $50 Investment Working</p>
+        </div>
+
+        <div class="demo-note">
+            <strong>🎯 This demo shows the INTERACTIVE workflow you paid for</strong><br>
+            Every step waits for your approval. No surprises, no unwanted content.
+        </div>
+
+        <div class="status-bar" id="statusBar">
+            <div class="step-indicator">
+                <div class="step active" id="step1">1. Input Story Idea</div>
+                <div class="step" id="step2">2. Review Outline</div>
+                <div class="step" id="step3">3. Approve Scenes</div>
+                <div class="step" id="step4">4. Complete Story</div>
+            </div>
+            <div id="statusMessage">Ready to create your story...</div>
+        </div>
+
+        <div class="workflow-section">
+            <!-- INPUT SECTION -->
+            <div class="input-section" id="inputSection">
+                <div class="value-proposition">
+                    <h3>💰 Value: What You Get for $50</h3>
+                    <p>• Interactive story creation with YOUR control at every step</p>
+                    <p>• Professional quality 2,000-4,000 word stories</p>
+                    <p>• Multiple revisions until you're satisfied</p>
+                    <p>• Complete creative control - approve or reject anything</p>
+                </div>
+
+                <label for="storyTitle">Story Title/Concept:</label>
+                <input type="text" id="storyTitle" placeholder="e.g., 'A detective discovers their reflection is solving different crimes'">
+
+                <label for="storyDescription">Story Description:</label>
+                <textarea id="storyDescription" placeholder="Provide more details about your story idea, characters, setting, or themes you want to explore..."></textarea>
+
+                <div class="cost-savings">
+                    <h4>🚀 Cost Comparison:</h4>
+                    <p><strong>Professional Writer:</strong> $200-500 for a 3,000-word story</p>
+                    <p><strong>LibriScribe:</strong> $50 one-time, unlimited stories</p>
+                    <p><strong>Your Savings:</strong> $150+ per story</p>
+                </div>
+
+                <button class="btn" onclick="createStoryOutline()">Create Interactive Story (Step 1)</button>
+            </div>
+
+            <!-- LOADING SECTION -->
+            <div class="loading" id="loadingSection">
+                <div class="spinner"></div>
+                <div id="loadingMessage">Creating your story outline...</div>
+            </div>
+
+            <!-- OUTLINE REVIEW SECTION -->
+            <div class="review-section" id="outlineReview">
+                <h3>📋 Step 2: Review Your Story Outline</h3>
+                <p><strong>This is where you have control!</strong> Review the outline below and decide if you want to proceed or make changes.</p>
+                
+                <div class="review-content" id="outlineContent"></div>
+                
+                <div class="approval-buttons">
+                    <button class="btn btn-success" onclick="approveOutline()">✅ Approve Outline</button>
+                    <button class="btn btn-danger" onclick="rejectOutline()">❌ Request Changes</button>
+                </div>
+            </div>
+
+            <!-- SCENE REVIEW SECTION -->
+            <div class="review-section" id="sceneReview">
+                <h3>📖 Step 3: Review Scene Content</h3>
+                <p><strong>Each scene waits for your approval!</strong> Make sure you like each scene before continuing.</p>
+                
+                <div class="review-content" id="sceneContent"></div>
+                
+                <div class="approval-buttons">
+                    <button class="btn btn-success" onclick="approveScene()">✅ Approve Scene</button>
+                    <button class="btn btn-danger" onclick="rejectScene()">❌ Request Changes</button>
+                </div>
+            </div>
+
+            <!-- COMPLETE STORY SECTION -->
+            <div class="complete-story" id="completeStory">
+                <h3>🎉 Your Complete Story is Ready!</h3>
+                <div class="review-content" id="finalStoryContent"></div>
+                
+                <div class="value-proposition">
+                    <h4>Your $50 Just Delivered:</h4>
+                    <p>✅ A complete, professional-quality short story</p>
+                    <p>✅ Full creative control at every step</p>
+                    <p>✅ Multiple revisions as needed</p>
+                    <p>✅ Publication-ready content worth $200+</p>
+                </div>
+
+                <button class="btn" onclick="downloadStory()">💾 Download Story</button>
+                <button class="btn" onclick="startNewStory()">🆕 Create Another Story</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let currentScene = 1;
+        let totalScenes = 4;
+        let storyData = {};
+
+        async function createStoryOutline() {
+            const title = document.getElementById('storyTitle').value.trim();
+            const description = document.getElementById('storyDescription').value.trim();
+
+            if (!title || !description) {
+                alert('Please provide both a title and description for your story.');
+                return;
+            }
+
+            // Show loading
+            showLoading("Creating your story outline...");
+            
+            // Hide input section
+            document.getElementById('inputSection').style.display = 'none';
+            document.getElementById('statusBar').classList.add('active');
+
+            // Simulate API call (replace with actual N8N webhook call)
+            setTimeout(() => {
+                const mockOutline = generateMockOutline(title, description);
+                showOutlineReview(mockOutline);
+            }, 3000);
+        }
+
+        function generateMockOutline(title, description) {
+            return `## Story Outline
+**Title:** ${title}
+**Genre:** Mystery/Drama
+**Word Count Target:** 3,000-3,500 words
+**Theme:** Truth, perception, and hidden realities
+
+## Plot Structure
+**Opening Hook:** Introduce our protagonist discovering something is wrong with their reflection
+**Rising Action:** Investigation reveals deeper mystery, stakes increase
+**Climax:** Confrontation with the truth about what's happening
+**Resolution:** Character makes choice about their newfound knowledge
+
+## Characters
+**Main Character:** Detective Sarah Chen - observant, methodical, but lately questioning reality
+**Supporting Characters:** Partner Mike Rodriguez, mysterious witness Mrs. Kovak
+
+## Setting
+**Time/Place:** Present day, Chicago police department and residential areas
+**Atmosphere:** Noir-ish, psychological tension, reality blurring
+
+## Key Scenes (4 scenes)
+1. **Scene 1:** Discovery - Sarah notices her reflection solving different crimes in mirrors
+2. **Scene 2:** Investigation - She tests this phenomenon, growing more disturbed
+3. **Scene 3:** Revelation - Meeting with Mrs. Kovak reveals the truth about parallel realities
+4. **Scene 4:** Choice - Sarah must decide whether to stay in her reality or cross over
+
+**Please review this outline and let me know if you'd like any changes before I begin writing the story.**`;
+        }
+
+        function showLoading(message) {
+            document.getElementById('loadingMessage').textContent = message;
+            document.getElementById('loadingSection').classList.add('active');
+            
+            // Hide all review sections
+            document.getElementById('outlineReview').classList.remove('active');
+            document.getElementById('sceneReview').classList.remove('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingSection').classList.remove('active');
+        }
+
+        function showOutlineReview(outline) {
+            hideLoading();
+            
+            document.getElementById('outlineContent').textContent = outline;
+            document.getElementById('outlineReview').classList.add('active');
+            
+            // Update step indicator
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step1').classList.add('complete');
+            document.getElementById('step2').classList.add('active');
+            
+            document.getElementById('statusMessage').textContent = "Outline ready for review. Your approval required to continue.";
+        }
+
+        function approveOutline() {
+            document.getElementById('outlineReview').classList.remove('active');
+            showLoading("Writing Scene 1...");
+            
+            // Update step indicator
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step2').classList.add('complete');
+            document.getElementById('step3').classList.add('active');
+            
+            // Simulate scene writing
+            setTimeout(() => {
+                showSceneReview(1, generateMockScene(1));
+            }, 4000);
+        }
+
+        function rejectOutline() {
+            const feedback = prompt("What changes would you like to the outline?");
+            if (feedback) {
+                showLoading("Revising outline based on your feedback...");
+                setTimeout(() => {
+                    alert("This would normally send your feedback to the AI for revision. For this demo, we'll continue with the original outline.");
+                    approveOutline();
+                }, 2000);
+            }
+        }
+
+        function generateMockScene(sceneNum) {
+            const scenes = {
+                1: `## Scene 1: The Wrong Reflection
+
+Detective Sarah Chen splashed cold water on her face in the precinct bathroom, hoping to wash away the exhaustion of another eighteen-hour day. As she looked up at the mirror, something made her freeze mid-motion.
+
+Her reflection wasn't washing her face. It was examining a crime scene photo.
+
+Sarah blinked hard, shook her head, and looked again. This time her reflection matched her movements perfectly, water dripping from both versions of her chin. She must be more tired than she thought.
+
+"Chen!" Her partner Mike Rodriguez called from outside. "We've got another one."
+
+But as Sarah turned to leave, she caught a glimpse of her reflection in the corner of her eye. It wasn't turning toward the door. It was still studying that photo, and Sarah could swear she saw her reflection's lips moving, as if talking to someone she couldn't see.
+
+The bathroom door slammed behind her, but Sarah couldn't shake the feeling that something fundamental had just shifted in her world.
+
+---
+Scene 1 complete. Please review before I continue with Scene 2.`
+            };
+            return scenes[sceneNum] || "Scene content...";
+        }
+
+        function showSceneReview(sceneNum, content) {
+            hideLoading();
+            
+            document.getElementById('sceneContent').textContent = content;
+            document.getElementById('sceneReview').classList.add('active');
+            
+            document.getElementById('statusMessage').textContent = `Scene ${sceneNum} ready for review. Approve to continue or request changes.`;
+        }
+
+        function approveScene() {
+            document.getElementById('sceneReview').classList.remove('active');
+            
+            if (currentScene < totalScenes) {
+                currentScene++;
+                showLoading(`Writing Scene ${currentScene}...`);
+                
+                setTimeout(() => {
+                    showSceneReview(currentScene, generateMockScene(currentScene));
+                }, 3000);
+            } else {
+                // All scenes complete, finalize story
+                showLoading("Compiling your complete story...");
+                
+                // Update step indicator
+                document.getElementById('step3').classList.remove('active');
+                document.getElementById('step3').classList.add('complete');
+                document.getElementById('step4').classList.add('active');
+                
+                setTimeout(() => {
+                    showCompleteStory();
+                }, 3000);
+            }
+        }
+
+        function rejectScene() {
+            const feedback = prompt("What changes would you like to this scene?");
+            if (feedback) {
+                showLoading("Revising scene based on your feedback...");
+                setTimeout(() => {
+                    alert("This would normally revise the scene. For this demo, we'll continue with the original.");
+                    approveScene();
+                }, 2000);
+            }
+        }
+
+        function showCompleteStory() {
+            hideLoading();
+            
+            const finalStory = `# The Wrong Reflection
+*A Short Story by LibriScribe AI*
+
+Detective Sarah Chen had always trusted her instincts, but she'd never had to trust her reflection before. What started as a moment of exhaustion in a bathroom mirror had become a journey into a truth she wasn't sure she was ready to accept.
+
+[Complete story would be displayed here - all scenes compiled together into a polished 3,000+ word story]
+
+---
+**Word Count:** 3,247 words
+**Genre:** Mystery/Psychological Thriller  
+**Completed:** ${new Date().toLocaleDateString()}`;
+
+            document.getElementById('finalStoryContent').textContent = finalStory;
+            document.getElementById('completeStory').classList.add('active');
+            
+            // Update step indicator
+            document.getElementById('step4').classList.remove('active');
+            document.getElementById('step4').classList.add('complete');
+            
+            document.getElementById('statusMessage').textContent = "Story complete! Your $50 investment has delivered professional-quality content.";
+        }
+
+        function downloadStory() {
+            const content = document.getElementById('finalStoryContent').textContent;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'my_libriscribe_story.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function startNewStory() {
+            // Reset the interface
+            location.reload();
+        }
+    </script>
+</body>
+</html>

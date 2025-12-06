@@ -1,0 +1,195 @@
+{
+    "name": "01 - Outline Generator",
+    "nodes": [
+        {
+            "parameters": {},
+            "id": "manual-trigger",
+            "name": "When clicking 'Test workflow'",
+            "type": "n8n-nodes-base.manualTrigger",
+            "typeVersion": 1,
+            "position": [
+                240,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "assignments": {
+                    "assignments": [
+                        {
+                            "id": "book-title",
+                            "name": "book_title",
+                            "value": "The Moscow Protocol",
+                            "type": "string"
+                        },
+                        {
+                            "id": "genre",
+                            "name": "genre",
+                            "value": "Spy Thriller",
+                            "type": "string"
+                        },
+                        {
+                            "id": "concept",
+                            "name": "concept",
+                            "value": "An MI6 agent uncovers a conspiracy involving Russian intelligence and must prevent a catastrophic attack on NATO allies.",
+                            "type": "string"
+                        },
+                        {
+                            "id": "target-chapters",
+                            "name": "target_chapters",
+                            "value": "20",
+                            "type": "number"
+                        },
+                        {
+                            "id": "language",
+                            "name": "language",
+                            "value": "English",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "id": "book-input",
+            "name": "Book Input Parameters",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 3,
+            "position": [
+                460,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://openrouter.ai/api/v1/chat/completions",
+                "authentication": "predefinedCredentialType",
+                "nodeCredentialType": "httpHeaderAuth",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "HTTP-Referer",
+                            "value": "http://localhost:5678"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={{ {\n  \"model\": \"anthropic/claude-3.5-sonnet\",\n  \"messages\": [{\n    \"role\": \"user\",\n    \"content\": \"You are a professional novel outliner. Create a detailed \" + $json.target_chapters + \"-chapter outline for a \" + $json.genre + \" novel.\\n\\nTitle: \" + $json.book_title + \"\\nConcept: \" + $json.concept + \"\\nLanguage: \" + $json.language + \"\\n\\nCreate a compelling outline with:\\n- Chapter numbers and titles\\n- 2-3 sentence summary for each chapter\\n- Clear story arc (setup, rising action, climax, resolution)\\n- Character development progression\\n- Plot twists and hooks\\n\\nFormat as:\\nChapter 1: [Title]\\nSummary: [2-3 sentences]\\n\\nChapter 2: [Title]\\nSummary: [2-3 sentences]\\n\\n...and so on for all \" + $json.target_chapters + \" chapters.\"\n  }],\n  \"max_tokens\": 8000,\n  \"temperature\": 0.8\n} }}"
+            },
+            "id": "generate-outline",
+            "name": "Generate Outline (Claude)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                680,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "assignments": {
+                    "assignments": [
+                        {
+                            "id": "extract-outline",
+                            "name": "outline",
+                            "value": "={{ $json.choices[0].message.content }}",
+                            "type": "string"
+                        },
+                        {
+                            "id": "book-title-pass",
+                            "name": "book_title",
+                            "value": "={{ $('Book Input Parameters').item.json.book_title }}",
+                            "type": "string"
+                        },
+                        {
+                            "id": "genre-pass",
+                            "name": "genre",
+                            "value": "={{ $('Book Input Parameters').item.json.genre }}",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "id": "extract-outline",
+            "name": "Extract Outline",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 3,
+            "position": [
+                900,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "write",
+                "fileName": "={{ $json.book_title.replace(/[^a-z0-9]/gi, '_') }}/outline.md",
+                "fileContent": "={{ \"# \" + $json.book_title + \"\\n## \" + $json.genre + \"\\n\\n\" + $json.outline }}",
+                "options": {
+                    "encoding": "utf8"
+                }
+            },
+            "id": "save-outline",
+            "name": "Save Outline to File",
+            "type": "n8n-nodes-base.writeFile",
+            "typeVersion": 1,
+            "position": [
+                1120,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "When clicking 'Test workflow'": {
+            "main": [
+                [
+                    {
+                        "node": "Book Input Parameters",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Book Input Parameters": {
+            "main": [
+                [
+                    {
+                        "node": "Generate Outline (Claude)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Generate Outline (Claude)": {
+            "main": [
+                [
+                    {
+                        "node": "Extract Outline",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Extract Outline": {
+            "main": [
+                [
+                    {
+                        "node": "Save Outline to File",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

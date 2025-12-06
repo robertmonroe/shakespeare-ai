@@ -1,0 +1,207 @@
+{
+    "1": [
+        {
+            "scene_number": 1,
+            "summary": "The holiday season arrives, bringing cold weather to Angel Baby's neighborhood. Silvia notices Angel Baby shivering during their morning walk and decides it's time to buy her a warm sweater to keep her comfortable during outdoor adventures.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana"
+            ],
+            "setting": "The family's home and neighborhood sidewalk during a chilly morning walk",
+            "goal": "Establish the problem (cold weather) and introduce the solution (the need for a sweater)",
+            "emotional_beat": "Caring concern and practical determination"
+        },
+        {
+            "scene_number": 2,
+            "summary": "Silvia returns home with a beautiful red sweater and excitedly shows it to Angel Baby and Susana. Angel Baby sniffs the sweater suspiciously and backs away, clearly unimpressed with this new item.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana"
+            ],
+            "setting": "The living room of their home",
+            "goal": "Introduce the sweater and establish Angel Baby's immediate negative reaction to it",
+            "emotional_beat": "Excitement (Silvia) versus suspicion and wariness (Angel Baby)"
+        },
+        {
+            "scene_number": 3,
+            "summary": "Silvia attempts to put the red sweater on Angel Baby for the first time. Angel Baby wiggles, squirms, and uses all her pug strength to escape, turning the simple task into a comical struggle.",
+            "characters": [
+                "Angel Baby",
+                "Silvia"
+            ],
+            "setting": "The living room floor",
+            "goal": "Show Angel Baby's active resistance and create humor through her dramatic protests",
+            "emotional_beat": "Frustration mixed with humor and stubbornness"
+        },
+        {
+            "scene_number": 4,
+            "summary": "After several attempts, Silvia finally succeeds in getting the sweater on Angel Baby. Angel Baby sits completely still with a grumpy, defeated expression, her big pug eyes staring mournfully at her mommy as if she's been terribly wronged.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana"
+            ],
+            "setting": "The living room",
+            "goal": "Show Angel Baby's displeasure while dressed in the sweater and create sympathy for her plight",
+            "emotional_beat": "Grumpy resignation and melodramatic sadness"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Angel Baby tries every trick she knows to get the sweater off\u2014pulling at it with her paws, rubbing against the couch and furniture, rolling on the floor, and giving Silvia pitiful, pleading looks. Despite these efforts, the sweater stays firmly in place.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana"
+            ],
+            "setting": "Various rooms throughout the house (living room, hallway, bedroom)",
+            "goal": "Demonstrate Angel Baby's persistence and creativity in trying to escape the sweater",
+            "emotional_beat": "Determined defiance and comedic desperation"
+        },
+        {
+            "scene_number": 6,
+            "summary": "Silvia gently explains to Angel Baby that the sweater will keep her warm and that they're going on a special holiday shopping trip to the mall. Angel Baby remains unconvinced and grumpy, but Silvia prepares her leash and gets ready for their adventure, setting the stage for the next chapter.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana"
+            ],
+            "setting": "Near the front door of their home",
+            "goal": "Transition to the next chapter and establish that Angel Baby must wear the sweater for the upcoming outing",
+            "emotional_beat": "Reluctant acceptance (Angel Baby) and hopeful optimism (Silvia)"
+        }
+    ],
+    "2": [
+        {
+            "scene_number": 1,
+            "summary": "Silvia dresses a reluctant Angel Baby in her red sweater and places her in the stroller for their mall trip. Angel Baby sits with her ears pinned back, wearing a pouty expression, determined to show her displeasure about wearing the sweater.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana"
+            ],
+            "setting": "Home, preparing to leave for the mall",
+            "goal": "Establish Angel Baby's initial resistance and grumpy attitude about the sweater",
+            "emotional_beat": "Stubbornness and defiance"
+        },
+        {
+            "scene_number": 2,
+            "summary": "The family arrives at the bustling holiday mall, and Angel Baby's stroller is wheeled through the entrance where she's immediately surrounded by twinkling lights, enormous Christmas trees, and festive decorations. Despite her determination to remain grumpy, Angel Baby's eyes begin to widen at the spectacular sights.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana"
+            ],
+            "setting": "Mall entrance and main atrium",
+            "goal": "Introduce the magical holiday atmosphere that will gradually change Angel Baby's mood",
+            "emotional_beat": "Reluctant curiosity"
+        },
+        {
+            "scene_number": 3,
+            "summary": "As they venture deeper into the mall, Angel Baby notices the cold air conditioning and realizes that without her sweater, she would be shivering uncomfortably. She begins to appreciate the warmth the sweater provides as they pass by carolers and holiday displays.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana",
+                "carolers (background)"
+            ],
+            "setting": "Mall corridors with holiday displays",
+            "goal": "Show Angel Baby's first realization that the sweater serves a practical purpose",
+            "emotional_beat": "Dawning awareness and grudging acceptance"
+        },
+        {
+            "scene_number": 4,
+            "summary": "The family visits a pet-friendly store where Angel Baby can smell delicious treats and see other pets. Comfortable and warm in her sweater, she sits up straighter in her stroller, her tail beginning to give small wags as she takes in all the exciting sights and sounds.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana",
+                "store employees",
+                "other shoppers with pets"
+            ],
+            "setting": "Pet-friendly store inside the mall",
+            "goal": "Demonstrate Angel Baby's growing comfort and engagement with her surroundings",
+            "emotional_beat": "Growing contentment and interest"
+        },
+        {
+            "scene_number": 5,
+            "summary": "As they continue exploring, Angel Baby becomes fully absorbed in the holiday magic around her\u2014the sparkling decorations, festive music, and wonderful scents\u2014completely forgetting about her earlier resistance to the sweater. She realizes she's actually enjoying this adventure because she's warm and comfortable enough to appreciate everything.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana"
+            ],
+            "setting": "Various mall locations with elaborate holiday decorations",
+            "goal": "Show Angel Baby's complete transformation from resistance to enjoyment",
+            "emotional_beat": "Joy and wonder"
+        }
+    ],
+    "3": [
+        {
+            "scene_number": 1,
+            "summary": "As Angel Baby and her family continue through the mall, a young couple stops to admire her in her stroller. They exclaim how adorable she looks in her red sweater and ask Silvia if they can take a photo with the beautiful pug.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana",
+                "Young couple (shoppers)"
+            ],
+            "setting": "Mall corridor near decorated storefronts",
+            "goal": "To introduce the first compliment that begins to shift Angel Baby's perspective on her sweater",
+            "emotional_beat": "Curiosity and slight surprise"
+        },
+        {
+            "scene_number": 2,
+            "summary": "More shoppers stop to compliment Angel Baby, with children pointing excitedly and elderly people smiling warmly at her festive appearance. Angel Baby notices how happy everyone seems when they see her, and she begins sitting up straighter in her stroller, her tail wagging a bit more.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana",
+                "Various mall shoppers (children",
+                "elderly people",
+                "families)"
+            ],
+            "setting": "Various locations throughout the mall (toy store entrance, food court area, holiday decoration displays)",
+            "goal": "To show Angel Baby's growing awareness of the positive attention and her gradual attitude shift",
+            "emotional_beat": "Growing pride and pleasure"
+        },
+        {
+            "scene_number": 3,
+            "summary": "A store employee dressed as an elf asks if Angel Baby can be in a holiday photo for the mall's social media page, calling her \"the most festive pug\" they've seen all season. Angel Baby poses proudly, fully embracing her role as a holiday star.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana",
+                "Mall elf/photographer"
+            ],
+            "setting": "Mall's holiday photo area with festive backdrop",
+            "goal": "To mark the turning point where Angel Baby fully accepts and embraces her sweater",
+            "emotional_beat": "Pride and joy"
+        },
+        {
+            "scene_number": 4,
+            "summary": "On the car ride home, Angel Baby rests contentedly in her sweater, reflecting on all the wonderful attention and realizing that the sweater isn't just warm\u2014it makes her special. She understands that without it, she would miss out on these magical adventures with her family.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana"
+            ],
+            "setting": "Inside the car driving home from the mall",
+            "goal": "To show Angel Baby's internal realization and transformation",
+            "emotional_beat": "Contentment and understanding"
+        },
+        {
+            "scene_number": 5,
+            "summary": "Days later, when Silvia holds up the red sweater for their next outing, Angel Baby's reaction is completely different. Her tail wags excitedly, and she eagerly steps into the sweater, ready for whatever adventure awaits, having learned that feeling good and looking good go paw-in-paw.",
+            "characters": [
+                "Angel Baby",
+                "Silvia",
+                "Susana"
+            ],
+            "setting": "Home, getting ready for another outing",
+            "goal": "To demonstrate the complete transformation in Angel Baby's attitude and conclude the chapter with her newfound love for the sweater",
+            "emotional_beat": "Excitement and eager anticipation"
+        }
+    ]
+}

@@ -6,5 +6,5 @@ src/libriscribe.egg-info/
 src/libriscribe/__pycache__/
 src/libriscribe/utils/__pycache__/
 src/libriscribe/agents/__pycache__/
-projects/
+# projects/  # Temporarily disabled to allow AI editing
 libriscribe.log

@@ -1,0 +1,239 @@
+{
+  "name": "Book Creation - Simple Book Creator",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "simple-book-creator",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "simple-webhook",
+      "name": "Webhook - Create Simple Book"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Simple book creation without complex loops\nconst inputData = $input.all()[0].json.body;\n\n// Required fields\nconst title = inputData.title;\nconst genre = inputData.genre;\n\nif (!title || !genre) {\n  throw new Error('Title and genre are required');\n}\n\n// Set up project\nconst projectData = {\n  project_name: inputData.project_name || 'simple-book',\n  title: title,\n  genre: genre,\n  language: inputData.language || 'English',\n  num_chapters: parseInt(inputData.num_chapters) || 5,\n  user_input: inputData.user_input || '',\n  category: inputData.category || 'Fiction',\n  target_audience: inputData.target_audience || 'General',\n  tone: inputData.tone || 'Engaging',\n  project_dir: `C:/Users/3dmax/n8n-books/${inputData.project_name || 'simple-book'}`,\n  timestamp: new Date().toISOString()\n};\n\nreturn [{ json: projectData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "setup-project",
+      "name": "Setup Simple Project"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/concept-generator",
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"genre\": \"{{ $json.genre }}\",\n  \"user_input\": \"{{ $json.user_input }}\",\n  \"language\": \"{{ $json.language }}\",\n  \"category\": \"{{ $json.category }}\",\n  \"target_audience\": \"{{ $json.target_audience }}\",\n  \"tone\": \"{{ $json.tone }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 300],
+      "id": "get-concept",
+      "name": "Generate Concept"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/outliner", 
+        "authentication": "none",
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "parametersJson": "={\n  \"genre\": \"{{ $('Setup Simple Project').all()[0].json.genre }}\",\n  \"title\": \"{{ $('Setup Simple Project').all()[0].json.title }}\",\n  \"concept\": \"{{ JSON.stringify($json) }}\",\n  \"num_chapters\": {{ $('Setup Simple Project').all()[0].json.num_chapters }},\n  \"language\": \"{{ $('Setup Simple Project').all()[0].json.language }}\",\n  \"category\": \"{{ $('Setup Simple Project').all()[0].json.category }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 300],
+      "id": "get-outline",
+      "name": "Generate Outline"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Create comprehensive prompt for complete book generation\nconst projectData = $('Setup Simple Project').all()[0].json;\nconst conceptData = $('Generate Concept').all()[0].json;\nconst outlineData = $input.all()[0].json;\n\n// Build master prompt for ALL chapters\nlet masterPrompt = `Write a complete ${projectData.num_chapters}-chapter book titled \"${projectData.title}\" in the ${projectData.genre} genre.\\n\\n`;\n\nif (typeof conceptData === 'object') {\n  masterPrompt += `Book Concept:\\n${JSON.stringify(conceptData, null, 2)}\\n\\n`;\n} else {\n  masterPrompt += `Book Concept:\\n${conceptData}\\n\\n`;\n}\n\nif (typeof outlineData === 'object') {\n  masterPrompt += `Detailed Outline:\\n${JSON.stringify(outlineData, null, 2)}\\n\\n`;\n} else {\n  masterPrompt += `Detailed Outline:\\n${outlineData}\\n\\n`;\n}\n\nmasterPrompt += `Instructions:\\n`;\nmasterPrompt += `- Write ALL ${projectData.num_chapters} chapters as one continuous story\\n`;\nmasterPrompt += `- Each chapter should be 2000-3000 words\\n`;\nmasterPrompt += `- Use # Chapter 1, # Chapter 2, etc. as chapter headings\\n`;\nmasterPrompt += `- Target Audience: ${projectData.target_audience}\\n`;\nmasterPrompt += `- Tone: ${projectData.tone}\\n`;\nmasterPrompt += `- Category: ${projectData.category}\\n`;\nmasterPrompt += `- Language: ${projectData.language}\\n`;\nmasterPrompt += `- Write engaging, well-structured content that flows naturally\\n`;\nmasterPrompt += `- Develop characters and plot progressively throughout\\n\\n`;\nmasterPrompt += `Write the complete ${projectData.num_chapters}-chapter book now:`;\n\nreturn [{ json: {\n  master_prompt: masterPrompt,\n  project_data: projectData,\n  concept_data: conceptData,\n  outline_data: outlineData\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [920, 300],
+      "id": "create-master-prompt",
+      "name": "Create Master Prompt"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.master_prompt }}",
+        "options": {
+          "systemMessage": "You are an expert novelist and storyteller. Write engaging, well-structured books with rich characters, compelling plots, and excellent pacing. Each chapter should flow naturally into the next, maintaining reader engagement throughout. Use vivid descriptions, authentic dialogue, and proper story structure."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [1140, 300],
+      "id": "write-complete-book",
+      "name": "Write Complete Book"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-3.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [1140, 450],
+      "id": "simple-book-openrouter-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Process and format the complete book response\nconst promptData = $('Create Master Prompt').all()[0].json;\nconst aiResponse = $input.all()[0].json.response;\n\n// Clean up the response and ensure proper formatting\nlet bookContent = aiResponse || '';\nconst projectData = promptData.project_data;\n\n// Ensure proper book title if missing\nif (!bookContent.includes(projectData.title)) {\n  bookContent = `# ${projectData.title}\\n\\n` + bookContent;\n}\n\n// Word count estimation\nconst wordCount = bookContent.split(/\\s+/).filter(word => word.length > 0).length;\n\nconst finalBook = {\n  project_name: projectData.project_name,\n  title: projectData.title,\n  genre: projectData.genre,\n  language: projectData.language,\n  category: projectData.category,\n  target_audience: projectData.target_audience,\n  tone: projectData.tone,\n  num_chapters: projectData.num_chapters,\n  book_content: bookContent,\n  word_count: wordCount,\n  concept_data: promptData.concept_data,\n  outline_data: promptData.outline_data,\n  generated_at: new Date().toISOString()\n};\n\nreturn [{ json: finalBook }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1360, 300],
+      "id": "process-book-response",
+      "name": "Process Book Response"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Log book creation completion instead of saving to file\nconst bookData = $input.all()[0].json;\nconst fileName = `${bookData.title.replace(/[^a-zA-Z0-9]/g, '_')}_complete.md`;\n\nconsole.log('='.repeat(60));\nconsole.log('SIMPLE BOOK CREATION COMPLETE!');\nconsole.log('='.repeat(60));\nconsole.log(`Title: ${bookData.title}`);\nconsole.log(`Genre: ${bookData.genre}`);\nconsole.log(`Chapters: ${bookData.num_chapters}`);\nconsole.log(`Word Count: ${bookData.word_count}`);\nconsole.log(`File would be saved as: ${fileName}`);\nconsole.log('='.repeat(60));\n\n// Pass through the book data with file info\nreturn [{ json: { ...bookData, file_name: fileName } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1580, 300],
+      "id": "log-book-completion",
+      "name": "Log Book Completion"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"success\",\n  \"message\": \"Simple book created successfully!\",\n  \"title\": \"{{ $json.title }}\",\n  \"genre\": \"{{ $json.genre }}\",\n  \"chapters\": {{ $json.num_chapters }},\n  \"word_count\": {{ $json.word_count }},\n  \"file_name\": \"{{ $json.file_name }}\",\n  \"language\": \"{{ $json.language }}\",\n  \"category\": \"{{ $json.category }}\",\n  \"completed_at\": \"{{ $json.generated_at }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1800, 300],
+      "id": "respond-success",
+      "name": "Respond Success"
+    }
+  ],
+  "connections": {
+    "Webhook - Create Simple Book": {
+      "main": [
+        [
+          {
+            "node": "Setup Simple Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Setup Simple Project": {
+      "main": [
+        [
+          {
+            "node": "Generate Concept",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Concept": {
+      "main": [
+        [
+          {
+            "node": "Generate Outline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Outline": {
+      "main": [
+        [
+          {
+            "node": "Create Master Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Master Prompt": {
+      "main": [
+        [
+          {
+            "node": "Write Complete Book",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Complete Book": {
+      "main": [
+        [
+          {
+            "node": "Process Book Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Book Response": {
+      "main": [
+        [
+          {
+            "node": "Log Book Completion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Book Completion": {
+      "main": [
+        [
+          {
+            "node": "Respond Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Write Complete Book",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

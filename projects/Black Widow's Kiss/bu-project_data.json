@@ -1,0 +1,33 @@
+{
+    "project_name": "Black Widow's Kiss",
+    "title": "The Widow's Mark",
+    "genre": "Thriller",
+    "description": "Max Monroe was the CIA's best pattern analyst until a failed operation in Kyiv left three agents dead and his career in ruins. Now 29 and buried in a desk job at the obscure Strategic Global Intelligence Agency, he's given one chance at redemption: find Mariana Alvidrez, the assassin known as 'The Widow,' before she strikes again. Her signature is unmistakable—wealthy tech moguls found dead in luxury hotels, lips stained black from a neurotoxin-laced kiss that mimics natural heart failure.\n\nBut Max's investigation reveals a pattern his superiors missed. Every victim shares a connection to Nexus Solutions, a now-defunct 'consulting firm' that operated in Eastern Europe fifteen years ago. When Max goes undercover as a venture capitalist at a Monaco tech summit—the Widow's known hunting ground—he finally comes face-to-face with Mariana. She's not what he expected: brilliant, damaged, and hunting men from a list she's spent half her life compiling.\n\nMariana recognizes Max isn't who he claims to be, but she doesn't run. Instead, she makes him an offer: help her finish her list, and she'll give him the evidence that will expose Nexus Solutions for what it really was—a human trafficking network that sold young women to oligarchs and tech billionaires. The same network his own agency helped cover up to protect diplomatic relations.\n\nAs Max digs deeper, he realizes Mariana was one of those women. Her 'clients' aren't random targets—they're her former captors. And the Russian oligarch supposedly hiring her, Mikhail Vershinsky? He's her next target, the man who bought her when she was seventeen.\n\nCaught between the agency that betrayed him and the woman they've labeled a monster, Max must decide: complete his mission and protect a conspiracy that destroys lives, or help Mariana finish what she started and become a fugitive himself. But Vershinsky knows they're coming, SGIA has an asset embedded closer than Max realizes, and Mariana's final target will force Max to confront the real reason he was chosen for this assignment—he was in Kyiv the night Nexus Solutions burned, and someone wants to know what he remembers.\n\nIn a game where everyone has blood on their hands, the only way out is through, and the deadliest poison might be the truth.",
+    "category": "Fiction",
+    "language": "English",
+    "num_characters": 5,
+    "num_characters_str": "5+",
+    "worldbuilding_needed": true,
+    "review_preference": "AI (automatic review)",
+    "book_length": "Novel",
+    "logline": "When a disgraced intelligence analyst is blackmailed into hunting an assassin who kills with poisoned kisses, he discovers she's been eliminating the men who trafficked her—and his own agency has been protecting them.",
+    "tone": "Serious",
+    "target_audience": "Adults",
+    "num_chapters": 20,
+    "num_chapters_str": "20+",
+    "llm_provider": "openrouter",
+    "dynamic_questions": {
+        "q1": "The villain Boris will control the high tech AI and rule the world if Max cannot stop Mariana from killing Boris's Business rivals.",
+        "q2": "SGIA secret agent Max Monroe. He needs to stop Boris' asssassin Mariana to prevent Boris from completing his plan. Max has been ordered to kill Mariana aka the Black Widow. Max has fallen in love with her. How can he stop Boris without killing the woman he loves. Will love prevail or an sworn oath to duty? ",
+        "q3": "Powerful high tech business moguls are being assassinated. ",
+        "q4": "That Mariana wants to gain Boris' trust so she can get near him to kill him. Revenge for having her sister killed 3 years earlier.",
+        "q5": "Mariana will soon kill Boris' biggest rival giving him total control of AI technology.",
+        "q6": "Mikhail Vershinsky aka Boris. He wants to control the world's AI technology to rule the world and control the population. ",
+        "q7": "Max Monroe tries to stop Mariana from killing Boris' largest business rivals. The fight violently during the fight she tells Max she loves him, Max drops his gaurd, ghe loves her. She embraces him and kisses him passionately. She attemps her Black Widow's Kiss on Max he struggles to free himself from her. Max draws a gun, a Sig Sauer P365 and shoots her, injured she jumps through a window shattering the glass and escapes. Later Max is recovering in an expensive hotel suite, room service knock on the door, a luxurious breakfast, coffe and a newspaper with a red rose on top. The headlines read. \"Mikhail Vershinsky aka Boris high tech mogul has been found dead, in his penthouse suite\". Max held the rose up to his nose. \"Mariana, the Black Widow's Kiss\" Max had no doubt it was Mariana who killed Mikhail Vershinsky aka Boris. "
+    },
+    "characters": {},
+    "worldbuilding": null,
+    "chapters": {},
+    "outline": "",
+    "project_dir": "C:\\Users\\3dmax\\Libriscribe\\projects\\Black Widow's Kiss"
+}

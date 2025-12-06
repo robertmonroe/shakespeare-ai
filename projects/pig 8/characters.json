@@ -1,0 +1,39 @@
+[
+    {
+        "name": "Percy 'The Swine-King' Pigsworth",
+        "age": "Technically, six months (pig years are complicated)",
+        "physical_description": "Percy is a pot-bellied pig with a surprisingly refined snout and soulful, almost human-like eyes. His coat is a mix of pink and black splotches, and he's surprisingly muscular for a pig destined for the butcher. He's initially covered in mud and farm dirt, but Daisy later cleans him up and even sews him a tiny white jumpsuit with miniature rhinestones, inspired by Elvis's iconic stage outfits. He also sports a pair of blue suede shoes (modified baby shoes) that Daisy crafts for him.",
+        "personality_traits": "Resourceful, Cautious, Determined",
+        "background": "Percy was born on a large-scale pig farm in rural Iowa, the result of experimental genetic modification. This modification unexpectedly granted him an exceptional vocal range and an uncanny ability to mimic Elvis Presley's singing style. Growing up amongst hundreds of identical pigs, Percy always felt different, drawn to the faint signals of oldies radio that drifted across the farm. He yearned for a life beyond the mud and the inevitable slaughterhouse.",
+        "motivations": "Percy is driven by a desire to escape his predetermined fate and find a place where his unique talent is appreciated. He wants to experience a life of fame, freedom, and, most importantly, to avoid becoming bacon.",
+        "relationships": {
+            "Daisy": "Percy's closest friend and confidante. He trusts her implicitly and relies on her resourcefulness and artistic talent.",
+            "Farmer Jed": "The owner of the pig farm, and Percy's pursuer. Jed sees Percy as a valuable (and unusual) commodity that escaped. He represents Percy's past and the life he's desperate to leave behind.",
+            "Big Bubba (Elvis Impersonator)": "A seasoned Elvis impersonator in Memphis who initially dismisses Percy but eventually becomes a reluctant mentor. Big Bubba provides Percy with guidance and helps him navigate the world of entertainment.",
+            "Other Elvis Impersonators": "Percy's initial competitors, but eventually, some become allies and friends, recognizing his genuine talent.",
+            "Rosie (Farm Pig)": "Percy's friend back on the farm who encouraged him to escape. She represents the life he left behind, and his connection to his past."
+        },
+        "role": "Protagonist",
+        "internal_conflicts": "Percy struggles with feelings of self-doubt and vulnerability. He questions whether he's good enough to succeed as an entertainer and worries about being rejected or exploited. He also grapples with the guilt of leaving his fellow pigs behind on the farm.",
+        "external_conflicts": "Percy faces the challenge of navigating the unfamiliar world of Memphis, dealing with the competitive Elvis impersonator scene, and evading Farmer Jed, who is relentlessly pursuing him.",
+        "character_arc": "Percy begins as a naive and hopeful pig dreaming of a better life. Through his experiences in Memphis, he learns about the complexities of the world, develops self-confidence, and ultimately chooses between fame and freedom, becoming a more mature and grounded character by the end of the story."
+    },
+    {
+        "name": "Daisy Mae Johnson",
+        "age": "17",
+        "physical_description": "Daisy is a small, wiry girl with bright, inquisitive eyes and a cascade of unruly brown hair often hidden under a bandana. She's got a determined set to her jaw. Her clothing is a mix of thrift store finds and her own creations, often incorporating Elvis-themed patches and embellishments. She usually wears oversized denim jackets and comfortable boots.",
+        "personality_traits": "Resourceful, Cautious, Determined",
+        "background": "Daisy ran away from her foster home in rural Mississippi after years of neglect and feeling like she didn't belong. A lifelong fan of Elvis, she found solace in his music and drew inspiration from his rags-to-riches story. She's skilled at sewing and design, using her talents to create unique clothing and accessories that she sells at flea markets to survive. She is fiercely independent, having learned to rely on herself from a young age.",
+        "motivations": "Daisy is driven by a desire for freedom, independence, and a place where she feels accepted. She wants to create a life for herself on her own terms and find a purpose that goes beyond just surviving.",
+        "relationships": {
+            "Percy": "Daisy's closest friend and confidante. She sees Percy's potential and helps him achieve his dreams, forming a deep bond with him. She becomes a protective figure, shielding him from harm.",
+            "Big Bubba": "Daisy initially sees Big Bubba as a potential connection for Percy, but she also challenges his cynicism and helps him see the value in Percy's unique talent. There's a mentor/mentee relationship developing here.",
+            "Mr. Henderson (Flea Market Vendor)": "An older, kind-hearted vendor at the flea market who provides Daisy with occasional odd jobs and offers her advice. He is a minor supporting character, acting as a surrogate father figure.",
+            "Foster Parents": "Antagonistic figures from Daisy's past, representing the neglect and mistreatment she experienced before running away. They are not seen directly in the story, but their influence shapes her distrust of authority."
+        },
+        "role": "Supporting Character",
+        "internal_conflicts": "Daisy struggles with trust issues stemming from her difficult past. She's hesitant to let people get close to her and fears being abandoned or betrayed. She also grapples with feelings of insecurity and doubts about her own abilities.",
+        "external_conflicts": "Daisy faces the challenges of living on the streets, finding ways to earn money, and protecting herself from exploitation. She also deals with the lingering fear of being found and returned to the foster care system.",
+        "character_arc": "Daisy begins as a cynical and guarded runaway. Through her friendship with Percy, she learns to trust again, embrace her artistic talents, and believe in the possibility of a brighter future. She becomes more confident, compassionate, and willing to take risks, finding a sense of belonging and purpose in helping Percy achieve his dreams."
+    }
+]

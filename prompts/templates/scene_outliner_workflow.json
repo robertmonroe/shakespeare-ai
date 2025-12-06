@@ -1,0 +1,143 @@
+{
+  "name": "Book Creation - Scene Outliner",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "scene-outliner",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [40, 300],
+      "id": "scene-outliner-webhook",
+      "name": "Webhook - Generate Scene Outline"
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Extract and validate scene outliner parameters\nconst inputData = $input.all()[0].json.body;\n\n// Required fields\nconst chapterNumber = inputData.chapter_number;\nconst genre = inputData.genre;\nconst chapterContext = inputData.chapter_context;\nconst chapterSummary = inputData.chapter_summary;\n\nif (!chapterNumber || !genre || !chapterContext || !chapterSummary) {\n  throw new Error('Chapter_number, genre, chapter_context, and chapter_summary are required');\n}\n\n// Optional fields with defaults\nconst language = inputData.language || 'English';\nconst numScenes = inputData.num_scenes || '3-5';\nconst bookTitle = inputData.book_title || '';\n\n// Build scene outlining prompt\nlet prompt = `Create detailed scene outlines for Chapter ${chapterNumber} of this ${genre} story.\\n\\n`;\n\nif (bookTitle) {\n  prompt += `Book: \"${bookTitle}\"\\n`;\n}\n\nprompt += `Chapter context: ${chapterContext}\\n`;\nprompt += `Chapter summary: ${chapterSummary}\\n\\n`;\n\nprompt += `Generate ${numScenes} scenes that create compelling chapter flow.\\n\\n`;\n\nprompt += `For each scene, provide:\\n`;\nprompt += `- Scene purpose and goals\\n`;\nprompt += `- Key events and conflicts\\n`;\nprompt += `- Character interactions\\n`;\nprompt += `- Emotional beats and tension\\n`;\nprompt += `- Setting and atmosphere\\n`;\nprompt += `- Transition to next scene\\n\\n`;\n\nprompt += `Output in JSON format with scenes array.`;\nprompt += `Language: ${language}`;\n\nconst promptData = {\n  chapter_number: chapterNumber,\n  genre: genre,\n  chapter_context: chapterContext,\n  chapter_summary: chapterSummary,\n  language: language,\n  num_scenes: numScenes,\n  book_title: bookTitle,\n  prompt: prompt\n};\n\nreturn [{ json: promptData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "id": "prepare-scene-outline-prompt",
+      "name": "Prepare Scene Outline Prompt"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "options": {
+          "systemMessage": "You are an expert scene outliner for storytelling. Create detailed, engaging scene outlines that ensure strong narrative flow, proper pacing, and effective character development. Always respond with valid JSON using a scenes array format."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [480, 300],
+      "id": "generate-scene-outline",
+      "name": "Generate Scene Outline"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-3.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [480, 450],
+      "id": "scene-outliner-openrouter-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Parse and validate the scene outline response\nconst promptData = $('Prepare Scene Outline Prompt').all()[0].json;\nconst aiResponse = $input.all()[0].json.response;\n\ntry {\n  // Try to extract JSON from the response\n  let sceneOutlineData;\n  \n  if (aiResponse.includes('{') && aiResponse.includes('}')) {\n    const startIndex = aiResponse.indexOf('{');\n    const endIndex = aiResponse.lastIndexOf('}') + 1;\n    const jsonStr = aiResponse.substring(startIndex, endIndex);\n    sceneOutlineData = JSON.parse(jsonStr);\n  } else {\n    // Fallback if no JSON found\n    throw new Error('No JSON found in response');\n  }\n  \n  // Ensure we have scenes array\n  if (!sceneOutlineData.scenes && !Array.isArray(sceneOutlineData)) {\n    throw new Error('No scenes array found in outline');\n  }\n  \n  const finalOutline = {\n    chapter_number: promptData.chapter_number,\n    genre: promptData.genre,\n    chapter_context: promptData.chapter_context,\n    chapter_summary: promptData.chapter_summary,\n    language: promptData.language,\n    book_title: promptData.book_title,\n    scenes: sceneOutlineData.scenes || sceneOutlineData,\n    generated_at: new Date().toISOString()\n  };\n  \n  return [{ json: finalOutline }];\n  \n} catch (error) {\n  // Create a fallback scene outline if parsing fails\n  const fallbackScenes = [];\n  const numScenes = 4; // Default fallback\n  \n  for (let i = 1; i <= numScenes; i++) {\n    fallbackScenes.push({\n      scene_number: i,\n      purpose: `Scene ${i} purpose and goals`,\n      events: [`Key event 1 for scene ${i}`, `Key event 2 for scene ${i}`],\n      characters: `Characters involved in scene ${i}`,\n      setting: `Setting for scene ${i}`,\n      emotional_beats: `Emotional development in scene ${i}`,\n      transition: `Transition to scene ${i + 1}`\n    });\n  }\n  \n  const fallbackOutline = {\n    chapter_number: promptData.chapter_number,\n    genre: promptData.genre,\n    chapter_context: promptData.chapter_context,\n    chapter_summary: promptData.chapter_summary,\n    language: promptData.language,\n    book_title: promptData.book_title,\n    scenes: fallbackScenes,\n    generated_at: new Date().toISOString(),\n    fallback: true,\n    error: error.message\n  };\n  \n  return [{ json: fallbackOutline }];\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 300],
+      "id": "process-scene-outline-response",
+      "name": "Process Scene Outline Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [920, 300],
+      "id": "respond-scene-outline",
+      "name": "Respond with Scene Outline"
+    }
+  ],
+  "connections": {
+    "Webhook - Generate Scene Outline": {
+      "main": [
+        [
+          {
+            "node": "Prepare Scene Outline Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Scene Outline Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate Scene Outline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Scene Outline": {
+      "main": [
+        [
+          {
+            "node": "Process Scene Outline Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Scene Outline Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Scene Outline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Scene Outline",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

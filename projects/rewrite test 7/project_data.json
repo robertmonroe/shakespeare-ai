@@ -1,0 +1,27 @@
+{
+    "project_name": "rewrite test 7",
+    "title": "Angel Baby's Special Day",
+    "genre": "Young Adult",
+    "description": "Angel Baby is a 1-year-old black pug. One day her human sister bought Angel Baby a stroller so her human mommy Silvia can take Angel Baby shopping at the mall. Silvia bought Angel Baby a beautiful sweater. It was the holiday season, and the weather was getting colder. Silvia wanted Angel Baby to be warm and look beautiful for their trips to the mall. Silvia put the sweater on Angel Baby for the first time. Angel Baby did not like wearing the sweater and did her best to take it off. The next day, Susana and Silvia went holiday shopping at the mall, and they brought Angel Baby dressed in her beautiful sweater with them. Everything looked so beautiful, all the holiday lights and decorations, the holiday season feeling in the air was very delightful. All the people would stop to see Angel Baby and they all would tell her how beautiful she looked in her sweater and stroller. By the time they left the mall, Angel Baby felt so proud and happy to be wearing her beautiful sweater and riding in her stroller, she held her head high, with joy. Now Angel Baby loves to wear her sweater and and go shopping with her human mommy and sister, Silvia and Susana.",
+    "category": "Fiction",
+    "language": "English",
+    "num_characters": 3,
+    "num_characters_str": "3",
+    "worldbuilding_needed": false,
+    "review_preference": "AI (automatic review)",
+    "book_length": "Short Story",
+    "logline": "No logline available",
+    "tone": "Funny",
+    "target_audience": "Children",
+    "num_chapters": 2,
+    "num_chapters_str": "2",
+    "llm_provider": "openrouter",
+    "dynamic_questions": {
+        "q1": "It's a little 1 year old cute pug."
+    },
+    "characters": {},
+    "worldbuilding": null,
+    "chapters": {},
+    "outline": "",
+    "project_dir": "C:\\Users\\3dmax\\Libriscribe\\projects\\rewrite test 7"
+}

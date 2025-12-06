@@ -1,6 +1,6 @@
 # src/libriscribe/presets/story_structures.py
 """
-Story Structure Presets for Libriscribe
+Story Structure Presets for Shakespeare AI
 
 Define plot beat frameworks: Hero's Journey, Save the Cat, Three-Act, etc.
 These are used for outlining and chapter planning.

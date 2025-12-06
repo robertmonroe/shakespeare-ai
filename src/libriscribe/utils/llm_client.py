@@ -69,7 +69,7 @@ class LLMClient:
         elif self.llm_provider == "claude":
             return "claude-3-opus-20240229" # Or another appropriate Claude 3 model
         elif self.llm_provider == "google_ai_studio":
-            return "gemini-1.5-pro-002"
+            return "gemini-2.0-flash-exp" if self.settings.app_env == "production" else "gemini-2.0-flash"
         elif self.llm_provider == "deepseek":
              return "deepseek-coder-6.7b-instruct"
         elif self.llm_provider == "mistral":
@@ -176,3 +176,25 @@ class LLMClient:
                         return repaired_response 
         logger.error(f"[CHAR_DEBUG] JSON repair failed. Response was: {response_text[:200] if response_text else 'empty'}")
         return "" # Return empty
+    def generate_content_with_image(self, prompt: str, image_base64: str, max_tokens: int = 500) -> str:
+        '''Generate content with image input (vision). Only supports Google AI Studio (Gemini).'''
+        import google.generativeai as genai
+        import base64
+        from io import BytesIO
+        from PIL import Image
+        
+        try:
+            genai.configure(api_key=self.settings.google_ai_studio_api_key)
+            model = genai.GenerativeModel('gemini-2.0-flash-exp')
+            
+            # Decode base64 to image
+            image_data = base64.b64decode(image_base64)
+            image = Image.open(BytesIO(image_data))
+            
+            # Generate content with image
+            response = model.generate_content([prompt, image])
+            return response.text.strip()
+        except Exception as e:
+            import logging
+            logging.getLogger(__name__).exception(f'Vision analysis error: {e}')
+            return '[Vision analysis failed]'

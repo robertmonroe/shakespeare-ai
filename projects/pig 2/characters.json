@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Jonathan \"Johnny\" Davies",
+        "age": "12",
+        "physical_description": "Johnny is a skinny, almost gangly, 12-year-old with a mop of unruly brown hair that constantly falls into his eyes. He has large, expressive brown eyes that reflect his emotions easily. He's perpetually dressed in jeans, a slightly-too-big graphic tee (usually featuring a superhero or a video game character), and worn-out sneakers. He usually carries a well-loved, slightly battered backpack containing his school books and a notebook for sketching.",
+        "personality_traits": "Resourceful, Cautious, Determined",
+        "background": "Johnny has lived his entire life in a small, cramped apartment in a bustling city. He often feels confined and longs for wide-open spaces. He's a good student but struggles with social interactions, finding solace in his imagination and his passion for drawing. His parents, while loving, are caught up in their busy professional lives and sometimes struggle to truly connect with him on an emotional level. He's always dreamed of having a pet but his parents have always said their apartment is too small.",
+        "motivations": "To escape the monotony of city life, to find genuine connection and companionship, to protect Arnie at all costs.",
+        "relationships": {
+            "general": "Arnie (Best Friend): Deeply devoted and protective of Arnie. Mr. and Mrs. Davies (Parents): Loves them but feels a growing disconnect; struggles to communicate his feelings. Mrs. Rosenblum (Neighbor): A kindly, elderly neighbor who sometimes offers him cookies and a listening ear."
+        },
+        "role": "Protagonist",
+        "internal_conflicts": "His struggle to assert himself and his needs to his parents, his fear of disappointing them, his insecurity about fitting in.",
+        "external_conflicts": "Hiding Arnie from his parents and the building superintendent, the threat of Arnie being taken away, the challenges of running away from home.",
+        "character_arc": "Johnny evolves from a shy, insecure boy into a courageous and assertive young man who is willing to stand up for what he believes in and for the friends he loves. He learns to communicate his feelings more effectively and discovers his own inner strength."
+    },
+    {
+        "name": "Arnie",
+        "age": "Equivalent to a young piglet - roughly 6 months old in human years",
+        "physical_description": "Arnie is a pot-bellied pig with pink skin and a few scattered black spots. He's surprisingly agile and has a perpetually curious snout that he uses to investigate everything. He has large, expressive eyes that seem to understand more than they should. A curly tail is always wagging. Wears a makeshift collar Johnny makes from an old shoelace.",
+        "personality_traits": "Resourceful, Cautious, Determined",
+        "background": "Arnie escaped from a nearby farm, feeling confined and yearning for adventure beyond the pigpen. He's naturally friendly and trusting, but also a bit naive about the dangers of the city.",
+        "motivations": "To find freedom and companionship, to explore the world around him, to simply enjoy life.",
+        "relationships": {
+            "general": "Johnny (Best Friend): Completely devoted to Johnny, relies on him for everything. Mr. and Mrs. Davies (Johnny's Parents): Initially frightened and disapproving, but eventually charmed by Arnie's affectionate nature."
+        },
+        "role": "Supporting Character, catalyst for Johnny's change",
+        "internal_conflicts": "None - as a pig, his concerns are simpler and more immediate.",
+        "external_conflicts": "Being caught by authorities and returned to the farm, the dangers of navigating the city, being separated from Johnny.",
+        "character_arc": "Arnie remains largely unchanged in personality, providing a consistent source of joy and affection for Johnny. He serves as a symbol of freedom and the importance of following one's heart, even if it leads to unexpected places."
+    }
+]

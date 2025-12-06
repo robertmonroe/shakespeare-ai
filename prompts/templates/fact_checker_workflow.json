@@ -1,0 +1,121 @@
+{
+  "name": "Book Creation - Fact Checker",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "fact-checker-webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [0, 0],
+      "id": "fact-checker-webhook",
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Genre: {{ $json.body.genre }}\nContent to Check: {{ $json.body.content_to_check }}\nLanguage: {{ $json.body.language }}",
+        "options": {
+          "systemMessage": "Fact-check the following content from a {genre} book for accuracy and consistency.\n\nContent to verify:\n{content_to_check}\n\nCheck for:\n- Historical accuracy (dates, events, people)\n- Technical correctness (science, technology, procedures)\n- Geographic accuracy (locations, distances, climate)\n- Cultural authenticity (customs, languages, traditions)\n- Internal story consistency (previously established facts)\n- Logical plausibility within the story world\n\nReport any inaccuracies found and suggest corrections.\nNote any areas requiring additional research.\nLanguage: {language}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [208, 0],
+      "id": "fact-checker-agent",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-4.5-sonnet",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [80, 208],
+      "id": "fact-checker-model",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "N8GwdEqLBJAYPzWp",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "code",
+        "jsCode": "// Process and format the fact check response\nconst inputData = $('Webhook').all()[0].json.body;\nconst aiResponse = $input.all()[0].json.response;\n\n// Clean up the response\nlet factCheckResult = aiResponse || '';\n\nconst finalResult = {\n  genre: inputData.genre,\n  content_checked: inputData.content_to_check,\n  language: inputData.language || 'English',\n  fact_check_report: factCheckResult,\n  checked_at: new Date().toISOString()\n};\n\nreturn [{ json: finalResult }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [416, 0],
+      "id": "process-fact-check-response",
+      "name": "Process Fact Check Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [624, 0],
+      "id": "respond-fact-check",
+      "name": "Respond with Fact Check"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Process Fact Check Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Fact Check Response": {
+      "main": [
+        [
+          {
+            "node": "Respond with Fact Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -1,15 +1,16 @@
-# LibriScribe - Project Memory & Context
+# 🎭 Shakespeare AI - Project Memory & Context
 
 **Last Updated:** 2025-12-06  
-**Project Owner:** Fernando Guerra (@guerra2fernando) and Lenxys  
-**Repository:** https://github.com/guerra2fernando/libriscribe
+**Project Owner:** Robert Monroe  
+**Repository:** https://github.com/robertmonroe/shakespeare-ai
 **Current Version:** 2.3.0
+**Forked From:** [Libriscribe](https://github.com/guerra2fernando/libriscribe) by Fernando Guerra
 
 ---
 
 ## 🎯 Project Overview
 
-**LibriScribe** is an AI-powered book writing assistant that uses a sophisticated multi-agent system to help authors create complete books from concept to final manuscript. Each AI agent specializes in specific tasks (concept generation, outlining, character development, worldbuilding, chapter writing, editing, etc.).
+**Shakespeare AI** is an AI-powered book writing assistant that uses a sophisticated multi-agent system to help authors create complete books from concept to final manuscript. Each AI agent specializes in specific tasks (concept generation, outlining, character development, worldbuilding, chapter writing, editing, etc.).
 
 ### Core Technology Stack
 - **Language:** Python 3.8+

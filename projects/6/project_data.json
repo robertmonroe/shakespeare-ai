@@ -1,0 +1,43 @@
+{
+    "project_name": "6",
+    "title": "The Last Librarian of Alexandria",
+    "genre": "Thriller",
+    "description": "Dr. Sarah Chen has spent her entire career cataloging forgotten manuscripts in the basement of the British Museum, but nothing prepared her for finding a first-century scroll that opens a doorway through time. Stepping into the legendary Library of Alexandria days before its destruction, Sarah realizes she has the opportunity to save thousands of irreplaceable texts that could revolutionize modern understanding of science, medicine, and philosophy. But she's not alone—a mysterious sect of temporal guardians warns her that removing even a single scroll could create ripples that unravel the fabric of history. As flames approach the library and she fills her bag with priceless knowledge, Sarah must decide: is saving the past worth risking the future? A thrilling blend of historical fiction, science fiction, and philosophical drama, this novel explores the weight of knowledge, the burden of choice, and whether some things are meant to be lost. Perfect for fans of 'The Invisible Library' series and 'The Time Traveler's Wife.'",
+    "category": "Fiction",
+    "language": "English",
+    "num_characters": 1,
+    "num_characters_str": "",
+    "worldbuilding_needed": false,
+    "review_preference": "AI (automatic review)",
+    "book_length": "Short Story (1-3 chapters)",
+    "logline": "When a modern-day archivist discovers a hidden portal to the ancient Library of Alexandria, she must choose between preserving humanity's lost knowledge and preventing a catastrophic temporal paradox that could erase history itself.",
+    "tone": "Informative",
+    "target_audience": "General",
+    "num_chapters": 1,
+    "num_chapters_str": "",
+    "llm_provider": "openrouter",
+    "dynamic_questions": {},
+    "characters": {},
+    "worldbuilding": null,
+    "chapters": {
+        "1": {
+            "chapter_number": 1,
+            "title": "Chapter 1",
+            "summary": "A new chapter in the unfolding story.",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "summary": "The story continues with new developments.",
+                    "characters": [
+                        "Shade"
+                    ],
+                    "setting": "Neo-London",
+                    "goal": "Advance the plot",
+                    "emotional_beat": "Tension"
+                }
+            ]
+        }
+    },
+    "outline": "",
+    "project_dir": "C:\\Users\\3dmax\\Libriscribe\\projects\\6"
+}
