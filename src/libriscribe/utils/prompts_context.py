@@ -61,7 +61,7 @@ Appendices: (Supplementary materials, raw data, questionnaires)
     else:
         return ""  # Return empty string for unknown categories
 
-WORLDBUILDING_ASPECTS = { #Keep like this, so we can access it in outliner
+WORLDBUILDING_ASPECTS = {
 "fiction": """
 
 Geography: (Detailed descriptions of the land, climate, significant locations)
@@ -291,53 +291,67 @@ IMPORTANT: The content should be written entirely in {language}.
 
 
 EDITOR_PROMPT = """
-You are an expert editor tasked with refining and improving a chapter of a {genre} book titled "{book_title}".
-The book is written in {language}.
+You are an expert editor tasked with refining and improving Chapter {chapter_number}: {chapter_title} of the {genre} book "{book_title}".
 
-Chapter {chapter_number}: {chapter_title}
+**CRITICAL CONTEXT - MAINTAIN CONSISTENCY:**
 
-Here is the chapter content:
+**Book Information:**
+- Title: {book_title}
+- Genre: {genre}
+- Language: {language}
+- Description: {book_description}
+
+**Style Guide:**
+{style_guide}
+
+**Characters in This Story (USE EXACT DESCRIPTIONS):**
+{character_context}
+
+**World/Setting:**
+{worldbuilding_context}
+
+**Previous Chapter (for continuity):**
+{previous_chapter_summary}
+
+**Current Chapter Content:**
 {chapter_content}
 
-A content reviewer has provided the following feedback. MAKE SURE to address ALL issues they raised:
+**Reviewer Feedback - MUST ADDRESS ALL ISSUES:**
 {review_feedback}
 
-Instructions:
+**YOUR TASK:**
 
-Fix ALL issues mentioned in the reviewer's feedback
+1. **Fix ALL issues mentioned in the reviewer's feedback** - This is your top priority
 
-Content and Structure:
+2. **Maintain Consistency:**
+   - Use the EXACT character names, traits, and APPEARANCES from the context above
+   - Keep worldbuilding details consistent (locations, geography, culture)
+   - Ensure continuity with the previous chapter
+   - Stay true to the book's description and genre
 
-Evaluate the chapter's overall structure, pacing, and clarity.
+3. **Content and Structure:**
+   - Evaluate overall structure, pacing, and clarity
+   - Ensure the chapter advances the plot
+   - Fix plot holes and inconsistencies
+   - Improve scene transitions and dialogue
 
-Ensure the chapter advances the plot and contributes to the overall story arc.
+4. **Style and Tone:**
+   - Follow the style guide above
+   - Maintain consistency with the {genre} genre
+   - Eliminate passive voice and weak verbs
+   - Enhance descriptive language
 
-Identify any plot holes, inconsistencies, or confusing elements.
+5. **Character Development:**
+   - Ensure actions, dialogue, and thoughts match established personalities
+   - Maintain character voice consistency
+   - Use EXACT physical descriptions as defined
 
-Suggest improvements to scene transitions, character interactions, and dialogue.
+6. **Grammar and Mechanics:**
+   - Correct all errors, typos, and punctuation issues
 
-Style and Tone:
-
-Assess the writing style and tone for consistency with the genre.
-
-Identify any instances of passive voice, repetitive sentence structures, or weak verbs.
-
-Enhance the descriptive language to create vivid imagery.
-
-Character Development:
-
-Ensure their actions, dialogue, and thoughts are consistent with their established personalities.
-
-Grammar and Mechanics:
-
-Correct any grammatical errors, spelling mistakes, punctuation issues, and typos.
-
-Output:
-
+**Output:**
 Provide the complete, revised chapter with all improvements incorporated. Use Markdown formatting.
-Wrap the ENTIRE revised chapter in a Markdown code block, like this:
-
-[The full revised chapter content]
+Wrap the ENTIRE revised chapter in a Markdown code block.
 
 IMPORTANT: The content should be written entirely in {language}.
 """
@@ -415,29 +429,141 @@ SCENE_PROMPT = """
 Write Scene {scene_number} of {total_scenes} for Chapter {chapter_number}: {chapter_title} of the {genre} {category} book "{book_title}".
 The book is written in {language}.
 
-Chapter Summary:
+**STYLE GUIDE (CRITICAL - Follow this pacing and tone):**
+{style_guide}
+
+**PREVIOUS CHAPTER SUMMARY (For continuity):**
+{previous_chapter_summary}
+
+**PREVIOUS SCENES IN THIS CHAPTER:**
+{previous_scenes}
+
+**Chapter Summary:**
 {chapter_summary}
 
-Scene Details:
+**Scene Details:**
 - Summary: {scene_summary}
 - Characters: {characters}
 - Setting: {setting}
 - Goal: {goal}
 - Emotional Beat: {emotional_beat}
 
-Instructions:
-- Write a vivid, engaging scene that captures these elements.
-- Include descriptive details and sensory information about the setting.
-- Show character emotions and development through actions and dialogue.
-- Advance the story according to the scene's goal and emotional beat.
-- Make the scene flow naturally and avoid unnecessary exposition.
-- Ensure the scene ends in a way that connects smoothly to the next scene.
-- Use language and style appropriate for the genre.
+**CHARACTER DETAILS - USE THESE EXACT DESCRIPTIONS:**
+{character_details}
 
-Important: Focus on showing rather than telling. Create an immersive experience that brings the scene to life.
+**CRITICAL CHARACTER APPEARANCES (Never deviate from these):**
+{character_appearances}
+
+**World Context:**
+{world_details}
+
+**WRITING INSTRUCTIONS:**
+
+1. **PACING**: {pacing_instruction}
+
+2. **SHOW DON'T TELL**: 
+   - Convey emotions through actions, body language, and dialogue
+   - Limit internal monologue to critical moments
+   - Use sensory details (sight, sound, smell, touch, taste)
+
+3. **CHARACTER CONSISTENCY**:
+   - Use the EXACT physical descriptions above
+   - Match dialogue to established personality
+   - Actions must align with motivations
+
+4. **SCENE STRUCTURE**:
+   - Open with action or immediate engagement
+   - Build to the emotional beat
+   - End with a hook or transition to next scene
+
+5. **CONTINUITY**:
+   - Connect smoothly to previous scenes
+   - Maintain timeline consistency
+   - Reference events/information already established
+
+**OUTPUT REQUIREMENTS:**
+- Write 800-1500 words for this scene (adjust for importance)
+- Use vivid, engaging prose
+- Include dialogue where appropriate
+- End in a way that flows to the next scene
 
 IMPORTANT: The content should be written entirely in {language}.
 """
+
+
+def get_style_guide(project_knowledge_base: ProjectKnowledgeBase) -> str:
+    """Build style guide string from project settings."""
+    parts = []
+    
+    tone = project_knowledge_base.get("tone")
+    if tone:
+        parts.append(f"- Tone: {tone}")
+    
+    inspired_by = project_knowledge_base.get("inspired_by")
+    if inspired_by:
+        parts.append(f"- Style inspiration: {inspired_by}")
+    
+    pacing = project_knowledge_base.get("pacing_preference")
+    if pacing:
+        parts.append(f"- Pacing: {pacing}")
+    
+    target = project_knowledge_base.get("target_audience")
+    if target:
+        parts.append(f"- Target audience: {target}")
+    
+    return "\n".join(parts) if parts else "No specific style guide - use genre-appropriate style."
+
+
+def get_pacing_instruction(project_knowledge_base: ProjectKnowledgeBase) -> str:
+    """Get pacing instruction based on project settings."""
+    pacing = project_knowledge_base.get("pacing_preference", "").lower()
+    inspired_by = project_knowledge_base.get("inspired_by", "").lower()
+    
+    # Check for fast-paced indicators
+    fast_indicators = ["titanic", "thriller", "fast", "action", "page-turner", "star wars"]
+    for indicator in fast_indicators:
+        if indicator in pacing or indicator in inspired_by:
+            return """FAST-PACED: 
+   - Start scenes with action or immediate engagement
+   - Keep internal monologue to 1-2 sentences at a time
+   - Move quickly through transitions
+   - Use short, punchy sentences in action moments
+   - Dialogue should be snappy and purposeful"""
+    
+    # Check for slow-paced indicators
+    slow_indicators = ["literary", "dune", "slow", "contemplative", "atmospheric"]
+    for indicator in slow_indicators:
+        if indicator in pacing or indicator in inspired_by:
+            return """LITERARY PACE:
+   - Allow space for internal reflection
+   - Build atmosphere through detailed description
+   - Explore character psychology deeply
+   - Use longer, flowing sentences
+   - Take time with emotional moments"""
+    
+    # Default balanced
+    return """BALANCED PACE:
+   - Mix action with reflection
+   - Use internal monologue strategically (not excessively)
+   - Vary sentence length for rhythm
+   - Match pace to scene requirements (faster for action, slower for emotional beats)"""
+
+
+def get_character_appearances(project_knowledge_base: ProjectKnowledgeBase) -> str:
+    """Extract key visual details for quick reference."""
+    if not project_knowledge_base.characters:
+        return "No characters defined."
+    
+    appearances = []
+    for name, char in project_knowledge_base.characters.items():
+        if hasattr(char, 'appearance') and char.appearance:
+            # Extract key visual details
+            appearances.append(f"- **{name}**: {char.appearance[:200]}")
+        elif hasattr(char, 'physical_description') and char.physical_description:
+            appearances.append(f"- **{name}**: {char.physical_description[:200]}")
+    
+    return "\n".join(appearances) if appearances else "Character appearances not defined."
+
 
 def clean_worldbuilding_for_category(project_knowledge_base: ProjectKnowledgeBase):
     """
@@ -482,6 +608,9 @@ def clean_worldbuilding_for_category(project_knowledge_base: ProjectKnowledgeBas
         # If category not recognized, keep all fields
         return
     
+    # Import here to avoid circular import
+    from libriscribe.knowledge_base import Worldbuilding
+    
     # Create clean Worldbuilding object with only relevant fields
     clean_worldbuilding = Worldbuilding()
     
@@ -494,3 +623,73 @@ def clean_worldbuilding_for_category(project_knowledge_base: ProjectKnowledgeBas
     
     # Replace with clean version
     project_knowledge_base.worldbuilding = clean_worldbuilding
+
+def get_style_guide_from_preset(project_knowledge_base: ProjectKnowledgeBase, preset_name: str = None) -> str:
+    """Get style guide from preset or project settings.
+    
+    Args:
+        project_knowledge_base: The project
+        preset_name: Optional preset name to use
+        
+    Returns:
+        Formatted style guide string
+    """
+    # Try to load from preset
+    if preset_name:
+        try:
+            from libriscribe.presets import PresetManager
+            manager = PresetManager()
+            preset = manager.get_preset(preset_name)
+            if preset:
+                return preset.get_style_guide()
+        except ImportError:
+            pass
+    
+    # Fallback to basic style guide
+    return get_style_guide(project_knowledge_base)
+
+
+def get_pacing_from_preset(project_knowledge_base: ProjectKnowledgeBase, preset_name: str = None) -> str:
+    """Get pacing instruction from preset or project settings.
+    
+    Args:
+        project_knowledge_base: The project
+        preset_name: Optional preset name to use
+        
+    Returns:
+        Formatted pacing instruction string
+    """
+    # Try to load from preset
+    if preset_name:
+        try:
+            from libriscribe.presets import PresetManager
+            manager = PresetManager()
+            preset = manager.get_preset(preset_name)
+            if preset:
+                return preset.get_pacing_instruction()
+        except ImportError:
+            pass
+    
+    # Fallback to basic pacing instruction
+    return get_pacing_instruction(project_knowledge_base)
+
+
+def get_prose_rules_from_preset(preset_name: str) -> str:
+    """Get prose rules from a preset.
+    
+    Args:
+        preset_name: Name of the preset
+        
+    Returns:
+        Formatted prose rules string
+    """
+    try:
+        from libriscribe.presets import PresetManager
+        manager = PresetManager()
+        preset = manager.get_preset(preset_name)
+        if preset:
+            return preset.get_prose_rules()
+    except ImportError:
+        pass
+    
+    return ""

@@ -1,200 +1,285 @@
-# LibriScribe 📚✨
+# Libriscribe 2.0 - AI-Powered Book Creation & Automated Developmental Editing
 
-<div align="center">
-
-<img src="https://guerra2fernando.github.io/libriscribe/img/logo.png" alt="LibriScribe Logo" width="30%">
-
-Your AI-Powered Book Writing Assistant
-
-
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Documentation](https://img.shields.io/badge/docs-visit%20now-green.svg)](https://guerra2fernando.github.io/libriscribe/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow.svg?style=flat&logo=buy-me-a-coffee)](https://buymeacoffee.com/guerra2fernando)
-
-</div>
-
-## 🌟 Overview
-
-LibriScribe harnesses the power of AI to revolutionize your book writing journey. Using a sophisticated multi-agent system, where each agent specializes in specific tasks, LibriScribe assists you from initial concept to final manuscript.
-
-![Libriscribe Demo](https://github.com/guerra2fernando/libriscribe/blob/main/docs/static/img/libriscribe.gif?raw=true)
-
-## ✨ Features
-
-### Creative Assistance 🎨
-- **Concept Generation:** Transform your ideas into detailed book concepts
-- **Automated Outlining:** Create comprehensive chapter-by-chapter outlines
-- **Character Generation:** Develop rich, multidimensional character profiles
-- **Worldbuilding:** Craft detailed universes with rich history, culture, and geography
-
-### Writing & Editing 📝
-- **Chapter Writing:** Generate chapter drafts based on your outline
-- **Content Review:** Catch inconsistencies and plot holes
-- **Style Editing:** Polish your writing style for your target audience
-- **Fact-Checking:** Verify factual claims (for non-fiction)
-
-### Quality Assurance 🔍
-- **Plagiarism Detection:** Ensure content originality
-- **Research Assistant:** Access comprehensive topic research
-- **Manuscript Formatting:** Export to polished Markdown or PDF
-
-## 🚀 Quickstart
-
-### 1. Installation
-
-```bash
-git clone https://github.com/guerra2fernando/libriscribe.git
-cd libriscribe
-pip install -e .
-```
-
-### 2. Configuration
-
-*   **LLM API Key:** Get an API key from one of the following services:
-
-    - **OpenAI:** [Get API Key](https://platform.openai.com/signup/)
-    - **Anthropic:** [Get API Key](https://console.anthropic.com/)
-    - **DeepSeek:** [Get API Key](https://platform.deepseek.com/)
-    - **Google AI Studio (Gemini):** [Get API Key](https://aistudio.google.com/)
-    - **Mistral AI:** [Get API Key](https://console.mistral.ai/)
-
-Create a `.env` file in the root directory and fill the api key of the LLM that you want to use:
-```bash
-OPENAI_API_KEY=your_api_key_here
-GOOGLE_AI_STUDIO_API_KEY=your_api_key_here
-CLAUDE_API_KEY=your_api_key_here
-DEEPSEEK_API_KEY=your_api_key_here
-MISTRAL_API_KEY=your_api_key_here
-```
-
-
-### 3. Launch LibriScribe
-
-```bash
-libriscribe start
-```
-
-Choose between:
-- 🎯 **Simple Mode:** Quick, streamlined book creation
-- 🎛️ **Advanced Mode:** Fine-grained control over each step
-
-## 💻 Advanced Usage
-
-### Project Creation
-```bash
-python src/libriscribe/main.py start \
-    --project-name my_book \
-    --title "My Awesome Book" \
-    --genre fantasy \
-    --description "A tale of epic proportions." \
-    --category fiction \
-    --num-characters 3 \
-    --worldbuilding-needed True
-```
-
-### Core Commands
-```bash
-# Generate book concept
-python src/libriscribe/main.py concept
-
-# Create outline
-python src/libriscribe/main.py outline
-
-# Generate characters
-python src/libriscribe/main.py characters
-
-# Build world
-python src/libriscribe/main.py worldbuilding
-
-# Write chapter
-python src/libriscribe/main.py write-chapter --chapter-number 1
-
-# Edit chapter
-python src/libriscribe/main.py edit-chapter --chapter-number 1
-
-# Format book
-python src/libriscribe/main.py format
-```
-
-## 📁 Project Structure
-
-```
-your_project/
-├── project_data.json    # Project metadata
-├── outline.md          # Book outline
-├── characters.json     # Character profiles
-├── world.json         # Worldbuilding details
-├── chapter_1.md       # Generated chapters
-├── chapter_2.md
-└── research_results.md # Research findings
-```
-
-## ⚠️ Important Notes
-
-- **API Costs:** Monitor your LLM API usage and spending limits
-- **Content Quality:** Generated content serves as a starting point, not final copy
-- **Review Process:** Always review and edit the AI-generated content
-
-
-## 🔗 Quick Links
-
-- [📚 Documentation](https://guerra2fernando.github.io/libriscribe/)
-- [🐛 Issue Tracker](https://github.com/guerra2fernando/libriscribe/issues)
-- [💡 Feature Requests](https://github.com/guerra2fernando/libriscribe/issues/new)
-- [📖 Wiki](https://github.com/guerra2fernando/libriscribe/wiki)
-
-## 🤝 Contributing
-
-We welcome contributions! Check out our [Contributing Guidelines](CONTRIBUTING.md) to get started.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+**Transform your ideas into polished manuscripts with AI-powered writing and professional-grade automated editing.**
 
 ---
 
-## 🗺️ LibriScribe Development Roadmap
+## 🎯 What is Libriscribe?
 
-### 🤖 LLM Integration & Support
-- [X] **Multi-LLM Support Implementation**: Anthropic Claude Models - Google Gemini Models - - Deepseek Models - Mistral Models
-- [ ] **Model Performance Benchmarking**
-- [ ] **Automatic Model Fallback System**
-- [ ] **Custom Model Fine-tuning Support**
-- [ ] **Cost Optimization Engine**
-- [ ] **Response Quality Monitoring**
+Libriscribe is an intelligent book creation system that doesn't just generate text—it **thinks like a professional editor**. From initial concept to publication-ready manuscript, Libriscribe handles the entire creative and editorial workflow.
 
-### 🔍 Vector Store & Search Enhancement
-- [ ] **Multi-Vector Database Support**: ChromaDB Integration, MongoDB Vector Search, Pinecone Integration, Weaviate Implementation
-- [ ] **Advanced Search Features**: Semantic Search, Hybrid Search (Keywords + Semantic), Cross-Reference Search, Contextual Query Understanding
-- [ ] **Embedding Models Integration**: Multiple Embedding Model Support, Custom Embedding Training, Embedding Optimization
+### Key Features
 
-### 🔐 Authentication & Authorization
-- [ ] **Cerbos Implementation**: Role-Based Access Control (RBAC), Attribute-Based Access Control (ABAC), Custom Policy Definitions, Policy Testing Framework
-- [ ] **User Management System**: User Registration & Authentication, Social Auth Integration, Multi-Factor Authentication, Session Management
-- [ ] **Security Features**: Audit Logging, Rate Limiting, API Key Management, Security Headers Implementation
+✨ **Natural Language Creative Control** - Tell the AI what you want in plain English  
+📊 **Automated Report Analysis** - Import reports from AutoCrit, ProWritingAid, Marlowe, etc.  
+🎬 **Director Agent** - Make creative changes across your entire project instantly  
+🔄 **Complete Consistency** - All files (characters, outline, scenes, chapters) stay synchronized  
+👁️ **Vision Analysis** - Analyzes charts and graphs from editorial reports  
+📝 **Developmental Editing** - Automated high-level structural improvements  
 
-### 🌐 API Development
-- [ ] **Core API Features**: RESTful Endpoints, GraphQL Interface, WebSocket Support, API Documentation (OpenAPI/Swagger)
-- [ ] **API Management**: Version Control, Rate Limiting, Usage Monitoring, Error Handling
-- [ ] **Integration Features**: Webhook Support, Event System, Batch Processing, Export/Import Functionality
+---
 
-### 🎨 Frontend Application
-- [ ] **Dashboard Development**: Modern React Interface, Real-time Updates, Progressive Web App Support, Responsive Design
-- [ ] **Editor Features**: Rich Text Editor, Markdown Support, Real-time Collaboration, Version History
-- [ ] **Visualization Tools**: Character Relationship Graphs, Plot Timeline Visualization, World Map Generation, Story Arc Visualization
+## 🚀 Quick Start
 
+```powershell
+# Install
+git clone https://github.com/yourusername/libriscribe.git
+cd libriscribe
+pip install -r requirements.txt
 
+# Configure
+cp .env.example .env
+# Add your GOOGLE_AI_STUDIO_API_KEY
 
-<div align="center">
+# Run
+libriscribe start
+```
 
-Made with ❤️ by Fernando Guerra and Lenxys
+---
 
-[⭐ Star us on GitHub](https://github.com/guerra2fernando/libriscribe)
+## 💡 How It Works
 
-If LibriScribe has been helpful for your projects, consider buying me a coffee:
+### 1. Write Your Book
+```
+> Create a new project
+> Define characters, world, and plot
+> Generate chapters automatically
+```
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow.svg?style=flat&logo=buy-me-a-coffee)](https://buymeacoffee.com/guerra2fernando)
+### 2. Analyze with Professional Tools
+```
+> Export to AutoCrit, ProWritingAid, or Marlowe
+> Get professional editorial feedback
+```
 
-</div>
+### 3. Automated Developmental Editing
+```
+> Place reports in project/Autocrit/ folder
+> Director Mode: "analyze reports in Autocrit"
+> Review the generated action plan
+> Director Mode: "execute the action plan" (coming soon!)
+```
+
+### 4. Creative Control
+```
+Director Mode commands:
+
+> Make M a man
+> Make Sarah 10 years older  
+> Fix pronouns for Bond
+> The heist should fail in Chapter 5
+```
+
+---
+
+## 🎬 Director Agent
+
+**Natural language interface for creative control**
+
+Instead of manually editing files, just tell the AI what you want:
+
+```
+> Make the villain more sympathetic
+✓ Updated characters.json
+✓ Updated outline.md  
+✓ Rewrote chapters 3, 5, 7
+✓ Complete consistency maintained
+```
+
+**Supported Commands:**
+- Character changes (gender, age, appearance, personality)
+- Grammar corrections
+- Pronoun fixing (context-aware)
+- Report analysis
+- Plot modifications (coming soon)
+
+---
+
+## 📊 Report Analyzer
+
+**Analyzes editorial reports from any tool**
+
+**Supported Formats:**
+- PDF (with chart/graph analysis)
+- DOCX (with embedded image analysis)
+- RTF, TXT, MD
+
+**Workflow:**
+1. Export reports from AutoCrit/ProWritingAid/Marlowe
+2. Place in `project/Autocrit/` folder
+3. Run: `analyze reports in Autocrit`
+4. Get actionable editorial plan with:
+   - Major issues (high priority)
+   - Minor issues (medium priority)
+   - Strengths
+   - Recommended actions
+
+**Vision Analysis:**
+- Analyzes pacing charts
+- Extracts data from dialogue balance graphs
+- Interprets visual feedback
+- Includes insights in action plan
+
+---
+
+## 🏗️ Architecture
+
+```
+Director Agent
+    ↓
+Intent Parser → Impact Analyzer → Change Handlers
+    ↓
+Autonomous Project-Wide Modifier
+    ↓
+Updates ALL Files (characters, outline, scenes, chapters)
+```
+
+**Key Components:**
+- **Director Agent** - Natural language interface
+- **Autonomous Modifier** - LLM-powered consistency engine
+- **Report Analyzer** - Professional feedback integration
+- **Document Reader** - Universal format support
+- **Vision Analysis** - Chart/graph interpretation
+
+---
+
+## 📦 Installation
+
+### Prerequisites
+- Python 3.13+
+- Google AI Studio API key (free tier available)
+
+### Required Dependencies
+```powershell
+pip install -r requirements.txt
+```
+
+### Optional (for full document support)
+```powershell
+# DOCX with images
+pip install python-docx Pillow
+
+# PDF support
+pip install PyPDF2 pdf2image
+
+# Better RTF parsing
+pip install striprtf
+```
+
+### Poppler (Windows - for PDF image analysis)
+1. Download: [Poppler Windows](https://github.com/oschwartz10612/poppler-windows/releases/)
+2. Extract to `C:\poppler`
+3. Add to PATH: `C:\poppler\Library\bin`
+
+---
+
+## 🎯 Use Cases
+
+### Fiction Writers
+- Generate complete novels from outline
+- Maintain character consistency
+- Automated developmental editing
+- Professional-grade quality control
+
+### Non-Fiction Authors
+- Structure complex topics
+- Consistent terminology
+- Research integration
+- Citation management
+
+### Content Creators
+- Rapid prototyping
+- A/B testing different approaches
+- Style consistency
+- Automated editing
+
+---
+
+## 🔮 Roadmap
+
+### v2.3 ✅ (Current Release - Dec 2025)
+- [x] Style Presets System (Spy Maker, Epic Romance, etc.)
+- [x] Story Structure Frameworks (Hero's Journey, Save the Cat, etc.)
+- [x] Custom preset support
+- [x] Automatic style injection into prompts
+
+### v2.4 (Next Release)
+- [ ] Execute Action Plan (auto-apply recommendations)
+- [ ] Refine Action Plan (iterative feedback)
+- [ ] Preview mode (show changes before applying)
+- [ ] CLI commands for preset management
+
+### v2.5
+- [ ] Plot modification commands
+- [ ] Worldbuilding changes
+- [ ] Tone/style adjustments
+- [ ] Undo/redo capability
+
+### v3.0
+- [ ] EditScribe integration
+- [ ] Multi-user collaboration
+- [ ] Version control
+- [ ] Quality metrics dashboard
+
+---
+
+## 📊 Performance
+
+**Typical Costs (Gemini 2.0 Flash):**
+- Write chapter: $0.05-$0.15
+- Review & edit: $0.03-$0.08
+- Analyze reports: $0.20-$0.50
+- Full book (15 chapters): $2-$5
+
+**Speed:**
+- Chapter generation: 2-5 minutes
+- Report analysis: 3-8 minutes
+- Full book: 2-4 hours
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+**Areas for contribution:**
+- New change handlers
+- Additional LLM providers
+- Document format support
+- Quality improvements
+- Documentation
+
+---
+
+## 📝 License
+
+MIT License - see [LICENSE](LICENSE) for details
+
+---
+
+## 🙏 Acknowledgments
+
+- Google AI Studio for Gemini API
+- OpenAI for GPT models
+- Anthropic for Claude
+- The open-source community
+
+---
+
+## 📞 Support
+
+- **Issues:** [GitHub Issues](https://github.com/yourusername/libriscribe/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/yourusername/libriscribe/discussions)
+- **Email:** support@libriscribe.com
+
+---
+
+## ⭐ Star History
+
+If you find Libriscribe useful, please star the repository!
+
+---
+
+**Built with ❤️ by Fernando Guerra**
+
+*Libriscribe - Where AI meets professional editing*
