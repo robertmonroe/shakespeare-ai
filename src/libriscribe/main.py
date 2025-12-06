@@ -1,4 +1,6 @@
 # src/libriscribe/main.py
+# Shakespeare AI - AI-Powered Book Creation
+# Based on Libriscribe by Fernando Guerra
 import sys
 import typer
 from libriscribe.agents.project_manager import ProjectManagerAgent
@@ -17,13 +19,13 @@ from libriscribe.settings import Settings
 from rich.progress import track  # Import track
 warnings.filterwarnings("ignore", category=PydanticDeprecationWarning)
 
-# Configure logging (same as before)
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(message)s",
     handlers=[
-        logging.FileHandler("libriscribe.log", encoding="utf-8"),  # Add encoding
-        logging.StreamHandler()  # Simplified logs to console
+        logging.FileHandler("shakespeare.log", encoding="utf-8"),
+        logging.StreamHandler()
     ]
 )
 for handler in logging.root.handlers:
@@ -114,14 +116,14 @@ def introduction():
     console.print("")   
     console.print(
         Panel(
-            "Welcome to [bold]Libriscribe[/bold]! ✨\n\n"
-            "An AI-powered, open-source book creation system crafted by Fernando Guerra.\n\n"
+            "Welcome to [bold]🎭 Shakespeare AI[/bold]! ✨\n\n"
+            "An AI-powered book creation system for bringing your stories to life.\n\n"
             "🚀  Ready to write your next masterpiece?\n\n"
-            "⭐ If you find Libriscribe helpful, please consider supporting the project by giving it a star on GitHub:\n[link]https://github.com/guerra2fernando/libriscribe[/link]\n"
-            "Your support helps keep this project going!",
-            title="[bold blue]Libriscribe[/bold blue]",
+            "⭐ Star us on GitHub: [link]https://github.com/robertmonroe/shakespeare-ai[/link]\n"
+            "🙏 Based on Libriscribe by Fernando Guerra",
+            title="[bold blue]Shakespeare AI v2.3.0[/bold blue]",
             border_style="blue",
-            padding=(1, 2),  # Add some padding for better visual appearance
+            padding=(1, 2),
         )
     )
     # Print emojis separately to avoid formatting issues (Optional in this case)

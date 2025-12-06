@@ -1,8 +1,11 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="libriscribe",
-    version="0.3.0",
+    name="shakespeare-ai",
+    version="2.3.0",
+    description="AI-Powered Book Creation & Automated Developmental Editing",
+    author="Robert Monroe",
+    url="https://github.com/robertmonroe/shakespeare-ai",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     install_requires=[
@@ -16,10 +19,20 @@ setup(
         "markdown",
         "fpdf",
         "tenacity",
+        "anthropic",
+        "google-generativeai",
+        "rich",
     ],
     entry_points={
         "console_scripts": [
-            "libriscribe=libriscribe.main:app",  # Updated entry point
+            "shakespeare=libriscribe.main:app",  # New primary command
+            "libriscribe=libriscribe.main:app",  # Legacy alias for compatibility
         ],
     },
+    python_requires=">=3.8",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
 )
